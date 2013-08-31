@@ -10,11 +10,11 @@
 	{lang schedule_right}
 	<small> <cite title="Source Title">{lang schedule_right_small}</cite></small>
 </h4>
-<hr />
+
 
 
 <h2><small>{lang schedule_today}</small>
-<hr />
+
 </h2>
 {if count($today) == 0}<span class="badge badge-info">{lang empty}</span> {lang schedule_empty}{/if}
 {loop $today $t}
@@ -29,7 +29,6 @@
 
 
 <h2><small>{lang schedule_future}</small>
-<hr />
 </h2>
 
 {if count($future) == 0}<span class="badge badge-info">{lang empty}</span> {lang schedule_empty}{/if}
@@ -44,7 +43,7 @@
 
 
 <h2><small>{lang schedule_past}</small>
-<hr />
+
 </h2>
 {if count($outofdate) == 0}<span class="badge badge-info">{lang empty}</span> {lang schedule_empty}{/if}
 {loop $outofdate $o}

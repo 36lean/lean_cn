@@ -2,6 +2,9 @@
 define('APPTYPEID' , 0);
 define('CURSCRIPT', 'reader');
 
+define('TYPE_LEVEL' , 3);
+define('ID_LEVEL' , 4);
+
 require './source/class/class_core.php';
 
 $discuz = & discuz_core::instance();
@@ -13,9 +16,9 @@ $tmp_category = DB::fetch_all('select id,title from '.DB::table('amazing_topic')
 
 
 
-if( $dispatch[2] === 'article')
+if( $dispatch[TYPE_LEVEL] === 'article')
 {
-	$id = intval( $dispatch[3]);
+	$id = intval( $dispatch[ID_LEVEL]);
 	DB::query('update '.DB::table('amazing_news').' set view = view + 1 where id = '.$id);
 
 	if( !file_exists('./cache/article/'.$id.'.cache'))
@@ -36,12 +39,12 @@ if( $dispatch[2] === 'article')
 	exit;
 }
 
-if( $dispatch[2] === 'category')
+if( $dispatch[TYPE_LEVEL] === 'category')
 {
 
-	$id = intval( $dispatch[3]);
+	$id = intval( $dispatch[4]);
 
-	$page =  $dispatch[4] ? intval($dispatch[4]) : 1;
+	$page =  $dispatch[ID_LEVEL] ? intval($dispatch[4]) : 1;
 
 	$offset = 20;
 

@@ -284,6 +284,9 @@ if( isset( $_GET['page_content'])){
 	}
 
 	require template('common/footer');
+
+	//here patch
+	unlink( 'cache/page_content/'.$id.'.cache');
 	exit;
 }
 

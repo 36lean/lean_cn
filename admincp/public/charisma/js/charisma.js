@@ -18,7 +18,7 @@ $(document).ready(function(){
 	
 	function switch_theme(theme_name)
 	{
-		$('#bs-css').attr('href','http://localhost/tpl/admincp/public/charisma/css/bootstrap-'+theme_name+'.css');
+		$('#bs-css').attr('href','http://127.0.0.1/lean/admincp/public/charisma/css/bootstrap-'+theme_name+'.css');
 	}
 	
 	//ajax menu checkbox

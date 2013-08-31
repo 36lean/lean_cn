@@ -28,15 +28,17 @@ class Review extends Base_Controller {
 
 		$list = $this->review->get_news_list( $page , $offset);
 
-		$config['base_url'] = site_url() . '/' . $this->uri->segment(1) . '/' .$this->uri->segment(2) .'/';
-		$config['total_rows'] = $total;
-		$config['per_page'] = $offset;
-
-		$this->pagination->initialize($config);
-
 		$this->layout->view('review/index' , array( 'total' => $total , 
+													'offset' => $offset , 
 													'list'  => $list , 
 		));
+	}
+
+	public function edit( $id = 1)
+	{
+		$id = intval( $id);
+
+		echo $id;
 	}
 	
 	public function news() {
