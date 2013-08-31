@@ -1,0 +1,114 @@
+
+<script>
+jQuery( function (){
+	jQuery('#user_profile').hide();
+	jQuery('#registerformsubmit').hide();
+
+	jQuery('#{$this->setting['reginput']['username']}').focus();
+
+	jQuery('#{$this->setting['reginput']['username']}').blur( function() {
+		var username =  jQuery(this).val();
+
+		if( username.length < 3) {
+			jQuery('#_username').html('<span class="label label-important"><i class="icon-remove"></i> 用户名长度过短,至少要包括3个字符</span>');
+			jQuery('button').attr({'disabled':'disabled'});
+		}else {
+			jQuery.post('{$_G['siteurl']}/request.php' , { _username : username} , function( response) {
+				if( response === '1') {
+					jQuery('#_username').html('<span class="label label-important"><i class="icon-remove"></i>  对不起 这个用户名已经存在 请更换</span>');	
+					jQuery('button').attr({'disabled':'disabled'});
+				}	
+				else {
+					jQuery('#_username').html('<span class="label label-success"><i class="icon-ok"></i></span>');
+					jQuery('button').removeAttr('disabled');
+				}
+			});			
+		}
+	});
+
+	jQuery('#{$this->setting['reginput']['password']}').blur( function(){
+		var password = jQuery(this).val();
+		if( password.length < 6) {
+			jQuery('#_password').html('<span class="label label-important"><i class="icon-remove"></i> 密码长度至少为6</span>');
+			jQuery('button').attr({'disabled':'disabled'});			
+		}else {
+			jQuery('#_password').html('<span class="label label-success"><i class="icon-ok"></i></span>');
+			jQuery('button').removeAttr('disabled');			
+		}
+	});
+
+	jQuery('#{$this->setting['reginput']['password2']}').blur( function(){
+		var password2 = jQuery(this).val();
+		if( password2.length < 6) {
+			jQuery('#_password2').html('<span class="label label-important"><i class="icon-remove"></i> 密码长度至少为6</span>');
+			jQuery('button').attr({'disabled':'disabled'});			
+		}else if( password2 !== jQuery('#{$this->setting['reginput']['password']}').val()) {
+			jQuery('#_password2').html('<span class="label label-important"><i class="icon-remove"></i> 两次输入的密码不一样</span>');
+			jQuery('button').attr({'disabled':'disabled'});				
+		}else {
+			jQuery('#_password2').html('<span class="label label-success"><i class="icon-ok"></i></span>');
+			jQuery('button').removeAttr('disabled');			
+		}
+	});
+
+	jQuery('#{$this->setting['reginput']['email']}').blur( function () {
+		var box = jQuery(this);
+		var email = jQuery(this).val();
+		var preg = /^\S+[@]\S+[.]\S+$/;
+		if( preg.test(email) === true) {
+			jQuery.post('{$_G['siteurl']}/request.php' , { _email : email} , function( response) {
+				if( '1' === response) {
+					box.next().html('<span class="label label-important"><i class="icon-remove"></i> 此邮箱已经被注册了 请尝试别的邮箱 </span> <a href="http://reg.email.163.com/unireg/call.do?cmd=register.entrance&from=163mail_right" target="blank"><span class="label label-info"><i class="icon-info-sign"></i> 申请一个163邮箱</span></a>');
+					jQuery('button').attr({'disabled':'disabled'});
+				}else {
+					box.next().html('<span class="label label-success"><i class="icon-ok"></i></span>');
+					jQuery('button').removeAttr('disabled');						
+				}
+			});
+		}else {
+			jQuery('#_email').html('<span class="label label-important"><i class="icon-remove"></i> 电子邮件格式不对 例如:example@163.com</span>');
+			jQuery('button').attr({'disabled':'disabled'});					
+		}
+	});
+
+	jQuery('#mobile').blur( function () {
+
+		var mobile = jQuery(this).val();
+
+		var preg = /^[1][0-9].{9}$/;
+
+		if( true === preg.test( mobile)) {
+
+			jQuery.post('{$_G['siteurl']}/request.php' , { _mobile : mobile} , function( response) {
+				
+				if( '1' === response) {
+					jQuery('#mobile').next().html('<span class="label label-important"><i class="icon-remove"> 非法的手机号格式</i> 此手机号已经被使用');
+					jQuery('button').attr({'disabled':'disabled'});
+				}else {
+					jQuery('#mobile').next().html('<span class="label label-success"><i class="icon-ok"></i></span>');
+					jQuery('button').removeAttr('disabled');						
+				}				
+			});
+
+		}else {
+			jQuery(this).next().html('<span class="label label-important"><i class="icon-remove"></i> 手机号格式不对 例如:18702739465</span>');
+			jQuery('button').attr({'disabled':'disabled'});				
+		}
+	});
+
+	jQuery('#realname,#company,#position').blur( function() {
+		if( jQuery(this).val().length > 1) {
+			jQuery(this).next().html('<span class="label label-success"><i class="icon-ok"></i></span>');
+		}
+	});
+
+	jQuery('#next_step').click( function() {
+		
+		jQuery('#user_account').delay('500').hide('slow');
+
+		jQuery('#user_profile').delay('500').show('slow');
+
+		jQuery('#registerformsubmit').delay('500').show('slow');
+	})
+});
+</script>

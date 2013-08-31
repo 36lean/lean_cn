@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[nimba_romotepic.plugin]]></item>
+	<item id="RevisionID"><![CDATA[3091]]></item>
+	<item id="SN"><![CDATA[2013033010i5Sw8YFfYL]]></item>
+	<item id="RevisionDateline"><![CDATA[1362380078]]></item>
+	<item id="Data">
+		<item id="/readme.inc.php"><![CDATA[e61e4469cdda24bc45ebe69452085808]]></item>
+		<item id="/discuz_plugin_nimba_romotepic_SC_UTF8.xml"><![CDATA[24a5aa003eedcc6354d8da3082ce7aab]]></item>
+		<item id="/discuz_plugin_nimba_romotepic_TC_UTF8.xml"><![CDATA[2753ee79d6637bc0d3cf242168ffe2a3]]></item>
+		<item id="/discuz_plugin_nimba_romotepic_SC_GBK.xml"><![CDATA[676e4f9ba3f8cef9d21ce55d767f424e]]></item>
+		<item id="/discuz_plugin_nimba_romotepic_TC_BIG5.xml"><![CDATA[d9b640b95cb40e3daf6bc8c9918b9d1a]]></item>
+		<item id="/romotepic.class.php"><![CDATA[9dab692f373563fa1b9c1960f4758b97]]></item>
+		<item id="/template/post_newthread.htm"><![CDATA[b2c879a48ddb942a3fbcbe0c27b1e9b7]]></item>
+	</item>
+</root>

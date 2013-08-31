@@ -1,0 +1,441 @@
+<!--<script>
+jQuery( function() {
+  jQuery.ajax({
+    url : 'lesson.php',
+    type : 'GET',
+    data : { click_collection:1 , id: "4", type:'c'},
+    dataType:'html',
+  });
+});
+</script>
+-->
+
+<div class="container">
+<p class="text-left"> 
+  <a href="lesson.php"><i class="icon-home"></i> 在线课程</a> <span class="divider">/</span> 
+  <a href="lesson.php?pages_list=4"><i class="icon-book"></i> 改善之路</a> 
+</p>
+</div>
+
+<div class="page-header">
+  <h2 align="center">改善之路 </h2>
+</div>
+
+<div class="row-fluid">
+
+  <div class="span6">
+  <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
+  <p>改善(KAIZEN)的意思是"变得更好". 在改善之路的课程中, 你将学习到什么是改善, 它将如何帮助在不大量裁员的情况下,在制造业, 办公室和医疗行业减少成本,增加利润. 事实上通过本课程你将听到一家公司如何在销售额减少25%的情况下,利润增加了25%. 
+
+此外, 本次课程将解释如何成功的实施改善项目,我们引进了改善项目时间表,您可以通过该时间表准备,实施和跟踪改善项目. 
+您可以融入学院的其它课程, 如实践问题解决, VSM价值流分析等课程. 改善之路将持续的改善你的组织. 
+</p>
+  <blockquote><i class="icon-info-sign"></i> 分类</blockquote>
+  <p>精益课程</p>
+  </div>
+
+
+  <div class="span6">
+    <img class="img-polaroid lazy" src="uploads/course/4.png" data-original="uploads/course/4.png" style="width:80%;" />
+  </div>
+
+</div>
+
+<hr>
+
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span3">
+    <div>
+
+            
+
+        
+    
+  
+    <ul class="nav nav-list well">
+      <li><h4><i class="icon-list"></i> 导航</h4></li>
+      <li class="nav-header"><i class="icon-align-justify"></i> 课程大纲</li>
+            <li><a href="lesson.php?page_content=30"><small><strong>第1节 改善概述</strong></small></a></li>
+            <li><a href="lesson.php?page_content=31"><small><strong>第2节 改善项目</strong></small></a></li>
+            <li><a href="lesson.php?page_content=32"><small><strong>第3节 成功的改</strong></small></a></li>
+            <li><a href="lesson.php?page_content=33"><small><strong>第4节 真实的生</strong></small></a></li>
+            <li><a href="lesson.php?page_content=34"><small><strong>第5节 系统改善 </strong></small></a></li>
+            <li><a href="lesson.php?page_content=35"><small><strong>第6节 改善项目</strong></small></a></li>
+            <li><a href="lesson.php?page_content=36"><small><strong>第7节 改善项目</strong></small></a></li>
+            <li><a href="lesson.php?page_content=37"><small><strong>第8节 改善项目</strong></small></a></li>
+            <li><a href="lesson.php?page_content=38"><small><strong>第9节 展示改善</strong></small></a></li>
+            <li><a href="lesson.php?page_content=39"><small><strong>第10节 简单改善</strong></small></a></li>
+            <li><a href="lesson.php?page_content=40"><small><strong>第11节 简单改善</strong></small></a></li>
+            <li><a href="lesson.php?page_content=41"><small><strong>第12节 改善教练</strong></small></a></li>
+            <li><a href="lesson.php?page_content=42"><small><strong>第13节 马丁博士</strong></small></a></li>
+            
+          </ul>
+    
+    
+    </div>
+  </div>
+
+
+<div class="span7">
+                          <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="30" href="lesson.php?page_content=30" title="第1节 改善概述">
+                
+                                <img class="img-polaroid lazy" id="30" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-01.png" alt="第1节 改善概述" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-01.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="30" href="lesson.php?page_content=30" title="第1节 改善概述">
+                    第1节 改善概述                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                我们讲学习什么改善, 并且我们将在厨房中一步步演示改善.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="31" href="lesson.php?page_content=31" title="第2节 改善项目">
+                
+                                <img class="img-polaroid lazy" id="31" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-02.png" alt="第2节 改善项目" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-02.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="31" href="lesson.php?page_content=31" title="第2节 改善项目">
+                    第2节 改善项目                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习强大的改善项目和5天的改善项目路线图              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="32" href="lesson.php?page_content=32" title="第3节 成功的改善案例">
+                
+                                <img class="img-polaroid lazy" id="32" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-03.png" alt="第3节 成功的改善案例" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-03.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="32" href="lesson.php?page_content=32" title="第3节 成功的改善案例">
+                    第3节 成功的改善案例                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                在这个视频中, 我们将带你从传统的课堂离开休息一会儿, 听一个成功的改善案例, 该公司成功减少了公司的税收,增加了20-25%的利润,   ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="33" href="lesson.php?page_content=33" title="第4节 真实的生活改善">
+                
+                                <img class="img-polaroid lazy" id="33" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-04.png" alt="第4节 真实的生活改善" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-04.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="33" href="lesson.php?page_content=33" title="第4节 真实的生活改善">
+                    第4节 真实的生活改善                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                我们将继续讨论真实的改善案例, 一个医疗改善团队最近在医院做的一些改善实例.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="34" href="lesson.php?page_content=34" title="第5节 系统改善  VS  局部改善">
+                
+                                <img class="img-polaroid lazy" id="34" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-05.png" alt="第5节 系统改善  VS  局部改善" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-05.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="34" href="lesson.php?page_content=34" title="第5节 系统改善  VS  局部改善">
+                    第5节 系统改善  VS  局部改善                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习系统改善和局部改善的区别, 什么它们很对长期的项目很重要并且能融合在一起.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="35" href="lesson.php?page_content=35" title="第6节 改善项目规则">
+                
+                                <img class="img-polaroid lazy" id="35" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-06.png" alt="第6节 改善项目规则" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-06.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="35" href="lesson.php?page_content=35" title="第6节 改善项目规则">
+                    第6节 改善项目规则                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                在这个模块中, 你将学习到改善项目的规则, 同时我们准备学习如何准备和实施一个世界级的改善项目.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="36" href="lesson.php?page_content=36" title="第7节 改善项目准备">
+                
+                                <img class="img-polaroid lazy" id="36" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-07.png" alt="第7节 改善项目准备" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-07.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="36" href="lesson.php?page_content=36" title="第7节 改善项目准备">
+                    第7节 改善项目准备                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何使用云学院的改善项目时间线检查表,来为改善项目做准备.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="37" href="lesson.php?page_content=37" title="第8节 改善项目周">
+                
+                                <img class="img-polaroid lazy" id="37" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-08.png" alt="第8节 改善项目周" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-08.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="37" href="lesson.php?page_content=37" title="第8节 改善项目周">
+                    第8节 改善项目周                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习改善项目周中的内容, 和我们在早期面对的积极和消极的态度.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="38" href="lesson.php?page_content=38" title="第9节 展示改善项目活动">
+                
+                                <img class="img-polaroid lazy" id="38" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-09.png" alt="第9节 展示改善项目活动" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-09.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="38" href="lesson.php?page_content=38" title="第9节 展示改善项目活动">
+                    第9节 展示改善项目活动                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习改善活动在改善项目周应该被真实的执行.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="39" href="lesson.php?page_content=39" title="第10节 简单改善- 第一部分">
+                
+                                <img class="img-polaroid lazy" id="39" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-10.png" alt="第10节 简单改善- 第一部分" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-10.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="39" href="lesson.php?page_content=39" title="第10节 简单改善- 第一部分">
+                    第10节 简单改善- 第一部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                迈克,我们的高级顾问为我们讲解 "简单改善"的方法和建议. 迈克解释的非常细致, 当我们在公司如何在一年内建立和实施4998个员工的建议. 如何将建议移动 ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="40" href="lesson.php?page_content=40" title="第11节 简单改善-第二部分">
+                
+                                <img class="img-polaroid lazy" id="40" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-11.png" alt="第11节 简单改善-第二部分" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-11.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="40" href="lesson.php?page_content=40" title="第11节 简单改善-第二部分">
+                    第11节 简单改善-第二部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                我们讲延续第一部分的讲解.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="41" href="lesson.php?page_content=41" title="第12节 改善教练">
+                
+                                <img class="img-polaroid lazy" id="41" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-12.png" alt="第12节 改善教练" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-12.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="41" href="lesson.php?page_content=41" title="第12节 改善教练">
+                    第12节 改善教练                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                迈克提供如何成为改善教练的建议. 具有多年实践经验的改善教练提供的建议具有巨大的价值, 无论你是新手还是有经验的改善人员.  ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="42" href="lesson.php?page_content=42" title="第13节 马丁博士的改善项目介绍">
+                
+                                <img class="img-polaroid lazy" id="42" src="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-13.png" alt="第13节 马丁博士的改善项目介绍" data-original="http://36lean.oss.aliyuncs.com/GA/KW/PNG/KW-13.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="42" href="lesson.php?page_content=42" title="第13节 马丁博士的改善项目介绍">
+                    第13节 马丁博士的改善项目介绍                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                马丁博士详细的讲述了5S改善和布局改善项目. 在这个模块中你将看到如果训练你的员工,如果对一块地方进行5S, 如何准备一个单件流的改善项目模拟,最终你 ..               </div>
+
+            </div>
+            </div>
+            
+      </div>
+
+
+
+
+</div>
+</div>
+
+

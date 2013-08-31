@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[keepnwt.plugin]]></item>
+	<item id="RevisionID"><![CDATA[9276]]></item>
+	<item id="SN"><![CDATA[20130330102wvJSs1qxr]]></item>
+	<item id="RevisionDateline"><![CDATA[1355796292]]></item>
+	<item id="Data">
+		<item id="/discuz_plugin_keepnwt_TC_UTF8.xml"><![CDATA[b6f93383a47fe999751cfb402e09f558]]></item>
+		<item id="/discuz_plugin_keepnwt_TC_BIG5.xml"><![CDATA[b6f93383a47fe999751cfb402e09f558]]></item>
+		<item id="/discuz_plugin_keepnwt_SC_GBK.xml"><![CDATA[91f4aadf8e7787836d763085bc47e293]]></item>
+		<item id="/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/keepnwt.class.php"><![CDATA[4741fac94b77efe1cad1ccf81d28a8ae]]></item>
+		<item id="/discuz_plugin_keepnwt_SC_UTF8.xml"><![CDATA[91f4aadf8e7787836d763085bc47e293]]></item>
+		<item id="/.DS_Store"><![CDATA[16c636ed6243cfbba4498338ab125482]]></item>
+		<item id="/template/index.html"><![CDATA[d41d8cd98f00b204e9800998ecf8427e]]></item>
+		<item id="/template/.DS_Store"><![CDATA[e069a69f667090f8b72939728d1acc8a]]></item>
+	</item>
+</root>

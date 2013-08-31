@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[week_daqi.template]]></item>
+	<item id="RevisionID"><![CDATA[11297]]></item>
+	<item id="SN"><![CDATA[2013032914f67R0fxA41]]></item>
+	<item id="RevisionDateline"><![CDATA[1359965295]]></item>
+	<item id="Data">
+		<item id="/preview_large.jpg"><![CDATA[d1f6d95a7cb2bea61d9ec06bd9621471]]></item>
+		<item id="/images/reader.jpg"><![CDATA[93b056d82ddc71ffbdfd67b6a0af9555]]></item>
+		<item id="/images/m.png"><![CDATA[02452bcd8ab655d15866f4b18fcf2294]]></item>
+		<item id="/images/ad/tech.jpg"><![CDATA[c4af19487f51f0c335e876174d7517fd]]></item>
+		<item id="/images/ad/jt.PNG"><![CDATA[5cc37cbe8191e2e74f46614c23c7b0fa]]></item>
+		<item id="/images/ad/lx.JPG"><![CDATA[503757e1a3c2a8e3534f098f833bae3d]]></item>
+		<item id="/images/ad/wx.jpg"><![CDATA[381320024764b5e9ededd83ae7868a75]]></item>
+		<item id="/images/ten.gif"><![CDATA[b74bfe911b7c9021ea51b1285733584c]]></item>
+		<item id="/images/scrolltop.png"><![CDATA[33abd1384bce738f45405e18c67c2478]]></item>
+		<item id="/images/tb.png"><![CDATA[83d44be1a1b86ab0200455f4e5a26470]]></item>
+		<item id="/images/pn.png"><![CDATA[7899e665e913b4ba1d8d433e16f99e3a]]></item>
+		<item id="/images/bg_2.png"><![CDATA[74ea45e946995a0eb6bd6e84995f27db]]></item>
+		<item id="/images/hf.gif"><![CDATA[5c6118a878da7a666cc96df4af9e34b3]]></item>
+		<item id="/images/sina.png"><![CDATA[cdda74a8bffa7c2c2616f1187f09e529]]></item>
+		<item id="/images/bg_1.png"><![CDATA[2e144718ac6d23d847c08cc0ea8f529c]]></item>
+		<item id="/images/ck.gif"><![CDATA[90b264adee708ade8b2d5e6f8daf3db0]]></item>
+		<item id="/images/sortnum.png"><![CDATA[c614ee8c2607569b7989f7778b619998]]></item>
+		<item id="/images/search-btn.png"><![CDATA[f94999c36b79801094c46fd549af9ee6]]></item>
+		<item id="/images/nav_a.png"><![CDATA[e594fcbb6c4ee60e84471855d194a145]]></item>
+		<item id="/images/ss.png"><![CDATA[28c3d5061488d26a676102bb31bd3a32]]></item>
+		<item id="/images/tmt.jpg"><![CDATA[6a88cc658aae55778e2d2ba8fac1ddcc]]></item>
+		<item id="/images/logo.png"><![CDATA[8cc12798899771590a068ba66477d79b]]></item>
+		<item id="/w_DIY/forum_discuz.xml"><![CDATA[a09b8dc1139af34a508f3eb3c64bb593]]></item>
+		<item id="/w_DIY/portal_index.xml"><![CDATA[dec73f4aa40c98925ff2b02005ea0c72]]></item>
+		<item id="/discuz_style_week_daqi.xml"><![CDATA[8337bc581a4997cf03f5b95c56a73cbf]]></item>
+		<item id="/portal/index.htm"><![CDATA[b61688b97a23a865b1779b5d585fdcbe]]></item>
+		<item id="/common/extend_common.css"><![CDATA[861aa7548b52761cfc0b7886324691b9]]></item>
+		<item id="/common/footer.htm"><![CDATA[018a32028284366d8d6ed82a5e08ee1d]]></item>
+		<item id="/common/header.htm"><![CDATA[e15ef37a3f44a7342a1f401e5b11af89]]></item>
+		<item id="/forum/discuz.htm"><![CDATA[e6c48da191f5401041be008a5ac8592e]]></item>
+		<item id="/index.htm"><![CDATA[7215ee9c7d9dc229d2921a40e899ec5f]]></item>
+		<item id="/preview.jpg"><![CDATA[3667db01840ab9e9b9471e72fa9f9232]]></item>
+	</item>
+</root>

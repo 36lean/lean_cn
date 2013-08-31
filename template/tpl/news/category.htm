@@ -1,0 +1,21 @@
+{template news/header}
+
+<ul class="breadcrumb">
+    <li><a href="news.php"><i class="icon-eye-open"></i> 新闻</a> <span class="divider">/</span></li>
+    <li><a href="news.php?mod=category&id={$category_info['id']}"><i class="icon-list"></i> {eval echo $category_info['title'] ? $category_info['title'] : '默认'}</a></li>
+</ul>
+
+
+<table class="table">
+	{loop $article_list $art}
+	<tr>
+		<td class="span2"><img src="{eval echo trim( $art['banner']) ? $art['banner'] : $_G['siteurl'].'static/mot/nobanner.jpg'}" width="160px" /></td>
+		<td>
+			<h4><a href="news.php?mod=article&id={$art['id']}">{$art['contenttitle']}</a></h4>
+			{if $art['keyword']}<p>关键字: {$art['keyword']}</p>{/if}<span>点击: {$art['view']}</span> 
+			<p>{$art['contentinfo']}</p>
+		</td>
+	</tr>
+	{/loop}
+	
+</table>

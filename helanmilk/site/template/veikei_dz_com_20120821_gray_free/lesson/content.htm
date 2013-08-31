@@ -1,0 +1,134 @@
+<!--{template common/header}-->
+<style type="text/css">
+hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 12px 0 18px; height: 0; }
+h3 { font-size: 22px; font-size: 2.2rem; margin-bottom: 9px; }
+</style>
+
+<div class="fl bm">
+	<div class="bm bmw  cl">
+	<div class="bm_h cl">
+	<span class="o">
+	<img id="category_1_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_1');" />
+	</span>
+	<p>[ 当前 {$content['title']} ] [ {if $prev}<a href="lesson.php?content={$prev['id']}">上节 {$prev['title']}</a>{/if} ] [ {if $next}<a href="lesson.php?content={$next['id']}">下节 {$next['title']}</a>{/if} ] [ <a href="lesson.php?ls={$_SESSION['current_course']}" style="">返回课程列表</a> ]</p>
+	</div>
+	<div id="category_1" class="bm_c" style="">
+
+
+
+		<div>
+			<hr />
+			<h3>{$content['title']}</h3>
+			<hr />
+		</div>
+
+		{if $vip['uid']}
+		<div>
+  			<div id='loading' align='center'>
+  				<h1>Loading...</h1>
+  				<img src='{DISCUZ_ROOT}static/image/loading.gif' />
+  			</div>
+
+    		<div id="info"></div>
+    		<div style="margin: 25px;" align="center" ><p id="container"></p></div>
+    		
+    		<script type="text/javascript" src="{$_G[setting][jspath]}jwplayer.js"></script>
+    		<script type="text/javascript" src="{$_G[setting][jspath]}jquery-1.9.1.min.js"></script>
+			<script type="text/javascript">
+
+
+			$(function(){
+
+			var Type = Array();
+				Type[0] = '简体中文';
+				Type[1] = '繁体中文';
+				Type[2] = '英文';
+			
+			var Dir = Array();
+				Dir[0] = 'CH/';
+				Dir[1] = 'TW/';
+				Dir[2] = 'EN/';
+
+				var isMobile = {  
+    				Android: function() {  
+        				return navigator.userAgent.match(/Android/i) ? true : false;  
+   					},  
+    				BlackBerry: function() {  
+        				return navigator.userAgent.match(/BlackBerry/i) ? true : false;  
+    				},  
+    				iOS: function() {  
+        				return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;  
+    				},  
+    				Windows: function() {  
+        				return navigator.userAgent.match(/IEMobile/i) ? true : false;  
+    				},  
+    				any: function() {  
+       					return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());  
+    				}  
+				};  
+    			if( isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS())
+    				var ismobile = true;
+
+					jQuery.ajax({
+					type: 'POST',
+					url : 'lesson.php?dataajax=1',
+					data: 'pageid={$content['lessonid']}',
+					success: function(rt){
+
+						$('#loading').remove();
+
+						if( 404 == rt){
+							$('#id').append('<h5>非常抱歉，没有读取到视频信息</h5>');
+						}
+
+						else{
+							rt = eval('('+rt+')');
+							if( ismobile)
+								file = '{$p['mobileurl']}'+rt.v_path+rt.v_file;
+							else
+								file = '{$p['videourl']}'+rt.v_path+rt.v_file;
+
+							image = '{$p['moodlepath']}/uploads/'+ rt.image_file;
+							labels_files = '{$p['subtitle']}'+'/'+rt.v_path+'/'+Dir[rt.label_a]+rt.label_a_file+','+'{$p['videourl']}'+rt.v_path+'/'+Dir[rt.label_b]+rt.label_b_file;
+							labels_names = Type[rt.label_a]+','+Type[rt.label_b]; 
+							jwplayer("container").setup({
+	   							file: file,
+	   							image: image,
+	   							flashplayer:	"{$p['fpurl']}",
+	   							dock:			"{$p['dock']}",
+	   							stretch:		"{$p['stretch']}",
+	   							height: 		"{$p['height']}",
+	   							width:          "{$p['width']}",
+	   							controlbar:     "{$p['controlbar']}",
+	  
+	   							plugins: {
+		 							"captions-2": {
+	       							files : labels_files,
+	       							labels: labels_names
+	     											}
+	  								 	}
+	 							});
+	 						}
+					}
+				});
+    		});		
+			</script>
+
+		</div>
+
+
+		<div>
+			<hr />
+			{$content['contents']}
+			<hr />
+		</div>
+		{else}
+			<hr />
+			<p>请开通会员 学习这些课程 ^ ^</p>
+			<hr />
+		{/if}
+
+
+	</div>
+</div>
+</div>

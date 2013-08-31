@@ -1,0 +1,100 @@
+<!--{template common/header}-->
+<link rel="stylesheet" href="static/lesson/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="static/lesson/app.css" media="screen" type="text/css" media="all" />
+<link rel="stylesheet" href="static/lesson/some.css" media="screen" type="text/css" media="all" />
+
+
+<div class="fl bm">
+	<div class="bm bmw  cl">
+	<div class="bm_h cl">
+	<span class="o">
+	<img id="category_1_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_1');" />
+	</span>
+	<a href="lesson.php" style="">课程中心</a> {if $_G['adminid'] == 1}<a href="lesson.php?admin=1">管理</a>{/if}
+	</div>
+		<div class="row" >
+		<div class="twelve columns">
+			<div id="cssmenu">
+			<ul>
+			   <li class="has-sub"><a href="lesson.php">全部课程</a>
+			   		<ul>
+			         <li><a href="lesson.php">测试</a></li>
+			         <li><a href="lesson.php">测试</a></li>
+			         <li><a href="lesson.php">测试</a></li>
+			      </ul>
+			   </li>
+			   <li class="has-sub"><a href="lesson.php">基础必学</a>
+			      <ul>
+			         <li><a href="lesson.php">测试</a></li>
+			         <li><a href="lesson.php">测试</a></li>
+			         <li><a href="lesson.php">测试</a></li>
+			      </ul>
+			   </li>
+			   <li class="has-sub"><a href="lesson.php">专业课程</a>
+			      <ul>
+			         <li><a href="lesson.php">测试</a></li>
+			         <li><a href="lesson.php">测试</a></li>
+			         <li><a href="lesson.php">测试</a></li>
+			      </ul>
+			   </li>
+			   <li><a href="lesson.php">问答</a>
+			   </li>
+			</ul>
+			</div>
+		</div>
+	</div>
+
+		{loop $re $data}
+
+			<div id="wrapper" class="row">
+	
+		<div id="course_index_body" class="nine columns" align="center">
+			<br />
+
+		<div class="c_i_category">
+
+			<div class="c_i_category_head">
+			<br />
+				<div class="c_i_category_brief_count_1">
+				<img class="lazy" src="{$_G['siteurl']}uploads/lesson/{if $data['logo']}{$data['logo']}{else}df0.jpg{/if}" data-original="" alt="{$data['shortname']}" width="120" height="50" />
+				</div>
+				
+				<div class="c_i_category_brief_count_2">
+					<a href="lesson.php?ls={$data['id']}">{$data['fullname']}</a>
+				</div>
+				<br />
+
+			
+			</div>
+
+				<div class="c_i_category_body">
+					{if strlen( $data['summary']) > 0}
+					<p class="c_i_c_b_list_title">课程大纲</p>
+					
+					<div class="c_i_c_b_list">
+						{$data['summary']}
+					</div>
+					{/if}
+
+					<div class="c_i_c_b_percent">
+							<a href="lesson.php?ls={$data['id']}" class="small start-course radius button">进入课程</a>
+					</div>
+				</div>
+
+				<div class="clear_both"></div>
+
+				<div class="c_i_category_brief">
+	
+				</div>
+			</div>
+
+			{/loop}
+	</div>
+
+
+
+
+
+	</div>
+	<hr />
+</div>

@@ -1,0 +1,1176 @@
+/* 通用区域 */
+
+body {
+
+    background: url({STYLEIMGDIR}/dashboard_bg.png) repeat scroll 0 0 transparent;font-family: "Microsoft Yahei","STHeiti","SimSun","Arail","Verdana","Helvetica","sans-serif";
+
+}
+.module2{border-top: 1px solid #ececec; padding-top:8px;}
+.module, .frame-1 {
+background-color:transparent !important;
+background-image:none !important;
+border:0 none !important;
+margin:0 !important;
+padding:0 !important;
+border-width:0px;
+height: auto
+}
+.frame-1-c {
+background-color:transparent !important;
+background-image:none !important;
+border:0 none !important;
+margin:0 !important;
+padding:0 !important;
+border-width:0px;
+height: auto;
+}
+.move-span{
+background-color:transparent !important;
+background-image:none !important;
+border:0 none !important;
+margin:0 !important;
+padding:0 !important;
+border-width:0px;
+height:auto;}
+.move-span .content{
+background-color:transparent !important;
+background-image:none !important;
+border:0 none !important;
+margin:0 !important;
+padding:0 !important;
+border-width:0px;
+height:auto;}
+
+.wp{ width:1006px;}
+
+.ct2 .mn{ width:776px;}
+
+#pt { margin: 8px 0; }
+
+#toptb{
+background: url({STYLEIMGDIR}/toolbar.png) repeat-x scroll 0 0 #1F2021;
+    border-bottom: 1px solid #000000;
+    padding: 7px 0 6px;}
+	
+
+	
+#toptb a{ color:#646666;text-shadow:0 -1px 0 #000000;}
+
+	.bm_h { background: #F8F8F8; border-bottom: {COMMONBORDER};  }
+#um{ padding-top:0px;}
+
+
+
+
+
+
+.ttp { border-top: none; }
+
+.xl1 li{ background: url({STYLEIMGDIR}/point01.gif) no-repeat scroll 0 10px transparent;
+
+    height: 25px;
+
+    line-height: 25px;
+
+    overflow: hidden;
+
+    padding-left: 12px;
+
+	margin:0px;}
+
+.mls li{ width:60px;float: left;
+
+    overflow: hidden;
+
+    text-align: center;}
+
+.mls p{ font-size:12px; width:60px; height:20px; overflow:hidden;}
+
+.mls span{ cursor:pointer;}
+
+.listm li {
+
+    height: 16px;
+
+    line-height: 16px;
+
+    margin-bottom: 10px;
+
+    overflow: hidden;
+
+    padding-left:28px;
+
+    position: relative;
+
+    vertical-align: bottom;
+
+	list-style:none;
+
+}
+
+
+.listm .top em {
+
+    background-color: #333;
+
+    color: #FFFFFF;
+
+}
+
+.listm .two em {
+
+    background-color: #5d5d5d;
+
+    color: #FFFFFF;
+
+}
+
+.listm li em {
+
+	background-color: #EEEEEE;
+
+    color: #929292;
+
+    display: block;
+
+    font-family: "Tahoma";
+
+    font-size: 11px;
+
+    height: 14px;
+
+    left: 0;
+
+    line-height: 14px;
+
+    position: absolute;
+
+    text-align: center;
+
+    top: 2px;
+
+	width:18px;
+	}
+
+
+/* 两栏布局 by Pony 1203281049 */
+
+.ct2_a .mn{ background-color:#FFFFFF; width:847px; margin:0px; padding:10px;}
+
+.ct2_a { margin-bottom: 10px; }
+
+
+
+.tbn ul { margin: -1px 1px 0 0; border-top: 1px solid #EAE8E8; border-bottom: 1px solid #FFF; }
+
+
+
+.tbn li { margin: 0; padding: 0; border-top: 1px solid #FFF; border-bottom: 1px solid #EAE8E8; }
+
+
+
+	.tbn li a { padding: 0 9px 0 10px; }
+
+
+
+	.tbn li.a { margin: -1px -1px 0 0; padding: 0; background: #F0F0F0 url({STYLEIMGDIR}/bg_tbn_a.png) no-repeat 100% 50%; }
+
+
+
+
+
+
+
+/* 日志、相册等地方用到的布局 */
+
+
+
+.ct2_sp .mn { width: 704px; }
+
+
+
+	.ct2_sp .mn .bml .bm_c, .ct_sp .mn .bml .bm_c { padding: 10px 20px 20px; }
+
+
+
+	.ct2_sp .bm_c .mn { display: inline; margin-left: 10px; width: 620px; }
+
+
+
+		.ct2_sp .bm_c .mn .bml .bm_c { padding: 0; }
+
+
+
+		.ct_sp .bm_c .mn .bml .bm_c { padding: 0 10px 10px; }
+
+
+
+.ct2_sp .sd { width: 290px; }
+
+
+
+	.ct2_sp .sd .bml { background: #F8F8F8; }
+
+
+
+
+
+
+
+.ct2_sp .tb, .ct_sp .tb { margin-top: 0; border-bottom: none; }
+
+
+
+.ct2_sp .tbmu, .ct_sp .tbmu { padding: 8px 0; }
+
+
+
+.ct2_sp .emp, .ct_sp .emp { padding: 20px 0; }
+
+
+
+
+
+
+
+.mld dl { margin-bottom: 20px; }
+
+
+
+	.mld dt { font-weight: 400; }
+
+
+
+	.mld dd .c { overflow: hidden; }
+
+
+
+
+
+
+
+/* 标签样式 by Pony 1204111436 */
+
+
+
+.ie6 .tb, .ie7 .tb { height: 35px; }
+
+
+
+.tb li { margin: 0 3px 3px 0; }
+
+
+
+.tb a { padding: 0 9px; border-color: {COMMONBORDER}; background: url({STYLEIMGDIR}/bg_tb.png) repeat-x 0 50%; font-size: 14px; }
+
+
+
+.tb .a, .tb .a a, .tb .current, .tb .current a { margin-bottom: -4px; padding-bottom: 4px; color: {HIGHLIGHTLINK}; }
+
+
+
+.tb_w { padding-left: 20px; }
+
+
+
+	.tb_w a { padding-left: 30px; padding-right: 30px; }
+
+
+
+	.tb_w .y a { padding-left: 5px; padding-right: 0; }
+
+
+
+	.ie6 .tb_w .a { position: relative !important; }
+
+
+
+.tb .o { float: right; }
+
+
+
+.tb .o, .tb .o a { margin-right: 0; height: 26px; line-height: 24px; }
+
+
+
+	.tb .o:active, .tb .o a:active { background-position: 0 -60px; }
+
+
+
+.pnc, a.pnc{ background-color:#488FCE}
+
+.pn{background:none repeat-x scroll 0 0 #505050; border:1px solid #505050; }
+
+.pn em, .pn strong {
+
+    font-weight: 700; color:#FFFFFF;
+
+}
+
+
+
+/* 类似淘帖等地方的标签 by Pony 1203271317 */
+
+
+
+.tb_h li { margin: 3px 3px 3px 0; }
+
+
+
+.tb_h .a { margin-top: 0; }
+
+
+
+	.tb_h .a a { padding-top: 3px; }
+
+
+
+.tb_h .o { margin: 4px 5px 0; }
+
+
+
+
+
+
+
+/* 顶部导航 by Pony 1204131018 */
+
+
+
+#um, #um a { color: #fff;}
+
+
+
+#um .diynav { text-align: right; }
+
+
+
+#diy-tg { float: none; display: inline-block; margin-bottom: -4px; height: 19px; }
+
+
+
+	.ie9 #diy-tg { height: 20px; }
+
+
+
+#diy-tg_menu { margin-left: -18px; }
+
+
+
+	#diy-tg_menu li { line-height: 2; }
+
+
+
+
+
+
+
+/* 导航  */
+
+
+
+#qmenu { margin-top: 4px; }
+
+		
+
+#hd{ margin-bottom:26px;background: url({STYLEIMGDIR}/header_bg.jpg) repeat-x scroll center top transparent;}
+.hdbg{ background: url({STYLEIMGDIR}/header.jpg) no-repeat scroll 50% 100% transparent;}
+
+#hd .logo{ 
+
+    position: absolute;
+    top: 38px;}
+
+.hdc .nav {
+
+    float: left;
+
+    font-size: 16px;
+
+    margin-left: 88px;
+
+    margin-top: 18px;
+
+    position: relative;
+
+}
+
+.hdc .nav li a:hover {
+
+     background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    color: #1D110B;
+    text-shadow: 0 1px 0 #FFFFFF;
+	
+
+}
+
+.hdc .nav li.current {
+
+    background: url({STYLEIMGDIR}/menu_dropdown_active.png);
+	 background-position: 50% 100%;
+    background-repeat: no-repeat;
+    background-size: 70% 10px;
+
+}
+
+.hdc .nav li h1{ font-weight:normal;}
+
+
+.hdc .nav li {
+
+    display: block;
+
+    float: left;
+
+    height: 40px;
+
+    line-height: 36px;
+
+    margin-left: 18px;
+
+    overflow: hidden;
+
+
+    text-align: center;
+
+    text-decoration: none;
+
+}
+.hdc .nav li span{ display:none;}
+
+.hdc .nav li a{color: #FFFFFF;height: 30px;line-height: 30px; text-decoration:none; font-weight:bold; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);padding:5px 10px;}
+
+
+
+/* 二级导航  */
+
+
+
+#mu ul { border: solid #E5EDF2; border-width: 0 1px 1px; background: #F4F9FC; }
+
+
+
+	#mu a:hover { margin: 5px 6px; border: none; background: transparent; text-decoration: underline; }
+
+
+
+.header {
+
+    background: none repeat scroll 0 0 #E0E1E2;
+
+    height: 100px;
+
+    margin-top: 15px;
+
+    width: 1006px;
+
+}
+
+.header .panel {
+
+    background: none repeat scroll 0 0 #FFFFFF;
+
+    float: left;
+
+    height: 100px;
+
+    width: 725px;
+
+}
+
+.header .panel .pic {
+
+    float: left;
+
+    height: 100px;
+
+    position: relative;
+
+    width: 145px;
+	
+	_width: 142px;
+
+}
+
+.header .panel .pic img {
+
+    height: 100px;
+
+    position: absolute;
+
+    width: 145px;
+
+    z-index: 9;
+
+}
+
+.header .panel .pic span {
+
+    background: url({STYLEIMGDIR}/ico_trans.gif) repeat scroll 0 0 transparent;
+
+    cursor: pointer;
+
+    display: block;
+
+    height: 100px;
+
+    position: absolute;
+
+    width: 145px;
+
+    z-index: 10;
+
+}
+
+.header .panel .pic a:hover span{background:rgba(255,255,255,.3);  background:url({STYLEIMGDIR}/ico_trans.gif) repeat\9; *background:url({STYLEIMGDIR}/ico_trans.gif) repeat;}
+
+.header .panel .pic a.icon_oneyearF,.header .panel .pic a.icon_oneyearF:link, .feedList ul li .headPic a.icon_oneyearF, .feedList ul li .headPic a.icon_oneyearF:link {
+
+    background: url({STYLEIMGDIR}/icon_haoaidao.png) no-repeat scroll 0 0 transparent;
+
+    height: 53px;
+
+    left: 0;
+
+    position: absolute;
+
+    text-indent: -9999px;
+
+    top: 0;
+
+    width: 53px;
+
+    z-index: 10;
+
+}
+
+.host {
+
+    color: #333333;
+
+    float: right;
+
+    margin-top: 10px;
+
+    width: 281px;
+
+}
+
+.header .panel .action {
+
+    height: 100px;
+
+    overflow: hidden;
+
+}
+
+.header .panel .action ul {
+
+    background: none repeat scroll 0 0 #FFFFFF;
+
+    height: 100px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    z-index: 102;
+
+}
+
+.header .panel .action ul li {
+
+    border-right: 1px dotted #EEEEEE;
+
+    float: left;
+
+    height: 100px;
+
+    width: 144px;
+
+}
+
+.header .panel .action ul li:hover{ border-right: 1px solid #cecece;}
+
+.header .panel .action a, .header .panel .action a:link {
+
+    display: block;
+
+    height: 100px;
+
+    overflow: hidden;
+
+    width: 144px;
+
+}
+
+.header .panel .action a:hover{background:#eaeaea;}
+
+.header .panel .action a:hover span{background:url({STYLEIMGDIR}/panel_text.png) no-repeat; overflow:hidden; cursor:pointer;}
+
+.header .panel .action ul li:hover a.text span, .header .panel .action ul li.current a.text span, .header .panel .action a.text:hover span{background-position:0px -80px;} .header .panel .action ul li:hover a.photo span, .header .panel .action ul li.current a.photo span, .header .panel .action a.photo:hover span{background-position:-61px -80px;} .header .panel .action ul li:hover a.video span, .header .panel .action ul li.current a.video span, .header .panel .action a.video:hover span{background-position:-120px -80px;} .header .panel .action ul li:hover a.music span, .header .panel .action ul li.current a.music span, .header .panel .action a.music:hover span{background-position:-180px -80px;}
+
+.header .panel .action a span, .header .panel .action a:link span {
+
+    background: url({STYLEIMGDIR}/panel_text.png) no-repeat scroll 0 0 transparent;
+
+    display: block;
+
+    height: 70px;
+
+    margin: 15px auto 0;
+
+    overflow: hidden;
+
+    text-indent: -9999px;
+
+    width: 51px;
+
+}
+
+.header .panel .action a.text span {
+
+    background-position: 0 0;
+
+    width: 51px;
+
+}
+
+.header .panel .action a.photo span {
+
+    background-position: -61px 0;
+
+}
+
+.header .panel .action a.video span {
+
+    background-position: -120px 0;
+
+}
+
+.header .panel .action a.music span {
+
+    background-position: -180px 0;
+
+}
+
+.header .panel .action a.text span.a {
+
+    background-position: 0px -80px;
+
+    width: 51px;
+
+}
+
+.header .panel .action a.photo span.a {
+
+    background-position: -61px -80px;
+
+}
+
+.header .panel .action a.video span.a {
+
+    background-position: -120px -80px;
+
+}
+
+.header .panel .action a.music span.a {
+
+    background-position: -180px -80px;
+
+}
+
+/* 用户导航 by Pony 1203281436 */
+
+
+
+#um .p_pop a { line-height: 1.6; color:#488fce }
+
+#umnav.a { color:#488fce}
+
+
+
+#umnav { margin-right: 2px !important; padding-top: 3px; padding-bottom: 3px; padding-left: 5px; }
+
+
+
+	#umnav.a { position: relative; z-index: 302; margin-right: 1px !important; padding-left: 4px; border: 1px solid; border-color: {DROPMENUBORDER}; border-bottom: none; background-color: {WRAPBG}; }
+
+
+
+	#umnav_menu { margin-top: -1px; width: auto; }
+
+
+
+.nav_pop { padding: 0; min-width: 90px; }
+
+
+
+	.nav_pop li a { padding: 3px 10px; line-height: 2 !important; border-bottom: none; }
+
+
+
+	.nav_pop li a:hover { background: #468dcb; color: #FFF !important; }
+
+
+
+
+
+
+
+/* 快速登录 by Pony 1203231516 */
+
+
+
+.qq{
+
+    background: url({STYLEIMGDIR}/qq-weibo.png) no-repeat scroll 0 0 transparent;
+
+    color: #333333;
+
+    display: inline-block;
+
+    margin-left: 10px;
+
+    padding-left: 20px;
+
+	line-height:1.5;
+
+	}
+
+.wb{
+
+    background: url({STYLEIMGDIR}/qq-weibo.png) no-repeat scroll 0 -30px transparent;
+
+    color: #333333;
+
+    display: inline-block;
+
+    margin-left: 10px;
+
+    padding-left: 20px;
+
+	line-height:1.5;}
+
+.mobile{
+
+    background: url({STYLEIMGDIR}/qq-weibo.png) no-repeat scroll 0 -51px transparent;
+
+    color: #333333;
+
+    display: inline-block;
+
+    margin-left: 10px;
+
+    padding-left: 20px;
+
+	line-height:1.5;}
+
+#hd .fastlg{ padding-top:0px;}
+
+
+
+.fastlg_l { border-right: none; }
+
+
+
+	.fastlg_l .pn, .fastlg_l .pn:active { width: 70px; }
+
+
+
+.reglink { float: left; padding: 0 10px; height: 21px; line-height: 21px; border: 1px solid #E6E6E6; background: #EEE; color: {TABLETEXT}; box-shadow: 1px 1px 1px #EEE inset; }
+
+
+
+
+
+
+
+/* 搜索条 */
+
+
+
+#scbar_type { cursor: pointer;
+
+    height: 24px;
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 30px;
+
+	font-size:12px;
+
+	line-height:24px;
+
+	padding:0px 8px;
+
+	border-right:1px solid #101011;}
+
+
+
+.scbar_txt_td { background: url({STYLEIMGDIR}/search.png) repeat-x 0 -217px; }
+
+.host .searchFavorite {
+
+    margin-left: 24px;
+
+    margin-top: 14px;
+
+    width: 220px;
+
+}
+
+.host .searchhot {
+
+    margin-left: 24px;
+
+    margin-top: 8px;
+
+    width: 220px;
+
+}
+
+.host .searchhot a{ color:#666; margin-right:4px}
+
+#scbar_txt { border: 0 none;
+
+    color: #D9D9D9;
+
+    font-family: "Microsoft Yahei",arial;
+
+    font-size: 12px;
+
+    height: 24px;
+
+    line-height: 24px;
+
+    margin: 0;
+
+    padding: 0 35px 0 54px;
+
+   background: url({STYLEIMGDIR}/searchbox.png) no-repeat scroll 0 50% transparent;
+    height: 26px;
+    
+    width: 150px;
+	}
+
+#toptb .bd {
+
+    height: 24px;
+
+    margin:auto 0;
+
+    position: relative;
+
+    width: 230px;
+
+}
+
+#toptb .bd .btn {
+
+    background: url({STYLEIMGDIR}/ico_ndashboard.png) no-repeat scroll 0 0 transparent;
+
+    border: 0 none;
+
+    cursor: pointer;
+
+    height: 26px;
+
+    position: absolute;
+
+    right: 0;
+
+    top: 0;
+
+    width: 35px;
+
+}
+
+
+
+
+
+/* 通用的区域块 by Pony 1203311441 */
+
+
+
+.fl { border: none; }
+
+
+
+	.fl .bm { margin-bottom: 10px; border: 1px solid {COMMONBORDER}; }
+
+
+
+		.fl .bm_h { padding-left: 20px; border-bottom: 1px solid #dfdfdf; border-top-color: #fff; border-left: 1px solid #fff; border-right: 0px solid #fff; background: #fff; box-shadow:none; }
+
+
+
+			.fl .bm_h a { color: {TABLETEXT}; }
+
+
+
+		.fl .bm_c, #online .bm_c, .lk .bm_c { padding: 10px 20px; }
+
+
+
+	#online .bm_h { border-bottom: none; }
+
+
+
+	/* for hottopic plugin */
+
+
+
+	.bmb, .hottopic { margin-top: 10px; border: 1px solid {COMMONBORDER}; }
+
+
+
+	/* for tshare plugin */
+
+
+
+	.tshare { margin-top: 10px; }
+
+
+
+		.tshare img { margin: 0 2px -3px 0; }
+
+
+
+		.tshare a { margin-right: 5px; }
+
+
+
+
+
+
+
+/* 类似点评那里的表单 by Pony 1204111426 */
+
+
+
+.xldform .bar { padding-left: 5px; border-bottom: none; background: #FFF; }
+
+
+
+.xldform .arrow { position: absolute; margin: 27px 0 0 -5px; width: 6px; height: 9px; background: url({STYLEIMGDIR}/bg_arrow_left_cmt.png) no-repeat 0 0; }
+
+
+
+	.ie6 .xldform .arrow { margin-left: -2px; }
+
+
+
+.xldform .tedt { width: 99.5%; border-color: {COMMONBORDER}; }
+
+
+
+	.ie6 .xldform .tedt { width: 99%; }
+
+
+
+	.xldform .tedt .pt { height: 36px; }
+
+
+
+
+
+
+
+/* 大分页按钮 by Pony 1203121325 */
+
+
+
+.pgbtn { margin: 5px 0 10px; }
+
+
+
+	.pgbtn a { display: block; height: 40px; line-height: 40px; letter-spacing: 5px; text-align: center; border: 1px solid #DCDCDC; background: #F5F5F5 url({STYLEIMGDIR}/bg_pgbtn.png) repeat-x 0 0; font-size: 14px; outline: none; box-shadow: 0 1px 0 #F5F5F5; }
+
+
+
+		.pgbtn a:hover { border-color: #BABABA; text-decoration: none; }
+
+
+
+		.pgbtn a:active { background: #EEE; border-color: #D0D0D0; box-shadow: none; }
+
+
+
+
+
+
+
+/* 论坛皮肤下用户页面头部 by Pony 1203271056 */
+
+
+
+.uhd { margin-bottom: 10px; padding: 20px 320px 20px 20px; border: 1px solid {COMMONBORDER}; background: #F8F8F8; zoom: 1; box-shadow: 0 0 10px #FFF inset; }
+
+
+
+	.uhd .ctrl { display: inline; float: right; margin-right: -300px; width: 290px; }
+
+
+
+	.uhd .d { padding-left: 140px; }
+
+
+
+		.uhd .mt { padding-top: 0; }
+
+
+
+		.uhd .avt { display: inline; float: left; margin-left: -140px; }
+
+
+
+			.uhd .avt img { padding: 5px; width: 120px; height: auto; border: none; }
+
+
+
+.flw_hd .tns { padding: 0; border: 1px solid #DFDFDF; background: #F8F8F8; }
+
+
+
+	.flw_hd .tns th, .flw_hd .tns td { padding: 5px; }
+
+
+
+	.flw_hd .tns th { border-right: 1px dashed #DFDFDF; }
+
+
+
+	.flw_hd .tns span { font-size: 16px; }
+
+
+
+	.flw_hd .tns p a { color: #369; font-weight: 700; }
+
+
+
+.flw_hd .flw_btn_fo, .flw_hd .pm2 { text-indent: -9999px; margin-top: -8px; width: 80px; height: 33px; background: url({STYLEIMGDIR}/flw_btn.png) no-repeat 0 0; }
+
+
+
+	.flw_hd .pm2 { margin-left: 10px; width: 90px; background-image: url({STYLEIMGDIR}/pmto.png); }
+
+
+
+.flw_hd .flw_specialfo, .flw_hd .flw_specialunfo { float: left; margin: 0 10px; }
+
+
+
+
+
+
+
+/* 瀑布流布局 by Pony 1204121803 */
+
+
+
+.waterfall { position: relative; margin-top: 15px; }
+
+
+
+	.waterfall li { margin: 0 10px 10px 0; padding: 0 0 3px; text-align: left; border-width: 1px 0 0; border-top: 1px solid #EAEAEA; background: url({STYLEIMGDIR}/bg_waterfall.png) no-repeat 100% 100%; }
+
+
+
+	.waterfall .c, .waterfall h3 { padding: 10px; border: solid #EAEAEA; border-width: 0 1px; background-color: #F8F8F8; }
+
+
+
+		.waterfall .c { overflow: hidden; padding-bottom: 0; max-height: 800px; }
+
+
+
+		.waterfall .c .nopic { display: block; background:{WRAPBG} url({IMGDIR}/nophototiny.png) no-repeat 50% 50%; cursor: pointer; }
+
+
+
+	.waterfall .auth { padding: 0 10px 10px; border-width: 0 1px 1px; border-style: solid; border-color: transparent #EAEAEA #B9B9B9; background: #F8F8F8; }
+
+
+
+		.waterfall .auth img { display: inline-block; margin: 0 1px; }
+
+		
+
+#scrolltop{-moz-transition: opacity 0.3s ease-in 0s, opacity 0.3s ease-out 0s;
+
+    background: url({STYLEIMGDIR}/top.png) no-repeat scroll 18px 21px #000000;
+
+    bottom: 100px;
+
+    cursor: pointer;
+
+    display: block;
+
+    height: 60px;
+
+    opacity: 0.5;
+
+    overflow: hidden;
+
+    position: fixed;
+
+    right: 10px;
+
+    text-indent: -999999px;
+
+    width: 60px;
+
+    z-index: 9999;}
+
+#scrolltop:hover{opacity: 1;}
+#ft{ border-top: 0px;
+    
+    padding: 0px;}
+.share{margin: 0 auto;
+
+    width: 310px; _width: 350px; clear:both;}
+
+.share em{ float:left; height:37px; line-height:40px; margin-right:8px;}
+	
+#block-footer {
+height:100px;  background: url({STYLEIMGDIR}/footer.png) repeat-x scroll 50% 0 transparent;
+}
+.wrapper {
+    width: 980px; margin: auto;
+}
+#footer {
+    color: #646666;
+    font-size: 12px;
+    text-align: left;
+    text-shadow: 0 -1px 0 #000000;
+}
+#toolbar a, #footer a {
+    color: #646666;
+}
+#logo-footer {
+    float: left;
+    margin: 0px 20px 20px 0;
+}
+
+.menu-line li:first-child {
+    background: none repeat scroll 0 0 transparent;
+    margin-left: 0;
+    padding-left: 0;
+}
+.menu-line li {
+    background: url({STYLEIMGDIR}/menu_line_item.png) no-repeat scroll 0 50% transparent;
+    margin-left: 8px;
+    padding-left: 10px;
+}
+.menu-line, .menu-line li, .menu-line li a {
+    display: inline-block;
+	float:left;
+}

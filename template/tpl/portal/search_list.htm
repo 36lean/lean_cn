@@ -1,0 +1,44 @@
+<!--{template common/header}-->
+
+<div>
+	<header>
+		<h2>"{$ori}" 搜索结果</h2>
+		<h3><small>相关课程 {eval echo count( $course_result)} - 相关页面 {eval echo count( $page_result)}</small></h3>
+	</header>
+<div>
+
+{if $pause}
+
+<div class="alert alert-error">
+	搜索关键字过短，请重新搜索
+</div>
+{else}
+
+	<table class="table table-hover">
+		<tr>
+			<td><h4>搜索到的课程</h4></td>
+			<td></td>
+		</tr>
+
+		{loop $course_result $_course}
+		<tr>
+			<td><small><i class="icon-align-justify"></i> {$_course['fullname']}</small></td>
+			<td><small><a href="lesson.php?pages_list={$_course['id']}">相关链接</a></small></td>
+		</tr>
+		{/loop}
+		<tr>
+			<td><h4>搜索到的课程页面</h4></td>
+			<td></td>
+		</tr>
+
+		{loop $page_result $_page}
+		<tr>
+			<td><small><i class="icon-file-text-alt"></i> {$_page['title']}</small></td>
+			<td><small><a href="lesson.php?page_content={$_page['id']}">相关链接</a></small></td>
+		</tr>
+		{/loop}
+
+	</table>
+{/if}
+</div>
+<!--{template common/footer}-->

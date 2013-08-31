@@ -1,0 +1,131 @@
+<!--{template common/header}-->
+<link rel="stylesheet" href="static/lesson/app.css" type="text/css" media="all" />
+<link rel="stylesheet" href="static/lesson/some.css" type="text/css" media="all" />
+
+<div class="fl bm">
+	<div class="bm bmw  cl">
+	<div class="bm_h cl">
+	<span class="o">
+	<img id="category_1_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_1');" />
+	</span>
+	<a href="lesson.php" style="">返回课程列表</a>
+	</div>
+	<div id="category_1" class="bm_c" style="">
+
+	<div class="bm lk">
+	<div id="category_lk" class="bm_c ptm">
+
+
+		<div class="row">
+		<div class="twelve columns">
+			<div id="cssmenu">
+			<ul>
+			   <li><a href="lesson.php">全部课程</a></li>
+			   <li class="has-sub "><a href="lesson.php">基础必学</a>
+			      <ul>
+			         <li><a href="lesson.php">基础课程</a></li>
+			         <li><a href="lesson.php">管理课程</a></li>
+			         <li><a href="lesson.php">热门课程</a></li>
+			      </ul>
+			   </li>
+			   <li class="has-sub "><a href="lesson.php">专题课程</a>
+			      <ul>
+			         <li><a href="lesson.php">专题1</a></li>
+			         <li><a href="lesson.php">专题2</a></li>
+			         <li><a href="lesson.php">专题</a></li>
+			      </ul>
+			   </li>
+			   <li><a href="lesson.php">考试测试</a></li>
+			</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+
+				<div id="course_content" class="nine columns">
+			<div class="row">
+				<div id="course_content_list" class="eleven columns">
+					<h2>{$lesson['fullname']}</h2>
+						本课程介绍 : 	{$lesson['summary']}
+						<hr>
+						<h3>课程目录</h3>
+						<br>
+						
+
+						<ul class="class_show">
+						
+							{loop $pages $p}
+								{loop $p $content}
+								{eval $n++}
+
+
+										<li>
+										<div class="class_detail">
+											<div class="class_detail_left">
+												<h5>
+													<span>第{$n}页</span> {$content['title']}
+												</h5>	
+												<p> {eval echo mb_substr( strip_tags($content['contents']) ,0,80,'utf-8')}...</p>	
+											</div>
+											<div class="class_detail_right">
+												
+												{if false}<a class="small white radius button">21分钟</a>{/if}
+
+													<a href="lesson.php?content={$content['id']}" class="small start-course radius button">学习</a>
+												
+											</div>
+											<hr />
+											{if false}
+											<div class="class_progress">
+												<div class="progress_bar">
+													
+														<span class="progress_ok"></span>
+														<span class="progress_ok"></span>
+														<span class="progress_ok"></span>
+															<span></span>
+															<span></span>
+															<span></span>
+															<em>50%</em>
+
+												</div>
+
+															<a href="http://www.linuxcast.net/Exam/start_exam/9" class="small white radius button">本课测评</a>
+											</div>
+											{/if}
+
+											<div style="clear:both;"></div>
+										</div>
+										</li>
+								{/loop}
+							{/loop}
+									
+							</ul>
+		
+						<hr>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+</div>
+		
+	</div>
+</div>
+</div>
+
+
+<div class="fl bm">
+	<div class="bm bmw  cl">
+	<div class="bm_h cl">
+	<span class="o">
+	<img id="category_1_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_1');" /></span><a href="lesson.php" style="">我的进度表</a>
+	</div>
+	</div>
+	<p class="m mbn cl">
+		<!--{hook/progress}-->
+	</p>
+</div>

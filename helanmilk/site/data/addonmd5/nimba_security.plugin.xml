@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[nimba_security.plugin]]></item>
+	<item id="RevisionID"><![CDATA[7551]]></item>
+	<item id="SN"><![CDATA[2013033010pP96S1uymV]]></item>
+	<item id="RevisionDateline"><![CDATA[1363163793]]></item>
+	<item id="Data">
+		<item id="/discuz_plugin_nimba_security_SC_UTF8.xml"><![CDATA[397c777cf44c3e374cc44cf118fb9ed3]]></item>
+		<item id="/readme.inc.php"><![CDATA[2b82f3c2999668907b5b1c5d9ba1a068]]></item>
+		<item id="/security.class.php"><![CDATA[a665ec7afdd3623b456a5c69d3fd27e1]]></item>
+		<item id="/wlist.inc.php"><![CDATA[edb83bb86abdc0e7ff1d72ea0ffd820c]]></item>
+		<item id="/discuz_plugin_nimba_security_SC_GBK.xml"><![CDATA[3ceb521a97dc12f7b220ffefffa9dbc3]]></item>
+		<item id="/addon.inc.php"><![CDATA[563a322c0644d907fdd3942c60f3da46]]></item>
+		<item id="/discuz_plugin_nimba_security_TC_UTF8.xml"><![CDATA[8d161d4ff7711af41da29e96707633f8]]></item>
+		<item id="/admincp.inc.php"><![CDATA[d9340c7d2a053daa7e0be3525355f2a5]]></item>
+		<item id="/template/www.ailab.org.gif"><![CDATA[c4914fd6657851b2da7c7ecd7ecadf53]]></item>
+		<item id="/template/wlist.htm"><![CDATA[d4fa204031a328bbcac3c3739886cb97]]></item>
+		<item id="/template/admincp.htm"><![CDATA[8dcf3ea4356b38bbe42fb89b66b58b0e]]></item>
+		<item id="/template/logo.gif"><![CDATA[c4914fd6657851b2da7c7ecd7ecadf53]]></item>
+		<item id="/template/discuz_plugin_nimba_security.xml"><![CDATA[b4f8d1226655988ff256b9f996a431c1]]></item>
+	</item>
+</root>

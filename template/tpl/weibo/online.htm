@@ -1,0 +1,17 @@
+{template common/header}
+
+
+{if $status === 0}
+		
+	<div class="alert alert-error"><i class="icon-info-sign"></i> 此号已经绑定新浪微博或者此新浪账号已经在网站内注册 </div>
+
+	<div><a class="btn btn-primary" href="weibo.php">返回</a></div>
+
+{else}
+
+	<div class="alert alert-success"><i class="icon-info-sign"></i> 绑定成功！</div>
+
+{/if}
+
+
+{template common/footer}

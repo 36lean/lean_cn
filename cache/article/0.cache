@@ -1,0 +1,50 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+            <li><a href="reader.php/category/1">精益生产</a></li>
+            <li><a href="reader.php/category/2">精益创业</a></li>
+            <li><a href="reader.php/category/3">六西格玛</a></li>
+            <li><a href="reader.php/category/4">改善</a></li>
+            <li><a href="reader.php/category/5">浪费</a></li>
+          </ul>
+</div>
+</div>
+<div class="page-header">
+<h3></h3>
+<small>
+文章发表于 1970年01月01日 08时00分</small>
+</div>
+<blockquote> ... </blockquote>
+<div align="center">
+<p><img src="" data-original="" style="max-width:600px;" /></p>
+<p>附图</p>
+</div>
+<div class="container">
+</div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>无</strong> 点击量: <strong></strong> 评论: <strong></strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "  . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&amp;') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

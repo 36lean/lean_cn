@@ -1,0 +1,10 @@
+{template common/header}
+<ul class="nav nav-tabs">
+    <li {if !isset( $_GET['id'])}class="active"{/if}>
+    	<a href="news.php">新闻首页</a>
+    </li>
+
+	{loop $topic $t}
+    	<li {if $_GET['id'] == $t['id']}class="active"{/if}><a href="news.php?mod=category&id={$t['id']}">{$t['title']}</a></li>
+	{/loop}
+</ul>

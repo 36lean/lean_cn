@@ -1,0 +1,136 @@
+
+/*周末设计http://www.haoweek.com*/
+
+
+#nv li a:hover { background:#555555; }
+
+.w_html01 {margin:auto; margin-top:5px; width:960px; padding:0; background:none; border-radius:0; box-shadow: 0 0 0;}
+.w_pb01 { width:960px; padding:0px; margin-bottom:{MB}; overflow:hidden; }
+.w_tp101 { float:left; width:740px; overflow:hidden; }
+.w_tp01 { float:left; width:300px; height:240px; overflow:hidden; }
+.w_tp201 { float:right; width:205px; height:433px; overflow:hidden; }
+.w_wk02 { float:right; width:425px; height:240px; overflow:hidden; }
+.w_pin01 { width:740px; height:180px; overflow:hidden; }
+
+.frame { background-color:transparent !important;background-image:none !important;} 
+
+.w_style{background:#FFF; margin-top: 10px;box-shadow: 0px 0px 10px #CCC;border-radius: 8px;}
+.w_swk {background:#FFF; margin-top: 10px;}
+
+.w_html {margin:auto; margin-top:5px; width:960px; background-color:transparent; padding:0; border-radius:0; box-shadow: 0 0 0;}
+.w_pb { width:960px; height:100%; padding:0px; margin-bottom:{MB}; overflow:hidden; }
+.w_tp1 { float:left; width:740px; overflow:hidden; }
+.w_tp10 { float:left; width:300px; height:240px; overflow:hidden;}
+.w_tp20 {float:right; width:425px; height:240px; overflow:hidden;}
+
+.w_zt1 { float:left; width:475px; height:200px; overflow:hidden;}
+.w_zt2 {float:right; width:475px; height:200px; overflow:hidden;}
+
+.w_height, .w_height  {width:740px; height:8px; overflow:hidden; }
+.w_height1, .w_height2  {width:200px; height:8px; overflow:hidden; }
+
+.w_pi { background:#009ad9; height:40px; padding:0 5px 0 15px; margin-bottom:0px; font-size:28px; font-weight:100; color:#FFF; font-family: "Microsoft Yahei"; overflow:hidden;}
+.w_pi span { color:#FFF; font-size:18px; margin-left:15px; }
+.w_pi em { float:right; margin-top:14px; font-size:14px; color:#BEBDBD; }
+.w_pi em a { color:#FFF; margin:0 10px; }
+.w_pi em a:hover { color:{HIGHLIGHTLINK}; }
+.w_ping {width:740px; height:176px; overflow:hidden; }
+
+.w_rd  {  box-shadow:inset 0 0 10px #EEE;}
+.w_rd1 {width:740px; height:100%; overflow:hidden; }
+
+.w_rdgz { background:url($_G['style']['styleimgdir']/ss.png); height:100%; padding:0 ; margin-bottom:0px; font-size:28px; font-weight:100; color:#000; font-family: "Microsoft Yahei"; overflow:hidden; }
+.w_rdgz span { color:#FFF; font-size:18px; margin-left:15px; }
+.w_rdgz em { float:right; margin-top:14px; font-size:14px; color:#BEBDBD; }
+.w_rdgz em a { color:#FFF; margin:0 10px; }
+.w_rdgz em a:hover { color:{HIGHLIGHTLINK}; }
+ 
+。w_more {width:740px; height:35px; overflow:hidden; im }
+
+.w_tp2 { float:right; width:200px; overflow:hidden; }
+
+.w_rwz1 { height:240px; width:200px; overflow:hidden; }
+.w_rwz2 { height:35px; background:#009ad9;}
+.w_rwz { height:38px; padding:0 5px 0 10px; margin-bottom:0px; font-size:22px; font-weight:100; color:#FFF; font-family: "Microsoft Yahei"; overflow:hidden; }
+
+.w_rwz span { color:#FFF; font-size:14px; margin-left:15px; }
+
+.w_qxl {height:520px; width:200px; overflow:hidden; }
+.w_jkb {height:682px; width:200px; overflow:hidden; }
+.w_zak {height:375px; width:200px; overflow:hidden; }
+.w_xyq {height:375px; width:200px; overflow:hidden; }
+.w_zthd { background:#EEE; height:246px; overflow:hidden;}
+.w_hzhb { background:#EEE; overflow:hidden;}
+
+.area, .area, .area, .area { margin-top:0px; }
+.area { border-radius: 0 0 3px 3px;}
+
+.w_pavt01 {margin:0 auto; width:930px; padding-left:10px;}
+.w_pavt01 li { float:left; width:75px; height:12px; margin-right:2px; }
+.w_pavt01 li img { float:left; width:35px; height:35px; border-radius: 3px; }
+.w_pavt01 li p { float:left; width:75px; height:35px; line-height:30px; line-height:32px\0; text-align:center; overflow:hidden; } 
+
+.week_info H4{FONT-WEIGHT: 700; FONT-SIZE: 16px; COLOR: #f60; LINE-HEIGHT: 30px; TEXT-ALIGN: center}
+.week_info H4 A{COLOR: #009ad9}
+.week_info P{COLOR: #633a15; LINE-HEIGHT: 22px; text-indent:12px;}
+.week_info P A{COLOR: #009ad9}
+.week_info UL{MARGIN-TOP: 8px; BACKGROUND: url(fg_line.gif) repeat-x 50% top; OVERFLOW: hidden; WIDTH: 100%; PADDING-TOP: 8px}
+.week_info LI{FLOAT: left; OVERFLOW: hidden; WIDTH: 190px; COLOR: #818181; LINE-HEIGHT: 22px; FONT-FAMILY: '宋体'; HEIGHT: 22px}
+.week_info LI A{COLOR: #2c2c2c}
+
+
+
+
+
+#scrolltop { visibility: hidden; position: fixed; bottom: 100px; display: block; margin: -30px 0 0; width: 58px; height: 58px; background: url({STYLEIMGDIR}/scrolltop.png) no-repeat 50% 0; line-height: 999px; overflow: hidden; cursor: pointer; }
+.nav{
+	width:100%;
+	height:44px;
+	line-height:44px;
+	background:#009ad9;
+	margin:0 auto;
+}
+
+.nav ul { padding:0; }
+.nav li{
+	float:left;border-right:3px solid #fff;
+}
+
+#scbar_txt { width: 210px; border: 1px solid #FFF; outline: none; font-size: 14px; }
+.scbar_narrow #scbar_txt { width: 260px; }
+.nav li a {display:inline-block;float:left;color:#fff;font-size:15px;font-weight:600;padding:0 12px;}
+.nav li .nav-cur,.nav li a:hover{
+	color:#000;
+	text-decoration:none;
+	background:#f5d734;
+	overflow:hidden;
+}
+.nav a{
+	color:#fff;
+	padding-right:10px;
+}
+.nav a:hover{
+	color:#000;
+	text-decoration:none;
+}
+
+#sg{ background: #FFF; width:256px; border: 1px solid #B2C7DA; }
+.w_header{
+	width:100%;
+	margin:0 auto;
+	position:relative;
+	height:0px;
+}
+.w_header-right { float:none; margin-top:0; position:absolute; z-index:88px; right:5px; bottom:-40px; }
+.w_header-right input{ width:210px; height:32px; color:#9999bd; font-size:12px; border:1px solid #cccccc; vertical-align:middle; ine-height:32px;}
+.w_header-right .search{
+    background: url({STYLEIMGDIR}/search-btn.png) no-repeat scroll 0 0 transparent;
+    border: medium none;
+    height: 27px;
+    margin-left: 6px;
+    text-indent: -100000px;
+    width: 27px;
+	cursor:pointer;
+	vertical-align:middle;
+}
+

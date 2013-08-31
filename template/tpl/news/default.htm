@@ -1,0 +1,138 @@
+{template news/header}
+
+<div class="page-header">
+    <h2><p class="text-success">头条 <small>Header news</small></p></h2>
+</div>
+
+<div class="container">
+<h4>{$news[0]['contenttitle']} <small>{echo date( 'Y/m/d' , $news[0]['timecreated'])}</small></h4>
+<div class="row-fluid">
+	<div class="span2"><img src="{$news[0]['banner']}" /></div>
+	<div class="span10"><p>{$news[0]['contentbody']}</p></div>
+</div>
+<hr/>
+</div>
+
+
+<div class="row-fluid">
+	<div class="span8">
+		<div class="row-fluid">
+			<div class="span6">
+				<ol class="nav">
+					<li class="nav-header">综合资讯</li>
+					{loop $common $n}
+						<li><a href="news.php?mod=article&id={$n['id']}">{$n['contenttitle']}</a>  
+							<small>{eval echo date('Y/m/d' , $n['timecreated'])}</small>
+						</li>
+					{/loop}
+				</ol>
+			</div>
+	
+			<div class="span6">
+				<ol class="nav">
+					<li class="nav-header">点击排行</li>
+					{loop $clicks $n}
+						<li>
+							<a href="news.php?mod=article&id={$n['id']}">{$n['contenttitle']}</a>
+							<small>{eval echo date('Y/m/d' , $n['timecreated'])}</small>
+						</li>
+					{/loop}
+				</ol>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="span4 content">
+		<div>
+			<a><img class="img-polaroid" src="{$_G['siteurl']}static/mot/qrcode.png" width="100%" /></a>
+			<p class="text-center">扫描二维码来访问我们</p>
+		</div>
+
+		<p>
+			<a class="btn btn-primary" href="#">订阅</a>
+			<a class="btn btn-primary" href="#">收藏夹</a>
+			<!--<a class="btn btn-success" href="#">分享到新浪围脖</a>-->
+		</p>
+	</div>
+</div>
+
+<hr/>
+   
+
+
+<div class="row-fluid">
+
+<div class="span8">
+
+
+<div class="page-header">
+    <h3><p class="text-success">今天新闻 <small class="pull-right">Daily news</small></p></h3>
+</div>
+<div class="row-fluid">
+	{loop $news $key=>$n}
+		<div class="span4">
+			<h4><a href="news.php?mod=article&id={$n['id']}">{$n['contenttitle']}</a>
+				<p><small>{eval echo date('Y/m/d' , $n['timecreated'])}</small></p>
+			</h4>
+			{if $n['banner']} <img class="img-polaroid" src="{$n['banner']}" width="90%" /> {/if}
+			{$n['contentinfo']}
+		</div>
+
+		{if ( $key+1 ) % 3 === 0}</div><div class="row-fluid">{/if}
+	{/loop}
+</div>
+
+{loop $topic $c}
+<div class="page-header">
+    <h3><p class="text-success">$c['title']  <small class="pull-right"><a href="news.php?mod=category&id={$c['id']}">更多</a></small></p></h3>
+</div>
+
+<div class="content"></div>
+
+{/loop}
+
+
+</div>
+
+
+
+<div class="span4">
+<div class="row-fluid">
+	<div class="span12 content">
+		<h4><p class="text-success">热门新闻</p></h4>
+		<ol>
+			{loop $news $n}
+				<li><a href="news.php?mod=article&id={$n['id']}">{$n['contenttitle']}</a></li>
+			{/loop}
+		</ol>
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12 content">
+		<h4><p class="text-info">热门话题</p></h4>
+		<ol>
+			{loop $news $n}
+				<li><a href="news.php?mod=article&id={$n['id']}">{$n['contenttitle']}</a></li>
+			{/loop}
+		</ol>
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12 content">
+		<h4><p class="text-info">热门话题</p></h4>
+		<ol>
+			{loop $news $n}
+				<li><a href="news.php?mod=article&id={$n['id']}">{$n['contenttitle']}</a></li>
+			{/loop}
+		</ol>
+	</div>
+</div>
+
+
+</div>
+</div>
+

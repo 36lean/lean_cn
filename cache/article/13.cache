@@ -1,0 +1,50 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+            <li><a href="reader.php/category/1">精益生产</a></li>
+            <li><a href="reader.php/category/2">精益创业</a></li>
+            <li><a href="reader.php/category/3">六西格玛</a></li>
+            <li><a href="reader.php/category/4">改善</a></li>
+            <li><a href="reader.php/category/5">浪费</a></li>
+          </ul>
+</div>
+</div>
+<div class="page-header">
+<h3>TPM减少浪费-动作分析简述</h3>
+<small>
+文章发表于 2013年08月12日 02时51分</small>
+</div>
+<blockquote>TPM减少浪费-动作分析简述一、定义：动作分析是对生产活动中的全部作业动作进行观测分析，研究人的各种动作浪费，从而寻求省力、省时、安全、经济的作业方法时采用的IE手法。二、目的：1.发现人员在动作方面之无效或浪费,简化操作方法,减少共疲劳,进而订定标準操作方法;2.发现多余时间,删除不必要的动作,进而预定动作时间标准。三、排除不经济、不均衡和不合理现象：1.不合理：① 动作是 ... ... </blockquote>
+<div align="center">
+<p><img src="http://c.img.youboy.com/news/spimg/200912/23/11/n_43814_2.jpg" data-original="http://c.img.youboy.com/news/spimg/200912/23/11/n_43814_2.jpg" style="max-width:600px;" /></p>
+<p>附图</p>
+</div>
+<div class="container">
+TPM减少浪费-动作分析简述<br>一、定义：<br>动作分析是对生产活动中的全部作业动作进行观测分析，研究人的各种动作浪费，从而寻求省力、省时、安全、经济的作业方法时采用的IE手法。<br>二、目的：<br>1.发现人员在动作方面之无效或浪费,简化操作方法,减少共疲劳,进而订定标準操作方法;<br>2.发现多余时间,删除不必要的动作,进而预定动作时间标准。<br>三、排除不经济、不均衡和不合理现象：<br>1.不合理：<br>① 动作是否合理<br>② 作业角度是否合理<br>③ 是否有因作业环境差而采用了不合理的做法<br>④ 是否可以改善的更舒适<br>⑤ 是否从事不安全的作业<br>⑥ 作业人员配置是否合理<br>⑦ 是否可以更省事<br>2.不均衡：<br>① 动作是否均衡<br>② 作业是否因人有异<br>③ 作业是否有忽忙忽闲的情况<br>④ 作业量和作业时间是否因人有异<br>⑤ 作业人员之间的动作连贯是否良好<br>3.不经济：<br>① 作业中是否存在不经济现象（待工、剩余）<br>② 是否有过度作业现象（过度检查）<br>③ 作业人员配置是否存在不经济<br>④ 工作分配是否存在不经济<br>⑤ 是否有因作业计划或顺序的不良引起不经济现象</div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>无</strong> 点击量: <strong>1</strong> 评论: <strong>0</strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "TPM减少浪费-动作分析简述 TPM减少浪费-动作分析简述一、定义：动作分析是对生产活动中的全部作业动作进行观测分析，研究人的各种动作浪费，从而寻求省力、省时、安全、经济的作业方法时采用的IE手法。二、目的：1.发现人员在动作方面之无效或浪费,简化操作方法,减少共疲劳,进而订定标準操作方法;2.发现多余时间,删除不必要的动作,进而预定动作时间标准。三、排除不经济、不均衡和不合理现象：1.不合理：① 动作是 ... . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'http://c.img.youboy.com/news/spimg/200912/23/11/n_43814_2.jpg', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&amp;') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

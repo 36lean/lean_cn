@@ -1,0 +1,50 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+      {loop $tmp_category $c}
+      <li><a href="reader.php/category/{$c['id']}">{$c['title']}</a></li>
+      {/loop}
+    </ul>
+</div>
+</div>
+<div class="page-header">
+	<h3>{$art['contenttitle']}</h3>
+	<small>
+		文章发表于 {echo date('Y年m月d日 h时i分' , $art['timecreated'])}
+	</small>
+</div>
+<blockquote>{$art['contentinfo']} ... </blockquote>
+<div align="center">
+	<p><img src="{$art['banner']}" data-original="{$art['banner']}" style="max-width:600px;" /></p>
+	<p>附图</p>
+</div>
+<div class="container">
+{$art['contentbody']}
+</div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>{eval echo $art['author'] ? $art['author'] : '无'}</strong> 点击量: <strong>{$art['view']}</strong> 评论: <strong>{$art['comment']}</strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "{$art['contenttitle']} {$art['contentinfo']} . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'{$art["banner"]}', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

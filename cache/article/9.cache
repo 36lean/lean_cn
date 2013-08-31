@@ -1,0 +1,90 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+            <li><a href="reader.php/category/1">精益生产</a></li>
+            <li><a href="reader.php/category/2">精益创业</a></li>
+            <li><a href="reader.php/category/3">六西格玛</a></li>
+            <li><a href="reader.php/category/4">改善</a></li>
+            <li><a href="reader.php/category/5">浪费</a></li>
+          </ul>
+</div>
+</div>
+<div class="page-header">
+<h3>站在传统CRM的变革前夜，销售易欲打造移动互联时代的Salesforce</h3>
+<small>
+文章发表于 2013年08月12日 02时38分</small>
+</div>
+<blockquote> 随着 SaaS 和移动互联的发展，十几年间缓慢前行的企业软件也渐显变革的迹象。无论是微软、SAP 等巨头，还是纷享销客、明道等创业公司，甚至以金蝶为代表的传统企业管理软件提供商都开始尝试在新的趋势下布局。如果 2.0 的时代成就了 Salesforce，那么社会化和移动化时代的到来又会激发起哪些创业者的想象？由仁科互动推出的销售易是一个结合社会化和移动的在线 CRM 平台。产品拥有 Web ... ... </blockquote>
+<div align="center">
+<p><img src="http://a.36krcnd.com/photo/dda29d09ac1b33e28fcbcbc188403f70.jpg" data-original="http://a.36krcnd.com/photo/dda29d09ac1b33e28fcbcbc188403f70.jpg" style="max-width:600px;" /></p>
+<p>附图</p>
+</div>
+<div class="container">
+&nbsp; 随着 SaaS 和移动互联的发展，十几年间缓慢前行的企业软件也渐显变革的迹象。无论是微软、SAP 等巨头，还是<a target="_blank" data-no-turbolink="true" href="http://www.36kr.com/p/203788.html">纷享销客</a>、<a target="_blank" data-no-turbolink="true" href="http://www.36kr.com/p/204329.html">明道</a>等创业公司，甚至以金蝶为代表的传统企业管理软件提供商都开始尝试在新的趋势下布局。如果 2.0 的时代成就了 Salesforce，那么社会化和移动化时代的到来又会激发起哪些创业者的想象？
+
+<p>由仁科互动推出的<a target="_blank" data-no-turbolink="true" href="http://www.ingageapp.com/">销售易</a>是一个结合社会化和移动的在线 CRM 平台。产品拥有 Web 和移动端两个版本，在企业 SNS 的底层架构上，用户可以在权限范围内按需加载各类应用，拥有比较高的定制性和可扩展性。销售易在功能设计上则以销售管理为重心、兼顾了团队协作和知识管理。</p>
+
+<p>对销售人员的工作支持是销售易一大卖点。除了在基本的客群关系管理和权限管理上功能强大外，销售易还将客户、联系人、销售机会、合同、销售团队、产
+品等线索高度整合。比如当你进入客户主页，可以在信息流中看到不同成员与该客户的接触记录，还可以一站式地获取客户背景信息、销售机会、任务列表、产品文
+件等资料，当销售人员离职后，客户关系仍可由原公司接手。</p>
+
+<p>销售易在数据结构化上做得相对精细。例如当新建销售机会时，格式化表单会要求你对机会类型、销售阶段作出细分，以便于售中管理和后期的统计分析。</p>
+
+<p><img src="http://a.36krcnd.com/photo/0e52a483b911480b8cc40d5c41307e4e.jpg" alt=""></p>
+
+<p>销售易的团队协作部分接近典型的微博和微信，包括了信息流、私信、群组、话题等常见元素。用户依据群组（部门、团队也可视为群组的一种）和“关注”
+功能建立关系网络，所不同的是关注对象除了“人”以外还包括了“客户”和“销售机会”等。关注对象的动态会实时反映在信息流中，有助于使用者随时把握客户
+和销售项目进展。基于 SNS 
+的特征，销售易的群组功能甚至能打破企业边界将外部合作伙伴拉入内部，使得信息分享和协作更加流畅，降低了与客户间的沟通成本。</p>
+
+<p>在企业协作页面的应用栏内，用户可以选择性地添加任务、日程表、工作报告和审批等应用，形成比较完整的 OA 体系。</p>
+
+<p>一些复杂产品（比如 IT 解决方案）的销售人员在学习产品和客户知识上可能存在困难。而销售易则将一些知识管理的元素嵌套在 CRM 
+和团队协作中，使得知识沉淀更易实现。一个销售新人可以从“知识库”应用里查找基础资料，在产品页面下找到熟知该款产品的专家，工作过程中遇到的问题随时
+通过“提问”功能求教同事，更充分的知识分享带来更快速的个人成长。</p>
+
+<p>在传统企业办公环境下，CRM、协作、知识管理三套系统不仅互相独立，在体验上也往往各不相同，这对管理者和一线使用者来说都是一种不便。而销售易则尝试将三者打通，使得系统间功能互联、数据共享，并以一致的体验帮助新进销售更快上手。</p>
+
+<p><img src="http://a.36krcnd.com/photo/1609c3e62097ef786d59efae013a2253.jpg" alt=""></p>
+
+<p>销售易的移动端功能基本与 PC 
+端对应，但在体验上针对移动场景做出优化，同时加载了企业微信、拍照、语音记录等功能。另外，虽然移动版销售易也提供常见的客户拜访签到功能，但在仁科的
+ CEO 彦泽看来对员工行为的过度监控或许会损害其积极性：“在面对非流程化环境下工作的销售人员、尤其是‘knowledge 
+worker’时，应该赋予其一定自主权限。我们将目标用户群定位于“拿单型销售”，而不是单纯的巡店人员。对公司来说，前者的重要性显然要比后者大得
+多。”</p>
+
+<p>既然说到权限，就不得不提销售易在权限管理上的细致。进入“设置”页面下的“部门和用户”菜单，管理员可以在这里定义角色（比如普通用户、管理员、
+销售、财务等）权限，并将不同角色分配给使用者。我们在前台和后台看到的几乎所有功能都可以由拥有完整权限者进行编辑。同一使用者也可以叠加多个身份（比
+如身兼普通用户和销售），通过不同身份的组合，可以方便而严谨地对不同部门、层级、分工的员工做出权限安排。</p>
+
+<p>彦泽先后在 Dell、Cisco 等公司从事销售和销售管理工作，创办仁科互动前曾任 SAP 销售总监。在他看来，传统 CRM 
+产品围绕流程进行设计，主要用于满足管理者需要。但对一线使用者来说，这类产品不仅不能提供销售上的辅助，反而因繁重的数据录入和工作汇报变成一种负担。
+因此彦泽认为，企业管理软件的消费化已经成为趋势，在满足企业运行效率后应该更加关注一线使用者的价值和体验，只有更好地满足和支撑一线员工的工作需要，
+管理者期望的管理目标才能更好地实现。</p></div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>无</strong> 点击量: <strong>1</strong> 评论: <strong>0</strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "站在传统CRM的变革前夜，销售易欲打造移动互联时代的Salesforce  随着 SaaS 和移动互联的发展，十几年间缓慢前行的企业软件也渐显变革的迹象。无论是微软、SAP 等巨头，还是纷享销客、明道等创业公司，甚至以金蝶为代表的传统企业管理软件提供商都开始尝试在新的趋势下布局。如果 2.0 的时代成就了 Salesforce，那么社会化和移动化时代的到来又会激发起哪些创业者的想象？由仁科互动推出的销售易是一个结合社会化和移动的在线 CRM 平台。产品拥有 Web ... . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'http://a.36krcnd.com/photo/dda29d09ac1b33e28fcbcbc188403f70.jpg', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&amp;') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

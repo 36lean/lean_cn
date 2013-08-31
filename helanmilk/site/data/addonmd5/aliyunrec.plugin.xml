@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[aliyunrec.plugin]]></item>
+	<item id="RevisionID"><![CDATA[12259]]></item>
+	<item id="SN"><![CDATA[2013033010UvLI7u4UIR]]></item>
+	<item id="RevisionDateline"><![CDATA[1361518605]]></item>
+	<item id="Data">
+		<item id="/discuz_plugin_aliyunrec_SC_GBK.xml"><![CDATA[37726fb744b28138bd2d2f855df660af]]></item>
+		<item id="/discuz_plugin_aliyunrec_SC_UTF8.xml"><![CDATA[7999aced94937f180cab71e1b4414f71]]></item>
+		<item id="/discuz_plugin_aliyunrec_TC_UTF8.xml"><![CDATA[1e30fdb5c1814c2bba9542973ac27303]]></item>
+		<item id="/common/aliyunrec.common.proxy.service.php"><![CDATA[f33139848262b2fed8adb095b52b8e71]]></item>
+		<item id="/common/aliyunrec.common.general.service.php"><![CDATA[9d3f9142e8ac5444afac7a3189f19519]]></item>
+		<item id="/common/aliyunrec.common.config.service.php"><![CDATA[1886e9ba8209c77f2ec33858a7175226]]></item>
+		<item id="/discuz_plugin_aliyunrec_TC_BIG5.xml"><![CDATA[efc384650ec68773b2e24205f13ba5fd]]></item>
+		<item id="/notice.inc.php"><![CDATA[0f0a41e181c952cc8609a256a7a2aefe]]></item>
+		<item id="/config/template.send.php"><![CDATA[e797881e3b26f190f4a97d461167455a]]></item>
+		<item id="/config/common.language.php"><![CDATA[6c30adeeffe0d3628d464316752adac8]]></item>
+		<item id="/config/common.application.php"><![CDATA[5d0e4158c9963647b6196ed0293c5b75]]></item>
+		<item id="/config/template.option.php"><![CDATA[c085362929fcc33bef80402ad8eba64e]]></item>
+		<item id="/config/common.const.php"><![CDATA[4b4f470e5e00d575e45f9b32d3dd5222]]></item>
+		<item id="/config/template.request.php"><![CDATA[a5e552f0b460ceeeb2cbfc01a4378351]]></item>
+		<item id="/help.inc.php"><![CDATA[50448c20dfbaedab114c875fd630a62f]]></item>
+		<item id="/aliyunrec.class.php"><![CDATA[8ae29f2d6b646983991ce59452a4cd89]]></item>
+	</item>
+</root>

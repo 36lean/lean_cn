@@ -1,0 +1,54 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+            <li><a href="reader.php/category/1">精益生产</a></li>
+            <li><a href="reader.php/category/2">精益创业</a></li>
+            <li><a href="reader.php/category/3">六西格玛</a></li>
+            <li><a href="reader.php/category/4">改善</a></li>
+            <li><a href="reader.php/category/5">浪费</a></li>
+          </ul>
+</div>
+</div>
+<div class="page-header">
+<h3>丰田生产部试行返聘制度 工作时间减半</h3>
+<small>
+文章发表于 2013年08月12日 02时55分</small>
+</div>
+<blockquote> 据海外媒体24日报道。丰田汽车于22日表示，将试运行工作时间减半的返聘制度。该制度主要适用于退休后的返聘职工，他们在工厂车辆生产线上的工作时间将减半。从7月起，部分工厂将试运行该制度，为期1年。而该制度的实施范围是否会扩大到所有工厂还有待考察。日本将于4月实施《改正高年龄者雇佣安定法》，该法律规定，将公司义务性继续返聘雇佣退休职工至65岁。而丰田此举便是为应对该法 ... ... </blockquote>
+<div align="center">
+<p><img src="http://img.xgo-img.com.cn/199_500x375/198765.jpg" data-original="http://img.xgo-img.com.cn/199_500x375/198765.jpg" style="max-width:600px;" /></p>
+<p>附图</p>
+</div>
+<div class="container">
+据海外媒体24日报道。<font color="#004276"><a href="http://car.auto.ifeng.com/brand/20016" target="_blank"><font color="#004276">丰田</font></a></font>汽车于22日表示，将试运行工作时间减半的返聘制度。该制度主要适用于退休后的返聘职工，他们在工厂车辆生产线上的工作时间将减半。从7月起，部分工厂将试运行该制度，为期1年。而该制度的实施范围是否会扩大到所有工厂还有待考察。
+<p>日本将于4月实施《改正高年龄者雇佣安定法》，该法律规定，将公司义务性继续返聘雇佣退休职工至65岁。而丰田此举便是为应对该法律，为高龄者准备一个适宜工作的环境。虽然此前有部分部门实施了工作时间减半的制度，但车辆生产线还是第一次导入该制度。</p>
+<p>丰田现在正在返聘60岁以上的员工。而在4月以后，即便有不满足条件的员工，也可以做一些简单的打扫以及绿化工作，只要他们愿意，丰田便会返聘他们。而工资将是普通员工或生产工人的一半左右，而从事简单工作的工资约为正常情况下的四分之一。</p>
+<p>丰田生产部门于今年4月至14年3月将有约700名技术工人退休，而这其中约有7成的职工希望被返聘。而再导入新制度后，希望被返聘的职工将有可能达到8成。</p>
+此外，对于不希望被返聘的职工，为了消除其在没有退休金的时间段的不安，丰田将讨论新的退休金制度以及在员工退休前，让其定期缴付一定得工资作为退休金的制度，此外还有公司内部储蓄制度等。</div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>无</strong> 点击量: <strong>1</strong> 评论: <strong>0</strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "丰田生产部试行返聘制度 工作时间减半  据海外媒体24日报道。丰田汽车于22日表示，将试运行工作时间减半的返聘制度。该制度主要适用于退休后的返聘职工，他们在工厂车辆生产线上的工作时间将减半。从7月起，部分工厂将试运行该制度，为期1年。而该制度的实施范围是否会扩大到所有工厂还有待考察。日本将于4月实施《改正高年龄者雇佣安定法》，该法律规定，将公司义务性继续返聘雇佣退休职工至65岁。而丰田此举便是为应对该法 ... . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'http://img.xgo-img.com.cn/199_500x375/198765.jpg', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&amp;') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

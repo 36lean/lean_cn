@@ -1,0 +1,112 @@
+<!--{subtemplate common/header}-->
+<!---->
+<header id="hero" align="center">
+<h1>
+  欢迎莅临{$_G['setting']['sitename']}
+  <small>本站是专注于在线教育的社区</small>
+</h1>
+
+  {if $_G['uid'] > 0}
+  <!--{subtemplate portal/index_newsfeed}-->
+  {/if}
+         <div>
+            <div id="myCarousel" class="carousel slide">
+
+                <ol class="carousel-indicators">
+                  {eval $n = 0}
+                  {loop $_G['cache']['bigphoto'] $bp}
+                  <li data-target="#myCarousel" data-slide-to="{$n}"></li>
+                  {eval ++$n}
+                  {/loop}
+                </ol>
+
+                <div class="carousel-inner">
+                  {eval $flag = 0}
+                  {loop $_G['cache']['bigphoto'] $bp}
+                  <div class="item {if $flag == 0}active{/if}">
+                    <img src="uploads/home/{$bp['c_key']}" width="200%" alt="">
+                    <div class="carousel-caption">
+                      <h4>{$bp['config']}</h4>
+                      <p>
+                        {$bp['c_value']}
+                      </p>
+                    </div>
+                  </div>
+                  {eval $flag = 1}
+                  {/loop}
+
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+
+
+          </div>
+</header>
+
+<!--  一行滚动新闻  -->
+<div class="container row-fluid">
+  <h1>开始
+    {if !$_G['uid']}<small>入住本站 从注册成为会员开始!</small>
+    <!--{subtemplate portal/index_signup}-->
+    {else}<small>新的一天 从今日的站内新闻开始</small>
+    <!--{subtemplate portal/index_dailynews}-->
+    {/if}
+  </h1>
+</div>
+
+<!--中间课程以及课程搜索部分-->
+
+<div class="row-fluid">
+<div class="span12">
+<table class="table table-bordered">
+  <tr>
+  <td class="span9">
+    <div><!--{subtemplate portal/index_category}--></div>
+    <hr />
+    <div><!--{subtemplate portal/index_latest}--></div>
+  </td>
+
+  <td class="span3">
+    <!--{subtemplate portal/index_right}-->
+  </td>
+  </tr>
+</table>
+</div>
+</div>
+
+<div class="container row-fluid">
+  <div class="span12">
+
+<h1>
+  我们的课程
+  <small>即将推出</small>
+</h1>
+<hr />
+<!--{subtemplate portal/index_small_rows}-->
+
+<!--内容展示-->
+
+<h1>关于我们<small></small></h1>
+
+<!--{subtemplate portal/index_about_us}-->
+<!--内容展示-->
+  </div>
+</div>
+
+<!--中间课程以及课程搜索部分-->
+
+<div class="content container">
+<!--{subtemplate portal/index_service}-->
+      <!--[diy=diy_top]--> <div id="diy_top" class="area"></div><!--[/diy]--> 
+</div>
+
+
+<div class="content container" align="center">
+  <!--[diy=diy_bottom]--> 
+    <h1>我们的客户<small>目前已有超过1000家不同行业来自全球的客户，正在学习我们的课程...</small></h1>
+    <img src="static/mot/image/143144execezxy3xouimeu.jpg" />
+  <!--[/diy]--> 
+</div>
+
+<!--{subtemplate common/footer}-->

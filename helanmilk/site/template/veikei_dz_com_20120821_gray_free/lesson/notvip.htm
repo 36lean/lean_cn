@@ -1,0 +1,37 @@
+<!--{template common/header}-->
+<script type="text/javascript" src="{$_G['siteurl']}static/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+	tinyMCE.init({
+		mode : "textareas",
+		theme : "simple"
+	});
+</script>
+
+<hr class="da" />
+<h2 class="wp xs2">亲爱的客户，您现在还不是付费会员，付费开通会员之后，可以免费学习本站所有课程</h2>
+点击此处 > > > <a class="xi2" href="plugin.php?id=vip:main">在线开通VIP</a> < < <
+ > > ><a href="">课程介绍</a>< < <
+
+<hr class="da" />
+
+<div><img src="{$_G['siteurl']}static/lesson/banner3.jpg" /></div>
+
+<hr class="da" />
+<p>
+	<div class="xi1">如果您有什么要求,疑问或者建议 此处留言给管理员 您的每个建议都是我们网站发展的动力</div>
+
+	<hr class="da" />
+	<form name="__client_message_" action="" method="post">
+	<textarea id="elm1" name="message" rows="15" cols="80" style="width: 75%">
+		我希望...
+	</textarea>
+	<table>
+		<tr><td>如何称呼您: </td> <td><input type="text" name="clientname" /></td> </tr>
+		<tr><td>您的邮箱: </td> <td><input type="text" name="clientemail" /></td> </tr>
+	</table>
+	<input type="submit" name="messagetoadmin" value="提交" />
+	</form>
+
+</p>
+
+<hr class="da" />

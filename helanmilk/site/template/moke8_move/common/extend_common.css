@@ -1,0 +1,41 @@
+body {
+    background: url("{STYLEIMGDIR}/dashboard_bg.png") repeat scroll left top #D7D7D7;
+  
+}
+#header-full, #footer-full, #menu ul {
+    background: url("{STYLEIMGDIR}/header-pattern.png") repeat scroll 0 0 transparent;
+}
+#header-full #logo {
+    height: auto;
+    padding: 12px 30px;
+}
+.left {
+    float: left;
+}
+#header-full #navigation {
+    float: right;
+    height: 52px;
+    line-height: 52px;
+    padding-right: 0;
+}
+#navigation ul li {
+    float: left;
+    position: relative;
+}
+.current_page_item, #navigation ul li.hover {
+    background: none repeat scroll 0 0 #3177B4;
+}
+#navigation ul li a {
+    padding: 0 30px;
+    text-decoration: none;
+}
+#menu a {
+    color: #FFFFFF;
+}
+#menu a {
+    display: inline-block;
+}
+.categorys_list {
+margin-top:8px;
+
+}

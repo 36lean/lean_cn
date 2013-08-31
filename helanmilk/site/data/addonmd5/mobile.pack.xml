@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[mobile.pack]]></item>
+	<item id="RevisionID"><![CDATA[634]]></item>
+	<item id="SN"><![CDATA[2013031513oNerJptqT8]]></item>
+	<item id="RevisionDateline"><![CDATA[1344929329]]></item>
+	<item id="Data">
+		<item id="/api/mobile/index.php"><![CDATA[80f3fcda328b7a57b1e193bdbb8030cf]]></item>
+	</item>
+</root>

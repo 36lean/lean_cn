@@ -1,0 +1,30 @@
+
+<div class="media">
+	<h1>试听课程<small>( 注册用户即可免费试听 )</small></h1>
+  <!--{if !$_G['uid']}-->
+  <p><a class="btn btn-success btn-block" href="member.php?mod={$_G[setting][regname]}">还没有注册？20秒快速注册</a></p>
+  <!--{/if}-->
+<table class="table-hover" width="100%">
+{loop $_G['cache']['latest_course'] $course}
+<tr><td>
+	<div class="media row-fluid">
+              <div class="span3">
+              <a class="pull-left " href="lesson.php?pages_list={$course['id']}">
+                <img class="media-object img-polaroid" src="{$_G['siteurl']}uploads/lesson/{$course['logo']}" />
+              </a>
+              </div>
+              
+              <div class="span8 media-body">
+                <h2 class="media-heading">
+                  <a href="lesson.php?pages_list={$course['id']}">
+                    $course['fullname']
+                  </a>
+
+                  <small>$course['summary']</small>
+                </h2>
+              </div>
+	</div>
+</td></tr>
+{/loop}
+</table>
+</div>

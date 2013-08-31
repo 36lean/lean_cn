@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2.5]]></item>
+	<item id="Time"><![CDATA[2012-12-16 15:22]]></item>
+	<item id="From"><![CDATA[±¾µØ²âÊÔÕ¾ (http://127.0.0.1/x25/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[·ÀË®Ç½ÍØÕ¹]]></item>
+			<item id="identifier"><![CDATA[nimba_security]]></item>
+			<item id="description"><![CDATA[·ÀË®Ç½ÍØÕ¹v1.2 for Discuz X2.0/X2.5 ×÷Õß ÍÁÖøÈËÄþ°Í ÈË¹¤ÖÇÄÜÊµÑéÊÒ ³öÆ·£¨Made By Nimba, Team From AiLab.org £©¹¦ÄÜ½éÉÜ£ºÊµÊ±´¦Àí±»·ÀË®Ç½´¦Àí¹ýµÄÓÃ»§£¬±ÜÃâÕ¾ÄÚÀ¬»øÓÃ»§»ýÀÛ£¡]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[nimba_security/]]></item>
+			<item id="copyright"><![CDATA[nimba]]></item>
+			<item id="version"><![CDATA[v1.2]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[admincp]]></item>
+					<item id="menu"><![CDATA[·â½û¹ÜÀí]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[wlist]]></item>
+					<item id="menu"><![CDATA[½â·âÃûµ¥]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[1]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="2">
+					<item id="name"><![CDATA[readme]]></item>
+					<item id="menu"><![CDATA[Ê¹ÓÃËµÃ÷]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[2]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="3">
+					<item id="name"><![CDATA[security]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[10]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2.5]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[´¦Àí¼ä¸ô]]></item>
+				<item id="description"><![CDATA[µ¥Î»£º·ÖÖÓ£¬ÉèÖÃ¶à³¤Ê±¼ä´¦ÀíÒ»´ÎÀ¬»øÓÃ»§£¬½¨ÒéÉèÖÃ5-10·ÖÖÓÖ®¼ä]]></item>
+				<item id="variable"><![CDATA[long]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[5]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[´¦Àíµ×Ïß]]></item>
+				<item id="description"><![CDATA[µ±±»·ÀË®Ç½´¦Àí³¬¹ýÕâ¸öÊýÁ¿µÄÌû×Ó£¬Ôò·â½û´ËÓÃ»§£¡]]></item>
+				<item id="variable"><![CDATA[num]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="2">
+				<item id="displayorder"><![CDATA[2]]></item>
+				<item id="title"><![CDATA[´¦ÀíÓÃ»§×é]]></item>
+				<item id="description"><![CDATA[Ñ¡ÔñÐèÒª´¦ÀíµÄÓÃ»§£¬½¨ÒéÖ»Ñ¡ÔñµÍµÈ¼¶µÄÐÂÓÃ»§£¬±ÜÃâÀÏÓÃ»§±»ÎóÉ±£¡]]></item>
+				<item id="variable"><![CDATA[groups]]></item>
+				<item id="type"><![CDATA[groups]]></item>
+				<item id="extra"><![CDATA[]]></item>
+				<item id="__value">
+					<item id="0"><![CDATA[9]]></item>
+					<item id="1"><![CDATA[10]]></item>
+				</item>
+			</item>
+		</item>
+	</item>
+</root>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[1.1]]></item>
+	<item id="Time"><![CDATA[2012-11-10 21:31]]></item>
+	<item id="From"><![CDATA[ ()]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[KeepNWT]]></item>
+			<item id="identifier"><![CDATA[keepnwt]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[keepnwt/]]></item>
+			<item id="copyright"><![CDATA[keepnwt]]></item>
+			<item id="version"><![CDATA[1.0]]></item>
+			<item id="__modules">
+				<item id="general">
+					<item id="name"><![CDATA[keepnwt]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="special">
+					<item id="name"><![CDATA[keepnwt]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[12]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2.5]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[confirmkey]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[confirmkey]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[accesskey]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[accesskey]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+	</item>
+</root>

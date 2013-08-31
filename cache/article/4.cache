@@ -1,0 +1,78 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+            <li><a href="reader.php/category/1">精益生产</a></li>
+            <li><a href="reader.php/category/2">精益创业</a></li>
+            <li><a href="reader.php/category/3">六西格玛</a></li>
+            <li><a href="reader.php/category/4">改善</a></li>
+            <li><a href="reader.php/category/5">浪费</a></li>
+          </ul>
+</div>
+</div>
+<div class="page-header">
+<h3>精益创业之狂热</h3>
+<small>
+文章发表于 2013年08月12日 01时54分</small>
+</div>
+<blockquote>Startup Smart网站的Olivers Milman写了一篇关于精益初创企业（Lean Startup）的文章。文中隐晦地提出一个合理的问题：精益创业仅仅是个时尚，还是的确能为风险投资人和创始人产生真正的价值？文章开门见山，指明争论： 创业者应该对时尚和趋势有天生的警惕。他们要判断这些时尚和趋势是否有真实的价值、是否可持续，甚至是否有用。很多初创企业盲目冲向“下一个大热门”，结果是快速地 ... ... </blockquote>
+<div align="center">
+<p><img src="http://t2.baidu.com/it/u=2465719453,620232228&fm=21&gp=0.jpg" data-original="http://t2.baidu.com/it/u=2465719453,620232228&fm=21&gp=0.jpg" style="max-width:600px;" /></p>
+<p>附图</p>
+</div>
+<div class="container">
+<p><a href="http://www.startupsmart.com.au/">Startup Smart</a>网站的<a href="http://www.startupsmart.com.au/olliemilman/">Olivers Milman</a>写了一篇<a href="http://www.startupsmart.com.au/planning/the-cult-of-lean-start-ups/201112064781.html">关于精益初创企业（Lean Startup）的文章</a>。文中隐晦地提出一个合理的问题：<a href="http://en.wikipedia.org/wiki/Lean_Startup">精益创业</a>仅仅是个时尚，还是的确能为风险投资人和创始人产生真正的价值？</p>
+<p>文章开门见山，指明争论：</p>
+<blockquote> 创业者应该对时尚和趋势有天生的警惕。他们要判断这些时尚和趋势是否有真实的价值、是否可持续，甚至是否有用。很多初创企业盲目冲向“下一个大热门”，结果是快速地摔了个嘴啃泥。<br>
+<br>
+但有些时候，新出现的某种工作方式确实能提供实实在在的成果。 </blockquote>
+<p>文章紧跟着总结了Eric Ries的理论，同时也指出Eric的理念可能没有那么新。世界上，其他作者已经发布了带有类似理论的书籍，也就是保持低成本的同时持续寻求反馈，这些人包括：<a href="http://steveblank.com/">Steve Blank</a>和<a href="http://www.runningleanhq.com/">Ash Maurya</a>。</p>
+<p>传统上，用来衡量公司是否成功的，是随时间为公司股东提供的投资回报率。既然精益创业概念相对较新，而且实施这个理念的公司还很年轻，我们也许必须要等一段时间，才能真正评估精益创业的价值。</p>
+<p>但是，这并未阻止针对精益创业的争论。2010年中，<a href="http://www.quora.com/Lean-Startups/Does-the-lean-startup-philosophy-lead-to-more-successful-startups">Quora.com</a>上有一个针对精益创业特质的讨论。</p>
+<p><a href="http://www.quora.com/William-Pietri">William Pietri</a>说明一方观点：</p>
+<blockquote> 精益初创企业中的“精益”有两层意思。这里大家主要讨论的都是常见的意思——“不臃肿”，我想着重讨论另一层意思——精益制造中的“精益”。<br>
+<br>
+是否会有更多成功，目前看来恐怕没有人知道，但是有理论原因支持可以这样想。有很多东西可以将精益与典型的西方商业实践区分开来，我会着重讲四点：<br>
+<br>
+<ol><li><strong>资本的高效运作。</strong>毫无疑问，这是精益强调减少浪费的成果。举个例子，想想WebVan【译注1】。他
+们的投资者花了大概10亿美元，结果发现美国人还没有准备好在线杂物采购。他们有没有可能少花点钱，比如在相对小的范围内测试他们的核心假设？当然可以，
+这就是精益创业的目标：尽快以最少的成本测试假设。</li><li><strong>拉动，而不是推动。</strong>精益制造的目标是：只构建有人订购的东西。与之类似，精益创业的方法从现实的客户需求开始，并以此拉动团队产生解决方案。两种做法的差异解释起来很简单，但是在实践中非常显著。而且，我想你们可以以更低的成本得到好得多的产品。</li><li><strong>持续改进。</strong>西方商业文化倾向于最大化成果，而精益的实践者聚焦于提升产出成果的系统。（比如，如果你的目标是提升销售，聚焦于成果的答案是季度销售目标，但这会带来类似向渠道压货这样的问题）。这对于初创企业特别有帮助：已经习惯于不断改善的冻死，更能以可持续的方式扩张。</li><li><strong>以客户为中心定义价值。</strong>像很多精益理念一样，这听起来非常直白，主要差别在于：你有多么认真地这么
+做。比如：假定某人买了你的产品，但从未用过它。有些人会把重点放在销售上，并称其为胜利。但是在精益的分析方式中，这是失败：资源消耗了，但是没有交付
+价值。这种方式可以帮助初创企业构建一个高满意度的客户基础，并发现创造价值必需的主要步骤，这样才能拿到一大块市场。</li></ol>
+</blockquote>
+<p><a href="http://www.quora.com/Josh-McFarland">Josh McFarland</a>提出相反观点：</p>
+<blockquote> 为了回应David 
+King的回答，我认识的一些创业者严格遵循精益创业方法论的原则，在我看来，他们的产品最没有新意⋯⋯不过是其他公司的特性集合，还是由委员会设计的。
+没错，当他们试图找到Product/Market Fit【译注2】的时候，他们的运行“很精益”，但就我观察，我看他们是在慢慢倒下。<br>
+<br>
+我把这些原则好有一比，比作通过了外面那些海量认证中的一种、得到了所谓产品管理“认证”的人。说到创造出色的全新用户体验或是创新，这些所谓的产品经理往往是贡献最少的人。 </blockquote>
+<p>尽管针对Eric Ries的理念的讨论还在继续，<a href="http://thebln.com/2011/12/eric-ries-the-lean-startup-comes-to-london-january-16th-2012-our-new-supporters/">精益创业的市场营销机器和书籍销售</a>却没有停止增长。的确，Eric Ries最大的投资也许就是精益创业运动本身。</p>
+<p>您的想法是什么？您是否在使用精益创业方法论的公司中工作？它表现如何？您认为它在接下来几年里会如何成长、变化？</p>
+<p>【译注1】WebVan：2000年前后第一次互联网泡沫中的经典失败案例，该公司得到十亿美元左右风险投资，试图实现针对普通消费者的日常蔬果杂物用品在线销售和购买，结果以失败告终，成为MBA商学院的经典反面教材。</p>
+<p>【译注2】Product/Market Fit：是指某项产品或服务已经找到了商业模式、功能和市场之间的平衡点，InfoQ之前的<a href="http://www.infoq.com/cn/articles/dx-on-architecture">一篇访谈中</a>也提到此概念。</p></div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>INFOQ 作者 Christopher Goldsbury ，译者 郑柯</strong> 点击量: <strong>1</strong> 评论: <strong>0</strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "精益创业之狂热 Startup Smart网站的Olivers Milman写了一篇关于精益初创企业（Lean Startup）的文章。文中隐晦地提出一个合理的问题：精益创业仅仅是个时尚，还是的确能为风险投资人和创始人产生真正的价值？文章开门见山，指明争论： 创业者应该对时尚和趋势有天生的警惕。他们要判断这些时尚和趋势是否有真实的价值、是否可持续，甚至是否有用。很多初创企业盲目冲向“下一个大热门”，结果是快速地 ... . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'http://t2.baidu.com/it/u=2465719453,620232228&fm=21&gp=0.jpg', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&amp;') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

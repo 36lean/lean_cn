@@ -1,0 +1,25 @@
+
+<div class="media">
+	<h1><small>最新的课程</small></h1>
+<table class="table-hover" width="100%">
+{loop $_G['cache']['latest_course'] $course}
+<tr><td>
+	<div class="media">
+              <a class="pull-left " href="lesson.php?pages_list={$course['id']}">
+                <img class="media-object img-polaroid" src="{$_G['siteurl']}uploads/lesson/{$course['logo']}" />
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">
+                  <a href="lesson.php?pages_list={$course['id']}">
+                    $course['fullname']
+                  </a>
+                </h4>
+                
+                  <p></p>
+              </div>
+	</div>
+
+</td></tr>
+{/loop}
+</table>
+</div>

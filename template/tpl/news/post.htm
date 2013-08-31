@@ -1,0 +1,27 @@
+{template news/header}
+
+<form class="form-inline span4" action="news.php?mod=post" method="POST"> 
+	<div class="control-group">
+		<div class="controls">
+			<label>添加新闻标题</label>
+			<input name="content_title" class="span12" type="text" />
+		</div>
+	</div>
+
+	<div class="control-group">
+		<div class="controls">
+			<label>新闻封面图</label>
+			<input name="banner" class="span12" type="text" />
+		</div>
+	</div>
+
+	
+	<div class="control-group">
+		<div class="controls">
+			<label>添加新闻内容</label>
+			<textarea name="content_body" class="span12" rows=12></textarea>
+		</div>
+	</div>
+
+	<button class="btn btn-primary" name="posts" type="submit">Posts</button>
+</form>

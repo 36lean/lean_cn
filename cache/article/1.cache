@@ -1,0 +1,56 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+            <li><a href="reader.php/category/1">精益生产</a></li>
+            <li><a href="reader.php/category/2">精益创业</a></li>
+            <li><a href="reader.php/category/3">六西格玛</a></li>
+            <li><a href="reader.php/category/4">改善</a></li>
+            <li><a href="reader.php/category/5">浪费</a></li>
+          </ul>
+</div>
+</div>
+<div class="page-header">
+<h3>产品快速迭代就叫”精益创业”了吗？不！听听500 Startups创始合伙人Dave的看法</h3>
+<small>
+文章发表于 2013年08月12日 01时31分</small>
+</div>
+<blockquote>　　Lean Startup（精益创业）已经成为创业者，尤其是科技领域的传业者非常推崇的一种创业方式，可是很多人对它的理解仍然停留在“产品的快速迭代”层面上。事实上，它远远不止如此。硅谷知名孵化器500 Startups的创始合伙人Dave McClure在这周来到了北京，和我们也做了一个短暂的交流，来听听看看他是怎么阐释Lean Startup的。　　Dave认为，Lean Startup有几个要点需要特别注意，包 ... ... </blockquote>
+<div align="center">
+<p><img src="http://techdoc.fd.zol-img.com.cn/g3/M03/08/01/Cg-4V1GoeCaIaPDEAAJfjlB5SfIAAJJkwNWakYAAl-m250.jpg" data-original="http://techdoc.fd.zol-img.com.cn/g3/M03/08/01/Cg-4V1GoeCaIaPDEAAJfjlB5SfIAAJJkwNWakYAAl-m250.jpg" style="max-width:600px;" /></p>
+<p>附图</p>
+</div>
+<div class="container">
+<p>　　Lean 
+Startup（精益创业）已经成为创业者，尤其是科技领域的传业者非常推崇的一种创业方式，可是很多人对它的理解仍然停留在“产品的快速迭代”层面上。
+事实上，它远远不止如此。硅谷知名孵化器500 Startups的创始合伙人Dave 
+McClure在这周来到了北京，和我们也做了一个短暂的交流，来听听看看他是怎么阐释Lean Startup的。</p><p>　　Dave认为，Lean Startup有几个要点需要特别注意，包括：</p><p>　　<strong>1、添加功能并不意味着获得进展</strong></p><p>　
+　Dave说，现在的创业者提到Lean 
+Startup都有一个误区，以为就是推出产品后，不停地添加新功能，这个版本加一个新按钮，那个版本加一个新特性，但事实上，不仅仅是功能，市场营销、
+客户获取等方面，同样都可以应用到Lean Startup法则，而且，要注重每一次改变带来的效应。</p><p>　　<strong>2、和客户多交流，以解决问题</strong></p><p>　　在这点上，Dave和Steve Blank提到的一致，就是关起门来写代码是不行的，要走出去，多和你的客户交流，以获得真实的数据支持下一步的开发。</p><p>　　<strong>3、快速迭代，但是要建立反馈回路（feedback loop）</strong></p><p>　　Dave支持快速、频繁的迭代，但是，他强调一点在迭代过程中一定要形成一个“环”，也即是说，每次的迭代背后，要快速收集反馈，然后利用收集到的数据为产品和市场决策的再次迭代提供支撑，以此来形成一个闭环。</p><p>　　<strong>4、保持产品简单并可快速行动</strong></p><p>　　不要让产品太复杂，要让它处于这样一个状态：当你一个有了新的方向时，可以迅速实施。</p><p>　　Dave尤其强调了市场、用户获取和商业模式的重要。他说，Lean Startup绝不仅仅意味着产品功能的优化，“<strong>一个可扩展的、并能让你实现收支平衡甚至盈利的用户规模是让你们能够存活下来、并获取风险投资的最重要的事。</strong>”</p><p>　　“功能、用户和钱，哪个最重要？用户第一，钱第二（也许对于部分to B业务不适用），但是功能是放在最后的。”Dave说。</p><p>　　除去产品本身外，在创业切入的角度和最终的退出上，Dave认为也可以用同样的方式来思考。</p><p>　　他说，现在的创业项目确实有很多是基于技术的，但是更多的企业只是基于互联网的分销或者营销方式，所以用互联网的方式去入侵传统行业反而有更大的机会。</p><p>　　“不必都想着去做<a href="http://news.zol.com.cn/tech/instagram/" class="keylnk" data-rel="258">Instagram</a>，而是去尝试做做点餐外送的服务，我喜欢那些项目。线下的商家就像恐龙一样，他们完全不懂，如果你们（互联网创业者们）去做这些事，一定可以把他们吓出屎来。”</p><p>　　同样，他对于小额退出（Small Exit）评价很高。他认为，不一定非要把IPO或者十亿估值作为最终的目标，事实上，千万美元级别的收购就可以保障创业者们的生活，这对于创业者、投资人和收购公司来说，是一个三赢的决定。</p><p>　　那么从投资人的角度来说，一个好的创业公司应该符合哪些条件呢？Dave说，<strong>产品要能解决特定目标用户群的需求；资金利用率高，可以用低于100万美元的启动资金来进行运营；最好是基于互联网的分销方式——比如搜索、社交、移动等，同时商业模式清晰。</strong></p><p>　　此外，拥有以下特质还可以为创业者加分，那就是小型但是可以测量的用户或者早期营收；精简但是职能齐全的团队（至少要有工程师、设计师、市场营销人员）；获得投资之前可运转的模型或此前的成功经历等。</p><p>　　Dave还称，现在科技创业已经比之前要简单得多，这可以体现在创业成本、获取用户和退出等多个方面：</p><p>　　比方说，创业需要的资金更少了，服务器、软件和带宽上花费大幅减少，而Kick Starter、Angel List等新型融资方式的出现为解决资金问题提供了不少便利；</p><p>　　其次，获取用户的成本的大大降低。现在有这么多一亿用户的大平台，创业公司在接入这些平台后，就可以更容易地接触到用户。</p><p>　　此外，尽管十亿美元级别的IPO不多，但是，低于一亿美元的小额收购已经大量出现。大量“小额投资”（Little Bets）出现，如加速器、天使投资人等，还有像YC和500 Startups一样，会提供融资、协作、导师和分销等资源。</p><p>　　“这些不仅让成功变得没那么难，更重要的是，让失败的过程变得快速，而且成本变得很低。”Dave说。</p></div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>ZOL新闻中心</strong> 点击量: <strong>1</strong> 评论: <strong>0</strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "产品快速迭代就叫”精益创业”了吗？不！听听500 Startups创始合伙人Dave的看法 　　Lean Startup（精益创业）已经成为创业者，尤其是科技领域的传业者非常推崇的一种创业方式，可是很多人对它的理解仍然停留在“产品的快速迭代”层面上。事实上，它远远不止如此。硅谷知名孵化器500 Startups的创始合伙人Dave McClure在这周来到了北京，和我们也做了一个短暂的交流，来听听看看他是怎么阐释Lean Startup的。　　Dave认为，Lean Startup有几个要点需要特别注意，包 ... . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'http://techdoc.fd.zol-img.com.cn/g3/M03/08/01/Cg-4V1GoeCaIaPDEAAJfjlB5SfIAAJJkwNWakYAAl-m250.jpg', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&amp;') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

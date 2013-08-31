@@ -1,0 +1,43 @@
+{template common/header}
+<h1><i class="icon-globe"></i> 阅读</h1>
+<hr/>
+
+<div class="page-header">
+	<h3>最新内容</h3>
+</div>
+
+<div class="row">
+	{loop $list $title}
+	<a class="news_reader" href="reader.php/article/{$title['id']}">
+
+	<div class="span3" style="margin-bottom:20px;height:220px;background:url({$title['banner']});background-position: center;">
+	
+	<div class="news_title">
+		<p class="text-center">{$title['contenttitle']}</p>
+		<p class="text-right"><small class="text-right">浏览 {$title['view']} / {echo date(' Y m d ' , $title['timecreated'])} </small></p>
+	</div>
+
+	</div>
+	</a>
+	{/loop}
+</div>
+
+<div class="page-header">
+	<h3>综合资讯</h3>
+</div>
+<div id="cauldron" class="row">
+
+	{loop $category $cat}
+	<div id="{$cat['id']}" class="span4">
+		<ul class="nav nav-list">
+			<li class="nav-header"><i class="icon-hand-right"></i> {$cat['title']} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-right"><a href="reader.php/category/{$cat['id']}">更多</a></span></li>
+			
+			{loop $cat['article'] $a}
+			<li><a href="reader.php/article/{$a['id']}">{$a['contenttitle']}</a></li>
+			{/loop}
+		</ul>
+	</div>
+	{/loop}
+</div>
+
+{template common/footer}

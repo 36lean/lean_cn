@@ -1,0 +1,84 @@
+/*
+未来科技
+专注于 Discuz模板开发设计、仿制、定制、二次开发等服务。
+详情请咨询 www.veikei.com
+客服QQ 1508085698
+Update Time: 2012-12-21
+*/
+
+/*************************************************************************
+* 
+* 公共属性
+*
+**************************************************************************/
+
+
+body, input, button, select, textarea {  background:#fff; /* url({STYLEIMGDIR}/bg_body.jpg) repeat*/  font: {FONTSIZE} {FONT}; color: {TABLETEXT}; font-family:"Microsoft yahei","微软雅黑" ,"黑体","helvetica neue", "lucida grande", helvetica, arial, sans-serif, "宋体"; }
+
+body { background:#f8f8f8; }
+
+.m_r_0 { margin-right:0px !important;}
+.left { float:left !important;}
+.right { float:right !important;}
+
+
+/* 重定义 diy 区块（原默认背景为白色） */
+.vk_index .block {background: transparent; }
+.vk_index .frame {background: transparent; }
+.col_2 .block, .col_3 .block, .col_4 .block {background: transparent; } 
+.col_2 .frame, .col_3 .frame, .col_4 .frame {background: transparent; } 
+
+	.pnc, a.pnc { border-color: #235994; background-color: #06C; background-position: 0 -48px; color: #FFF; }
+	#diy-tg { }
+	#diy-tg_menu {}
+	#diy-tg_menu ul {}
+	#diy-tg_menu li { height:24px; line-height:24px;}
+
+ .wp { margin: 0 auto; width: 980px; } 
+ #wp .wp { width: auto; padding-top:15px; }
+ 
+ /*头部全局属性*/
+ .top_head { width:100%; height:auto; background:url({STYLEIMGDIR}/bg_head.png) repeat-x;  } 
+ 	#toptb_wrap { }
+	#toptb {line-height: 45px;}
+		#toptb a { float: left; padding: 0 4px; height: 45px; color: #999; }
+		#toptb a.showmenu { padding-right: 15px; }
+		#toptb a.hover { background-color: #FFF; }
+		#toptb .pipe { float: left; display: none; }
+	#hd {/*  margin-top:45px; */ border-bottom: {HEADERBORDER} solid {SPECIALBORDER}; {HEADERBGCODE} z-index:99; }
+		#hd .wp { padding: 10px 0 0; }
+		
+			#diy-tg { width: 55px;  background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 1px; text-indent: -9999px; overflow: hidden; }
+
+			.hdc { min-height: 70px; }
+				.ie6 .hdc { height: 70px; }
+			#hd h2 { padding: 0 20px 8px 0; float: left; margin-top:-20px; }
+				#space #hd h2 { margin-top: 0; }
+			#hd .fastlg { float: right; padding-top: 10px; }
+
+			#nv {  overflow: hidden; padding-left: 3px; height: 50px;   background: none; /* url({STYLEIMGDIR}/nv.png); */ } 
+			
+			#nv ul{ float:right; margin-top:10px;  } 
+			
+				#nv li { float: left; height: 40px;  font-weight:normal; font-size: 14px;  background: none;  /* background: url({STYLEIMGDIR}/nv_a.png) no-repeat 100% 0; */}
+					.ie_all #nv li { line-height: 43px; }
+					.ie6 #nv li { line-height: 40px; }
+					#nv li a { float: left; padding:0 12px; text-align:center; height: 40px;  line-height: 40px;  font-size:15px; width:85px;  background: none; /* background-image: url(nv.png); */ } 
+
+						#nv li a {  color: #555;   }
+						#nv li span { display: none; }
+					#nv li.a { margin-left:5px;  background: url({STYLEIMGDIR}/nv_a.png) no-repeat; }  
+						#nv li.a a { color:#333; /*#04aeda;*/  /*background: url({STYLEIMGDIR}/nv_a.png) no-repeat;*/ }   
+						#nv li a:hover {no-repeat;  background: url({STYLEIMGDIR}/nv_a.png) no-repeat; color:#333; text-decoration:none;  }  
+						#nv li.hover a:hover, #nv li.hover a {/* background: url({STYLEIMGDIR}/nv_a.png) no-repeat; */}    
+						
+
+		#nv_home #ft, .pg_announcement #ft, .pg_modcp #ft, .pg_portalcp #ft, .pg_ranklist #ft, #nv_userapp #ft { border-top: none; }
+
+
+				#um .new, .topnav .new, .sch .new, #toptb .new { padding-left: 20px; background-repeat: no-repeat; background-position: 0 50%; color:#999; font-weight: 700; }
+					#myprompt.new { background-image: url({STYLEIMGDIR}/notice.gif); background-position: 3px 50%; }
+					#pm_ntc.new { background-image: url({STYLEIMGDIR}/new_pm.gif); }
+					#task_ntc { background-image: url({STATICURL}image/feed/task.gif); }
+				#um .pipe { margin: 0 5px 0 0; color:#999; }
+

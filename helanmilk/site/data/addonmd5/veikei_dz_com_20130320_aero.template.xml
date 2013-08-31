@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[veikei_dz_com_20130320_aero.template]]></item>
+	<item id="RevisionID"><![CDATA[13630]]></item>
+	<item id="SN"><![CDATA[20130328137y1FssTZpw]]></item>
+	<item id="RevisionDateline"><![CDATA[1363939928]]></item>
+	<item id="Data">
+		<item id="/preview_large.jpg"><![CDATA[457634456631e2b0f529de25e0c87a52]]></item>
+		<item id="/images/bg_head.png"><![CDATA[45fd9b625b81b42d8e5161d9e059ed44]]></item>
+		<item id="/images/bg_shadow.png"><![CDATA[cfa45d3d928cdccdc081fc456b61d91e]]></item>
+		<item id="/images/vlineb.png"><![CDATA[8687ff1471c7df3ba05932f708c073d8]]></item>
+		<item id="/images/logo.png"><![CDATA[49805330d6e44b6df2e2078208c0419e]]></item>
+		<item id="/images/nv_a.png"><![CDATA[943f32937f2c8d0314c74eb761c0376c]]></item>
+		<item id="/discuz_style_veikei_dz_com_20130320_aero.xml"><![CDATA[f15f8afa49c509bad9ea8257f25a4d1a]]></item>
+		<item id="/common/widthauto.css"><![CDATA[71b5af5e84cb4ddbcd749ab5a8b97316]]></item>
+		<item id="/common/extend_common.css"><![CDATA[15c13f150c3148b2cdf45937d5136b01]]></item>
+		<item id="/common/header.php"><![CDATA[16c9c45c3066f1f03dd06ee76c2d61d5]]></item>
+		<item id="/common/footer.php"><![CDATA[a4fbdec57fcc42ce9bce1956c6417ce2]]></item>
+		<item id="/common/css_space.css"><![CDATA[ccda97305658962e98bfb113d05ee155]]></item>
+		<item id="/common/extend_module.css"><![CDATA[c918016ef6719076ef8ed144110a7b75]]></item>
+		<item id="/index.htm"><![CDATA[7215ee9c7d9dc229d2921a40e899ec5f]]></item>
+		<item id="/preview.jpg"><![CDATA[f656e0d769c8bf1c6e11c37c16850943]]></item>
+	</item>
+</root>

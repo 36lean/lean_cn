@@ -1,0 +1,105 @@
+/* ----------------------------------
+
+extend_common.css  file for Discuz! X2.5
+
+【未来科技】 
+http://www.veikei.com
+专注于 Discuz模板开发设计、仿制、定制、二次开发等服务。
+详情请 查看 www.veikei.com
+或咨询 客服 QQ 1508085698
+
+Author: Veiki
+Created Time: 2012-09-05
+Modified Time: 2012-09-10
+Update Time: 2013-03-22
+
+---------------------------------- */
+
+
+
+/*************************************************************************
+* 
+* 公共属性
+*
+**************************************************************************/
+body, input, button, select, textarea { background:#fff /* url({STYLEIMGDIR}/bg_body.jpg) repeat*/;  font: {FONTSIZE} {FONT}; color: {TABLETEXT}; 
+font-family:"Microsoft yahei","微软雅黑", Arial, Helvetica, sans-serif,  "宋体" ; }
+
+body { background:#fff /* url({STYLEIMGDIR}/bg_body.jpg) repeat*/; }
+
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+a:hover { color:#f60; text-decoration:none; }
+:focus { outline:0; }
+
+img, fieldset { border:0; }
+ol, ul, menu { list-style:none; }
+td, th, div { word-break:break-all; word-wrap:break-word }
+* { outline:none } 
+
+#um .diynav { text-align: right; }
+	#diy-tg { padding-top:10px;}
+	#diy-tg_menu { margin-top:-1px !important;} 
+		.ie7 #diy-tg_menu, .ie8 #diy-tg_menu { margin-top:-16px !important;} 
+	#diy-tg_menu ul {}
+	#diy-tg_menu li { height:24px; line-height:24px;}
+	#diy-tg_menu ul li a { color:#333;}
+
+	#diy-tg { width: 55px; background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 1px; text-indent: -9999px; overflow: hidden; }
+
+	#diy-tg { float: none; display: inline-block; margin-bottom:0px; height: 19px;  }
+		.ie9 #diy-tg { height: 20px; }
+	#diy-tg_menu { margin-left: -18px; }
+		#diy-tg_menu li { line-height: 2; }
+
+	.avts img { width: 24px; height: 24px; vertical-align: middle; padding-top:5px; }
+
+ .wp { margin: 0 auto; width:980px; clear:both; } 
+ #wp .wp { width: auto;}
+
+ .top_head {  width:100%; height:170px; position:relative; z-index:20; background:url({STYLEIMGDIR}/bg_head.png) repeat-x top center; }
+
+	#toptb { line-height: 35px;/* background:url({STYLEIMGDIR}/toptb_bg.png) repeat-x; */}
+		#toptb a { float: left; padding: 0 4px; height: 35px; color: #999; }
+		#toptb a.showmenu { padding-right: 15px; }
+		#toptb .pipe { float: left; display: none; }
+	#hd {/*  margin-top:45px; */ border-bottom: {HEADERBORDER} solid {SPECIALBORDER}; {HEADERBGCODE} z-index:99;  }
+		#hd .wp { padding:5px 0 0; }
+		
+
+			.hdc { min-height: 70px; }
+				.ie6 .hdc { height: 70px; }
+			#hd h2 { padding: 0 20px 8px 0; float: left; margin-top:-30px; }
+				#space #hd h2 { margin-top: 0; }
+			#hd .fastlg { float: right; padding-top: 10px; }
+			
+
+#toptb .hm { height:35px; overflow:hidden;} 
+	.fastlg_fm { border-right:none; }
+	.fastlg_fm img.vm { padding-top:5px; }
+	#toptb .qq_bind { margin-top: 5px !important; }
+
+			#nv { display:inline; overflow: hidden;  height: 90px; margin:0px; padding:0px;  background: none; /* url({STYLEIMGDIR}/nv.png); */ } 
+
+			/* LOGO  - 自定义*/
+			.vk_logo {float: left; max-width:200px; overflow:hidden; display:inline-block; margin-top:0px; position: relative; z-index:999;}
+
+			#nv ul{ float:right; max-width: 780px  ;  height: 40px;   margin-top:35px;  overflow: hidden;  } 
+				#nv li { float: left; height: 40px;  font-weight:normal; font-size: 14px;  background: none;  /* background: url({STYLEIMGDIR}/nv_a.png) no-repeat 100% 0; */}
+					.ie_all #nv li { line-height: 43px;}
+					.ie6 #nv li { line-height: 40px; }
+					#nv li a { float: left; padding:0 18px; text-align:center; height: 40px;  line-height: 40px;  color: #333;     font-size:15px; width: auto/*85px*/;  background: none; /* background-image: url(nv.png); */ } 
+						#nv li span { display: none; }
+					#nv li.a { margin-left:5px;  color:#fff;   background: url({STYLEIMGDIR}/nv_a.png) repeat-x 0px 0px; } 
+						#nv li.a a { color:#fff; /* background: url({STYLEIMGDIR}/nv_a.png) no-repeat 0px 0px;*/ } 
+						#nv li a:hover { color:#fff; text-decoration:none;  background: url({STYLEIMGDIR}/nv_a.png) repeat-x;  } 
+						#nv li.hover a:hover, #nv li.hover a {  color:#fff; background: url({STYLEIMGDIR}/nv_a.png) repeat-x; } 
+						
+	.ct2_a { margin-bottom: 10px; border-radius: 5px; }
+	.ct2_a .appl h2 { font-size:18px; padding-left:20px;}
+		.ct2_a, .ct3_a { border: 1px solid {WRAPBORDERCOLOR};  background-image: url({STYLEIMGDIR}/vlineb.png); }
+			.ct2_a_r { border: none; background-image: none; }
+			 .ct2_a h1.mt { display: none; }
+			 .ct2_a .tb { margin-top: 3px; }
+
+

@@ -1,0 +1,28 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div style="background:url(images/footbg.gif) repeat-x left top; padding-top:20px;">
+<!--{if $helps}-->
+<div class="block">
+  <div class="boxhelp mod1 mod2">
+  <span class="lt"></span><span class="lb"></span><span class="rt"></span><span class="rb"></span>
+   <div class="helpTitBg clearfix">
+   <div class="f_l">
+<!-- {foreach from=$helps item=help_cat} -->
+<dl>
+  <dt><a href='{$help_cat.cat_id}' title="{$help_cat.cat_name}">{$help_cat.cat_name}</a></dt>
+  <!-- {foreach from=$help_cat.article item=item} -->
+  <dd><a href="{$item.url}" title="{$item.title|escape:html}">{$item.short_title}</a></dd>
+  <!-- {/foreach} -->
+</dl>
+<!-- {/foreach} -->
+</div>
+
+  <div class="blank"></div>
+  <!--<div class=" tc" style="*height:65px">
+  <img src="images/fticon.png">
+</div>-->
+   </div>
+  </div>
+</div>
+<!--{/if}-->
+
+<div class="blank"></div>

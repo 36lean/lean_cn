@@ -1,0 +1,117 @@
+<!--{template common/header}-->
+<script type="text/javascript" src="{$_G['siteurl']}static/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+
+	tinyMCE.init({
+		mode : "textareas",
+		theme : "simple"
+	});
+</script>
+
+<div class="fl bm">
+	<div class="bm bmw  cl">
+	<div class="bm_h cl">
+	<span class="o">
+	<img id="category_1_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_1');" />
+	</span>
+	<h2>正在编辑{$type} - {$content['name']} {$content['title']} <a href="lesson.php?admin=1">返回</a>
+	</h2>
+	</div>
+	<div id="category_1" class="bm_c">
+
+			<a class="pn" href="lesson.php?content={$content['id']}" target="blank">&nbsp;&nbsp;预览本页&nbsp;&nbsp;</a>
+			{if $_GET['status']}
+				<div class="xi2">更新完成</div>
+			{/if}
+
+			{if $return == 'content'}
+			<div>
+			<form name-"update_lesson_page_contents" action="" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" value="{$content[id]}" />
+				<table cellspacing="0" cellpadding="0" class="tfm">
+					<tr><td class="xi1">课程文本部分</td></tr>
+					<tr><td>标题</td> <td> <input type="text" name="title" value="{$content['title']}" /></td></tr>
+					<tr><td>正文部分</td> 
+						<td><textarea id="elm3" name="contents" rows="15" cols="80" style="width: 80%">
+								{$content['contents']}
+							</textarea>
+						</td></tr>
+
+					<tr><td></td><td>
+							上一页 <select name="prevpageid">
+							<option {if $content['prevpageid'] == 0}selected="selected"{/if} value=0>无</option>
+							{loop $steps $s}<option {if $content['prevpageid'] == $s['id']}selected="selected"{/if} value={$s['id']}>{$s['title']}</option>{/loop}
+								   </select>
+					
+							下一页 <select name="nextpageid">
+							<option {if $content['nextpageid'] == 0}selected="selected"{/if} value=0>无</option>
+							{loop $steps $s}<option {if $content['nextpageid'] == $s['id']}selected="selected"{/if} value={$s['id']}>{$s['title']}</option>{/loop}
+								   </select>
+						</td>
+					</tr>
+				</table>
+
+				<input type="hidden" name="video_id" value="{$video['video_id']}" />
+				<table cellspacing="0" cellpadding="0" class="tfm">
+					<tr><td class="xi1">视频部分</td></tr>
+					<tr><td>文件名</td> <td><input type="text" name="v_file" value="{$video['v_file']}" /></td> <td>视频-路径</td> <td><input type="text" name="v_path" value="{$video['v_path']}" /></td></tr>
+					<tr>
+						<td>字幕1语言</td> <td><select name="label_a">
+													<option {if $video['label_a'] == 0}selected="selected"{/if} value=0>简体中文</option>
+													<option {if $video['label_a'] == 1}selected="selected"{/if} value=1>繁体中文</option>
+													<option {if $video['label_a'] == 2}selected="selected"{/if} value=2>英文</option>
+											   </select>
+											</td> 
+						<td>字幕1文件名</td> <td><input type="text" name="label_a_file" value="{$video['label_a_file']}" /></td>
+					</tr>
+
+					<tr>
+						<td>字幕2语言</td> <td><select name="label_b">
+													<option {if $video['label_b'] == 0}selected="selected"{/if} value=0>简体中文</option>
+													<option {if $video['label_b'] == 1}selected="selected"{/if} value=1>繁体中文</option>
+													<option {if $video['label_b'] == 2}selected="selected"{/if} value=2>
+													英文</option>
+											   </select>
+											</td> 
+						<td>字幕2文件名</td> <td><input type="text" name="label_b_file" value="{$video['label_b_file']}" /></td>
+					</tr>
+
+					<tr><td>视频语音</td>
+						<td>
+							<select name="v_voice">
+								<option value=0 {if $video['v_voice']==0}selected="selected"{/if}>普通话</option>
+								<option value=1 {if $video['v_voice']==1}selected="selected"{/if}>英语</option>
+								<option value=2 {if $video['v_voice']==2}selected="selected"{/if}>其它语言</option>
+							</select>
+						</td> <td>视频时间</td> <td><input type="text" name="v_time" value="{$video['v_time']}" /></td></tr>
+
+					<tr><td>视频描述-中</td> <td><textarea name="cn_intro" id="elm4" rows="5" cols="15" style="width: 80%">{$video['cn_intro']}</textarea></td> <td>视频描述-英</td> <td><textarea name="en_intro" id="elm5" rows="5" cols="15" style="width: 80%">{$video['en_intro']}</textarea></td></tr>
+
+					<tr><td>上传预览</td> <td><input type="file" name="images" /></td> <td>预览</td><td><img src="{$_G['siteurl']}uploads/{$video['image_file']}" width="320px" /></td></tr>
+				</table>
+				<input type="submit" name="update_contents" value="更新页面" />
+			</form>
+			</div>
+
+
+
+
+
+
+			{elseif  $return == 'ls'}
+			<div><form name="_update_lesson_information" action="" method="post">
+				 <input type="hidden" name="id" value="{$content['id']}" />
+				<table cellspacing="0" cellpadding="0" class="tfm">
+					<tr><td>章节标题</td> <td><input type="text" name="title" value="{$content['name']}" /></td></tr>
+					<tr><td>章节序号</td> <td><input type="text" name="sortid" value="{$content['sortid']}"></td></tr>
+					<tr><td>介绍总结</td> <td><textarea id="elm3" name="summary" rows="15" cols="80" style="width: 80%">
+						{$content['summary']}
+					</textarea></td></tr>
+					<tr><td></td> <td><input type="submit" name="update_lesson_" value="更新" /></td></tr>
+				</table>
+			</div>
+			{/if}
+
+	</div>
+	</div>
+</div>

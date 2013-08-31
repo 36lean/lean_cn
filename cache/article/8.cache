@@ -1,0 +1,385 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+            <li><a href="reader.php/category/1">精益生产</a></li>
+            <li><a href="reader.php/category/2">精益创业</a></li>
+            <li><a href="reader.php/category/3">六西格玛</a></li>
+            <li><a href="reader.php/category/4">改善</a></li>
+            <li><a href="reader.php/category/5">浪费</a></li>
+          </ul>
+</div>
+</div>
+<div class="page-header">
+<h3>精益六西格玛在油田企业的应用－普罗维智</h3>
+<small>
+文章发表于 2013年08月12日 02时30分</small>
+</div>
+<blockquote> 精益六西格玛是一种系统化管理方法，核心内容是消除浪费，减小波动，以量化的方式衡量业务流程好坏，以一整套流程优化的方法和步骤，提高运行效率，快速响应客户需求，以最经济有效的方式来保证产品、服务的高质量。  　　精益六西格玛是衡量业务流程好坏的尺度  精益六西格玛作为一种尺度，可以衡量消除流程波动的效果或满足客户需求的能力如何，可以比较跨部门、行业、或产品线质量 ... ... </blockquote>
+<div align="center">
+<p><img src="http://img1.cache.netease.com/catchpic/9/9F/9F0EE2BC68AE8D8778583264FC35F080.jpg" data-original="http://img1.cache.netease.com/catchpic/9/9F/9F0EE2BC68AE8D8778583264FC35F080.jpg" style="max-width:600px;" /></p>
+<p>附图</p>
+</div>
+<div class="container">
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">&nbsp; 精益六西格玛是一种系统化管理方法，核心内容是消除浪费，减小波动，以量化的方式衡量业务流程好坏，以一整套流程优化的方法和步骤，提高运行效率，快速响应客户需求，以最经济有效的方式来保证产品、服务的高质量。  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><em style="border: 0px none; font: inherit; margin: 0px; padding: 0px; font-style: normal; ">　　精益六西格玛是衡量业务流程好坏的尺度</em> </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">精
+益六西格玛作为一种尺度，可以衡量消除流程波动的效果或满足客户需求的能力如何，可以比较跨部门、行业、或产品线质量、效率的有效性，在有系统均值漂移的
+情况下六西格玛质量意味着每一百万次机会仅仅出现3.4次废品、缺陷或者错误。在流程结果是离散的情况下，每百万次机会出现的错误次数，即DPMO可以直
+接转换成流程的西格玛水平。  </p>
+<table style="border-collapse: collapse; border-spacing: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; " align="center" border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　DPMO</strong> <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　合格率%</strong> <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 113px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　长期西格玛值</strong> </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　3.4</strong>  </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　99.99966</strong> <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 113px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　6</strong> </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　230</strong> </p> 
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　99.977</strong> <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 113px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　5</strong> <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　6200</strong> </p> 
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　99.38</strong> <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 113px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　4</strong> <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　66800</strong> <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 106px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　93.32</strong>  </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 113px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　3</strong> </p> 
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　精益六西格玛是一整套流程优化的方法和步骤</strong>  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">精益六西格玛提供了一整套流程改造的方法和步骤，整合了精益和六西格玛的方法与工具，以项目管理形式，形成系统化的解决方案。 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　精益六西格玛是一种管理战略</strong>  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">精益六西格玛在组织中建立从流程的角度来管理企业的行为，培育“无边界”管理的文化，它相信管理是一个科学而不是艺术或魔术，管理应当基于测量、工具和数据，应把严谨注入到组织中的每个角落，成为交流的语言和决策的工具。  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">精益六西格玛驱动企业成为一个学习型的组织，强调知识的建立和传播，追求管理卓越是每一个组织成员的责任，而学习是建立技能的唯一途径。让追求完美成为一种企业的生活方式和态度。 <span class="Qjl695"></span> </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; -webkit-text-size-adjust: none; text-align: center; "><img alt="image001" src="http://img1.cache.netease.com/catchpic/2/29/290A025337743EA44ED6763CE7936F7E.png" style="border: 0px none; font: inherit; margin: 0px 0px 6px; padding: 0px; display: inline; " width="600px"> <span class="Qjl695"></span> </p>
+ 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; -webkit-text-size-adjust: none; text-align: center; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　精益六西格玛核心思想</strong> </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; -webkit-text-size-adjust: none; text-align: center; "><img alt="image002" src="http://img1.cache.netease.com/catchpic/7/74/7409F8EA298E70E3A21DA79165572674.png" style="border: 0px none; font: inherit; margin: 0px 0px 6px; padding: 0px; display: inline; ">  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; -webkit-text-size-adjust: none; text-align: center; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　以客户为导向，正确确定价值</strong> </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><span class="Qjl695"></span> </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">正确地确定价值就是以客户的观点来确定企业从设计到生产到交付的全部过程，实现客户需求的最大满足。以客户的观点确定价值还必须将生产、服务的全过程的多余消耗减至最少，不将额外的花销转嫁给用户。  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">精益六西格玛价值观将商家和客户的利益统一起来，而不是过去那种对立的观点。  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">以客户为中心的价值观来审视企业的产品设计、制造过程、服务项目就会发现太多的浪费，从不满足客户需求到过分的功能和多余的非增值消耗。当然，消灭这些浪费的直接受益者既是客户也是商家。 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　基于数据和事实</strong> </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">精益六西格玛把“基于事实管理”的理念提到了一个更高的层次。在开始就澄清什么是衡量企业业绩的尺度，然后应用统计数据和分析方法来建立对关键变量的理解和获得更优的结果。 <span class="Qjl695"></span> </p><br><p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">价值流是指从原材料转变为成品、并给它赋予价值的全部活动。这些活动包括：概念、设计、工程、投产的技术过程；订单处理、计划、送货的信息过程；从原材料到产品的物质转换过程；以及产品全生命周期的支持和服务过程。  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">识
+别价值流的含义是在价值流中找到哪些是真正增值的活动、哪些是可以立即去掉的不增值活动（所有业务过程中消耗了资源而不增值活动叫做浪费）。识别价值流就
+是发现浪费和消灭浪费。识别价值流的方法是“价值流分析”——首先按产品族、服务类型为单位画出当前的价值流图，再以客户的观点分析每一个活动的必要性。
+ <span class="Qjl695"></span> </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">价值流并不是从自己企业的内部开始的，多数价值流都向前延伸到供应商，向后延长到向客户交付的活动。按照最终用户的观点全面地考察价值流、寻求全过程的整体最佳，特别是推敲部门之间交接的过程，往往存在着更多的浪费。 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　使价值不间断的流动</strong> </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">如果正确的确定价值是精益六西格玛思想的基本观点，识别价值流是精益六西格玛思想的准备和入门的话，“流动”和“拉动”则是精益六西格玛思想实现价值的中坚。精益六西格玛思想要求创造价值的各个活动(步骤)流动起来，强调的是不间断地“流动"。 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">第
+一，要消除所有的停滞。“价值流”本身的含义就是“动”的，但是由于根深蒂固的传统观念和做法，如部门的分工(部门间交接和转移时的等待)、大批量生产
+(机床旁边等待的在制品)等等阻断了本应动起来的价值流。精益六西格玛将所有的停滞作为企业的浪费，号召“所有的人都必须和部门化的、批量生产的思想做斗
+争”，用持续改进、JIT、单件流等方法在任何批量生产条件下创造价值的连续流动。  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">第二，要消除一切质量的波动。要保证不间断的流，本身就意味着每个过程和每个产品都是正确的，没有太多的过失、废品和返工。可以用测量系统分析、鱼刺图、失效模式分析、T检验、线性回归、实验设计、控制图等方法保证产品或者服务流程不会因为质量不合格而间断。 <span class="Qjl695"></span> </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">第三，要消除一切因为环境、设备故障等造成的停止。环境、设备的完好性是流动的保证，可以通过3P、5S、全员维修管理(TPM)等方法保证设备的正常运转，避免产品制造或者服务流程因设备故障造成的间断。  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">第四，要消除瓶颈造成的阻塞。决定一个水桶装水量的是最短的木板，同样决定一个流程能力的也是最差、最慢的环节。通过均衡生产等方法合理的匹配，使流程有正确规模的人力和设备能力，避免瓶颈造成的阻塞。 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">采油厂的运营管理 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; -webkit-text-size-adjust: none; text-align: center; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　采油厂的价值链</strong> <span class="Qjl695"></span> </p>
+ 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; -webkit-text-size-adjust: none; text-align: center; "><img alt="1" src="http://img1.cache.netease.com/catchpic/0/08/0818DCC5C930D1BF739519BF07B1729B.jpg" style="border: 0px none; font: inherit; margin: 0px 0px 6px; padding: 0px; display: inline; "> </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　采油厂的运营指标体系</strong> <span class="Qjl695"></span> </p>
+ 
+<table style="border-collapse: collapse; border-spacing: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; width: 483px; " border="0" cellpadding="0" cellspacing="0" width="483">
+	<tbody>
+		<tr>
+			<td rowspan="15" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 104px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">经济指标  </p>
+			</td>
+			<td rowspan="4" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 171px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">盈利能力  </p>
+			</td>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">成本盈利率 <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">总资产回报率 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">净资产回报率 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">全员净产值劳动生产率 <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="6" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 171px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">生产要素 <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">资产周转率 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">油水井利用率 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">剩余经济可采储量 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">储采平衡率 <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">综合递减率  </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">采油速度 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="5" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 171px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">技术创新 <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">技术创新经费总额 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">技术创新经费年增长率  </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">技术创新人员占比  </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">专利数量 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">研发成果水平 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="4" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 104px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">人力资源发展 </p> 
+			</td>
+			<td rowspan="2" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 171px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">人员能力  </p>
+			</td>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">全员劳动生产率  </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">劳动力投入产出比 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="2" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 171px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">能力发展 </p> 
+			</td>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">专业人员增长率 <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">人员支出与销售占比 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="2" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 274px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">原油质量  </p>
+			</td>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">外输原油含水率 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">原油含金属率 <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" rowspan="6" style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 274px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">社会职责  </p>
+			</td>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">员工人数 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">利税率 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">社会公益支出占比 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">青苗赔偿占生产成本比  </p>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">环保支出占销售额比 </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border-style: solid; border-color: rgb(170, 169, 182); width: 208px; height: 18px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">环保达标率 <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　精益六西格玛与采油厂管理的结合</strong> </p> 
+<table style="border-collapse: collapse; border-spacing: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; " border="1" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 102px; height: 22px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　开发设计类</strong>  </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 154px; height: 22px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　工程作业类</strong> <span class="Qjl695"></span> </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 102px; height: 22px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　注采集输类</strong> </p> 
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); width: 102px; height: 22px; " nowrap="nowrap">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　油田通用类</strong> </p> 
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 102px; height: 126px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">价值流图 </p> 
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">QFD <span class="Qjl695"></span> </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">FMEA  </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">标准化 </p> 
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 154px; height: 126px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">TPM </p> 
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">快速换模  </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">目视管理  </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">价值流图与八大浪费 </p> 
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">FMEA、C&amp;E <span class="Qjl695"></span> </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">防呆管理  </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">看板管理 </p> 
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 102px; height: 126px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">假设检验 </p> 
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">方差分析  </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">实验设计 </p> 
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">回归分析  </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">控制图 </p> 
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">全面生产维护  </p>
+			</td>
+			<td style="padding: 6px; border: 1px solid rgb(170, 169, 182); background-color: rgb(247, 245, 234); width: 102px; height: 126px; ">
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; "><a href="http://quotes.money.163.com/usstock/hq/SI.html">SI</a>POC </p> 
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">数据抽样 </p> 
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">测量系统分析  </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">流程能力分析 <span class="Qjl695"></span> </p>
+				<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; ">鱼骨图 <span class="Qjl695"></span> </p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">案例 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; "><strong style="border: 0px none; font: inherit; margin: 0px; padding: 0px; ">　　精益六西格玛管理延长油井生产周期</strong> </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">某
+采油厂每年因抽油杆、接箍、丝扣断脱问题造成的油井维护作业井次占到油井总作业井次的40%左右。由于杆、接箍、丝扣断脱问题作业频繁不仅造成油井作业费
+用上升，作业占产时间变长，同时极大影响采油厂整体生产进度和原油稳产工作。因此在北京普罗维智管理顾问有限公司的协助下，该采油厂成立六西格玛小组，将
+延长油井生产周期设定为项目目标。 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">首
+先通过Pareto图分析，得出新杆井、大修杆井、修复杆井3种具有代表性的生产井作为研究对象。小组使用SIPOC和变量流程图得到流程范围、步骤和输
+入、输出，区分出可控和不可控输入因子。针对可控因子作鱼刺图分析，得出根本原因，然后对杆断、接箍、丝扣断脱根本原因的失效进行了分类，使用FMEA找
+到3个改进方向： </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">1、降低严重度  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">2、减少发生频次  </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">3、提高可探测度 <span class="Qjl695"></span> </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">提出以下措施： </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">l 杆进货建立检验规范 <span class="Qjl695"></span> </p>
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">l 循环次数、磨损程度建立记录台帐，以便分级管理和使用 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">l 建立评估部分更换的断脱风险机制，对风险高的采取整套更换，提高井连续生产周期 </p> 
+<p style="border: 0px none; font: inherit; margin: 0px 0px 24px; padding: 0px; line-height: 24px; color: rgb(0, 0, 0); font-family: arial, 宋体; font-size: 14px; text-align: justify; -webkit-text-size-adjust: none; ">试运行1年，在普罗维智的咨询指导与协助项目执行下，延长了全厂平均生产周期5天，比实施前提高5.6%，带来经济效益约400余万。小组通过新添加程序文件将改进固化到日常生产流程中。 </p></div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>北京普罗维智管理顾问有限公司－王超</strong> 点击量: <strong>1</strong> 评论: <strong>0</strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "精益六西格玛在油田企业的应用－普罗维智  精益六西格玛是一种系统化管理方法，核心内容是消除浪费，减小波动，以量化的方式衡量业务流程好坏，以一整套流程优化的方法和步骤，提高运行效率，快速响应客户需求，以最经济有效的方式来保证产品、服务的高质量。  　　精益六西格玛是衡量业务流程好坏的尺度  精益六西格玛作为一种尺度，可以衡量消除流程波动的效果或满足客户需求的能力如何，可以比较跨部门、行业、或产品线质量 ... . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'http://img1.cache.netease.com/catchpic/9/9F/9F0EE2BC68AE8D8778583264FC35F080.jpg', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&amp;') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

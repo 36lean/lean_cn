@@ -1,0 +1,421 @@
+<!--<script>
+jQuery( function() {
+  jQuery.ajax({
+    url : 'lesson.php',
+    type : 'GET',
+    data : { click_collection:1 , id: "17", type:'c'},
+    dataType:'html',
+  });
+});
+</script>
+-->
+
+<div class="container">
+<p class="text-left"> 
+  <a href="lesson.php"><i class="icon-home"></i> 在线课程</a> <span class="divider">/</span> 
+  <a href="lesson.php?pages_list=17"><i class="icon-book"></i> 及时制生产</a> 
+</p>
+</div>
+
+<div class="page-header">
+  <h2 align="center">及时制生产 </h2>
+</div>
+
+<div class="row-fluid">
+
+  <div class="span6">
+  <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
+  <p>这段视频最初来自于我们的合作伙伴, 这段视频的主要内容是及时制改善,现在称之为精益生产.在本系列课程中, 您将看到许多精益原则的例子.你也会学到单件流,节拍时间,U型单元线,生产力,看板,目视化管理, 标准作业. </p>
+  <blockquote><i class="icon-info-sign"></i> 分类</blockquote>
+  <p>精益课程</p>
+  </div>
+
+
+  <div class="span6">
+    <img class="img-polaroid lazy" src="uploads/course/17.png" data-original="uploads/course/17.png" style="width:80%;" />
+  </div>
+
+</div>
+
+<hr>
+
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span3">
+    <div>
+
+            
+
+        
+    
+  
+    <ul class="nav nav-list well">
+      <li><h4><i class="icon-list"></i> 导航</h4></li>
+      <li class="nav-header"><i class="icon-align-justify"></i> 课程大纲</li>
+            <li><a href="lesson.php?page_content=167"><small><strong>第1节 及时制概</strong></small></a></li>
+            <li><a href="lesson.php?page_content=168"><small><strong>第2节 及时制-第</strong></small></a></li>
+            <li><a href="lesson.php?page_content=169"><small><strong>第3节 及时制-第</strong></small></a></li>
+            <li><a href="lesson.php?page_content=170"><small><strong>第4节 及时制-第</strong></small></a></li>
+            <li><a href="lesson.php?page_content=171"><small><strong>第5节 及时制活</strong></small></a></li>
+            <li><a href="lesson.php?page_content=172"><small><strong>第6节 及时制活</strong></small></a></li>
+            <li><a href="lesson.php?page_content=173"><small><strong>第7节 及时制技</strong></small></a></li>
+            <li><a href="lesson.php?page_content=174"><small><strong>第8节 及时制技</strong></small></a></li>
+            <li><a href="lesson.php?page_content=175"><small><strong>第9节 及时制技</strong></small></a></li>
+            <li><a href="lesson.php?page_content=176"><small><strong>第10节 及时制技</strong></small></a></li>
+            <li><a href="lesson.php?page_content=177"><small><strong>第11节 及时制技</strong></small></a></li>
+            <li><a href="lesson.php?page_content=178"><small><strong>第12节 及时制技</strong></small></a></li>
+            
+          </ul>
+    
+    
+    </div>
+  </div>
+
+
+<div class="span7">
+                          <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="167" href="lesson.php?page_content=167" title="第1节 及时制概述">
+                
+                                <img class="img-polaroid lazy" id="167" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-01.png" alt="第1节 及时制概述" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-01.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="167" href="lesson.php?page_content=167" title="第1节 及时制概述">
+                    第1节 及时制概述                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 1:36
+</span>
+                </p>
+
+                本模块将介绍及时制的基本内容              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="168" href="lesson.php?page_content=168" title="第2节 及时制-第一部分">
+                
+                                <img class="img-polaroid lazy" id="168" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-02.png" alt="第2节 及时制-第一部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-02.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="168" href="lesson.php?page_content=168" title="第2节 及时制-第一部分">
+                    第2节 及时制-第一部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 10:14
+</span>
+                </p>
+
+                这在第一个视频中,你讲学到什么是改善和及时制. 您还将听到一位高级管理者讲解JIT在企业中的深刻影响.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="169" href="lesson.php?page_content=169" title="第3节 及时制-第二部分">
+                
+                                <img class="img-polaroid lazy" id="169" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-03.png" alt="第3节 及时制-第二部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-03.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="169" href="lesson.php?page_content=169" title="第3节 及时制-第二部分">
+                    第3节 及时制-第二部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 9:41
+</span>
+                </p>
+
+                学习用及时制彻底的减少节拍时间. 同样你可以学习一位日本公司管理如何在不裁员的情况下使用及时制. 另外一位食品公司的负责人将讲述改善的在世界级的 ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="170" href="lesson.php?page_content=170" title="第4节 及时制-第三部分">
+                
+                                <img class="img-polaroid lazy" id="170" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-04.png" alt="第4节 及时制-第三部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-04.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="170" href="lesson.php?page_content=170" title="第4节 及时制-第三部分">
+                    第4节 及时制-第三部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 14:31
+</span>
+                </p>
+
+                一位日本公司的负责人为您讲述U型线在企业中的真实案例. 你将学到高级的U型单元线作业.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="171" href="lesson.php?page_content=171" title="第5节 及时制活动- 第一部分">
+                
+                                <img class="img-polaroid lazy" id="171" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-05.png" alt="第5节 及时制活动- 第一部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-05.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="171" href="lesson.php?page_content=171" title="第5节 及时制活动- 第一部分">
+                    第5节 及时制活动- 第一部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 12:46
+</span>
+                </p>
+
+                在这个视频中,我们将讲述价值和浪费的区别, Muda是一个日语词汇. 你将看到一些真实的7种浪费的实例.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="172" href="lesson.php?page_content=172" title="第6节 及时制活动- 第二部分">
+                
+                                <img class="img-polaroid lazy" id="172" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-06.png" alt="第6节 及时制活动- 第二部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-06.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="172" href="lesson.php?page_content=172" title="第6节 及时制活动- 第二部分">
+                    第6节 及时制活动- 第二部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 10:59
+</span>
+                </p>
+
+                我们继续观看浪费的例子, 同时也可以看到使用及时制和精益原则可以有效地消除浪费导致戏剧性的生产力提高. ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="173" href="lesson.php?page_content=173" title="第7节 及时制技术-第一部分">
+                
+                                <img class="img-polaroid lazy" id="173" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-07.png" alt="第7节 及时制技术-第一部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-07.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="173" href="lesson.php?page_content=173" title="第7节 及时制技术-第一部分">
+                    第7节 及时制技术-第一部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 9:46
+</span>
+                </p>
+
+                在第一个视频中, JIT及时制让我了解了推和拉的区别. 我们彻底的解释什么是节拍时间和它是如何用于单件流的.  ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="174" href="lesson.php?page_content=174" title="第8节 及时制技术-第二部分">
+                
+                                <img class="img-polaroid lazy" id="174" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-08.png" alt="第8节 及时制技术-第二部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-08.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="174" href="lesson.php?page_content=174" title="第8节 及时制技术-第二部分">
+                    第8节 及时制技术-第二部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 10:38
+</span>
+                </p>
+
+                这个视频解释了技能显示板是如何提供工作的. 我们也会了解更多关于U型单元的内容. 我们将看到一个传统的流水线和U型线的制造过程.  ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="175" href="lesson.php?page_content=175" title="第9节 及时制技术-第三部分">
+                
+                                <img class="img-polaroid lazy" id="175" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-09.png" alt="第9节 及时制技术-第三部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-09.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="175" href="lesson.php?page_content=175" title="第9节 及时制技术-第三部分">
+                    第9节 及时制技术-第三部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 2:30
+</span>
+                </p>
+
+                本视频讨论设置改善或快速切换之间内外部的差别.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="176" href="lesson.php?page_content=176" title="第10节 及时制技术-第四部分">
+                
+                                <img class="img-polaroid lazy" id="176" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-10.png" alt="第10节 及时制技术-第四部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-10.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="176" href="lesson.php?page_content=176" title="第10节 及时制技术-第四部分">
+                    第10节 及时制技术-第四部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 4:03
+</span>
+                </p>
+
+                没有标准就没有改善. 因此我们学到什么是标准作业和为什么它如此重要.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="177" href="lesson.php?page_content=177" title="第11节 及时制技术-第五部分">
+                
+                                <img class="img-polaroid lazy" id="177" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-11.png" alt="第11节 及时制技术-第五部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-11.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="177" href="lesson.php?page_content=177" title="第11节 及时制技术-第五部分">
+                    第11节 及时制技术-第五部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 5:00
+</span>
+                </p>
+
+                您将了解如何使用看板支持JIT及时制和精益生产.  并看到看板在实际工厂的使用.               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="178" href="lesson.php?page_content=178" title="第12节 及时制技术-第六部分">
+                
+                                <img class="img-polaroid lazy" id="178" src="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-12.png" alt="第12节 及时制技术-第六部分" data-original="http://36lean.oss.aliyuncs.com/GA/JIT/PNG/JIT-12.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="178" href="lesson.php?page_content=178" title="第12节 及时制技术-第六部分">
+                    第12节 及时制技术-第六部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : 9:22
+</span>
+                </p>
+
+                您将了解如何使用5S和可视化工作做基础改善. 你还将了解如何在你的公司扩展你的改善项目.              </div>
+
+            </div>
+            </div>
+            
+      </div>
+
+
+
+
+</div>
+</div>
+
+

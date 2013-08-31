@@ -1,0 +1,87 @@
+<!--{template common/header}-->
+<ul class="breadcrumb">
+	<li><a href="{if $forcefid}forum.php?mod=forumdisplay{$forcefid}{else}forum.php{/if}" title="{lang return_forum}">{lang return_forum}</a><span class="divider">/</span></li>
+
+	<li><a href="javascript:history.back();" onclick="javascript:history.back();" title="{lang goback}" >{lang goback}</a></li>
+</ul>
+
+<p class="lead">{$_G['setting']['reglinkname']}</p>
+
+<form class="form-horizontal" method="post" autocomplete="off" name="register" id="registerform" enctype="multipart/form-data" action="member.php?mod={$_G[setting][regname]}&mobile=yes">
+<input type="hidden" name="regsubmit" value="yes" />
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<!--{eval $dreferer = str_replace('&amp;', '&', dreferer());}-->
+<input type="hidden" name="referer" value="$dreferer" />
+<input type="hidden" name="activationauth" value="{if $_GET[action] == 'activation'}$activationauth{/if}" />
+<input type="hidden" name="agreebbrule" value="$bbrulehash" id="agreebbrule" checked="checked" />
+<div class="container">
+	
+
+<div class="control-group">
+<label class="control-label" for="inputEmail">{lang username}*</label>
+<div class="controls">
+	<input type="text" id="username" name="{$_G['setting']['reginput']['username']}" autocomplete="off" size="25" maxlength="15" value="" class="span12" /></label>
+	<span class="help-block">{lang reg_username}</span>
+</div>
+</div>
+
+<div class="control-group">
+<label class="control-label" for="inputEmail">{lang password}*</label>
+<div class="controls">
+	<input type="password" name="{$_G['setting']['reginput']['password']}" size="25" id="password" class="span12" />
+</div>
+</div>
+
+
+<div class="control-group">
+<label class="control-label" for="inputEmail">{lang password_confirm}*</label>
+<div class="controls">
+	<input type="password" name="{$_G['setting']['reginput']['password2']}" size="25" id="password2" value="" class="span12" />
+</div>
+</div>
+
+<div class="control-group">
+<label class="control-label" for="inputEmail">{lang email}*</label>
+<div class="controls">
+	<input type="text" name="{$_G['setting']['reginput']['email']}" autocomplete="off" size="25" id="email" class="span12" /> </label>
+</div>
+</div>
+
+	<!--{if empty($invite) && ($_G['setting']['regstatus'] == 2 || $_G['setting']['regstatus'] == 3)}-->
+<div class="control-group">
+<label class="control-label" for="inputEmail">{lang invite_code}<!--{if $_G['setting']['regstatus'] == 2 && !$invitestatus}-->*<!--{/if}--></label>
+	<input type="text" name="invitecode" autocomplete="off" size="25" id="invitecode" class="span12" />
+</div>
+</div>
+	<!--{/if}-->
+	
+	<!--{if $_G['setting']['regverify'] == 2}-->
+<div class="control-group">
+<label class="control-label" for="inputEmail">{lang register_message}*:</label>
+<div class="controls">
+	<input type="text" id="regmessage" name="regmessage" autocomplete="off" size="25" tabindex="1" class="span" />
+	<span class="help-block">{lang register_message1}</span>
+</div>
+</div>
+	<!--{/if}-->
+<!--
+<!--{loop $_G['cache']['fields_register'] $field}-->
+<!--{if $htmls[$field['fieldid']]}-->
+	<p><strong>$field[title]*</strong>
+	<br />
+	$htmls[$field['fieldid']]<!--{if $field['required']}--><!--{/if}--></p>
+<!--{/if}-->
+<!--{/loop}-->
+-->
+
+<!--{if $secqaacheck || $seccodecheck}-->
+	<!--{subtemplate common/seccheck}-->
+<!--{/if}-->
+	<p class="mtn">
+		<input class="btn btn-success btn-block" type="submit" name="regsubmit" id="registerformsubmit" value="{lang submit}" />
+	</p>
+	</div>
+</div>
+</form>
+<!--{eval updatesession();}-->
+<!--{template common/footer}-->

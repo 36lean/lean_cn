@@ -1,0 +1,108 @@
+<div class="container">
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="reader.php">首页</a></li>
+            <li><a href="reader.php/category/1">精益生产</a></li>
+            <li><a href="reader.php/category/2">精益创业</a></li>
+            <li><a href="reader.php/category/3">六西格玛</a></li>
+            <li><a href="reader.php/category/4">改善</a></li>
+            <li><a href="reader.php/category/5">浪费</a></li>
+          </ul>
+</div>
+</div>
+<div class="page-header">
+<h3>精益创业你学得会</h3>
+<small>
+文章发表于 2013年08月12日 02时00分</small>
+</div>
+<blockquote>前晚参加了由CSDN移动开发者俱乐部举办的线下沙龙主题演讲活动—从程序员的视角，实践精益创业。活动演讲嘉宾为李路knewone知新 CTO，另一位是钟大伟 路况电台 CTO。路况电台之前Gauin在极客公园创新大会一文有介绍。今天重点谈李路的主题演讲。说实话，这次活动是奔着李路大哥去的。去年夏天有幸一起聊过，对我提了不少建议。他是个有理想、有追求、有智慧的全能产品人。骨子里我和他是 ... ... </blockquote>
+<div align="center">
+<p><img src="http://upload.chinaz.com/2013/0329/1364519426315.jpg" data-original="http://upload.chinaz.com/2013/0329/1364519426315.jpg" style="max-width:600px;" /></p>
+<p>附图</p>
+</div>
+<div class="container">
+<p>前晚参加了由CSDN移动开发者俱乐部举办的线下沙龙主题演讲活动—从程序员的视角，实践精益创业。活动演讲嘉宾为李路&nbsp;knewone知新 CTO，另一位是钟大伟 路况电台 CTO。路况电台之前Gauin在极客公园创新大会一文有介绍。今天重点谈李路的主题演讲。</p><p>说实话，这次活动是奔着李路大哥去的。去年夏天有幸一起聊过，对我提了不少建议。他是个有理想、有追求、有智慧的全能产品人。骨子里我和他是一类人，所以我很敬佩他，欣赏这位大哥。感谢去年的建议，感谢今年这次很受用的演讲—从程序员的视角，实践精益创业。</p>
+<p>精益创业（The Lean Startup），最早一次在微博上注意到。之后有好几次有人推荐这本书，于是在2013年1月5日我把这本书加入了我的豆瓣读书列表。</p>
+<p>精益创业重点在于一个<strong>新产品新想法的诞生过程</strong>，创业二字体现做事儿的态度，以创业心态做事。它适用于创业型小团队，也适用于大公司内部的小团队。精益创业，低成本快速高效做出产品。<strong>快速做实验，快速做调整，让成本最小化，速度最大化。</strong></p>
+<p>案例分享：李路曾经作为新浪音乐社区技术经理，带领40人团队花费近6个月时间去完成老板要的牛逼的能打败豆瓣音乐的音乐社区产品。2个月时间定义
+好产品，2个月时间抄下了所有音乐的产品功能，2个月时间测试。做完之后认为很牛叉，凭借新浪强大的用户群，绝对能打败豆瓣音乐。<strong>但产品上线了，用户不用社区，完全满足不了用户需求。用户只听歌，没有社区的需求。</strong></p>
+<p>这个项目的失败，估计和大多数产品团队的经历很相似。曾经开始前是多么信心满满，花费了大量的人力物力财力，但最后却无人问津。<strong>精益创业的核心思想，不浪费！</strong></p>
+<p style=";text-align: center;"><img src="http://upload.chinaz.com/2013/0329/1364519426797.jpg" alt="实践精益创业主题演讲-Srart" title="实践精益创业主题演讲-Srart" border="0" height="145" width="300"></p>
+<p style="text-align: center;">实践精益创业主题演讲-Srart</p>
+<p><strong>1、Start 开始上路</strong></p>
+<p><strong>如何获得一个好产品idea?</strong></p>
+<p><strong>Live in the future, then build what seems interesting.活在未来，然后做有趣的事情。</strong>你心中有iPhone，才会做出几年后才会流行的iPhone；你的思维，你的世界应该是超前的，只有你能预知未来，预测未来，你的产品才会有充足的时间和实力赶上成功浪潮。<strong>每个时代都有梦想，而你就要在时代来临之前正好能完成这个梦想。</strong></p>
+<p>能走多远</p>
+<p>开源节流，想办法挣钱，减少成本。</p>
+<p>团队</p>
+<p>如何选择合作者？</p>
+<p>角色互补，能力互补，精锐。尽可能保持最小作战团队，一定要精锐。</p>
+<p>团队要学会做的两件事：观察、决策</p>
+<p>观察—通过不断观察产品，快速做出调整。不停循环这个过程，快速验证产品的多个可能。</p>
+<p>决策—<strong>可逆决策</strong>，更快最决定，看效果。超过10分钟做可逆决策，就说明团队有问题，2-3分钟最好；<strong>不可逆决策</strong>，需要会议决策，但不要像Dang会议不断，会议很长。30分钟能搞定的就快速决策搞定。会前做好资料准备，别准备哪些没用的论据然后大吵特吵，会议争论最后都会失去理性而为架势争吵。</p>
+<p><strong>Start Small，Stay Small.团队不要盲目扩大</strong>，要精英不要菜鸟，哪怕团队中有一个菜鸟也不行。knew团队现在2.5个高手，但不急于扩充团队。</p>
+<p>团队需要多面手，你总不能只写代码就不干其他的。不能只管自己，还要看团队的未来，帮忙做其他的事情。</p>
+<p>精益创业的团队管理，不要牵扯过多的事情。<strong>Keep It Simple Stupid 保持简单</strong></p>
+<p>扩展阅读：Haceker，黑客，通过编程实现有精彩的事情，并不断追求精彩。并非是干坏事的人。</p>
+<p><strong>2、Stage 执行阶段</strong></p>
+<p style=";text-align: center;"><img src="http://upload.chinaz.com/2013/0329/1364519426575.png" alt="精益创业精髓-循环" title="精益创业精髓-循环" border="0" height="188" width="300"></p>
+<p style="text-align: center;">精益创业精髓-循环</p>
+<p>这张图核心在于循环,而循环的<strong>起点是Build构建产品</strong>；<strong>然后Measure衡量产品</strong>，通过数据分析；<strong>最后Learn学习和调整阶段</strong>。<strong>不停实践，不停循环</strong>，尽早发现未来如何走。这，就是Lean精益的过程。</p>
+<p><strong>Build构建产品</strong></p>
+<p>做一个<strong>MVP（Minimum Viable Products），即最小化可能产品</strong>，验证想法的可行性。即最能代表你产品想法的某个功能的产品，<strong>用一个功能打动用户</strong>即可。别等着做好了，做完整了才上线。试问如此快速的互联网环境，未来是什么？等你出来黄花菜都凉了。</p>
+<p>GroupOn公司最开始的业务濒临破产，而团购业务仅仅是一个想法，创始人花费2个小时在博客上发布了楼下快餐店的折扣信息，快速得到几十人的响
+应并得到了优惠。连续几个月都是通过博客发布优惠信息，用户乐意极了，愿意为这项服务买单并口碑相传。之后架构正式的网站，就是现在的GroupOn。</p>
+<p><strong>用最简单的方法，哪怕是挂出一个静态页</strong>，用户非常感兴趣，愿意为你支付费用购买服务，那你就被证明成功了。你花时间推倒重建，再购买服务器都行。因为你的想法已经被证明，你成功了。</p>
+<p><strong>期间证明想法成功了，但被腾讯抄袭了怎么办？</strong></p>
+<p>1、大公司开始一个项目行动力没有这么快，一般求稳发展。小公司行动力强，快。例如百度对广告验证码的项目，响动了1年半之后没有见到响动了。</p>
+<p>2、大公司抄袭产品，你是领头羊，你知道在哪里拐弯朝哪个方向走。但是，你没有犯错的机会。</p>
+<p>3、大公司若真的看上了某个项目，铁了心要做。那只能说你倒霉，项目放弃吧。不然以后死的更惨。</p>
+<p><strong>如何做一个最小化可能产品？</strong></p>
+<p>自己做，不要等，自己动手最快。将想法告诉别人，等有CTO了再开始干？找人需要时间，让队友理解也需要时间。自己动手，最了解自己想要的。</p>
+<p>粗糙没关系，做的最简单（刚好一个人也没法做多余的事情）。</p>
+<p>赶紧上线，放到网上让用户看见后才知道是否这个产品是否可能。</p>
+<p><strong>Measure衡量产品</strong></p>
+<p>对用户行为分析。他们是否爱你？用户对你的产品<strong>是否一见钟情</strong>；他们是否愿意给你钱，购买你商品或者服务。<strong>喜欢并给你钱</strong>，这是两个重要的衡量指标。</p>
+<p><strong>Learn学习调整</strong></p>
+<p>从数据学习并调整产品，三个维度：</p>
+<p><strong>Tracking 跟踪</strong>，以前端用户行为跟踪，需求分析为主，后端性能暂时不管；</p>
+<p><strong>Sorting 排序</strong>（优先级），对用户行为分析，需求分析整理需求优先级；</p>
+<p><strong>Optimizing 优化</strong>，针对需求优先级对产品进行优化。</p>
+<p><strong>3、Stack 架构阶段</strong></p>
+<p>框架：Omakase</p>
+<p>Twitter Bootstrap、Github社区开源项目的使用。</p>
+<p>前端：不要使用PS切图的老式手法干活了，那些效果HTML5都可以弄出来。</p>
+<p><strong>最开始做手机端，然后做平板端，最后做电脑端。</strong>即产品越做越大，最初产品功能最简单最容易上手起步。手机端屏幕就那么大，最适合最核心功能产品起步了。</p>
+<p>后端：后端不用做优化，量级到了再说。能保证用户访问即可。多用云存储数据解决方案。</p>
+<p><strong>额外奉送一些感慨：</strong></p>
+<p>精益创业，实际上和程序员解决问题的思维模式一脉相承，也是从程序员思维中提炼而来。</p>
+<p>现在受推崇的极简主义设计风格，似乎在走5060年代的复古风。而早期这些风格是由技术先辈们奠定的。</p>
+<p>Google推崇工程师文化，我也同样赞同能想到并做到的产品人。其实，像李路、张沈鹏张教主这样的独立产品人是很应该值得我们学习和敬佩的。产品会技术，相当于流氓会武术。但凡有思想有行动力的产品人，都应该学点技术折腾一下。</p>
+<p>团队成员中，工作讲究高效。你能4天写完一个产品上线吗？你能2小时准备一个演讲吗？<strong>是否在混日子，是否有问题，你自己最清楚！</strong>Gauin时常能发现自己的问题，并努力尽快改变。同学：希望，你也能。</p>
+<p><br></p></div>
+<blockquote class="pull-right"><i class="icon-info-sign"></i> 作者: <strong>Gauin</strong> 点击量: <strong>1</strong> 评论: <strong>0</strong></blockquote>
+<script type="text/javascript" charset="utf-8">
+(function(){
+  var _w = 106 , _h = 58;
+  var param = {
+    url:location.href,
+    type:'5',
+    count:'1', /**是否显示分享数，1显示(可选)*/
+    appkey:'1900535945', /**您申请的应用appkey,显示分享来源(可选)*/
+    title: "精益创业你学得会 前晚参加了由CSDN移动开发者俱乐部举办的线下沙龙主题演讲活动—从程序员的视角，实践精益创业。活动演讲嘉宾为李路knewone知新 CTO，另一位是钟大伟 路况电台 CTO。路况电台之前Gauin在极客公园创新大会一文有介绍。今天重点谈李路的主题演讲。说实话，这次活动是奔着李路大哥去的。去年夏天有幸一起聊过，对我提了不少建议。他是个有理想、有追求、有智慧的全能产品人。骨子里我和他是 ... . - 分享的内容来自精益云学院 36lean.com", /**分享的文字内容(可选，默认为所在页面的title)*/
+    pic:'http://upload.chinaz.com/2013/0329/1364519426315.jpg', /**分享图片的路径(可选)*/
+    ralateUid:'@精益云学院', /**关联用户的UID，分享微博会@该用户(可选)*/
+    language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
+    dpc:1
+  }
+  var temp = [];
+  for( var p in param ){
+    temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
+  }
+  document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://service.weibo.com/staticjs/weiboshare.html?' + temp.join('&amp;') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
+})()
+</script>

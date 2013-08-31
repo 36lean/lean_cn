@@ -1,0 +1,54 @@
+{template common/header}
+<div class="btn-group pull-right">
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    返回
+    <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+    	<li><a href="reader.php">首页</a></li>
+    	{loop $tmp_category $c}
+    	<li><a href="reader.php/category/{$c['id']}">{$c['title']}</a></li>
+    	{/loop}
+    </ul>
+</div>
+
+<div class="page-header">
+	<h3>{$category_info['title']}</h3>
+</div>
+
+{loop $list $article}
+<div class="row-fluid news_block">
+		
+	<div class="span3">
+		<img src="{$article['banner']}" data-original="{$article['banner']}" />
+	</div>
+
+	<div class="span9 ">
+		<h4><a href="reader.php/article/{$article['id']}">{$article['contenttitle']}</a> <small>{eval echo date('Y/m/d h:i' , $article['timecreated'])}</small></h4>
+		
+
+		<small>{$article['contentinfo']}</small>
+	</div>
+
+</div>
+{/loop}
+
+
+<div class="pagination pagination-centered">
+    <ul>
+    <li><a href="reader.php/category/{$id}/{eval echo $page-1 ? $page-1 : 1;}">上一页</a></li>
+		
+		<li class="active"><a href="reader.php/category/{$id}/{eval echo $page}">{$page}</a></li>
+		
+		<li><a href="reader.php/category/{$id}/{eval echo $page+1}">{eval echo $page+1}</a></li>
+		<li><a href="reader.php/category/{$id}/{eval echo $page+2}">{eval echo $page+2}</a></li>
+		<li><a href="reader.php/category/{$id}/{eval echo $page+3}">{eval echo $page+3}</a></li>
+		<li><a href="reader.php/category/{$id}/{eval echo $page+4}">{eval echo $page+4}</a></li>
+
+    <li><a href="reader.php/category/{$id}/{eval echo $page+1}">下一页</a></li>
+    </ul>
+</div>
+
+
+
+{template common/footer}

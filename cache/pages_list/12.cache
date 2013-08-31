@@ -1,0 +1,524 @@
+<!--<script>
+jQuery( function() {
+  jQuery.ajax({
+    url : 'lesson.php',
+    type : 'GET',
+    data : { click_collection:1 , id: "12", type:'c'},
+    dataType:'html',
+  });
+});
+</script>
+-->
+
+<div class="container">
+<p class="text-left"> 
+  <a href="lesson.php"><i class="icon-home"></i> 在线课程</a> <span class="divider">/</span> 
+  <a href="lesson.php?pages_list=12"><i class="icon-book"></i> 价值流分析</a> 
+</p>
+</div>
+
+<div class="page-header">
+  <h2 align="center">价值流分析 </h2>
+</div>
+
+<div class="row-fluid">
+
+  <div class="span6">
+  <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
+  <p>在这个课程种你和你的组织将学习到如何使用VSM价值流工具和原则. 比如价值流分析, 节拍时间,看板,错误根本原因和均衡化生产力.
+
+在这个课程中你将从一家制造公司学习到如何创建两种图标未来图和现状图. 
+</p>
+  <blockquote><i class="icon-info-sign"></i> 分类</blockquote>
+  <p>精益课程</p>
+  </div>
+
+
+  <div class="span6">
+    <img class="img-polaroid lazy" src="uploads/course/12.png" data-original="uploads/course/12.png" style="width:80%;" />
+  </div>
+
+</div>
+
+<hr>
+
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span3">
+    <div>
+
+            
+
+        
+    
+  
+    <ul class="nav nav-list well">
+      <li><h4><i class="icon-list"></i> 导航</h4></li>
+      <li class="nav-header"><i class="icon-align-justify"></i> 课程大纲</li>
+            <li><a href="lesson.php?page_content=128"><small><strong>第1节 价值流概</strong></small></a></li>
+            <li><a href="lesson.php?page_content=129"><small><strong>第2节 产品家族</strong></small></a></li>
+            <li><a href="lesson.php?page_content=130"><small><strong>第3节 价值流图</strong></small></a></li>
+            <li><a href="lesson.php?page_content=131"><small><strong>第4节 计算节拍</strong></small></a></li>
+            <li><a href="lesson.php?page_content=132"><small><strong>第5节 现状第一</strong></small></a></li>
+            <li><a href="lesson.php?page_content=133"><small><strong>第6节 现状第二</strong></small></a></li>
+            <li><a href="lesson.php?page_content=134"><small><strong>第7节 持续流</strong></small></a></li>
+            <li><a href="lesson.php?page_content=135"><small><strong>第8节 周期时间</strong></small></a></li>
+            <li><a href="lesson.php?page_content=136"><small><strong>第9节 下拉式</strong></small></a></li>
+            <li><a href="lesson.php?page_content=137"><small><strong>第10节 均衡生产</strong></small></a></li>
+            <li><a href="lesson.php?page_content=138"><small><strong>第11节 未来状态</strong></small></a></li>
+            <li><a href="lesson.php?page_content=139"><small><strong>第12节 未来状态</strong></small></a></li>
+            <li><a href="lesson.php?page_content=140"><small><strong>第13节 总结陈词</strong></small></a></li>
+            <li><a href="lesson.php?page_content=141"><small><strong>第14节 单件流模</strong></small></a></li>
+            <li><a href="lesson.php?page_content=142"><small><strong>第15节 交易化详</strong></small></a></li>
+            <li><a href="lesson.php?page_content=143"><small><strong>第16节 交易化详</strong></small></a></li>
+            
+          </ul>
+    
+    
+    </div>
+  </div>
+
+
+<div class="span7">
+                          <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="128" href="lesson.php?page_content=128" title="第1节 价值流概述">
+                
+                                <img class="img-polaroid lazy" id="128" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-01.png" alt="第1节 价值流概述" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-01.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="128" href="lesson.php?page_content=128" title="第1节 价值流概述">
+                    第1节 价值流概述                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                简单介绍了价值流程图以及制作流程图的步骤。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="129" href="lesson.php?page_content=129" title="第2节 产品家族选择">
+                
+                                <img class="img-polaroid lazy" id="129" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-02.png" alt="第2节 产品家族选择" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-02.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="129" href="lesson.php?page_content=129" title="第2节 产品家族选择">
+                    第2节 产品家族选择                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何运用产品制造工艺（PR）及产品质量（PQ）分析。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="130" href="lesson.php?page_content=130" title="第3节 价值流图示">
+                
+                                <img class="img-polaroid lazy" id="130" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-03.png" alt="第3节 价值流图示" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-03.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="130" href="lesson.php?page_content=130" title="第3节 价值流图示">
+                    第3节 价值流图示                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                熟悉最常用的价值流程图形状及图标。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="131" href="lesson.php?page_content=131" title="第4节 计算节拍时间">
+                
+                                <img class="img-polaroid lazy" id="131" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-04.png" alt="第4节 计算节拍时间" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-04.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="131" href="lesson.php?page_content=131" title="第4节 计算节拍时间">
+                    第4节 计算节拍时间                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                了解什么是节拍时间及运算方法。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="132" href="lesson.php?page_content=132" title="第5节 现状第一部分">
+                
+                                <img class="img-polaroid lazy" id="132" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-05.png" alt="第5节 现状第一部分" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-05.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="132" href="lesson.php?page_content=132" title="第5节 现状第一部分">
+                    第5节 现状第一部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                创建现状价值流程图需要练习。熟悉相关知识，并创建你自己的价值流程图！              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="133" href="lesson.php?page_content=133" title="第6节 现状第二部分">
+                
+                                <img class="img-polaroid lazy" id="133" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-06.png" alt="第6节 现状第二部分" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-06.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="133" href="lesson.php?page_content=133" title="第6节 现状第二部分">
+                    第6节 现状第二部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                了解树顶公司是如何创建他们的现状价值流程图的。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="134" href="lesson.php?page_content=134" title="第7节 持续流">
+                
+                                <img class="img-polaroid lazy" id="134" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-07.png" alt="第7节 持续流" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-07.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="134" href="lesson.php?page_content=134" title="第7节 持续流">
+                    第7节 持续流                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何实现单次单件流。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="135" href="lesson.php?page_content=135" title="第8节 周期时间及节拍时间">
+                
+                                <img class="img-polaroid lazy" id="135" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-08.png" alt="第8节 周期时间及节拍时间" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-08.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="135" href="lesson.php?page_content=135" title="第8节 周期时间及节拍时间">
+                    第8节 周期时间及节拍时间                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何平衡周期时间和节拍时间以实现价值流持续流动。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="136" href="lesson.php?page_content=136" title="第9节 下拉式">
+                
+                                <img class="img-polaroid lazy" id="136" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-09.png" alt="第9节 下拉式" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-09.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="136" href="lesson.php?page_content=136" title="第9节 下拉式">
+                    第9节 下拉式                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习推式和拉式的区别。同时学习看板的定义及使用方法。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="137" href="lesson.php?page_content=137" title="第10节 均衡生产">
+                
+                                <img class="img-polaroid lazy" id="137" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-10.png" alt="第10节 均衡生产" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-10.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="137" href="lesson.php?page_content=137" title="第10节 均衡生产">
+                    第10节 均衡生产                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                在使用看板之前，我们必须实现均衡生产。这个单元你将学习到均衡化（Heijunka）的概念。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="138" href="lesson.php?page_content=138" title="第11节 未来状态1">
+                
+                                <img class="img-polaroid lazy" id="138" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-11.png" alt="第11节 未来状态1" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-11.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="138" href="lesson.php?page_content=138" title="第11节 未来状态1">
+                    第11节 未来状态1                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                全部汇总至未来状态价值流程图。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="139" href="lesson.php?page_content=139" title="第12节 未来状态2">
+                
+                                <img class="img-polaroid lazy" id="139" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-12.png" alt="第12节 未来状态2" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-12.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="139" href="lesson.php?page_content=139" title="第12节 未来状态2">
+                    第12节 未来状态2                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                观看树顶公司是如何计划将企业从一个大批量生产商转变为精益生产商。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="140" href="lesson.php?page_content=140" title="第13节 总结陈词">
+                
+                                <img class="img-polaroid lazy" id="140" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-13.png" alt="第13节 总结陈词" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-13.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="140" href="lesson.php?page_content=140" title="第13节 总结陈词">
+                    第13节 总结陈词                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                最后让对大家作出鼓励并提了一些意见。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="141" href="lesson.php?page_content=141" title="第14节 单件流模拟">
+                
+                                <img class="img-polaroid lazy" id="141" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-14.png" alt="第14节 单件流模拟" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-14.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="141" href="lesson.php?page_content=141" title="第14节 单件流模拟">
+                    第14节 单件流模拟                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何用装信封练习进行单件流模拟。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="142" href="lesson.php?page_content=142" title="第15节 交易化详细流程图1">
+                
+                                <img class="img-polaroid lazy" id="142" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-15.png" alt="第15节 交易化详细流程图1" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-15.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="142" href="lesson.php?page_content=142" title="第15节 交易化详细流程图1">
+                    第15节 交易化详细流程图1                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习一个简单但极其强大的用于绘制交易过程图的方法。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid">
+            <div class="row-fluid well">
+              <div class="span4 text-center">
+                <a id="143" href="lesson.php?page_content=143" title="第16节 交易化详细流程图2">
+                
+                                <img class="img-polaroid lazy" id="143" src="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-16.png" alt="第16节 交易化详细流程图2" data-original="http://36lean.oss.aliyuncs.com/GA/VSM/PNG/VSM-16.png" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="143" href="lesson.php?page_content=143" title="第16节 交易化详细流程图2">
+                    第16节 交易化详细流程图2                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习一个简单但极其强大的用于绘制交易过程图的方法。              </div>
+
+            </div>
+            </div>
+            
+      </div>
+
+
+
+
+</div>
+</div>
+
+

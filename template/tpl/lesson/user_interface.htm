@@ -1,0 +1,80 @@
+<div class="container">
+  <p><a href="user.php?ac=sub_plan"><img class="img-polaroid lazy" src="{$_G['siteurl']}static/mot/course_banner.gif" data-original="{$_G['siteurl']}static/mot/course_banner.gif" width="99%" /></a></p>
+  
+  <div class="row">
+    {loop $c $key=>$course}
+    <div class="span4">
+      <div class="content"  style="height:420px;">
+      <div class="page-header">
+        <h3>
+          {$course['fullname']}
+          <small>
+            {$cat[$course['category_id']]}
+          </small>
+        </h3>
+      </div>
+      <div>
+
+        <div class="page-header">
+          <a href="lesson.php?pages_list={$course['id']}">
+            <img class="lazy" width="100%" style="height:120px" src="uploads/small/{$course['logo']}"  data-original="uploads/small/{$course['logo']}"
+            alt="{$course['fullname']}" />
+          </a>
+        </div>
+        
+        <div>
+          <p>
+            {eval echo cutstr( $course['summary'] , 80 , ' ... ');}
+          </p>
+          <p class="text-right"><a href="lesson.php?pages_list={$course['id']}"> 更多 <i class="icon-share-alt"></i></a></p>
+            <a class="btn btn-primary start-button" href="lesson.php?pages_list={$course['id']}">
+              开始学习
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    {if ($key+1)%3 === 0}
+    </div></div>
+<div class="container">
+  <div class="row">{/if}
+    {/loop}
+
+  </div>
+</div>
+
+
+  
+
+
+
+
+
+
+    <div class="span12 pagination" align="center">
+      {if isset($_GET['category'])}
+              <ul>
+                <li><a href="lesson.php?category={$_GET['category']}&page={eval echo $page-1}">&laquo;</a></li>
+                <li class="active"><a href="lesson.php?category={$_GET['category']}&page={eval echo $page}">{eval echo $page}</a></li>
+                <li><a href="lesson.php?category={$_GET['category']}&page={eval echo $page+1}">{eval echo $page+1}</a></li>
+                <li><a href="lesson.php?category={$_GET['category']}&page={eval echo $page+2}">{eval echo $page+2}</a></li>
+                <li><a href="lesson.php?category={$_GET['category']}&page={eval echo $page+1}">&raquo;</a></li>
+              </ul>
+      {else}
+              <ul>
+
+                {if $page-2>0}<li><a href="lesson.php?page={eval echo $page-1}">&laquo;</a></li>{/if}
+                {if $page-4>0}<li><a href="lesson.php?page={eval echo $page-2}">{eval echo $page-4}</a></li>{/if}
+                {if $page-3>0}<li><a href="lesson.php?page={eval echo $page-1}">{eval echo $page-3}</a></li>{/if}                
+                {if $page-2>0}<li><a href="lesson.php?page={eval echo $page-2}">{eval echo $page-2}</a></li>{/if}
+                {if $page-1>0}<li><a href="lesson.php?page={eval echo $page-1}">{eval echo $page-1}</a></li>{/if}
+                <li class="active"><a href="lesson.php?page={eval echo $page}">{eval echo $page}</a></li>
+                {if $page+1<=$all_pages}<li><a href="lesson.php?page={eval echo $page+1}">{eval echo $page+1}</a></li>{/if}
+                {if $page+2<=$all_pages}<li><a href="lesson.php?page={eval echo $page+2}">{eval echo $page+2}</a></li>{/if}
+                {if $page+3<=$all_pages}<li><a href="lesson.php?page={eval echo $page+3}">{eval echo $page+3}</a></li>{/if}
+                {if $page+4<=$all_pages}<li><a href="lesson.php?page={eval echo $page+4}">{eval echo $page+4}</a></li>{/if}
+                {if $page+4<=$all_pages}<li><a href="lesson.php?page={eval echo $page+1}">&raquo;</a></li>{/if}
+              </ul>
+      {/if}
+    </div>

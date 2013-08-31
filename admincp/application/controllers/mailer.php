@@ -1,0 +1,177 @@
+<?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+require 'Base_Controller.php';
+
+
+class Mailer extends Base_Controller {
+
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('mailer/m_mailer' , 'mailer');
+		$this->load->model('client/client_get' , 'client_get');
+		
+		if( !$this->cache->file->get('smtp')) {
+			$smtp = $this->mailer->get_mail_config();
+			$this->cache->file->save('smtp', $smtp , 86400);
+		}
+
+		$this->load->model('client/client_get');
+
+	}
+
+	public function navigation() {
+		return array(
+			'index',
+			'mail_template',
+			'mail_sender',
+			'mail_program',
+			'mail_configure',
+
+		);
+	}
+
+	public function index() {
+		if( isset( $_POST['add'])) {
+			$status = $this->mailer->create_template();
+		}else {
+			$status = Status::NO_ACTION;
+		}
+		$this->layout->view('mailer/index' , array('status' => $status));
+	}
+
+	public function mail_sender( $page = 1 , $offset = 500) {
+
+		if( isset( $_POST['add'])) {
+
+
+			if( Status::INSERT_SUCCESS === $this->mailer->create_task()) {
+				redirect( current_url());
+			}
+		}
+
+		$sum = $this->client_get->get_sum_of_clients();
+
+		//$client = $this->client_get->get_clients_by_batch(  $page , $offset);
+
+		$template = $this->mailer->get_templates_list();
+
+
+
+		$this->layout->view('mailer/mail_sender' , array('template' => $template ,
+														 'sum'      => $sum ,
+														 )
+		);
+	}
+
+	public function mail_template() {
+
+		$template_list = $this->mailer->get_templates_list();
+
+		$this->layout->view('mailer/mail_template' , array('list' => $template_list));
+	}
+
+	public function mail_program() {
+		$tasks = $this->mailer->list_task();
+
+		$this->layout->view('mailer/mail_program' , array( 'tasks' => $tasks));
+	}
+
+	public function run_task( $id) {
+		$id = intval( $id);
+
+		$task = $this->mailer->run_task( $id);
+
+		$this->layout->view( 'mailer/run_task' , array( 'task' => $task));
+		
+	}
+
+	public function mail_configure() {
+		
+		//更新缓存的 smtp信息
+		$smtp = $this->mailer->get_mail_config();
+		$this->cache->file->save('smtp', $smtp , 8640000);
+		
+		if( isset( $_POST['add'])) {
+			$status = $this->mailer->add_mail_stmp();
+		}
+		else 
+		{
+			$status = Status::NOTHING;
+		}
+
+		$list = $this->mailer->get_smtp_list();
+
+		$this->layout->view('mailer/mail_configure' , array( 'status' => $status , 'list' => $list));
+	}
+
+	public function edit_config( $id) {
+
+		$id = intval( $id);
+
+		if( isset( $_POST['save'])) {
+			$ok = $this->mailer->save_config();
+		}else {
+			$ok = null;
+		}
+
+		$conf = $this->mailer->get_conf( $id);
+
+		$status = Status::NOTHING;
+
+		$list = $this->mailer->get_smtp_list();
+
+		$this->layout->view('mailer/mail_configure' , array( 'ok' => $ok,'conf' => $conf[0] , 'status' => $status , 'list' => $list));
+	}
+
+	public function del_config( $id) {
+		$id = intval( $id);
+
+		$this->mailer->del_config( $id);
+
+		redirect( base_url(). 'index.php/mailer/mail_configure');
+	}
+
+	public function template_view( $id) {
+		$id = intval( $id);
+		$template = $this->mailer->get_template_by_id( $id);
+
+		require_once 'data/mail/header.html';
+		echo $template[0]['mail_template'];
+		require_once 'data/mail/footer.html';
+	}
+
+	public function template_edit( $id = 1) {
+		$id = intval( $id);
+
+		if( isset( $_POST['update'])) {
+			$this->mailer->template_edit();
+
+			$id = intval( $this->input->post('id'));
+		}
+
+		$template = $this->mailer->get_template_by_id( $id);
+		$this->layout->view('mailer/template_edit' , array('template' => $template[0]));
+	}
+
+	public function send_information( $id) {
+
+		$id = intval( $id);
+
+		$info = $this->mailer->get_send_task_information( $id);
+
+		$spy = $this->mailer->get_spy_data( $id);
+
+		$this->layout->view('mailer/send_information' , array('info' => $info[0] , 'spy' => $spy));
+	}
+
+	public function template_del( $id) {
+		$this->mailer->template_del( $id);
+		redirect( base_url(). 'index.php/mailer/mail_template');
+	}
+
+	public function __toString() {
+		return strtolower( __CLASS__);
+	}
+
+}

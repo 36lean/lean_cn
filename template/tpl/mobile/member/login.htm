@@ -1,0 +1,98 @@
+<!--{subtemplate common/header}-->
+{eval $loginhash = 'L'.random(4);}
+<div class="">
+<ul class="breadcrumb">
+
+	<li><a href="forum.php">{lang return_forum}</a><span class="divider">/</span></li>
+	<li><a href="javascript:history.back();" onclick="javascript:history.back();" title="{lang goback}" >{lang goback}</a></li>
+
+</ul>
+</div>
+
+
+
+
+<div class="container">
+	<p class="lead">{lang login}</p>
+
+		<form class="form-inline" method="post" action="member.php?mod=logging&action=login&loginsubmit=yes&loginhash=$loginhash&mobile=yes" onsubmit="{if $_G['setting']['pwdsafety']}pwmd5('password3_$loginhash');{/if}" >
+
+		<input type="hidden" name="formhash" id="formhash" value='{FORMHASH}' />
+		<input type="hidden" name="referer" id="referer" value="<!--{if dreferer()}-->{echo dreferer()}<!--{else}-->forum.php?mobile=yes<!--{/if}-->" />
+
+
+		<div class="control-group">
+			<div class="controls">
+				<select class="span12" name="fastloginfield" id="fastloginfield_{$loginhash}" >
+					<option value="username">{lang username}</option>
+					<!--{if getglobal('setting/uidlogin')}-->
+					<option value="uid">UID</option>
+					<!--{/if}-->
+					<option value="email">Email</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+				<input class="span12" type="text" name="username" id="username_{$loginhash}"/>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+		{lang password}:<input type="password" name="password" id="password3_$loginhash" class="span12" value='' />
+			</div>
+		</div>
+
+
+	
+		<!--{if $secqaacheck || $seccodecheck}-->
+		<!--{subtemplate common/seccheck}-->
+		<!--{/if}-->
+		<div class="control-group">
+			<div class="controls">
+				<input class="btn btn-success btn-block" type="submit" name="submit" id="submit" value="{lang login}" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">		
+				<input class="btn btn-block" type="reset" value="{lang reset}" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+		<select class="span12" name="questionid" id="questionid_{$loginhash}" >
+		<option value="0">{lang security_question}</option>
+		<option value="1">{lang security_question_1}</option>
+		<option value="2">{lang security_question_2}</option>
+		<option value="3">{lang security_question_3}</option>
+		<option value="4">{lang security_question_4}</option>
+		<option value="5">{lang security_question_5}</option>
+		<option value="6">{lang security_question_6}</option>
+		<option value="7">{lang security_question_7}</option>
+		</select>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+				<input type="text" name="answer" id="answer_{$loginhash}" class="span12" />
+			</div>
+		</div>
+
+		<label>
+			<input type="checkbox" name="cookietime" id="cookietime_{$loginhash}" class="pc" value="2592000" checked="checked" />{lang login_permanent}
+		</label>
+	</p>
+
+</form>
+</div>
+
+<!--{if $_G['setting']['pwdsafety']}-->
+	<script type="text/javascript" src="{$_G['setting']['jspath']}md5.js?{VERHASH}" reload="1"></script>
+<!--{/if}-->
+<!--{eval updatesession();}-->
+<!--{subtemplate common/footer}-->

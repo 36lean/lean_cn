@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[cloudstat.plugin]]></item>
+	<item id="RevisionID"><![CDATA[1231]]></item>
+	<item id="SN"><![CDATA[2013031513HApCbeEHSO]]></item>
+	<item id="RevisionDateline"><![CDATA[1336042161]]></item>
+	<item id="Data">
+		<item id="/discuz_plugin_cloudstat_SC_GBK.xml"><![CDATA[06044187e7b19473c76c9544bec0be61]]></item>
+		<item id="/discuz_plugin_cloudstat_TC_BIG5.xml"><![CDATA[b2b744149f1dde950a416f82e630633b]]></item>
+		<item id="/cloudstat.class.php"><![CDATA[02fa020cd3da7c2ef57345da9c745c33]]></item>
+		<item id="/discuz_plugin_cloudstat_SC_UTF8.xml"><![CDATA[55a9b3e7b63c7555d9b94c17f6236788]]></item>
+		<item id="/index.htm"><![CDATA[7215ee9c7d9dc229d2921a40e899ec5f]]></item>
+		<item id="/discuz_plugin_cloudstat_TC_UTF8.xml"><![CDATA[be79a53190c4c7b99557f3265334d899]]></item>
+	</item>
+</root>

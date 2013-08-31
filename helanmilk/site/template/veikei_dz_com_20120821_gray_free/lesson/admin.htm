@@ -1,0 +1,47 @@
+<!--{template common/header}-->
+
+<div class="fl bm">
+	<div class="bm bmw  cl">
+	<div class="bm_h cl">
+	<span class="o">
+	<img id="category_1_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_1');" />
+	</span>
+	<h2><a href="lesson.php" style="">添加课程</a></h2>
+	</div>
+	<div id="category_1" class="bm_c" style="">
+		<table>
+		<form class="" action="lesson.php" method="post">
+			<tr><td>课程名全称</td> <td><input type="text" name="fullname" /></td></tr>
+			<tr><td>简称</td> <td><input type="text" name="shortname" /></td></tr>
+			<tr><td>缩略图</td> <td><input type="text" name="logo" /></td></tr>
+			<tr><td></td> <td> <input type="submit" name="nextstep" value="下一步" /></td></tr>
+		</form>
+	</table>
+	</div>
+	</div>
+</div>
+
+
+<div class="fl bm">
+	<div class="bm bmw  cl">
+	<div class="bm_h cl">
+	<span class="o">
+	<img id="category_1_img" src="static/image/common/collapsed_no.gif" title="收起/展开" alt="收起/展开" onclick="toggle_collapse('category_1');" />
+	</span>
+	<h2><a href="lesson.php?admin=1" style="">编辑课程列表</a></h2>
+	</div>
+	<div id="category_1" class="bm_c" style="">
+	<table cellspacing="0" cellpadding="0" width="100%">
+		{loop $mdl_course $data}
+		<tr>
+			<td>{$data['id']}</td>
+			<td><a href="lesson.php?admin=1&course={$data['id']}" target="_blank"> {$data['shortname']}</td>
+			<td><a href="lesson.php?admin=1&remove={$data['id']}&removetype=course">删除</a></td>
+		</tr>
+		{/loop}
+		<tr class="fl_row">
+		</tr>
+		</table>
+	</div>
+	</div>
+</div>

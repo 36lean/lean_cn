@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[smstong.plugin]]></item>
+	<item id="RevisionID"><![CDATA[917]]></item>
+	<item id="SN"><![CDATA[2013031515x28W2GX7a7]]></item>
+	<item id="RevisionDateline"><![CDATA[1363335182]]></item>
+	<item id="Data">
+		<item id="/sendsms.inc.php"><![CDATA[19a453e0cae1e6d60f7ff303c812a678]]></item>
+		<item id="/install.php"><![CDATA[ad828dee9815dfb824a9d11439d87459]]></item>
+		<item id="/notify.inc.php"><![CDATA[20f0cfb129b3c96e09892a357ea8b041]]></item>
+		<item id="/recved.inc.php"><![CDATA[2b07d92788688d5fa57905c49d50f355]]></item>
+		<item id="/accountinfo.inc.php"><![CDATA[c9ef2e3d271742c48de548b1fe2ff48c]]></item>
+		<item id="/mobile.gif"><![CDATA[a8456b7c87b89a16b0d864edc166b3ac]]></item>
+		<item id="/upgrade.php"><![CDATA[7ac279838f7af7f026c99d8042b4d4bb]]></item>
+		<item id="/sended.inc.php"><![CDATA[499cb6b5fea783280b90b1f38bea2ae9]]></item>
+		<item id="/discuz_plugin_smstong_SC_GBK.xml"><![CDATA[d65f5c4e3d7a6c125e549cd84ae376ab]]></item>
+		<item id="/accountinfo.php"><![CDATA[bef07fc9f533994f4377903fd922eb29]]></item>
+		<item id="/discuz_plugin_smstong_TC_UTF8.xml"><![CDATA[36e1b66a2be6f542f17ba2e21358f401]]></item>
+		<item id="/smstong.class.php"><![CDATA[74eb30dda0d0072d0c7f93f64460413b]]></item>
+		<item id="/uninstall.php"><![CDATA[3f568e4d095eaf039f9173dc16dbc9ad]]></item>
+		<item id="/discuz_plugin_smstong_TC_BIG5.xml"><![CDATA[9e784b69a73aca0c656365a3e5f370cf]]></item>
+		<item id="/help.inc.php"><![CDATA[6a3b5ddb495c2e6fb00723aaee51a8a3]]></item>
+		<item id="/qunfasms.inc.php"><![CDATA[2b2b36d5ac0e9320a3f9070f6b407057]]></item>
+		<item id="/discuz_plugin_smstong_SC_UTF8.xml"><![CDATA[e7a4ea9855c8b9cff4a880a27c3f9a52]]></item>
+		<item id="/verifycode.inc.php"><![CDATA[b7dca5dac00c1fce99ce782dfa7b1d87]]></item>
+		<item id="/checkenv.inc.php"><![CDATA[7375987cc879d9c6063abfc27e24834d]]></item>
+		<item id="/template/bindmobile.htm"><![CDATA[a9861809b7518d7924bb0c8e59c12514]]></item>
+		<item id="/template/module.htm"><![CDATA[df686175583ca7300a681cbc9df47283]]></item>
+		<item id="/verifymgr.inc.php"><![CDATA[903bedd1aaccb485dfb4f3638fb81022]]></item>
+		<item id="/checkenv.php"><![CDATA[33a5ed5bdc37ee2c9594d4496ce62a24]]></item>
+		<item id="/smstong.func.php"><![CDATA[9c7e312aa161ba497a86dc2ab3fe1330]]></item>
+		<item id="/open189cn.php"><![CDATA[5f0b85a1446ef46effc2fa296db3b359]]></item>
+		<item id="/open189cn.inc.php"><![CDATA[328a45d745f340278f54d8ec14e2f8f2]]></item>
+	</item>
+</root>

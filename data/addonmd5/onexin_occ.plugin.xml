@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[onexin_occ.plugin]]></item>
+	<item id="RevisionID"><![CDATA[991]]></item>
+	<item id="SN"><![CDATA[201208212288e8EoTHhp]]></item>
+	<item id="RevisionDateline"><![CDATA[1362116413]]></item>
+	<item id="Data">
+		<item id="/discuz_plugin_onexin_occ_SC_UTF8.xml"><![CDATA[22458f74c6a33b5aeaf19b6c49c33d31]]></item>
+		<item id="/onexin_advance.inc.php"><![CDATA[3df9b1a434ac8f2cbb89b8dfece15d3e]]></item>
+		<item id="/onexin_occ.class.php"><![CDATA[14076c0fd7d376131d2aab8fe9231266]]></item>
+		<item id="/discuz_plugin_onexin_occ_SC_GBK.xml"><![CDATA[9dab6581bd28b3bea23237105bdddc7e]]></item>
+		<item id="/discuz_plugin_onexin_occ_TC_UTF8.xml"><![CDATA[f4ab7e91c0845ae0939199fd7cfc8f0c]]></item>
+		<item id="/discuz_plugin_onexin_occ_TC_BIG5.xml"><![CDATA[bf400e7aa7b480403ea293fa57ffb6aa]]></item>
+		<item id="/onexin_showcase.inc.php"><![CDATA[31d7416a2a1091266971c6a59a7a6942]]></item>
+		<item id="/template/post_occ_portal.htm"><![CDATA[7c017dfd6168db592c21c7b9f6e98092]]></item>
+		<item id="/template/post_occ_forum.htm"><![CDATA[265fd443a8454977c61f235f64f4b731]]></item>
+		<item id="/template/jquery.min.js"><![CDATA[cd8b0bffc85bb5614385ee4ce3596d07]]></item>
+	</item>
+</root>
