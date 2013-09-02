@@ -63,9 +63,15 @@ class Base_Controller extends CI_Controller {
 			}
 		}
 	}
+
+	public function top_menu()
+	{
+		return array(
+			'client_module' => '客户管理' ,
+		);
+	}
 	//@__toString
 	public function __toString() {
 		return strtolower( __CLASS__);
 	}
-
 }

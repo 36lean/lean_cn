@@ -35,15 +35,23 @@ class Client extends Base_Controller {
 
 	public function navigation() {
 		return array(
-			'index',
-			'excel',
-			'export',
-			'dispatch',
-			'dispatch_member',
-			'client_list',
-			'view_all_corporation',
-			'useless_profile'
+
+			array( 'route' => 'contact' , 'alias' => '联系人' ) ,
+
+
+			array( 'route' 	=> 'index' 					, 'alias' => '默认' ) ,
+			array( 'route'	=> 'excel'					, 'alias' => '导入数据' ) ,
+			array( 'route' 	=> 'export' 				, 'alias' => '导出数据' ) ,
+			array( 'route' 	=> 'dispatch'				, 'alias' => '分配' ) ,
+			array( 'route' 	=> 'client_list'			, 'alias' => '客户列表' ) ,
+			array( 'route' 	=> 'view_all_corporation'	, 'alias' => '企业列表' ) ,
+			array( 'route' 	=> 'useless_profile'		, 'alias' => '废纸篓' ) ,
 		);
+	}
+
+	public function  contact()
+	{
+		$this->layout->view('client/contact');
 	}
 
 	public function index()
