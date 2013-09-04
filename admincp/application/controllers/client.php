@@ -49,9 +49,44 @@ class Client extends Base_Controller {
 		);
 	}
 
-	public function  contact()
+	public function  contact( $page = 1 , $offset = 30)
 	{
-		$this->layout->view('client/contact');
+
+		if( isset( $_GET['search'])) {
+
+			if( trim( $_GET['key'])) {
+
+				$condition = $this->marketing->get_search();
+
+			}else {
+				$condition = '';
+			}
+			
+		}else {
+			$condition = '';
+		}
+
+		$uid = $this->_G['adminid'] ?  0 : $this->_G['uid'];
+		
+		$client = $this->marketing->get_clients( $page , $offset , $uid , $condition);
+		
+		$sum = $this->marketing->sum_of_clients();
+ 	
+		$this->layout->view('client/contact' , array( 'client' => $client , 
+													   'page' 	=> $page , 
+													   'offset' => $offset,
+													   'sum'    => $sum,
+													 )
+		);		
+
+		
+	}
+
+	public function edit_contact( $id)
+	{
+		$id = intval( $id) ;
+
+		$this->layout->view('client/edit_contact' , array('profile' => $this->client_member->get_contact_by_id( $id) ));
 	}
 
 	public function index()

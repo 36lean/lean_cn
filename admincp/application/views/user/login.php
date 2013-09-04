@@ -1,6 +1,5 @@
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="well span8 center login-box">
+
+		<div class="well center login-box">
 			<?php if( $code === 404){?>
 			<div class="alert alert-error">
 				<i class="icon-info-sign"></i> 密码错误
@@ -15,23 +14,28 @@
 			</div>			
 			<?php }?>
 			
-			<form class="form-horizontal" action="" method="post">
+			<form class="form-inline" action="" method="post">
 			<input name="hash" type="hidden" value="<?php echo random_string('alnum', 16);?>">
 			<fieldset>
-				<div class="input-prepend" title="Username" data-rel="tooltip">
-					<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" value="" />
+
+				<div class="control-group">
+				<div class="controls input-prepend">
+					<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large" name="username" id="username" type="text" value="" />
+				</div>
 				</div>
 				
-				<div class="clearfix"></div>
-				<div class="input-prepend" title="Password" data-rel="tooltip">
-					<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="password" id="password" type="password" value="" />
+				<div class="control-group">
+				<div class="controls input-prepend" title="Password" data-rel="tooltip">
+					<span class="add-on"><i class="icon-lock"></i></span><input class="input-large" name="password" id="password" type="password" value="" />
 				</div>
-				<div class="clearfix"></div>
-				<p class="center span3">
+				</div>
+
+				<div class="control-group">
+				<div class="controls" title="Password" data-rel="tooltip">
 					<button name="login" type="submit" class="btn btn-primary">登陆</button>
-				</p>
+				</div>
+				</div>
+				
 			</fieldset>
 			</form>
 		</div><!--/span-->
-	</div><!--/row-->		
-</div><!--/.fluid-container-->

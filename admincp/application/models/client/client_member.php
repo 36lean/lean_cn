@@ -42,4 +42,9 @@ class Client_member extends CI_Model {
 
 		return Status::FAIL;
 	}
+
+	public function get_contact_by_id( $id)
+	{
+		return $this->db->select('*')->from('admin_client')->where( array('id'=>$id))->get()->row_array();
+	}
 }

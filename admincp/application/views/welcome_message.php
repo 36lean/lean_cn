@@ -1,9 +1,9 @@
 <!--span-->
 
 
-<div class="box span2">
-	<div class="box-header well" data-original-title>
-		<h2><i class="icon-user"></i> 当前信息</h2>
+<div class="box span3 well">
+	<div class="box-header " data-original-title>
+		<h4><i class="icon-user"></i> 当前信息</h4>
 	</div>
 	
 
@@ -30,9 +30,9 @@
 </div><!--/span-->
 
 <?php if( intval( $user['adminid']) === 1){?>
-<div class="box span10">
-	<div class="box-header well" data-original-title>
-		<h2><i class="icon-envelope"></i> 网站留言箱</h2>
+<div class="span8">
+	<div class="well" data-original-title>
+		<h4><i class="icon-envelope"></i> 网站留言箱</h4>
 	</div>
 
 	<div class="box-content">
@@ -49,7 +49,7 @@
 		<?php foreach ($suggestion_list as $item) {
 		?>
 		<tr>
-			<td><?php echo $item['type'] ? $type[$item['type']] : '没有选择';?></td>
+			<td><span class="label label-success"><?php echo $item['type'] ? $type[$item['type']] : '没有选择';?></span></td>
 			<td><?php echo date('m/d h:i:s' , $item['timecreated']);?></td>
 			<td><?php echo $item['name'];?></td>
 			<td><?php echo $item['email'];?></td>

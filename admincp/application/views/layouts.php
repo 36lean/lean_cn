@@ -13,14 +13,6 @@
     <meta name="author" content="">
     <!-- The styles -->
     <link id="bs-css" href="<?php echo base_url();?>public/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-    </style>
     <link href="<?php echo base_url();?>public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href='<?php echo base_url();?>public/font-awesome/css/font-awesome.min.css' rel='stylesheet'>
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -49,33 +41,27 @@ else
         <ul class="nav">
             <li class="active"><a href="<?php echo base_url();?>index.php">首页</a></li>
         </ul>
+
+        <ul class="nav pull-right">
+            <li><a href="<?php echo site_url('user/logout');?>">注销登录</a></li>
+        </ul>
     </div>
 </div>
 </div>
-
 </div>
 
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span12">
-            <?php $this->load->module('webkit/menu/top');?>
-        </div>
-    </div>
 
-    <div class="row-fluid">
-        <div class="span12">
-            <?php $this->load->module('webkit/leftside/get_left_side');?>
-        </div>
-    </div>
+    <div class="container"><?php $this->load->module('webkit/menu/top');?></div>
+
+    <div class="container"><?php $this->load->module('webkit/leftside/get_left_side');?></div>
     
-    <div class="container-fluid">
+    <div class="container">
         <?php echo $content;?>
     </div>
 
-</div>
+
 <hr />
 <div class="container">
-    
     <h5><small>© 2013 36lean.com</small></h5>
     <h5><small> All rights reserved.</small></h5>
 </div>
