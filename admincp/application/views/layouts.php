@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="expires" content="Wed, 26 Feb 2027 08:21:57 GMT">
-    <meta http-equiv="Cache-Control" content="max-age=1" />
     <?php global $constant;?>
     <title>
         36lean
@@ -11,8 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <script src="<?php echo base_url('public/ckeditor/ckeditor.js')?>"></script>
+    
     <!-- The styles -->
-    <link id="bs-css" href="<?php echo base_url();?>public/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>public/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href='<?php echo base_url();?>public/font-awesome/css/font-awesome.min.css' rel='stylesheet'>
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -21,10 +22,10 @@
     <![endif]-->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
-    <script src="<?php echo base_url();?>public/charisma/js/jquery-1.7.2.min.js"></script>
+    <script src="<?php echo base_url('public/charisma/js/jquery-1.7.2.min.js');?>"></script>
 </head>
 
-<body>
+<body style="padding:50px;font-size:13px;font-family:微软雅黑">
 <?php
 $ci = & get_instance();
 if( $ci instanceof Base_Controller)
@@ -32,32 +33,27 @@ if( $ci instanceof Base_Controller)
 else 
     $user = $ci->session->userdata('status');
 ?>
-<div class="navbar">
+<div class="navbar navbar-fixed-top">
 <div class="navbar-inner">
-
-<div class="container-fluid">
-    <div class="top-nav nav-collapse">
+<div class="container">
         <a class="brand" href="#">精益云管理系统</a>
         <ul class="nav">
             <li class="active"><a href="<?php echo base_url();?>index.php">首页</a></li>
         </ul>
-
         <ul class="nav pull-right">
             <li><a href="<?php echo site_url('user/logout');?>">注销登录</a></li>
         </ul>
-    </div>
 </div>
 </div>
 </div>
 
 
-    <div class="container"><?php $this->load->module('webkit/menu/top');?></div>
+<?php $this->load->module('webkit/menu/top');?>
+<?php $this->load->module('webkit/leftside/get_left_side');?>
 
-    <div class="container"><?php $this->load->module('webkit/leftside/get_left_side');?></div>
-    
-    <div class="container">
-        <?php echo $content;?>
-    </div>
+<div class="container">
+<?php echo $content;?>
+</div>
 
 
 <hr />

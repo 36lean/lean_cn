@@ -162,4 +162,16 @@ class Client_excel extends CI_Model {
 		return $x;
 
 	}
+
+	public function add_connect()
+	{
+		$target = 
+		array(
+			'client_id' => intval( $this->input->post('client_id')) , 
+			'response'  => strip_tags( $this->input->post('connect_text')) , 
+			'date'		=> time(), 
+		);
+
+		return $this->db->insert('admin_client_connect' , $target);
+	}
 }

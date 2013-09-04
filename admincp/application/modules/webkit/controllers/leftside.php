@@ -11,6 +11,6 @@ class Webkit_leftside_module extends CI_Module
 	{
 		$ci = & get_instance();
 
-		$this->load->view('left' , array('path' => $ci->navigation()) );
+		$this->load->view('leftside' , array('path' => $ci->navigation()) );
 	}
 }

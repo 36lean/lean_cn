@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="row">
 	<form class="form-inline" action="" method="get">
 		<input name="key" type="text" />
 		<select name="field">
@@ -13,10 +13,8 @@
 	</form>
 </div>
 
-<div class="row-fluid">
-	<div class="box span12">
-
-		<div class="box-content" style="font-size:12px;">
+<div class="row">
+		<div class="" style="font-size:12px;">
 			<table class="table table-striped ">
 				<thead>
 					<tr>

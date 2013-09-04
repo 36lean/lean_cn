@@ -31,21 +31,33 @@ class Client extends Base_Controller {
 		$this->load->model('marketing/m_marketing' , 'marketing');
 		$this->load->model('permission/m_permission' , 'permission');
 		$this->load->model('client/client_member' , 'client_member');
+
+		$this->load->model('common/define_data');
+	}
+
+	private function _program()
+	{
+		if( $this->input->post('add_connect'))
+		{
+			unset( $_POST['add_connect']);
+			if( $this->client_excel->add_connect())
+			{
+				redirect( site_url('client/edit_contact/'.$this->input->post('client_id')));
+			}
+		}
 	}
 
 	public function navigation() {
 		return array(
-
-			array( 'route' => 'contact' , 'alias' => '联系人' ) ,
-
-
-			array( 'route' 	=> 'index' 					, 'alias' => '默认' ) ,
-			array( 'route'	=> 'excel'					, 'alias' => '导入数据' ) ,
-			array( 'route' 	=> 'export' 				, 'alias' => '导出数据' ) ,
-			array( 'route' 	=> 'dispatch'				, 'alias' => '分配' ) ,
-			array( 'route' 	=> 'client_list'			, 'alias' => '客户列表' ) ,
-			array( 'route' 	=> 'view_all_corporation'	, 'alias' => '企业列表' ) ,
-			array( 'route' 	=> 'useless_profile'		, 'alias' => '废纸篓' ) ,
+			array( 'route' => 'contact' 				, 'alias' => '联系人'	, 'status' => 'active') ,
+			array( 'route' 	=> 'index' 					, 'alias' => '默认' 	, 'status' => 'active') ,
+			array( 'route'	=> 'excel'					, 'alias' => '导入数据' , 'status' => 'active') ,
+			array( 'route' 	=> 'export' 				, 'alias' => '导出数据' , 'status' => 'active') ,
+			array( 'route' 	=> 'dispatch'				, 'alias' => '分配' 	, 'status' => 'active') ,
+			array( 'route' 	=> 'client_list'			, 'alias' => '客户列表' , 'status' => 'active') ,
+			array( 'route' 	=> 'view_all_corporation'	, 'alias' => '企业列表' , 'status' => 'active') ,
+			array( 'route' 	=> 'useless_profile'		, 'alias' => '废纸篓' 	, 'status' => 'active') ,
+			array( 'route'  => 'edit_contact' 			, 'alias' => '编辑客户' , 'status' => 'disabled') ,
 		);
 	}
 
@@ -84,9 +96,20 @@ class Client extends Base_Controller {
 
 	public function edit_contact( $id)
 	{
+
+		$this->_program();
+
 		$id = intval( $id) ;
 
-		$this->layout->view('client/edit_contact' , array('profile' => $this->client_member->get_contact_by_id( $id) ));
+		$tag = $this->define_data->get_selection_key_value( 'admin_clienttags' , 'id' , 'tag');
+
+		$connect = $this->define_data->get_data_by_id( 'admin_client_connect' , $id , 'client_id');
+
+		$this->layout->view('client/edit_contact' , array('profile' => $this->client_member->get_contact_by_id( $id) , 
+														  'tag' 	=> $tag ,
+														  'connect' => $connect ,
+														  )
+		);
 	}
 
 	public function index()
