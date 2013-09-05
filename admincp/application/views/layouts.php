@@ -61,6 +61,6 @@ else
     <h5><small>© 2013 36lean.com</small></h5>
     <h5><small> All rights reserved.</small></h5>
 </div>
-
+<script src="//cdnjs.bootcss.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

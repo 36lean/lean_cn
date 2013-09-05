@@ -174,4 +174,35 @@ class Client_excel extends CI_Model {
 
 		return $this->db->insert('admin_client_connect' , $target);
 	}
+
+	public function update_contact_profile()
+	{	
+		$id = intval( $this->input->post('id'));
+		unset( $_POST['id']);
+
+		$filter = array();
+		foreach ($_POST as $key => $value) {
+			$filter[$key] = trim( $this->input->post($key));
+		}
+
+		return $this->db->where( array( 'id' => $id))
+				 		->update('admin_client' , $filter);
+	}
+
+	public function update_contact_connect()
+	{
+
+		$this->db->where(array('id'=>intval( $this->input->post('id'))))
+				 ->update('admin_client_connect' , array('date'=>time() , 'response'=> strip_tags( $this->input->post('response')) ));
+
+		return $this->input->post('client_id');
+	}
+
+	public function remove_contact_connect()
+	{
+
+		$this->db->delete( 'admin_client_connect' , array('id'=> intval( $this->input->post('id'))));
+
+		return $this->input->post('client_id');
+	}
 }

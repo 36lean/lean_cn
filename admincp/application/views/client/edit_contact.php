@@ -1,9 +1,21 @@
+<?php if( isset( $status)){
+
+	if( $status === -1)
+	{
+		$this->load->module('webkit/information/show_information' , array('客户资料更新失败'));
+	}
+	else if( $status === 1)
+	{
+		$this->load->module('webkit/information/show_information' , array('客户资料更新成功'));
+	}
+}?>
+
 <div class="alert alert-info"><i class="icon-comment-alt"></i> 沟通记录</div>
 
 <table class="table table-striped">
 <?php foreach ($connect as $conn) : ?>
 <tr>
-	<td class="span2"><a href="<?php echo $conn['id'];?>"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('m-d h:s' , $conn['date']) ;?></td>
+	<td class="span2"><a href="<?php echo site_url('client/edit_connect_record/'.$conn['id']);?>"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('m-d h:s' , $conn['date']) ;?></td>
 	<td class="span10">
 	<?php echo $conn['response'];?>
 	</td>
@@ -103,12 +115,13 @@ $percent = $finish * 100 / 19 ;
 
 <div class="span6">
 <div class="alert alert-info"><i class="icon-edit"></i> 编辑</div>
-<form class="form-horizontal well">
+<form class="form-horizontal well" action="" method="post">
+<input type="hidden" name="id" value="<?php echo $profile['id'];?>">
 
 	<div class="control-group">
 		<label class="control-label">客户类型</label>
 		<div class="controls">
-			<select name="tag">
+			<select name="tags">
 			<?php foreach ($tag as $t) : ?>
 				<option <?php if( $t['value'] === $profile['tags']){?>selected="selected"<?php }?> value="<?php echo $t['value'];?>"><?php echo $t['name'];?></option>
 			<?php endforeach ;?>
@@ -184,6 +197,27 @@ $percent = $finish * 100 / 19 ;
 	</div>
 
 	<div class="control-group">
+		<label class="control-label">地址</label>
+		<div class="controls">
+			<input  type="text" name="address" value="<?php echo $profile['address'];?>" />
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label">邮编</label>
+		<div class="controls">
+			<input  type="text" name="postid" value="<?php echo $profile['postid'];?>" />
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label">网站</label>
+		<div class="controls">
+			<input  type="text" name="website" value="<?php echo $profile['website'];?>" />
+		</div>
+	</div>
+
+	<div class="control-group">
 		<label class="control-label">备注信息</label>
 		<div class="controls">
 			<textarea name="etc"><?php echo $profile['etc'];?></textarea>
@@ -192,7 +226,7 @@ $percent = $finish * 100 / 19 ;
 
 	<div class="control-group">
 		<div class="controls">
-			<button class="btn btn-primary"><i class="icon-save"></i> Save</button>
+			<button type="submit" class="btn btn-primary" name="save_profile" value="1"><i class="icon-save"></i> Save</button>
 		</div>
 	</div>
 </form>

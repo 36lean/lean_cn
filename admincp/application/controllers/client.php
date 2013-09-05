@@ -37,13 +37,35 @@ class Client extends Base_Controller {
 
 	private function _program()
 	{
+
+		//添加沟通记录
 		if( $this->input->post('add_connect'))
 		{
 			unset( $_POST['add_connect']);
 			if( $this->client_excel->add_connect())
 			{
 				redirect( site_url('client/edit_contact/'.$this->input->post('client_id')));
+				exit;
 			}
+		}
+
+		//更新资料
+		if( $this->input->post('save_profile'))
+		{
+			unset( $_POST['save_profile']);
+			if( $this->client_excel->update_contact_profile())
+				return 1;
+			else
+				return -1;
+		}
+
+		//沟通记录更新
+		if( $this->input->post('save_edit'))
+		{
+			return $this->client_excel->update_contact_connect();
+		}else if( $this->input->post('del_connect'))
+		{
+			return $this->client_excel->remove_contact_connect();
 		}
 	}
 
@@ -97,7 +119,7 @@ class Client extends Base_Controller {
 	public function edit_contact( $id)
 	{
 
-		$this->_program();
+		$status = $this->_program();
 
 		$id = intval( $id) ;
 
@@ -108,6 +130,7 @@ class Client extends Base_Controller {
 		$this->layout->view('client/edit_contact' , array('profile' => $this->client_member->get_contact_by_id( $id) , 
 														  'tag' 	=> $tag ,
 														  'connect' => $connect ,
+														  'status'  => isset( $status) ? $status : '',
 														  )
 		);
 	}
@@ -334,6 +357,22 @@ class Client extends Base_Controller {
 
 	public function useless_profile() {
 		$this->layout->view('client/useless_profile');
+	}
+
+	public function edit_connect_record( $id)
+	{
+		$from_id = $this->_program();
+		if( $from_id)
+		{
+			redirect( site_url('client/edit_contact/'.$from_id));
+			exit;
+		}
+
+		$id = intval( $id);
+
+		$connect = 	$this->define_data->get_data_by_id('admin_client_connect' , $id , 'id');
+
+		$this->layout->view('client/edit_connect_record' , array('connect'=> isset( $connect[0]) ? $connect[0] : array() ));
 	}
 
 	public function __toString() {
