@@ -1,19 +1,9 @@
 <div class="row-fluid">
 <div class="box span5">
 	<div class="box-header well" data-original-title>
-		<h2>
+		<strong>
 			用户资料
-		</h2>
-		<div class="box-icon">
-			<a href="#" class="btn btn-minimize btn-round">
-				<i class="icon-chevron-up">
-				</i>
-			</a>
-			<a href="#" class="btn btn-close btn-round">
-				<i class="icon-remove">
-				</i>
-			</a>
-		</div>
+		</strong>
 	</div>
 	<div class="box-content">
 		<table class="table table-bordered table-striped table-condensed">
@@ -84,19 +74,7 @@
 
 <div class="box span7">
 	<div class="box-header well" data-original-title>
-		<h2>
-			记录
-		</h2>
-		<div class="box-icon">
-			<a href="#" class="btn btn-minimize btn-round">
-				<i class="icon-chevron-up">
-				</i>
-			</a>
-			<a href="#" class="btn btn-close btn-round">
-				<i class="icon-remove">
-				</i>
-			</a>
-		</div>
+		<strong>记录</strong>
 	</div>
 	<div class="box-content">
 	<form name="__response_" action="" method="post">

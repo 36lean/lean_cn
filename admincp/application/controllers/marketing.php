@@ -10,15 +10,52 @@ class Marketing extends Base_Controller{
 		$this->load->model('marketing/m_marketing' , 'marketing');
 		$this->load->model('client/client_config');
 		$this->load->model('mailer/m_mailer' , 'mailer');
+		$this->load->model('client/client_excel');
+		$this->load->model('client/client_member' , 'client_member');
+		$this->load->model('common/define_data');
+	}
+
+	private function _program()
+	{
+
+		//添加沟通记录
+		if( $this->input->post('add_connect'))
+		{
+			unset( $_POST['add_connect']);
+			if( $this->client_excel->add_connect())
+			{
+				redirect( site_url('client/edit_contact/'.$this->input->post('client_id')));
+				exit;
+			}
+		}
+
+		//更新资料
+		if( $this->input->post('save_profile'))
+		{
+			unset( $_POST['save_profile']);
+			if( $this->client_excel->update_contact_profile())
+				return 1;
+			else
+				return -1;
+		}
+
+		//沟通记录更新
+		if( $this->input->post('save_edit'))
+		{
+			return $this->client_excel->update_contact_connect();
+		}else if( $this->input->post('del_connect'))
+		{
+			return $this->client_excel->remove_contact_connect();
+		}
 	}
 
 	public function navigation() {
 		return array(
-			'index',
-			'corporation',
-			'create_client',
-			'website_member',
-			'mail_template',
+			array( 'route' => 'index'			, 'alias' => '我的客户列表' , 'status' => 'active' ) ,
+			array( 'route' => 'corporation' 	, 'alias' => '企业列表' 	, 'status' => 'active' ) ,
+			array( 'route' => 'create_client' 	, 'alias' => '新建联系人' 	, 'status' => 'active') ,
+			array( 'route' => 'website_member'	, 'alias' => '网站会员'  	, 'status' => 'active' ) ,
+			array( 'route' => 'mail' 			, 'alias' => '邮件工具' 	, 'status' => 'active') ,
 		);
 	}
 
@@ -52,79 +89,39 @@ class Marketing extends Base_Controller{
 		);
 	}
 
-	public function corporation() {
+	public function corporation( $page = 1 , $offset = 20) 
+	{
 
-		$this->layout->view('marketing/corporation');
+		$corporations = $this->marketing->get_corporations( $page , $offset);
+
+		$this->layout->view('marketing/corporation' , array('corporations'=>$corporations));
 
 	}
 
-	public function connect( $id) {
-		$user_id = intval( $id);
-		//$this->session->unset_userdata('cookie');
+	public function connect( $id) 
+	{
 
-		if( isset( $_POST['pin'])) {
-			$this->marketing->pin_date( array('client_id' 		=> $user_id , 
-											  'salesman_id' 	=> $this->_G['uid'] , 
-											  'datereminded' 	=> strtotime( trim($_POST['date'])),
-											  'event'			=> trim( $_POST['event'])
-											  )
-			);
-			redirect( base_url() . 'index.php/marketing/connect/'.$user_id);
-		}
+		$status = $this->_program();
 
-		if( isset( $_POST['response'])) {
-			$this->marketing->add_response_log();
-			redirect( base_url().'index.php/marketing/connect/'.$id);
-		}
+		$id = intval( $id) ;
 
-		if( isset( $_POST['add_reminder'])) {
-			$this->marketing->add_reminder();
-			redirect( base_url().'index.php/marketing/connect/'.$id);
-		}
+		$tag = $this->define_data->get_selection_key_value( 'admin_clienttags' , 'id' , 'tag');
 
-		$profile = $this->marketing->get_client_profile( $id);
-		$column = $this->client_config->get_client_mapping();
+		$connect = $this->define_data->get_data_by_id( 'admin_client_connect' , $id , 'client_id');
 
-		
-
-		if( is_array( $data = $this->session->userdata('cookie')) ) {
-			if( !in_array( array('id' => $profile[0]['id'] , 'name' => $profile[0]['name']) ,  $data)) {
-
-				$data [] = array('id' => $profile[0]['id'] , 'name' => $profile[0]['name']);
-				
-			}
-			if( count( $data) > 20)
-				$data = array_slice( $data, 1);
-
-			$this->session->set_userdata('cookie' , $data);
-		}else {
-			$data = array();
-			$this->session->set_userdata('cookie' , $data);
-		}
-
-		$apponintment = $this->marketing->get_appointment( $id , $this->_G['uid']);
-
-		$connect_log = $this->marketing->get_connect_log( $user_id , 5);
-
-		$send_mails = $this->marketing->get_email_to_client( $user_id , $this->_G['uid'] , 15);
-
-		$reminders = $this->marketing->get_reminder( $user_id , $this->_G['uid'] , 10);
-
-		$this->layout->view('marketing/connect' , array('profile' => $profile[0] , 
-														'column' => $column,
-														'connect_log' => $connect_log,
-														'send_mails' => $send_mails,
-														'reminders' => $reminders,
-														'apponintment' => $apponintment,
-														'tags'		=>  $this->marketing->get_all_tags()
-														)
+		$this->layout->view('client/edit_contact' , array('profile' => $this->client_member->get_contact_by_id( $id) , 
+														  'tag' 	=> $tag ,
+														  'connect' => $connect ,
+														  'status'  => isset( $status) ? $status : '',
+														  )
 		);
 	}
 
 	/*
 	*@删除沟通记录
 	*/
-	public function linkup_remove( $id) {
+	public function linkup_remove( $id) 
+	{
 		$id = intval( $id);
 		$connect_id = $this->marketing->linkup_remove( $id);
 

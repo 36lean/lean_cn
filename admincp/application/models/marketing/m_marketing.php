@@ -325,4 +325,12 @@ class M_marketing extends CI_Model {
 
 	}
 
+	public function get_corporations( $page =  1 , $offset = 20)
+	{
+		return $this->db->select('*')	
+						->from('admin_client_corporation')
+						->limit( $offset , ($page-1)*$offset)
+						->get()->result_array();
+	}
+
 }

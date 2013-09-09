@@ -33,6 +33,7 @@ if( $ci instanceof Base_Controller)
 else 
     $user = $ci->session->userdata('status');
 ?>
+
 <div class="navbar navbar-fixed-top">
 <div class="navbar-inner">
 <div class="container">
@@ -47,6 +48,7 @@ else
 </div>
 </div>
 
+<?php //$this->load->module('webkit/devkit/index');?>
 
 <?php $this->load->module('webkit/menu/top');?>
 <?php $this->load->module('webkit/leftside/get_left_side');?>

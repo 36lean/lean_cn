@@ -1,23 +1,44 @@
-<h4><small>已经导入的记录</small></h4>
+<div class="page-header">
+	<h4>上传Excel文件</h4>
+</div>
 
-<table class="table table-bordered">
-	<tr><td width="10%">操作</td> <td width="20%">文件名</td> <td width="15%">导入日期</td> <td width="55%">描述( 主要字段 )</td></tr>
-<?php foreach ($record as $row) {
-?>
-<tr>
-	<td> <a href="<?php echo base_url();?>index.php/client/manage_excel/<?php echo $row['id']?>">管理</a></td>
-	<td><?php echo $row['file_name'];?></td>
-	<td><?php echo date('Y/m/d h:i' , $row['update_date'])?></td> 
-	<td>
-		<?php 
-			$column = json_decode( $row['row']);
-			foreach ($column as $col) {
-				echo ' <strong>'.$col.'<strong> ';
-			}
-		?>
-	</td>
-</tr>
-<?php
-}?>
-	<tr></tr>
+<form action="" method="post" enctype="multipart/form-data">
+	<div class="control-group">
+		<div class="controls">
+			<input name="file" type="file" />
+		</div>
+	</div>
+
+	<div class="control-group">
+		<div class="controls">
+			<button class="btn btn-primary" name="upload_file" value="1">上传</button>
+		</div>
+	</div>	
+</form>
+
+<table class="table table-bordered table-striped table-condensed">
+	
+	<tr>
+		<td>id</td>
+		<td>filename</td>
+		<td>type</td>
+		<td>size</td>
+		<td>created time</td>
+		<td>md5</td>
+		<td>import</td>
+	</tr>
+
+	<?php foreach ($list as $file) : ?>
+	<tr>
+		<td><?php echo $file['id'];?></td>
+		<td><?php echo $file['filename'];?></td>
+		<td><?php echo strtoupper( str_replace('.', '', $file['type']));?></td>
+		<td><?php echo $file['size'];?></td>
+		<td><?php echo date('Y/m/d h:i:s' , $file['createdtime']);?></td>
+		<td><?php echo $file['md5'];?></td>
+		<td><a href="<?php echo site_url('client/turntodb/'.$file['md5']);?>">导入数据库</a></td>
+	</tr>
+	<?php endforeach ?>
+
+
 </table>

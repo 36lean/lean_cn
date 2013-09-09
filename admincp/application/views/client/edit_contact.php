@@ -65,7 +65,7 @@ $percent = $finish * 100 / 19 ;
 	<td>年龄</td><td><?php echo $profile['age'];?></td>
 </tr>
 <tr>
-	<td>性别</td><td><?php echo $profile['gender'];?></td>
+	<td>性别</td><td><?php echo ($profile['gender']==1 ? '男' : '女' );?></td>
 </tr>
 <tr>
 	<td>分类</td><td><span class="label label-success"><?php echo $profile['tag'];?></span></td>
@@ -146,10 +146,10 @@ $percent = $finish * 100 / 19 ;
 	<div class="control-group">
 		<label class="control-label">性别</label>
 		<div class="controls">
-			<select>
+			<select name="gender">
 				<option value="">保密</option>
-				<option value="1">男</option>
-				<option value="0">女</option>
+				<option <?php if( $profile['gender'] == 1) echo 'selected="selected"';?> value="1">男</option>
+				<option <?php if( $profile['gender'] == 0) echo 'selected="selected"';?> value="0">女</option>
 			</select>
 		</div>
 	</div>
@@ -232,3 +232,22 @@ $percent = $finish * 100 / 19 ;
 </form>
 </div>
 </div>
+
+<?php
+$ci = & get_instance();
+
+if( $ci->_G['groupid'] !== 1 && $profile['salesman'] !== $ci->_G['uid'])
+{
+?>
+<script>
+$(function(){
+	$('input').attr({'disabled' : 'disabled'});
+	$('button').attr({'disabled' : 'disabled'});
+	$('textarea').attr({'disabled' : 'disabled'});
+	$('select').attr({'disabled' : 'disabled'});
+	$('.alert').first().append(' ( 没有权限修改，因为你不是管理员或者被未分配 ) ');
+})
+</script>
+<?php
+}
+?>

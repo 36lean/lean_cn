@@ -1,2 +1,4 @@
 RewriteEngine on
 
+RewriteCond %{HTTP_HOST} !^www.36lean.com [NC]
+RewriteRule ^/(.*) http://www.36lean.com/ [L]

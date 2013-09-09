@@ -31,7 +31,7 @@ class Client extends Base_Controller {
 		$this->load->model('marketing/m_marketing' , 'marketing');
 		$this->load->model('permission/m_permission' , 'permission');
 		$this->load->model('client/client_member' , 'client_member');
-
+		$this->load->model('client/client_file' , 'client_file');
 		$this->load->model('common/define_data');
 	}
 
@@ -67,12 +67,18 @@ class Client extends Base_Controller {
 		{
 			return $this->client_excel->remove_contact_connect();
 		}
+
+		//上传
+		if( $this->input->post('upload_file'))
+		{
+			$this->client_file->save_file();
+		}
 	}
 
 	public function navigation() {
 		return array(
-			array( 'route' => 'contact' 				, 'alias' => '联系人'	, 'status' => 'active') ,
-			array( 'route' 	=> 'index' 					, 'alias' => '默认' 	, 'status' => 'active') ,
+			array( 'route' 	=> 'index' 					, 'alias' => '[ 上传 ]' 	, 'status' => 'active') ,
+			array( 'route' => 'contact' 				, 'alias' => '[ 联系人 ]'	, 'status' => 'active') ,
 			array( 'route'	=> 'excel'					, 'alias' => '导入数据' , 'status' => 'active') ,
 			array( 'route' 	=> 'export' 				, 'alias' => '导出数据' , 'status' => 'active') ,
 			array( 'route' 	=> 'dispatch'				, 'alias' => '分配' 	, 'status' => 'active') ,
@@ -80,7 +86,27 @@ class Client extends Base_Controller {
 			array( 'route' 	=> 'view_all_corporation'	, 'alias' => '企业列表' , 'status' => 'active') ,
 			array( 'route' 	=> 'useless_profile'		, 'alias' => '废纸篓' 	, 'status' => 'active') ,
 			array( 'route'  => 'edit_contact' 			, 'alias' => '编辑客户' , 'status' => 'disabled') ,
+			array( 'route'  => 'turntodb' 			, 'alias' => '编辑导入' , 'status' => 'disabled') ,
 		);
+	}
+
+	public function index()
+	{	
+		$this->_program();
+
+		$list = $this->client_file->get_file_list();
+
+		$this->layout->view('client/index' , array('list'=>$list));
+	}
+
+	public function turntodb( $md5)
+	{
+
+		$file = $this->db->where( array('md5'=>$md5))->get('admin_uploads')->row_array();
+
+		var_dump( $file);
+
+		$this->layout->view( 'client/turntodb');
 	}
 
 	public function  contact( $page = 1 , $offset = 30)
@@ -133,13 +159,6 @@ class Client extends Base_Controller {
 														  'status'  => isset( $status) ? $status : '',
 														  )
 		);
-	}
-
-	public function index()
-	{	
-		//echo $this->lang->line('client_title');
-		$row_record = $this->client_excel->fetch_excel_rows();
-		$this->layout->view('client/index' , array( 'record' => $row_record));
 	}
 
 	public function excel() {
