@@ -45,12 +45,13 @@ class Client_member extends CI_Model {
 
 	public function get_contact_by_id( $id)
 	{
-		return $this->db->select('c.* , t.tag , cp.name as compname , a.username as salesman , r.file_name')
-						->from('admin_client c')
-						->join('admin_clienttags t' , 't.id = c.tags')
-						->join('admin_client_corporation cp' , 'cp.id = c.company_id')
-						->join('admin_acl a' , 'a.user_id = c.salesman_id')
-						->join('admin_client_row r' , 'r.id = c.file_id')
+
+		return $this->db->select('c.* , t.tag as tag_code , t.name as tag_name , cp.name as companyname , cp.address , cp.postid , cp.weburl , a.username as salesman  , u.filename')
+						->from('admin_contacts c')
+						->join('admin_clienttags t' , 't.id = c.tag' , 'left')
+						->join('admin_company cp' , 'cp.id = c.company_id' , 'left')
+						->join('admin_acl a' , 'a.user_id = c.assign_to' , 'left')
+						->join('admin_uploads u' , 'u.id = c.from_file_id' , 'left')
 						->where( array('c.id'=>$id))
 						->get()->row_array();
 	}

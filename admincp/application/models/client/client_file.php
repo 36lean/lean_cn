@@ -109,8 +109,9 @@ class Client_file extends CI_Model
 	public function to_database()
 	{	
 		//分配给...
-		$assign_to = intval( $this->input->post('assign_to'));
-		unset( $_POST['assign_to']);
+		$assign_to 	= intval( $this->input->post('assign_to'));
+		$tag 		= intval( $this->input->post('tag'));
+		unset( $_POST['assign_to']);unset( $_POST['tag']);
 		//获取映射字段的数目
 
 		$conf = json_decode( file_get_contents('data/cache/config.conf') , true);
@@ -140,6 +141,8 @@ class Client_file extends CI_Model
 
 				if( $size === $inner_count)
 				{
+
+					$contact['tag'] = $tag;
 
 					$contact['assign_to'] = $assign_to;
 

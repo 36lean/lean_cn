@@ -11,6 +11,14 @@ if( Status::RECORD_NOT_EXIST !== $return || $this->_G['adminid'] === 1) {
 
 	$client = $return[0];
 ?>
+
+
+<?php
+$map = $this->config->config['map'];
+
+var_dump( $map);
+
+?>
 <div class="row-fluid">
 	<div class="box span12">
 		<div class="box-header well" data-original-title>

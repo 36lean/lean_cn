@@ -11,9 +11,10 @@ class M_marketing extends CI_Model {
 	public function get_clients( $page , $offset , $salesman_id , $condition) {
 		$page = $page - 1;
 
-		return $this->db->select('u.*')
+		return $this->db->select(' u.* , c.name as company_name , t.tag')
 						->from('admin_contacts u')
 						->join('admin_company c' , 'c.id = u.company_id' , 'left')
+						->join('admin_clienttags t' , 'u.tag = t.id' , 'left')
 						->limit( $offset , $page * $offset)
 						->where( array('assign_to'=>$salesman_id))
 						->get()->result_array();
@@ -21,7 +22,7 @@ class M_marketing extends CI_Model {
 	}
 
 	public function sum_of_clients() {
-		return $this->db->get('admin_client')->num_rows();
+		return $this->db->get('admin_contacts')->num_rows();
 	}
 
 	public function get_client_profile( $id) {
@@ -314,7 +315,7 @@ class M_marketing extends CI_Model {
 	public function get_corporations( $page =  1 , $offset = 20)
 	{
 		return $this->db->select('*')	
-						->from('admin_client_corporation')
+						->from('admin_company')
 						->limit( $offset , ($page-1)*$offset)
 						->get()->result_array();
 	}

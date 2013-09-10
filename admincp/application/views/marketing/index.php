@@ -13,6 +13,7 @@
 	</form>
 </div>
 
+
 <div class="row-fluid">
 	<div class="box span12">
 
@@ -21,7 +22,7 @@
 			<table class="table table-striped ">
 				<thead>
 					<tr>
-						<th class="span2">标签</th>
+						<th class="span1">标签</th>
 						<th class="span2">客户</th>
 						<th class="span3">公司</th>
 						<th class="span1">电邮</th>
@@ -40,15 +41,15 @@
 					?>
 					<tr>
 
-						<td class="center"><?php echo $c['tag'];?></td>
+						<td class="center"><span class="label label-success"><?php echo $c['tag'];?></span></td>
 						
 						<td class="center"><a href="<?php echo base_url();?>index.php/marketing/connect/<?php echo $c['id'];?>" target="blank"><i class="icon-user"></i> <?php echo $c['name'];?></a></td>
 
-						<td class="center"><?php echo $c['comp_name'];?></td>
+						<td class="center"><?php echo $c['company_name'];?></td>
 
 						<td class="center"><a href="<?php echo base_url();?>index.php/marketing/mailto/<?php echo $c['id'];?>"><i class="icon-envelope"></i> <?php echo $c['email'];?></a></td>
 
-						<td class="center"><?php echo $c['phone'].' ';?></td>
+						<td class="center"><?php echo $c['office_phone'].' ';?></td>
 
 						<td class="center"><?php echo $c['mobile'].' ';?></td>
 
@@ -100,31 +101,5 @@
 	-->
 </div>
 <!--/row-->
-<div class="row-fluid">
-<div class="box-content">
-	<p>总记录数: <?php echo $sum;?> 当前页: <?php echo $page;?> 每页记录数: <?php echo $offset;?> 当前页记录数: <?php echo $current;?></p>
 
-	<?php 
-		if( $page < 3)
-			$page = 3;
-	?>
-    <div class="pagination pagination-centered">
-       	<ul>
-           	<li><a href="<?php echo base_url();?>index.php/marketing/index/<?php echo $page-1;?>">&laquo;</a></li>
-           	<?php if( $page >=3){?>
-            <li><a href="<?php echo base_url();?>index.php/marketing/index/<?php echo $page-2;?>"><?php echo $page-2;?></a></li>
-            <?php }?>
-            <?php if( $page >=2){?>
-            <li><a href="<?php echo base_url();?>index.php/marketing/index/<?php echo $page-1;?>"><?php echo $page-1;?></a></li>
-			<?php }?>
-            <li><a href="<?php echo base_url();?>index.php/marketing/index/<?php echo $page;?>"><?php echo $page;?></a></li>
-            <li><a href="<?php echo base_url();?>index.php/marketing/index/<?php echo $page+1;?>"><?php echo $page+1;?></a></li>
-            <li><a href="<?php echo base_url();?>index.php/marketing/index/<?php echo $page+2;?>"><?php echo $page+2;?></a></li>
-            <li><a href="<?php echo base_url();?>index.php/marketing/index/<?php echo $page+1;?>">&raquo;</a></li>
-        </ul>
-
-
-    </div>	
-
-</div>
-</div>
+<?php $this->load->module('webkit/pagination/show' , array('offset'=>$offset , 'sum'=>$sum));?>

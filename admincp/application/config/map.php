@@ -9,8 +9,9 @@ $config['map']['contacts'] = array(
 	'office_phone' 	=> '个人 - 办公电话' 	,
 	'office_fax'	=> '个人 - 办公传真' 	,
 	'private_phone'	=> '个人 - 私人电话' 	,
-	'mobile'		=> '个人 - 手机号' 	, 
+	'mobile'		=> '个人 - 手机号' 		, 
 	'description'	=> '个人 - 描述/备注' 	, 
+	'qq'			=> '个人 - QQ号'		,
 );
 
 $config['map']['company'] = array(

@@ -45,8 +45,22 @@ $map = $this->config->config['map'];
 <div class="controls">
 <label><strong>分配给</strong></label>
 <select name="assign_to">
+		<option value="0">选择负责人</option>
 	<?php foreach ($master as $u) :?>
 		<option value="<?php echo $u['user_id'];?>"><?php echo $u['username'];?> - <?php echo $u['role_name'];?></option>
+	<?php endforeach ?>
+</select>
+</div>
+</div>
+
+
+<div class="control-group">
+<div class="controls">
+<label><strong>客户分类</strong></label>
+<select name="tag">
+		<option value="0">选择客户类型</option>
+	<?php foreach ($tags as $t) :?>
+		<option value="<?php echo $t['id'];?>"><?php echo $t['tag'];?> - <?php echo $t['name'];?></option>
 	<?php endforeach ?>
 </select>
 </div>

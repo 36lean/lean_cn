@@ -14,5 +14,9 @@ class Client_get extends CI_Model{
 		return $this->db->select('id')->from('admin_client')->get()->num_rows();
 	}
 
+	public function get_contact_tags()
+	{
+		return $this->db->get('admin_clienttags')->result_array();
+	}
 	
 }

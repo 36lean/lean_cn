@@ -186,7 +186,7 @@ class Client_excel extends CI_Model {
 		}
 
 		return $this->db->where( array( 'id' => $id))
-				 		->update('admin_client' , $filter);
+				 		->update('admin_contacts' , $filter);
 	}
 
 	public function update_contact_connect()

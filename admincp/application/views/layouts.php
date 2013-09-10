@@ -42,7 +42,7 @@ else
             <li class="active"><a href="<?php echo base_url();?>index.php">首页</a></li>
         </ul>
         <ul class="nav pull-right">
-            <li><a href="<?php echo site_url('user/logout');?>">注销登录</a></li>
+            <li><a href="<?php echo site_url('user/logout');?>"><?php echo $user['user'];?>注销登录</a></li>
         </ul>
 </div>
 </div>

@@ -32,6 +32,7 @@ class Client extends Base_Controller {
 		$this->load->model('permission/m_permission' , 'permission');
 		$this->load->model('client/client_member' , 'client_member');
 		$this->load->model('client/client_file' , 'client_file');
+		$this->load->model('client/client_get' , 'client_get');
 		$this->load->model('common/define_data');
 	}
 
@@ -89,7 +90,7 @@ class Client extends Base_Controller {
 			unset( $_POST['to_database']);
 			$this->client_file->to_database();
 
-			exit;
+			return true;
 		}
 	}
 
@@ -189,7 +190,11 @@ class Client extends Base_Controller {
 
 	public function import_json_cache( $file)
 	{
-		$this->_program();
+		if( $this->_program())
+		{
+			unlink( 'data/excel/'.$file);
+			redirect('client/importdata');
+		}
 
 		$data = json_decode( file_get_contents( 'data/excel/'.$file) , true);
 
@@ -197,7 +202,9 @@ class Client extends Base_Controller {
 
 		$master = $this->permission->get_admin_lists();
 
-		$this->layout->view('client/import_json_cache' , array('data'=>$data,'config'=>$config,'file'=>$file,'master'=>$master));
+		$tags = $this->client_get->get_contact_tags();
+
+		$this->layout->view('client/import_json_cache' , array('data'=>$data,'config'=>$config,'file'=>$file,'master'=>$master,'tags'=>$tags));
 	}
 
 	public function  contact( $page = 1 , $offset = 30)

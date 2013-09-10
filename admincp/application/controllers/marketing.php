@@ -24,7 +24,7 @@ class Marketing extends Base_Controller{
 			unset( $_POST['add_connect']);
 			if( $this->client_excel->add_connect())
 			{
-				redirect( site_url('client/edit_contact/'.$this->input->post('client_id')));
+				redirect( site_url('marketing/connect/'.$this->input->post('client_id')));
 				exit;
 			}
 		}
@@ -105,7 +105,7 @@ class Marketing extends Base_Controller{
 
 		$id = intval( $id) ;
 
-		$tag = $this->define_data->get_selection_key_value( 'admin_clienttags' , 'id' , 'tag');
+		$tag = $this->define_data->get_selection_key_value( 'admin_clienttags' , 'id' , 'name');
 
 		$connect = $this->define_data->get_data_by_id( 'admin_client_connect' , $id , 'client_id');
 
@@ -115,6 +115,22 @@ class Marketing extends Base_Controller{
 														  'status'  => isset( $status) ? $status : '',
 														  )
 		);
+	}
+	
+	public function edit_connect_record( $id)
+	{
+		$from_id = $this->_program();
+		if( $from_id)
+		{
+			redirect( site_url('marketing/connect/'.$from_id));
+			exit;
+		}
+
+		$id = intval( $id);
+
+		$connect = 	$this->define_data->get_data_by_id('admin_client_connect' , $id , 'id');
+
+		$this->layout->view('client/edit_connect_record' , array('connect'=> isset( $connect[0]) ? $connect[0] : array() ));
 	}
 
 	/*
