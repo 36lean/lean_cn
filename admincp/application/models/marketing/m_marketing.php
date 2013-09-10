@@ -9,6 +9,16 @@ class M_marketing extends CI_Model {
 	}
 
 	public function get_clients( $page , $offset , $salesman_id , $condition) {
+
+		if( $salesman_id == 0)
+		{
+			$where = 'assign_to > 0';
+		}
+		else
+		{
+			$where = array('assign_to'=>$salesman_id);
+		}
+
 		$page = $page - 1;
 
 		return $this->db->select(' u.* , c.name as company_name , t.tag')
@@ -16,7 +26,7 @@ class M_marketing extends CI_Model {
 						->join('admin_company c' , 'c.id = u.company_id' , 'left')
 						->join('admin_clienttags t' , 'u.tag = t.id' , 'left')
 						->limit( $offset , $page * $offset)
-						->where( array('assign_to'=>$salesman_id))
+						->where( $where)
 						->get()->result_array();
 
 	}
@@ -312,12 +322,32 @@ class M_marketing extends CI_Model {
 
 	}
 
-	public function get_corporations( $page =  1 , $offset = 20)
+	public function get_corporations( $page =  1 , $offset = 30)
 	{
-		return $this->db->select('*')	
-						->from('admin_company')
+		return $this->db->select('c.* , count( t.id) as workers')
+						->from('admin_company c')
+						->join('admin_contacts t' , 't.company_id = c.id' )
 						->limit( $offset , ($page-1)*$offset)
+						->group_by('c.name')
+						->order_by('id','desc')
 						->get()->result_array();
+	}
+
+	public function sum_of_company()
+	{
+		return $this->db->select('id')
+						->from('admin_company')
+						->get()
+						->num_rows();
+	}
+
+	public function get_contacts_by_companyid( $id)
+	{
+		return $this->db->select('*')
+						->from('admin_contacts')
+						->where( array('company_id'=>$id))
+						->get()
+						->result_array();
 	}
 
 }

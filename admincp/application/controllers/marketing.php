@@ -94,8 +94,25 @@ class Marketing extends Base_Controller{
 
 		$corporations = $this->marketing->get_corporations( $page , $offset);
 
-		$this->layout->view('marketing/corporation' , array('corporations'=>$corporations));
+		$sum = $this->marketing->sum_of_company();
 
+		$this->layout->view('marketing/corporation' , array('corporations'=>$corporations,'offset'=>$offset,'sum'=>$sum));
+	}
+
+	public function view_corporation( $id)
+	{
+		$id = intval( $id);
+
+		$contacts = $this->marketing->get_contacts_by_companyid( $id);
+
+		$company = $this->define_data->get_data_by_id('admin_company' , $id , 'id');
+
+
+
+		$this->layout->view('marketing/view_corporation' , array('company'=>$company[0],
+																 'contacts'=>$contacts,
+																) 
+						   );
 	}
 
 	public function connect( $id) 
@@ -144,49 +161,9 @@ class Marketing extends Base_Controller{
 		redirect( base_url() .'index.php/marketing/connect/'.$connect_id);
 	}
 
-	public function edit_client( $id) {
-
-		$id = intval( $id);
-		
-		if( isset( $_POST['save'])) {
-			if( $this->marketing->edit_client()) {
-				$status = Status::UPDATE_SUCCESS;
-			}else {
-				$status = Status::UPDATE_FAIL;
-			}
-		}else {
-			$status = Status::NOTHING;
-		}
-		
-		$return = $this->marketing->is_client_belongto(  $id,$this->_G['uid'] , $this->_G['adminid']);
-		$config = $this->client_config->get_client_mapping();
-		unset( $config['cname']);unset( $config['cdescription']);unset( $config['caddress']);
-
-		$this->layout->view('marketing/edit_client' , array( 'client_id' => $id, 'status' => $status, 'return' => $return , 'config' => $config));
-	}
-
 	public function send() {
 
 		$this->layout->view('marketing/send');
-	}
-
-	public function message_center() {
-
-		$apponintments = $this->marketing->get_appointments( $this->_G['uid']);
-
-
-		$this->layout->view('marketing/message_center' , array('apponintments' => $apponintments));
-
-	}
-
-	public function linkup() {
-
-		$this->layout->view('marketing/linkup');
-	}
-
-	public function reminder() {
-
-		$this->layout->view('marketing/reminder');
 	}
 
 	public function send_invitation( $id) {
@@ -242,28 +219,7 @@ class Marketing extends Base_Controller{
 		$this->layout->view('marketing/view_email' , array( 'mail' => $mail ));
 	}
 
-	public function client_tags() {
-
-		if( isset( $_GET['add'])) {
-			$this->marketing->add_tags();
-			redirect( base_url().'index.php/marketing/client_tags');
-		}
-
-		$this->layout->view('marketing/client_tags' , array('tags' => $this->marketing->get_all_tags()));
-	}
-
-	public function set_tag( $client_id , $tagid ) {
-			
-		$this->marketing->set_tag( $client_id , $tagid , $this->_G['uid']);
-		redirect( base_url().'index.php/marketing/connect/'.$client_id);
-	}
-
-	public function website_member() {
-
-	}
-
 	public function mail_template() {
-
 		
 		$this->layout->view('marketing/mail_template');
 
