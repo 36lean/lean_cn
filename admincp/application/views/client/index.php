@@ -36,9 +36,9 @@
 		<td><?php echo $file['size'];?></td>
 		<td><?php echo date('Y/m/d h:i:s' , $file['createdtime']);?></td>
 		<td><?php echo $file['md5'];?></td>
-		<td><a href="<?php echo site_url('client/turntodb/'.$file['md5']);?>">导入数据库</a></td>
+		<td><a href="<?php echo site_url('client/turntodb/'.$file['md5']);?>">导入</a></td>
 	</tr>
 	<?php endforeach ?>
-
-
 </table>
+
+

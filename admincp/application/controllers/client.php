@@ -73,20 +73,38 @@ class Client extends Base_Controller {
 		{
 			$this->client_file->save_file();
 		}
+
+		//修改
+		if( $this->input->post('map_to_database'))
+		{
+			unset( $_POST['map_to_database']);
+			$this->client_file->map_to_database();
+
+			redirect( 'client/importdata');
+		}
+
+		//真正的导入
+		if( $this->input->post('to_database'))
+		{
+			unset( $_POST['to_database']);
+			$this->client_file->to_database();
+
+			exit;
+		}
 	}
 
 	public function navigation() {
 		return array(
 			array( 'route' 	=> 'index' 					, 'alias' => '[ 上传 ]' 	, 'status' => 'active') ,
 			array( 'route' => 'contact' 				, 'alias' => '[ 联系人 ]'	, 'status' => 'active') ,
-			array( 'route'	=> 'excel'					, 'alias' => '导入数据' , 'status' => 'active') ,
-			array( 'route' 	=> 'export' 				, 'alias' => '导出数据' , 'status' => 'active') ,
-			array( 'route' 	=> 'dispatch'				, 'alias' => '分配' 	, 'status' => 'active') ,
-			array( 'route' 	=> 'client_list'			, 'alias' => '客户列表' , 'status' => 'active') ,
-			array( 'route' 	=> 'view_all_corporation'	, 'alias' => '企业列表' , 'status' => 'active') ,
-			array( 'route' 	=> 'useless_profile'		, 'alias' => '废纸篓' 	, 'status' => 'active') ,
-			array( 'route'  => 'edit_contact' 			, 'alias' => '编辑客户' , 'status' => 'disabled') ,
-			array( 'route'  => 'turntodb' 			, 'alias' => '编辑导入' , 'status' => 'disabled') ,
+			array( 'route'	=> 'excel'					, 'alias' => '导入数据' 	, 'status' => 'active') ,
+			array( 'route' 	=> 'export' 				, 'alias' => '导出数据' 	, 'status' => 'active') ,
+			array( 'route' 	=> 'dispatch'				, 'alias' => '分配' 		, 'status' => 'active') ,
+			array( 'route' 	=> 'client_list'			, 'alias' => '客户列表' 	, 'status' => 'active') ,
+			array( 'route' 	=> 'view_all_corporation'	, 'alias' => '[ 企业列表 ]' , 'status' => 'active') ,
+			array( 'route' 	=> 'useless_profile'		, 'alias' => '废纸篓' 		, 'status' => 'active') ,
+			array( 'route'  => 'edit_contact' 			, 'alias' => '编辑客户' 	, 'status' => 'disabled') ,
+			array( 'route'  => 'turntodb' 				, 'alias' => '编辑导入' 	, 'status' => 'disabled') ,
 		);
 	}
 
@@ -102,11 +120,84 @@ class Client extends Base_Controller {
 	public function turntodb( $md5)
 	{
 
+		$json_cache = opendir('data/excel/');
+
+		while( $f = readdir( $json_cache))
+		{
+			if( preg_match('/^[.]+/', $f))
+				continue;
+			unlink('data/excel/'.$f);
+		}
+		if( file_exists( 'data/cache/config.conf'))
+			unlink('data/cache/config.conf');
+
+		$this->_program();
+
+		$md5 = trim( $md5);
+
 		$file = $this->db->where( array('md5'=>$md5))->get('admin_uploads')->row_array();
 
-		var_dump( $file);
+		$data = readexcel( 'uploads/excel/' . $file['file']);
 
-		$this->layout->view( 'client/turntodb');
+		$result = array_filter( $data , function( $tmp){
+			$t = array_unique( $tmp);
+			if( count( $t)===1 && !$t[0])
+				return false;
+			return true;
+		});
+
+		file_put_contents( 'data/cache/'.$md5.'.tmp', json_encode( $result) );
+
+		$column = $result[0];
+
+		$column = array_filter( $column);
+
+		$this->layout->view( 'client/turntodb' , array( 'column'=>$column , 
+														'md5'=>$md5 , 
+														'demo' => $result[1] , 
+														'sum'=>count( $result) , 
+														'file_id' => $file['id'] ,
+														'file' =>$file['file'],
+														)
+							);
+	}
+
+	public function importdata()
+	{
+		if( file_exists( 'data/cache/config.conf'))
+		{
+
+
+			$d = opendir('data/excel/');
+
+			$file_list = array();
+
+			while( $name = readdir( $d))
+			{
+				if( preg_match('/^[.]+/', $name))
+					continue;
+				$file_list[] = $name; 
+			}
+
+			$this->layout->view('client/importdata' , array('file_list'=>$file_list));
+
+		}else
+		{
+			$this->layout->view('client/importdata' , array('info'=>'没有设置映射文件'));
+		}
+	}
+
+	public function import_json_cache( $file)
+	{
+		$this->_program();
+
+		$data = json_decode( file_get_contents( 'data/excel/'.$file) , true);
+
+		$config = json_decode( file_get_contents( 'data/cache/config.conf') , true);
+
+		$master = $this->permission->get_admin_lists();
+
+		$this->layout->view('client/import_json_cache' , array('data'=>$data,'config'=>$config,'file'=>$file,'master'=>$master));
 	}
 
 	public function  contact( $page = 1 , $offset = 30)

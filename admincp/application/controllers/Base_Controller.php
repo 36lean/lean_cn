@@ -29,6 +29,8 @@ class Base_Controller extends CI_Controller {
 		}
 
 		$this->auth();
+
+		$this->load->config('map');
 	}
 	//@layout -- top navigation before main-content
 	public function navigation() {

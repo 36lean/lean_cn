@@ -59,7 +59,7 @@ class Marketing extends Base_Controller{
 		);
 	}
 
-	public function index( $page=1 , $offset=50) {
+	public function index( $page = 1 , $offset = 60) {
 
 		if( isset( $_GET['search'])) {
 

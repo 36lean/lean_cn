@@ -9,29 +9,15 @@ class M_marketing extends CI_Model {
 	}
 
 	public function get_clients( $page , $offset , $salesman_id , $condition) {
-
-		if( $salesman_id === 0)
-			$where = 'salesman_id >= 0';
-		else
-			$where = 'salesman_id = '.$salesman_id;
-
-		if( $condition !== '') {
-
-			$where .= $condition;
-
-		}
-
 		$page = $page - 1;
-		return $this->db->select('cl.id,cl.name,cl.email,cl.phone,cl.mobile,cl.created_date,co.name as comp_name , t.tag as tag ,r.file_name , u.username')
-						->from('admin_client cl')
-						->join('admin_client_corporation co' , 'cl.company_id = co.id' , 'left')
-						->join('admin_clienttags t' , 'cl.tags = t.id' , 'left')
-						->join('admin_client_row r' , 'cl.file_id = r.id')
-						->join('admin_acl u' , 'u.user_id = cl.salesman_id')
-						->where( $where )
-						->limit( $offset , $offset*$page)
-						->order_by('id,phone' , 'desc')
+
+		return $this->db->select('u.*')
+						->from('admin_contacts u')
+						->join('admin_company c' , 'c.id = u.company_id' , 'left')
+						->limit( $offset , $page * $offset)
+						->where( array('assign_to'=>$salesman_id))
 						->get()->result_array();
+
 	}
 
 	public function sum_of_clients() {
