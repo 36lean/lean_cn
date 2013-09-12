@@ -28,7 +28,6 @@ class M_marketing extends CI_Model {
 						->limit( $offset , $page * $offset)
 						->where( $where)
 						->get()->result_array();
-
 	}
 
 	public function sum_of_clients() {
@@ -328,7 +327,7 @@ class M_marketing extends CI_Model {
 						->from('admin_company c')
 						->join('admin_contacts t' , 't.company_id = c.id' )
 						->limit( $offset , ($page-1)*$offset)
-						->group_by('c.name')
+						->group_by('c.id')
 						->order_by('id','desc')
 						->get()->result_array();
 	}
@@ -349,5 +348,4 @@ class M_marketing extends CI_Model {
 						->get()
 						->result_array();
 	}
-
 }

@@ -9,14 +9,15 @@
 		$this->load->module('webkit/information/show_information' , array('客户资料更新成功'));
 	}
 }?>
+<div class="row">
 
+<div class="span8">
 <div class="alert alert-info"><i class="icon-comment-alt"></i> 沟通记录</div>
-
 <table class="table table-striped">
 <?php foreach ($connect as $conn) : ?>
 <tr>
-	<td class="span2"><a href="<?php echo site_url('marketing/edit_connect_record/'.$conn['id']);?>"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('m-d h:s' , $conn['date']) ;?></td>
-	<td class="span10">
+	<td class="span3"><a href="<?php echo site_url('marketing/edit_connect_record/'.$conn['id']);?>"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('m-d h:s' , $conn['date']) ;?></td>
+	<td class="span9">
 	<?php echo $conn['response'];?>
 	</td>
 </tr>
@@ -36,6 +37,36 @@
 </div>
 </div>
 </form>
+
+</div>
+
+<div class="span4">
+	<form action="" method="post">
+	<div class="alert alert-info"><i class="icon-time"></i> 约定提醒</div>
+	<div class="control-group">
+		<div class="controls">
+		<label><strong>选择提醒时间</strong></label>
+    	<div class="input-append date" id="datetimepicker" data-date="<?php echo date('Y-m-d h:i');?>" data-date-format="yyyy-mm-dd hh:ii">
+    	<input name="time" class="span2" size="16" type="text" value="<?php echo date('Y-m-d h:i');?>">
+    	<span class="add-on"><i class="icon-th"></i></span>
+    	</div> 
+    </div>
+
+    <div class="control-group">
+    	<div class="controls">
+    	<label><strong>备注信息</strong></label>
+    	<div><input name="message" type="text" /></div>
+    	</div>
+    </div>
+
+    <div class="control-group">
+    	<div class="controls">
+    	<div><button name="submit" type="submit" class="btn btn-primary" value="1" ><i class="icon-time"></i> 添加</button></div>
+    	</div>
+    </div>
+	</div>
+	</form>
+</div>
 
 <div class="row">
 <div class="span6">
@@ -88,6 +119,9 @@ $percent = $finish * 100 / count($profile);
 </tr>
 <tr>
 	<td>传真</td><td><?php echo $profile['office_fax'];?></td>
+</tr>
+<tr>
+	<td>QQ</td><td><?php echo $profile['qq'];?></td>
 </tr>
 <tr>
 	<td>地址</td><td><?php echo $profile['address'];?></td>

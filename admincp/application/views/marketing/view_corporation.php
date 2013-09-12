@@ -2,6 +2,7 @@
 	<h3> <?php echo $company['name'];?> </h3>
 </div>
 
+
 <div class="row">
 
 <div class="span6">

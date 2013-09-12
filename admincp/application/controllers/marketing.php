@@ -47,6 +47,13 @@ class Marketing extends Base_Controller{
 		{
 			return $this->client_excel->remove_contact_connect();
 		}
+
+		//添加约定时间
+		if( $this->input->post('submit'))
+		{
+			//var_dump( $_POST);
+		}
+
 	}
 
 	public function navigation() {

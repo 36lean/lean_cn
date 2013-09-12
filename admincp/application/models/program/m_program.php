@@ -12,6 +12,8 @@ class M_program extends CI_Model
 	private $timestamp;
 	private $toUser;
 	private $token;
+	private $sign;
+	private $base = 'http://vsaying.talkage.com/vsaying/';
 
 	/**
 	*获取微通讯验证的Signature字符串
@@ -19,18 +21,36 @@ class M_program extends CI_Model
 	**/
 	public function get_vsay_signature( $toUser = '' , $token = '' )
 	{
-		$this->timestamp = time();
+  		
+   		$this->timestamp =  time(). intval(1000*microtime());
+
 		$this->toUser = $toUser;
 		$this->token = $token;
 
 		$arr = array( $this->timestamp , $this->toUser , $this->token );
+
 		sort( $arr);
 
 		$str = implode('', $arr);
 
 		$this->vsay_sign = strtolower( sha1( $str));
 
+		$this->sign = '&signature='.$this->vsay_sign.'&timestamp='.$this->timestamp.'&toUser='.$this->toUser;
+
 		return $this;
+	}
+
+	public function register( $user , $phone)
+	{
+		$register_url = $this->base.'isExiste?fromUser='.$user.$this->sign;
+
+		if( 'UserExiste' === file_get_contents($register_url))
+		{
+			echo '已经注册了';
+		}else
+		{
+			echo '还没有注册';
+		}
 	}
 
 	public function get_vsay_url( $method , $params = array())
@@ -43,9 +63,8 @@ class M_program extends CI_Model
 
 		$str = implode('&', $p);
 
-
-		$url = 'http://180.168.172.123/vsaying/'.$method.'&'.$str.'&signature='.$this->vsay_sign.'&timestamp='.$this->timestamp.'&toUser='.$this->toUser;
-
-		return $url;
+		$url = $this->base.$method.'?'.$str.$this->sign;
+		
+		return htmlspecialchars_decode( $url);
 	}
 }

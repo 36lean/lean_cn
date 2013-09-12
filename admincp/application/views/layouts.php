@@ -13,6 +13,7 @@
     <script src="<?php echo base_url('public/ckeditor/ckeditor.js')?>"></script>
     
     <!-- The styles -->
+    <link href="<?php echo base_url();?>public/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet">
     <link href="<?php echo base_url();?>public/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo base_url();?>public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href='<?php echo base_url();?>public/font-awesome/css/font-awesome.min.css' rel='stylesheet'>
@@ -23,6 +24,12 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="<?php echo base_url('public/charisma/js/jquery-1.7.2.min.js');?>"></script>
+    <script src="<?php echo base_url('public/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');?>"></script>
+    <script>
+    $(function(){
+        $('#datetimepicker').datetimepicker();
+    });
+    </script>
 </head>
 
 <body style="padding:50px;font-size:13px;font-family:微软雅黑">
@@ -48,7 +55,7 @@ else
 </div>
 </div>
 
-<?php //$this->load->module('webkit/devkit/index');?>
+<?php $this->load->module('webkit/devkit/index');?>
 
 <?php $this->load->module('webkit/menu/top');?>
 <?php $this->load->module('webkit/leftside/get_left_side');?>

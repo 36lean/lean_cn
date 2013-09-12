@@ -12,9 +12,10 @@ class Website extends Base_Controller {
 
 	public function navigation() {
 		return array(
-			'static_page_manage',
-			'page_cache',
-			'website_config',
+			array( 'route' => 'index' 				, 'alias'=>'新建页面'	, 'status' => 'active' ),
+			array( 'route' => 'static_page_manage' 	, 'alias'=>'管理页面' 	, 'status' => 'active' ),
+			array( 'route' => 'page_cache'			, 'alias'=>'页面缓存'	, 'status' => 'active' ),
+			array( 'route' => 'website_config'		, 'alias'=>'设置'		, 'status' => 'avtive' ),
 
 		);
 	}
