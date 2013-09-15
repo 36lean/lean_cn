@@ -24,11 +24,22 @@ class Webkit_devkit_module extends CI_Module
 	{
 		$url = $this->program->get_vsay_signature('831lean2013online','2435325uifslkfjalTalk')
 							 ->register('contact'.$user_id , $phone)
-							 ->get_vsay_url( 'queryBalance' , array( 'toUser'=>'831lean2013online'));
+							 ->get_vsay_url( 'phoneCall' , array( 'fromUser'	 => 'contact'.$user_id , 
+							 									  'toUser' 		 => '831lean2013online' , 
+							 									  'infoCsrId ' 	 => 1 ,
+							 									)
+							 );
 
-		$return = file_get_contents( $url);
 
-
+  		$ch = curl_init();
+   		curl_setopt($ch, CURLOPT_URL, $url);
+   		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+   		curl_setopt($ch, CURLOPT_USERAGENT, _USERAGENT_);
+   		curl_setopt($ch, CURLOPT_REFERER,_REFERER_);
+   		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$return = curl_exec($ch);
+   		curl_close($ch);
+		
 		if( 'CallSuccess' === $return)
 		{
 			$this->program->make_dial_success_log( 
@@ -37,6 +48,7 @@ class Webkit_devkit_module extends CI_Module
 					'caller_id' 	=> $this->_G,
 					'phone'			=> $phone , 
 					'timedial' 		=> time() , 
+					'result'		=> 1 ,
 				)
 			);
 		}

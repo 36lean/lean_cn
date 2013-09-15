@@ -52,7 +52,7 @@
 						
 						<td class="center"><a href="<?php echo base_url();?>index.php/marketing/connect/<?php echo $c['id'];?>" target="blank"><i class="icon-user"></i> <?php echo $c['name'];?></a></td>
 
-						<td class="center"><?php echo $c['company_name'];?></td>
+						<td class="center"><a href="<?php echo site_url('marketing/view_corporation/'.$c['company_id']);?>"><?php echo $c['company_name'];?></a></td>
 
 						<td class="center">
 							<a href="<?php echo base_url();?>index.php/marketing/mailto/<?php echo $c['id'];?>"><i class="icon-envelope"></i> <?php echo $c['email'];?></a>
@@ -88,6 +88,8 @@ $( function() {
 
 	$('a[data-toggle="modal"]').on('click' , function(){
 		
+		$('.collection > button').addClass('disabled');
+
 		$('div#log').text("");
 
 		var number = $(this).attr('rel');
@@ -110,12 +112,26 @@ $( function() {
 		});
 
 		request.done(function(msg) {
-			if( "呼叫成功" === $msg)
+			if( "呼叫成功" === msg)
 			{
-
+				$('.collection > button').removeClass('disabled');
 			}
 
 			$('div#log').append('<strong>返回提示: '+msg+'</strong>');
+		});
+
+		$('.collection > button').removeClass('disabled');
+
+		$('.collection > button').on('click' , function() {
+
+			var request = $(this).attr('id');
+
+			request = $.ajax({
+				type:"GET",
+				url: "<?php echo site_url('marketing/');?>"+"/"+request ,
+			});
+
+
 		});
 
 	});
@@ -129,6 +145,9 @@ $( function() {
 	</div>
 	<div class="modal-body form-inline">
 
+		<div class="control-group">
+		<div class="controls">
+		
 		<strong>请确认号码: </strong>
 
 		<span id="number"></span>
@@ -138,10 +157,20 @@ $( function() {
 		<input id="dial" class="input-medium" type="text" value="" />
 
 		<button class="btn btn-primary" id="docall" name="call"> 拨打</button>
-
 		
+		</div>
+		</div>	
 
 		<div id="log"></div>
+
+		<div class="btn-group collection">
+			<h5>通话时间统计 : </h5>
+  
+    		<button id="set_start_time" class="btn btn-primary disabled" data-toggle="button">通话开始</button>
+    		<button id="set_give_up" class="btn disabled" data-toggle="button">放弃通话</button>
+    		<button id="set_give_up" class="btn btn-primary disabled" data-toggle="button">通话结束</button>
+    	</div>
+
 	</div>
 
 	<div class="modal-footer">

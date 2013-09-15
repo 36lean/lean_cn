@@ -13,6 +13,7 @@ class Marketing extends Base_Controller{
 		$this->load->model('client/client_excel');
 		$this->load->model('client/client_member' , 'client_member');
 		$this->load->model('common/define_data');
+		$this->load->model('program/m_program' , 'program');
 	}
 
 	private function _program()
@@ -290,7 +291,25 @@ class Marketing extends Base_Controller{
 	{
 		$this->layout->view('marketing/status' , array('message' => $message));
 	}
-	
+
+
+	public function set_start_time()
+	{
+
+		echo $this->program->update_start_time(  $this->_G['uid']);
+	}
+
+	public function set_end_time()
+	{
+		echo $this->program->update_end_time(  $this->_G['uid']); 
+	}
+
+	public function set_give_up()
+	{
+
+		echo $this->program->give_up( $this->_G['uid']);
+	}
+
 	public function __toString() {
 		return strtolower( __CLASS__);
 	}
