@@ -1,9 +1,11 @@
+
 <div class="row-fluid">
+	<div class="span6">
 	<form class="form-inline" action="<?php echo site_url('marketing' , 'search');?>" method="get">
 		<input name="key" type="text" />
 		<select name="field">
 			<option value="name">客户名字</option>
-			<option value="corporation_name">公司</option>
+			<option value="c_name">公司</option>
 			<option value="tag">标签</option>
 			<option value="email">电子邮件</option>
 			<option value="phone">电话</option>
@@ -11,6 +13,11 @@
 		</select>
 		<button name="search" class="btn btn-primary" name="submit" type="submit" value=1>搜索</button>
 	</form>
+	</div>
+	
+	<div class="span6">
+		<?php $this->load->module('webkit/reminder/get_contact_remind');?>
+	</div>
 </div>
 
 

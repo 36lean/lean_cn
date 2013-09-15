@@ -15,11 +15,11 @@ class Course extends Base_Controller {
 
 	public function navigation() {
 		return array(
-			'index',
-			'add_course',
-			'add_category',
-			'edit_category',
-			'server_config',
+			array( 'route' =>'index' , 'alias' => '课程清单' , 'status' => 'active' ) ,
+			array(  'route'=>'add_course', 'alias' => '添加课程' , 'status' => 'active' ) , 
+			array(  'route'=> 'add_category', 'alias' => '添加分类' , 'status' => 'active') ,
+			array(  'route'=> 'edit_category','alias' => '编辑分类' , 'status' => 'active' ) ,
+			array(  'route'=>'server_config' ,'alias' => '设置' , 'status' => 'active' ) , 
 		);
 	}
 

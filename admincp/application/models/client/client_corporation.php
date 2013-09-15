@@ -20,14 +20,6 @@ class Client_corporation extends CI_Model {
 		//return $this->db->last_query();
 	}
 
-	//取得所有总公司/非子公司
-	public function fetch_final_corp() {
-		return $this->db->select('id,corp_name')
-				 		->from( $this->_table)
-				 		->where( array('belongto' => '0'))
-				 		->get()->result_array();
-	}
-
 	public function fetch_by_id( $id) {
 		return $this->db->select('*')
 				 		->from( $this->_table)

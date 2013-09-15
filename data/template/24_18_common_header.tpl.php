@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1377954533, '18', './data/template/24_18_common_header.tpl.php', './template/tpl', 'common/header')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1379213495, '18', './data/template/24_18_common_header.tpl.php', './template/tpl', 'common/header')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->

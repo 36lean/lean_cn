@@ -287,37 +287,27 @@ class M_marketing extends CI_Model {
 
 	public function get_search() {
 
-		//print_r( $_GET);
+		$key = trim( $this->input->get('key'));
 
-		$_GET['key'] = trim( $_GET['key']);
-		
-		if(  'name' === $_GET['field']) {
+		$field = trim( $this->input->get('field'));
 
-			return ' and cl.name like \'%'.$_GET['key'].'%\'';
-
-		}else if( 'corporation_name' === $_GET['field']) {
-
-			return ' and co.name like \'%'.$_GET['key'].'%\'';
-
-		}else if( 'tag' === $_GET['field']) {
-
-			return ' and t.tag like \'%'.$_GET['key'].'%\'';
-
-		}else if( 'email' === $_GET['field']) {
-
-			return ' and cl.email like \'%'.$_GET['key'].'%\'';
-
-		}else if( 'mobile' === $_GET['field']) {
-
-			return ' and cl.mobile ='.$_GET['key'];
-
-		}else if( 'phone' === $_GET['field']) {
-
-			return ' and cl.phone like \'%'.$_GET['field'].'%\'';
-
+		if( preg_match( '/^(c_)/', $field))
+		{
+			$field = preg_replace('/^(c_)/', '', $field);
+			return $this->db->select(' u.* , c.name as company_name , t.tag')
+					 		->from('admin_company c')
+					 		->join('admin_contacts u' , 'c.id = u.company_id' , 'left')
+							->join('admin_clienttags t' , 'u.tag = t.id' , 'left')
+					 		->like( 'c.'.$field , $key , 'both')
+					 		->get()->result_array();
+		}else{
+			return $this->db->select(' u.* , c.name as company_name , t.tag')
+							->from('admin_contacts u')
+					 		->join('admin_company c' , 'c.id = u.company_id' , 'left')
+							->join('admin_clienttags t' , 'u.tag = t.id' , 'left')
+					 		->like( 'u.'.$field , $key , 'both')
+					 		->get()->result_array();
 		}
-
-		return '';
 
 	}
 
@@ -347,5 +337,49 @@ class M_marketing extends CI_Model {
 						->where( array('company_id'=>$id))
 						->get()
 						->result_array();
+	}
+
+	public function add_clock_for_contact()
+	{
+
+		$ci = & get_instance();
+
+		$new_one = array(
+			  'client_id' 		=> $this->input->post('contact_id') , 
+			  'salesman_id'		=> $ci->_G['uid'] ,
+			  'datereminded' 	=> strtotime( $this->input->post('time')) , 
+			  'event'			=> trim( $this->input->post('message')) ,
+
+		);
+
+		if( $this->db->insert('admin_client_appointment' , $new_one) )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function get_contact_remind( $salemanid)
+	{
+		return $this->db->select('c.name')
+						->from('admin_client_appointment a')
+						->join('admin_contacts c' , 'c.id = a.client_id')
+						->where( array('salesman_id'=>$salemanid))
+						->order_by('a.id' , 'desc')
+						->get()->result_array();		
+	}
+
+	public function get_contact_details( $salemanid)
+	{
+		return $this->db->select('c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
+						->from('admin_client_appointment a')
+						->join('admin_contacts c' , 'c.id = a.client_id')
+						->join('admin_company cp' , 'cp.id = c.company_id')
+						->where( array('salesman_id'=>$salemanid))
+						->order_by('a.id' , 'desc')
+						->get()->result_array();		
 	}
 }

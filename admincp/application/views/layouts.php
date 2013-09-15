@@ -39,6 +39,7 @@ if( $ci instanceof Base_Controller)
     $user = $ci->_G;
 else 
     $user = $ci->session->userdata('status');
+
 ?>
 
 <div class="navbar navbar-fixed-top">
@@ -47,6 +48,9 @@ else
         <a class="brand" href="#">精益云管理系统</a>
         <ul class="nav">
             <li class="active"><a href="<?php echo base_url();?>index.php">首页</a></li>
+            
+            <li><a href="<?php echo base_url();?>index.php">消息数: <?php $this->load->module('webkit/reminder/get_timeout_remind');?></a></li>
+            
         </ul>
         <ul class="nav pull-right">
             <li><a href="<?php echo site_url('user/logout');?>"><?php echo $user['user'];?>注销登录</a></li>
@@ -55,7 +59,7 @@ else
 </div>
 </div>
 
-<?php $this->load->module('webkit/devkit/index');?>
+<?php //$this->load->module('webkit/devkit/index');?>
 
 <?php $this->load->module('webkit/menu/top');?>
 <?php $this->load->module('webkit/leftside/get_left_side');?>

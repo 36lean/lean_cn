@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1377852785, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1379213475, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -55,7 +55,7 @@
    	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
 <![endif]-->  	
   	<style type="text/css">
-body{margin-bottom:50px;font-family: 微软雅黑;background: url( 'static/mot/bg.jpg') ;}.container-narrow{margin:0 auto;max-width:700px}.container-narrow>hr{margin:30px 0}.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
+body{margin-bottom:50px;font-family: 微软雅黑;background: url( 'static/mot/bg.jpg') ;}.container-narrow{margin:0 auto;max-width:700px}.container-narrow>.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
     </style>
 
 

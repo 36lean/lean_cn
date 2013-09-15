@@ -14,6 +14,7 @@
 </div>
 
 <div class="row">
+
 		<div class="" style="font-size:12px;">
 			<table class="table table-striped ">
 				<thead>

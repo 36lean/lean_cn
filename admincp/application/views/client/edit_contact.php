@@ -42,6 +42,7 @@
 
 <div class="span4">
 	<form action="" method="post">
+	<input name="contact_id" type="hidden" value="<?php echo $profile['id'];?>" />
 	<div class="alert alert-info"><i class="icon-time"></i> 约定提醒</div>
 	<div class="control-group">
 		<div class="controls">
@@ -103,7 +104,7 @@ $percent = $finish * 100 / count($profile);
 	<td>分类</td><td><span class="label label-success"><?php echo $profile['tag_code'].' - '.$profile['tag_name'];?></span></td>
 </tr>
 <tr>
-	<td><a href="">所在企业</a></td><td><a href="<?php echo site_url('client/corp_information/'.$profile['company_id']);?>"><?php echo $profile['companyname'],' - ',$profile['company_id'];?></td>
+	<td><a href="">所在企业</a></td><td><a href="<?php echo site_url('marketing/view_corporation/'.$profile['company_id']);?>"><?php echo $profile['companyname'],' - ',$profile['company_id'];?></td>
 </tr>
 <tr>
 	<td>职务</td><td><?php echo $profile['job'];?></td>

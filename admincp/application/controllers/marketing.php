@@ -51,7 +51,20 @@ class Marketing extends Base_Controller{
 		//添加约定时间
 		if( $this->input->post('submit'))
 		{
-			//var_dump( $_POST);
+			unset( $_POST['submit']);
+			$id = $this->input->post('contact_id');
+			$this->marketing->add_clock_for_contact();
+			redirect( site_url('marketing/connect/'.$id));
+		}
+
+		if( isset( $_GET['search'])) {
+
+			unset( $_GET['search']);
+
+			return $this->marketing->get_search();
+			
+		}else {
+			return '';
 		}
 
 	}
@@ -60,7 +73,8 @@ class Marketing extends Base_Controller{
 		return array(
 			array( 'route' => 'index'			, 'alias' => '我的客户列表' , 'status' => 'active' ) ,
 			array( 'route' => 'corporation' 	, 'alias' => '企业列表' 	, 'status' => 'active' ) ,
-			array( 'route' => 'create_client' 	, 'alias' => '新建联系人' 	, 'status' => 'active') ,
+			array( 'route' => 'center' 			, 'alias' => '消息中心' 	, 'status' => 'active') ,
+			array( 'route' => 'create' 			, 'alias' => '新建档案' 	, 'status' => 'active') ,
 			array( 'route' => 'website_member'	, 'alias' => '网站会员'  	, 'status' => 'active' ) ,
 			array( 'route' => 'mail' 			, 'alias' => '邮件工具' 	, 'status' => 'active') ,
 		);
@@ -68,30 +82,27 @@ class Marketing extends Base_Controller{
 
 	public function index( $page = 1 , $offset = 60) {
 
-		if( isset( $_GET['search'])) {
+		$condition = $this->_program();
 
-			if( trim( $_GET['key'])) {
+		if( is_array( $condition))
+		{
+			$client = $condition;
 
-				$condition = $this->marketing->get_search();
-
-			}else {
-				$condition = '';
-			}
-			
-		}else {
-			$condition = '';
+			$sum = count( $client);
+		}
+		else
+		{
+			$uid = $this->_G['adminid'] ?  0 : $this->_G['uid'];
+		
+			$client = $this->marketing->get_clients( $page , $offset , $uid , $condition);
+		
+			$sum = $this->marketing->sum_of_clients();
 		}
 
-		$uid = $this->_G['adminid'] ?  0 : $this->_G['uid'];
-		
-		$client = $this->marketing->get_clients( $page , $offset , $uid , $condition);
-		
-		$sum = $this->marketing->sum_of_clients();
-
-		$this->layout->view('marketing/index' , array( 'client' => $client , 
-													   'page' 	=> $page , 
-													   'offset' => $offset,
-													   'sum'    => $sum,
+		$this->layout->view('marketing/index' , array( 'client' 		=> $client , 
+													   'page' 			=> $page , 
+													   'offset' 		=> $offset ,
+													   'sum'    		=> $sum ,
 													 )
 		);
 	}
@@ -166,6 +177,25 @@ class Marketing extends Base_Controller{
 		$connect_id = $this->marketing->linkup_remove( $id);
 
 		redirect( base_url() .'index.php/marketing/connect/'.$connect_id);
+	}
+
+	/**
+	*@消息中心
+	**/
+	public function center()
+	{
+
+		$data = $this->marketing->get_contact_details( $this->_G['uid']);
+
+		$this->layout->view('marketing/center' , array( 'data'=>$data ));
+	}
+
+	public function create()
+	{
+		$this->layout->view('marketing/create',array(
+							'contact_column'=> $this->config->config['map']['contacts'] , 
+							'company_column'=> $this->config->config['map']['company'],
+		));
 	}
 
 	public function send() {

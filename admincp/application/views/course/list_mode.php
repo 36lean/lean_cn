@@ -20,7 +20,9 @@
 </thead>
 
 <tbody>
-<?php foreach ($list as $course) {
+<?php 
+var_dump( $category);
+foreach ($list as $course) {
 ?>
 <tr>
 	<td><strong><input class="span1" type="text" name="<?php echo $course['id'];?>" value="<?php echo $course['sortid'];?>"></strong></td>
