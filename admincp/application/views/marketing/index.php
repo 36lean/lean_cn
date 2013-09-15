@@ -54,17 +54,25 @@
 
 						<td class="center"><?php echo $c['company_name'];?></td>
 
-						<td class="center"><a href="<?php echo base_url();?>index.php/marketing/mailto/<?php echo $c['id'];?>"><i class="icon-envelope"></i> <?php echo $c['email'];?></a></td>
+						<td class="center">
+							<a href="<?php echo base_url();?>index.php/marketing/mailto/<?php echo $c['id'];?>"><i class="icon-envelope"></i> <?php echo $c['email'];?></a>
+						</td>
 
-						<td class="center"><?php echo $c['office_phone'].' ';?></td>
+						<td class="center">
+							<?php if( $c['office_phone']){?><a href="#myModal" role="button" class="btn btn-mini" data-toggle="modal" rel="<?php echo $c['office_phone'];?>" idn="<?php echo $c['id'];?>">
+								<i class="icon-phone"></i> <?php echo $c['office_phone'];?></a>
+							<?php }?>
+						</td>
 
-						<td class="center"><?php echo $c['mobile'].' ';?></td>
+						<td class="center">
+							<?php if( $c['mobile']){?><a href="#myModal" role="button" class="btn btn-mini" data-toggle="modal" rel="<?php echo $c['mobile'];?>" idn="<?php echo $c['id'];?>">
+								<i class="icon-phone"></i> <?php echo $c['mobile'];?></a><?php }?></td>
 
 						<td class="center">
 							<a href="<?php echo base_url();?>index.php/client/throw_profile/<?php echo $c['id'];?>" target="blank">
 								<i class="icon-remove icon-white">
 								</i> 
-								废纸篓
+								废弃
 							</a>
 						</td>
 					</tr>
@@ -74,6 +82,73 @@
 			</table>
 		</div>
 	</div>
+
+<script>
+$( function() {
+
+	$('a[data-toggle="modal"]').on('click' , function(){
+		
+		$('div#log').text("");
+
+		var number = $(this).attr('rel');
+		$('#number').text("").append( "<h5>"+number+"</h5>");
+		$('#dial').text("").attr({'value':number});
+		$('#user_id_save').attr({'value':$(this).attr('idn')});
+	});
+
+	$('button#docall').on('click',function(){
+
+		$('div#log').text("");
+
+		var number = $('input#dial').val();
+
+		var user_id = $('#user_id_save').val();
+		
+		request = $.ajax({
+			type:"POST",
+			url: "<?php echo site_url('module/webkit/devkit/pull_dial_request/');?>"+"/"+user_id+"/"+number ,
+		});
+
+		request.done(function(msg) {
+			if( "呼叫成功" === $msg)
+			{
+
+			}
+
+			$('div#log').append('<strong>返回提示: '+msg+'</strong>');
+		});
+
+	});
+});
+</script>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">拨打电话</h3>
+	</div>
+	<div class="modal-body form-inline">
+
+		<strong>请确认号码: </strong>
+
+		<span id="number"></span>
+
+		<input id="user_id_save" type="hidden" value="" />
+
+		<input id="dial" class="input-medium" type="text" value="" />
+
+		<button class="btn btn-primary" id="docall" name="call"> 拨打</button>
+
+		
+
+		<div id="log"></div>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+	</div>
+</div>
+
 	<!--/span-->
 
 	<!--

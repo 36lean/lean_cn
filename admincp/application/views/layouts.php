@@ -25,6 +25,7 @@
     <!-- jQuery -->
     <script src="<?php echo base_url('public/charisma/js/jquery-1.7.2.min.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');?>"></script>
+    <script src="//cdnjs.bootcss.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
     <script>
     $(function(){
         $('#datetimepicker').datetimepicker();
@@ -74,6 +75,6 @@ else
     <h5><small>© 2013 36lean.com</small></h5>
     <h5><small> All rights reserved.</small></h5>
 </div>
-<script src="//cdnjs.bootcss.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>

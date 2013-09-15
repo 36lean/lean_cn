@@ -18,6 +18,19 @@ class Marketing extends Base_Controller{
 	private function _program()
 	{
 
+		if( $this->input->post('create_profile'))
+		{
+			unset( $_POST['create_profile']);
+
+			if( 1 == $this->marketing->build_profile( $this->_G['uid']))
+			{
+				redirect('marketing/status/ok');
+			}else
+			{
+				redirect('marketing/status/fail');
+			}
+		}
+
 		//添加沟通记录
 		if( $this->input->post('add_connect'))
 		{
@@ -58,9 +71,7 @@ class Marketing extends Base_Controller{
 		}
 
 		if( isset( $_GET['search'])) {
-
 			unset( $_GET['search']);
-
 			return $this->marketing->get_search();
 			
 		}else {
@@ -155,6 +166,7 @@ class Marketing extends Base_Controller{
 	public function edit_connect_record( $id)
 	{
 		$from_id = $this->_program();
+
 		if( $from_id)
 		{
 			redirect( site_url('marketing/connect/'.$from_id));
@@ -174,6 +186,7 @@ class Marketing extends Base_Controller{
 	public function linkup_remove( $id) 
 	{
 		$id = intval( $id);
+
 		$connect_id = $this->marketing->linkup_remove( $id);
 
 		redirect( base_url() .'index.php/marketing/connect/'.$connect_id);
@@ -182,16 +195,27 @@ class Marketing extends Base_Controller{
 	/**
 	*@消息中心
 	**/
-	public function center()
+	public function center( $page = 1 , $offset = 30 )
 	{
 
-		$data = $this->marketing->get_contact_details( $this->_G['uid']);
+		$data = $this->marketing->get_contact_details( $page , $offset , $this->_G['uid']);
 
-		$this->layout->view('marketing/center' , array( 'data'=>$data ));
+		$sum = $this->marketing->get_message_sum( $this->_G['uid']);
+
+		$this->layout->view('marketing/center' , array( 'data'=>$data , 'offset'=>$offset , 'sum' => $sum));
+	}
+
+	public function remove_message($id)
+	{	
+		$this->marketing->remove_message ( $id , $this->_G['uid']);
+		redirect( site_url('marketing/center'));
 	}
 
 	public function create()
 	{
+
+		$this->_program();
+
 		$this->layout->view('marketing/create',array(
 							'contact_column'=> $this->config->config['map']['contacts'] , 
 							'company_column'=> $this->config->config['map']['company'],
@@ -262,6 +286,10 @@ class Marketing extends Base_Controller{
 
 	}
 
+	public function status( $message)
+	{
+		$this->layout->view('marketing/status' , array('message' => $message));
+	}
 	
 	public function __toString() {
 		return strtolower( __CLASS__);

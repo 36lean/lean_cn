@@ -45,7 +45,7 @@
 
 						<td class="center"><?php echo $c['comp_name'];?></td>
 
-						<td class="center"><?php echo $c['phone'].' ';?></td>
+						<td class="center"><?php $this->load->module( 'webkit/dial/dail_phone' , array( $c['id'] , $c['phone']));?></td>
 
 						<td class="center"><?php echo $c['mobile'].' ';?></td>
 

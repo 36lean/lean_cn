@@ -46,10 +46,15 @@ class M_program extends CI_Model
 
 		if( 'UserExiste' === file_get_contents($register_url))
 		{
-			echo '已经注册了';
-		}else
-		{
-			echo '还没有注册';
+			return $this;
+		}
+		else
+		{	
+			$register = $this->base . 'createUser?fromUser='.$user.'&phoneNumber='.$phone.$this->sign;
+
+			file_get_contents( $register);
+
+			return $this;
 		}
 	}
 

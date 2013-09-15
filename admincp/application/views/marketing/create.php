@@ -7,6 +7,8 @@
 		<div>
 
 		<form name="" action="" method="post">
+		<input type="hidden" name="form_type" value="contacts" />
+
 		<?php foreach ($contact_column as $key=>$contact) :?>
 			<div class="control-group">
 			<label><strong><?php echo $contact;?></strong></label>
@@ -27,7 +29,7 @@
 			</div>
 		<?php endforeach ?>
 
-		<button class="btn btn-primary">添加新的客户资料</button>
+		<button class="btn btn-primary" name="create_profile" value="1">新增</button>
 		</form>
 		</div>
 	</div>
@@ -37,6 +39,9 @@
 		<div class="page-header">
 			<h4>添加企业档案</h4>
 		</div>
+
+		<form name="" action="" method="post">
+		<input type="hidden" name="form_type" value="company" />
 		<?php foreach ($company_column as $key=>$company) :?>
 			<div class="control-group">
 			<label><strong><?php echo $company;?></strong></label>
@@ -47,5 +52,7 @@
 			</div>
 			</div>
 		<?php endforeach ?>
+		<button class="btn btn-primary" name="create_profile" value="1">新增</button>
+		</form>
 	</div>
 </div>

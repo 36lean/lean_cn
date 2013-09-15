@@ -315,7 +315,7 @@ class M_marketing extends CI_Model {
 	{
 		return $this->db->select('c.* , count( t.id) as workers')
 						->from('admin_company c')
-						->join('admin_contacts t' , 't.company_id = c.id' )
+						->join('admin_contacts t' , 't.company_id = c.id' , 'left' )
 						->limit( $offset , ($page-1)*$offset)
 						->group_by('c.id')
 						->order_by('id','desc')
@@ -372,14 +372,84 @@ class M_marketing extends CI_Model {
 						->get()->result_array();		
 	}
 
-	public function get_contact_details( $salemanid)
+	public function get_contact_details( $page , $offset , $salemanid)
 	{
-		return $this->db->select('c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
+		return $this->db->select(' a.id , c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
 						->from('admin_client_appointment a')
 						->join('admin_contacts c' , 'c.id = a.client_id')
 						->join('admin_company cp' , 'cp.id = c.company_id')
 						->where( array('salesman_id'=>$salemanid))
 						->order_by('a.id' , 'desc')
+						->limit( $offset , ($page-1)*$offset )
 						->get()->result_array();		
+	}
+
+	public function get_message_sum($uid)
+	{
+		return $this->db->select('id')
+						->from('admin_client_appointment')
+						->where( array('salesman_id'=>$uid))
+						->get()->num_rows();
+	}
+
+	public function remove_message( $id , $uid)
+	{
+		$num = $this->db->where( array('id'=>$id , 'salesman_id'=>$uid))
+				 		->get('admin_client_appointment')
+				 		->num_rows();
+
+		if( 1 === $num)
+		{
+			return $this->db->delete('admin_client_appointment' , array('id'=>$id));
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	public function build_profile( $user_id)
+	{
+
+		if( 'contacts' === $this->input->post('form_type'))
+		{
+			if( trim( $this->input->post('name')))
+			{
+				$newer = array();
+				unset( $_POST['form_type']);
+				foreach ($_POST as $key => $value) {
+					$newer[$key] = trim( $value);
+				}
+
+				$newer['assign_to'] = $user_id;
+				$newer['modified_date'] = time();
+				$newer['from_file_id'] = 0;
+
+
+				return $this->db->insert( 'admin_contacts' , $newer);
+
+			}
+		}
+		else if( 'company' == $this->input->post('form_type'))
+		{
+
+			unset( $_POST['form_type']);
+
+			$newer = array();
+			foreach ($_POST as $key => $value) {
+				$newer[ preg_replace('/^(c_)/', '' , $key)] = trim( $value);
+			}
+
+			if( trim( $newer['name']))
+			{
+
+				$newer['timecreated'] = time();
+				$newer['created_userid '] = $user_id;
+
+				return $this->db->insert( 'admin_company' , $newer);
+			}
+		}
+
+		return 0;
 	}
 }
