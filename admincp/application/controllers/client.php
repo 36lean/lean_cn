@@ -98,12 +98,11 @@ class Client extends Base_Controller {
 		return array(
 			array( 'route' 	=> 'index' 					, 'alias' => '[ 上传 ]' 	, 'status' => 'active') ,
 			array( 'route' => 'contact' 				, 'alias' => '[ 联系人 ]'	, 'status' => 'active') ,
-			array( 'route'	=> 'excel'					, 'alias' => '导入数据' 	, 'status' => 'active') ,
-			array( 'route' 	=> 'export' 				, 'alias' => '导出数据' 	, 'status' => 'active') ,
-			array( 'route' 	=> 'dispatch'				, 'alias' => '分配' 		, 'status' => 'active') ,
-			array( 'route' 	=> 'client_list'			, 'alias' => '客户列表' 	, 'status' => 'active') ,
+			//array( 'route' 	=> 'export' 			, 'alias' => '导出数据' 	, 'status' => 'active') ,
+			array( 'route' 	=> 'client_list'			, 'alias' => '[ 客户列表 ]' , 'status' => 'active') ,
 			array( 'route' 	=> 'view_all_corporation'	, 'alias' => '[ 企业列表 ]' , 'status' => 'active') ,
-			array( 'route' 	=> 'useless_profile'		, 'alias' => '废纸篓' 		, 'status' => 'active') ,
+			array( 'route'  => 'webmember'				, 'alias' => '[ 网站会员 ]' , 'status' => 'active') ,
+			array( 'route' 	=> 'useless_profile'		, 'alias' => '[ 废纸篓 ]' 		, 'status' => 'active') ,
 			array( 'route'  => 'edit_contact' 			, 'alias' => '编辑客户' 	, 'status' => 'disabled') ,
 			array( 'route'  => 'turntodb' 				, 'alias' => '编辑导入' 	, 'status' => 'disabled') ,
 		);
@@ -139,13 +138,15 @@ class Client extends Base_Controller {
 		$file = $this->db->where( array('md5'=>$md5))->get('admin_uploads')->row_array();
 
 		$data = readexcel( 'uploads/excel/' . $file['file']);
-
-		$result = array_filter( $data , function( $tmp){
+		
+		function fil( $tmp){
 			$t = array_unique( $tmp);
 			if( count( $t)===1 && !$t[0])
 				return false;
 			return true;
-		});
+		}
+
+		$result = array_filter( $data , 'fil');
 
 		file_put_contents( 'data/cache/'.$md5.'.tmp', json_encode( $result) );
 
@@ -226,11 +227,11 @@ class Client extends Base_Controller {
 
 		$uid = $this->_G['adminid'] ?  0 : $this->_G['uid'];
 		
-		$client = $this->marketing->get_clients( $page , $offset , $uid , $condition);
+		$clients = $this->marketing->get_clients( $page , $offset , $uid , $condition);
 		
 		$sum = $this->marketing->sum_of_clients();
  	
-		$this->layout->view('client/contact' , array( 'client' => $client , 
+		$this->layout->view('client/contact' , array( 'client' => $clients , 
 													   'page' 	=> $page , 
 													   'offset' => $offset,
 													   'sum'    => $sum,
@@ -259,42 +260,7 @@ class Client extends Base_Controller {
 		);
 	}
 
-	public function excel() {
-		if( $this->input->post('upload')){
-			
-			if( isset( $_FILES['excel'])){
-				preg_match('/[.].+$/', $_FILES['excel']['name'], $match);
-				if( '.xls' === $match[0]){
-
-				move_uploaded_file( $_FILES['excel']['tmp_name'], FCPATH.'uploads/temp.xls');
-
-				$result = readexcel( FCPATH.'uploads/temp.xls');
-
-				//使用 client_excel model
-				$this->load->model('client/client_excel');
-				
-				//插入字段信息
-				$row_id = $this->client_excel->insert_row_info(  $_FILES['excel']['name'], json_encode( $result[0]));
-
-
-				unset( $result[0]);
-				//插入用户数据
-				foreach ($result as $re) {
-					$this->client_excel->insert_row_data( $row_id , json_encode( $re));
-				}
-				header('Location: '.base_url().'index.php/client/excel');
-				//$this->layout->view('client/excel'  , array( 'result' => $result));
-				}else {
-					echo '<div class="container alert alert-info"><strong><i class="icon-info-sign"></i> 文件类型不对 请上传xls后缀名</strong><button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-				}
-				//header('Location: '.base_url().'index.php/client/excel');
-			}
-		}else{
-			$row_record = $this->client_excel->fetch_excel_rows();
-			$this->layout->view('client/excel' , array( 'record' => $row_record));
-		}
-	}
-
+	/*
 	public function export()
 	{
 
@@ -304,67 +270,7 @@ class Client extends Base_Controller {
 
 		$this->layout->view('client/export' , array('file' => $path));
 	}
-
-	/*
-	public function csv() {
-		header('Content-type:text/html;charset:UTF-16');
-		if( $this->input->post('upload')) {
-			if( isset( $_FILES['csv'])){
-
-				preg_match('/[.].+$/', $_FILES['csv']['name'], $match);
-				if( '.csv' === $match[0]){
-					move_uploaded_file( $_FILES['csv']['tmp_name'], FCPATH.'uploads/temp.csv');
-					readcsv( FCPATH.'uploads/temp.csv');
-					exit;
-				}else {
-					echo '<div class="container alert alert-info"><strong><i class="icon-info-sign"></i> 文件类型不对  请上传csv后缀名</strong><button type="button" class="close" data-dismiss="alert">&times;</button></div>';
-				}
-			}
-
-		}
-		$this->layout->view('client/csv');
-	}
 	*/
-
-	public function manage_excel( $id) {
-		$id = intval( $id);
-
-
-		if( isset($_POST['map'])) {
-			$this->log->new_log();
-		}
-
-		$row = $this->client_excel->fetch_excel_row_by_id( $id);
-		$data = $this->client_excel->fetch_excel_row_info( $id);
-		$this->load->model('client/client_config' , 'mapping');
-
-		$client_mapping = $this->mapping->get_client_mapping();
-		$rule = $this->log->get_log_by_infoid( $row[0]['id']);
-
-		if( isset( $_POST['import_client'])) {
-
-			$map = $rule[0];
-
-			//excel中的字段 用来描述公司信息
-			$corporation_column = json_decode( $row[0]['row']);
-
-			$import_file_info = $row[0];
-
-			$this->client_excel->import_client( $map , $import_file_info , $corporation_column);
-		}
-
-		
-		$this->layout->view('client/manage_excel' , array( 	'row' 				=> json_decode( $row[0]['row']) , 
-															'infos' 			=> $data , 
-															'id' 				=> $id , 
-															'client_mapping' 	=> $client_mapping ,
-															'info_id' 			=> $row[0]['id'] ,
-															'rule' 				=> $rule,
-															'client_sum'		=> $this->client_excel->number_of_import_data( $id),
-															'tags'				=> $this->marketing->get_all_tags(),
-															'group_members'     => $this->permission->get_admin_lists(),
-														  ));
-	}
 
 	public function dispatch(  $page = 1 , $offset = 20) {
 
@@ -383,23 +289,27 @@ class Client extends Base_Controller {
 		);
 	}
 
-	public function dispatch_member($page=1,$offset=50) {
-
+	public function webmember( $page = 1 , $offset = 50 ) {
+		
 		$members = $this->client_member->get_website_members($page,$offset);
 
 		$sum = $this->client_member->get_sum_of_members();
 
-		$this->layout->view('client/dispatch_member' , array('members' 	=> $members , 
+		$this->layout->view('client/webmember', array(		'members' 	=> $members , 
 															 'sum' 		=> $sum ,
 															 'page'     => $page,
 															 'offset'   => $offset,
 															 'current'  => count( $members),
-															 )
-		);
+															 ));
 	}
 
-	public function view_members( $id) {
-		
+	public function edit_webmember( $uid)
+	{
+		$uid = intval( $uid);
+
+		$profile = $this->client_member->get_member_by_uid( $uid);
+
+		$this->layout->view('client/edit_webmember' , array('profile'=>$profile));
 	}
 
 	public function corporation() {

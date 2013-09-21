@@ -21,10 +21,12 @@ class M_marketing extends CI_Model {
 
 		$page = $page - 1;
 
-		return $this->db->select(' u.* , c.name as company_name , t.tag')
+		return $this->db->select(' u.* , c.name as company_name , t.tag , acl.username salesman , file.filename')
 						->from('admin_contacts u')
 						->join('admin_company c' , 'c.id = u.company_id' , 'left')
 						->join('admin_clienttags t' , 'u.tag = t.id' , 'left')
+						->join('admin_acl acl' , 'acl.user_id = u.assign_to' , 'left')
+						->join('admin_uploads file' , 'file.id = u.from_file_id' , 'left')
 						->limit( $offset , $page * $offset)
 						->where( $where)
 						->get()->result_array();

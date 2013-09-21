@@ -65,13 +65,14 @@ else
 <?php $this->load->module('webkit/menu/top');?>
 <?php $this->load->module('webkit/leftside/get_left_side');?>
 
-<div class="container">
+
+<div class="container-fluid">
 <?php echo $content;?>
 </div>
 
-
+<br/>
 <hr />
-<div class="container">
+<div class="container-fluid">
     <h5><small>© 2013 36lean.com</small></h5>
     <h5><small> All rights reserved.</small></h5>
 </div>

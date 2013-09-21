@@ -15,7 +15,7 @@ class Webkit_dial_module extends CI_Module
 
 		$user_id = 'contact'.$user_id;
 		$url = $this->program->get_vsay_signature('831lean2013online','2435325uifslkfjalTalk')
-							 ->register( 'contact'.$user_id , $number);
+							 ->register( 'd'.$number , $number);
 
 		echo '<a href="'.$url.'">'.$number.'</a>';
 	}

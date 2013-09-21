@@ -4,7 +4,7 @@ class Client_member extends CI_Model {
 
 
 	public function get_website_members($page,$offset) {
-		return $this->db->select('m.uid,m.email,m.username,m.regdate,m.lastlogintime,p.position')
+		return $this->db->select('m.uid,m.email,m.username,m.regdate,p.position,p.telephone,p.mobile,p.company,p.qq')
 		->from('ucenter_members m')
 		->join('common_member_profile p' , 'p.uid = m.uid' , 'left')
 		->order_by('uid','desc')
@@ -54,5 +54,15 @@ class Client_member extends CI_Model {
 						->join('admin_uploads u' , 'u.id = c.from_file_id' , 'left')
 						->where( array('c.id'=>$id))
 						->get()->row_array();
+	}
+
+	public function get_member_by_uid( $uid)
+	{
+		return $this->db->select('m.uid,m.email,m.username,m.regdate,p.position,p.telephone,p.mobile,p.company,p.qq')
+		->from('ucenter_members m')
+		->join('common_member_profile p' , 'p.uid = m.uid' , 'left')
+		->where( 'm.uid = '.$uid)
+		->order_by('uid','desc')
+		->get()->row_array();
 	}
 }

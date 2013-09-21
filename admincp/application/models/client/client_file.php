@@ -83,13 +83,14 @@ class Client_file extends CI_Model
 		$data = readexcel( 'uploads/excel/'.$conf['file_name']);
 
 		unset( $data[0]);
-
-		$result = array_filter( $data , function( $tmp){
+		function fil( $tmp){
 			$t = array_unique( $tmp);
 			if( count( $t)===1 && !$t[0])
 				return false;
 			return true;
-		});
+		};
+
+		$result = array_filter( $data , 'fil');
 
 		$size = intval( count( $result) /  $conf['batch']) + 1;
 

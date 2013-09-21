@@ -22,11 +22,11 @@ class Mailer extends Base_Controller {
 
 	public function navigation() {
 		return array(
-			'index',
-			'mail_template',
-			'mail_sender',
-			'mail_program',
-			'mail_configure',
+			array( 'route' => 'index' , 'alias' => '创建模板' , 'status' => 'active' ) ,
+			array( 'route' => 'mail_template' , 'alias' => '模板' , 'status' => 'active' ),
+			array( 'route' => 'mail_sender', 'alias' => '发送' , 'status' => 'active' ) ,
+			array( 'route' => 'mail_program', 'alias' => '执行' , 'status' => 'active' ) ,
+			array( 'route' => 'mail_configure' , 'alias' => '设置' , 'status' => 'active' ) ,
 
 		);
 	}
@@ -43,7 +43,6 @@ class Mailer extends Base_Controller {
 	public function mail_sender( $page = 1 , $offset = 500) {
 
 		if( isset( $_POST['add'])) {
-
 
 			if( Status::INSERT_SUCCESS === $this->mailer->create_task()) {
 				redirect( current_url());
@@ -84,6 +83,15 @@ class Mailer extends Base_Controller {
 
 		$this->layout->view( 'mailer/run_task' , array( 'task' => $task));
 		
+	}
+
+	public function del_task( $id)
+	{
+		$id = intval( $id);
+
+		$this->db->delete('admin_mailtask' , array('id'=>$id));
+
+		redirect( site_url('mailer/mail_program'));
 	}
 
 	public function mail_configure() {

@@ -20,25 +20,29 @@ class Webkit_devkit_module extends CI_Module
 		var_dump( file_get_contents( $url));
 	}
 
+	//namespance : __contact_
 	public function pull_dial_request( $user_id , $phone)
 	{
 		$url = $this->program->get_vsay_signature('831lean2013online','2435325uifslkfjalTalk')
-							 ->register('contact'.$user_id , $phone)
-							 ->get_vsay_url( 'phoneCall' , array( 'fromUser'	 => 'contact'.$user_id , 
+							 ->register('__contact_'.$user_id , $phone)
+							 ->get_vsay_url( 'phoneCall' , array( 'fromUser'	 => '__contact_'.$user_id , 
 							 									  'toUser' 		 => '831lean2013online' , 
-							 									  'infoCsrId ' 	 => 1 ,
+							 									  'infoCsrId' 	 => 1 ,
 							 									)
 							 );
 
+		echo $url;
 
   		$ch = curl_init();
    		curl_setopt($ch, CURLOPT_URL, $url);
    		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-   		curl_setopt($ch, CURLOPT_USERAGENT, _USERAGENT_);
-   		curl_setopt($ch, CURLOPT_REFERER,_REFERER_);
+   		curl_setopt($ch, CURLOPT_USERAGENT, '	Mozilla/5.0 (Windows NT 6.1; rv:23.0) Gecko/20100101 Firefox/23.0');
+   		//curl_setopt($ch, CURLOPT_REFERER,_REFERER_);
    		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$return = curl_exec($ch);
+		echo $return = curl_exec($ch);
    		curl_close($ch);
+
+   		//$return = file_get_contents( $url);
 		
 		if( 'CallSuccess' === $return)
 		{

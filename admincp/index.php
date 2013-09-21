@@ -18,6 +18,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
+	set_time_limit(0);
 	define('ENVIRONMENT', 'development');
 /*
  *---------------------------------------------------------------
