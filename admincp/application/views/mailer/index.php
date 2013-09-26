@@ -1,19 +1,18 @@
-<div class="box span12">
+<div class="row-fluid">
     <?php if( $status === Status::INSERT_SUCCESS) {?>
     <div class="alert alert-success"><i class="icon-info-sign"></i> <button type="button" class="close" data-dismiss="alert">&times;</button>创建成功</div>
     <?php } else if( $status === Status::INSERT_FAIL) {?>
     <div class="alert alert-error"><i class="icon-info-sign"></i> <button type="button" class="close" data-dismiss="alert">&times;</button>创建失败</div>
     <?php }?>
-    <div class="box-header well" data-original-title>
-        <h2>
+    <div class="page-header" data-original-title>
+        <h4>
             <i class="icon-edit">
             </i>
             创建新的邮件模板
-        </h2>
-
+        </h4>
     </div>
 
-    <div class="box-content">
+    <div class="">
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 <div class="control-group">
@@ -22,9 +21,6 @@
                     </label>
                     <div class="controls">
                         <input name="mail_title" type="text" class="span6" id="typeahead" data-items="4">
-                        <p class="help-block">
-                            Start typing to activate auto complete!
-                        </p>
                     </div>
                 </div>
                 <div class="control-group">

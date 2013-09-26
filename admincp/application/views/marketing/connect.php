@@ -1,5 +1,5 @@
-<div class="row-fluid">
-<div class="box span5">
+<div class="container">
+<div class="span5">
 	<div class="box-header well" data-original-title>
 		<strong>
 			用户资料

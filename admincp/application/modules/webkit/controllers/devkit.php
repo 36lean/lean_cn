@@ -24,38 +24,44 @@ class Webkit_devkit_module extends CI_Module
 	public function pull_dial_request( $user_id , $phone)
 	{
 		$url = $this->program->get_vsay_signature('831lean2013online','2435325uifslkfjalTalk')
-							 ->register('__contact_'.$user_id , $phone)
-							 ->get_vsay_url( 'phoneCall' , array( 'fromUser'	 => '__contact_'.$user_id , 
+							 ->register('c_'.$phone , $phone)
+							 ->get_vsay_url( 'phoneCall' , array( 'fromUser'	 => 'c_'.$phone , 
 							 									  'toUser' 		 => '831lean2013online' , 
 							 									  'infoCsrId' 	 => 1 ,
 							 									)
 							 );
 
-		echo $url;
+		//echo $url;
 
+		//$url = 'http://baidu.com';
+		
   		$ch = curl_init();
    		curl_setopt($ch, CURLOPT_URL, $url);
    		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
    		curl_setopt($ch, CURLOPT_USERAGENT, '	Mozilla/5.0 (Windows NT 6.1; rv:23.0) Gecko/20100101 Firefox/23.0');
    		//curl_setopt($ch, CURLOPT_REFERER,_REFERER_);
    		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		echo $return = curl_exec($ch);
+		echo $return = @curl_exec($ch);
    		curl_close($ch);
-
-   		//$return = file_get_contents( $url);
 		
-		if( 'CallSuccess' === $return)
-		{
-			$this->program->make_dial_success_log( 
+   		//$return = file_get_contents( $url);
+			
+		$return = trim( $return);
+
+
+
+		$cur_user = $this->session->userdata('user');
+
+		$this->program->make_dial_success_log( 
 				array(
 					'contact_id' 	=> $user_id , 
-					'caller_id' 	=> $this->_G,
+					'caller_id' 	=> $cur_user['uid'],
 					'phone'			=> $phone , 
 					'timedial' 		=> time() , 
+					'response'		=> $return ,
 					'result'		=> 1 ,
 				)
-			);
-		}
+		);
 
 		$status = array(
 			'RequestParameterError' => '参数错误' , 

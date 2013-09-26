@@ -42,8 +42,10 @@
   	<![endif]-->
   	<script src="{$_G['siteurl']}static/mot/jquery.lazyload.js?v=1.8.5"></script>
   	
+  	<!-- HTML5 shim, for IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  	<script>
+    <script>
   	jQuery( function(){
 		jQuery("img").lazyload({effect : "fadeIn"});
   	});
@@ -52,7 +54,6 @@
     }  
     window.onerror = ResumeError;
   	</script>
-
 </head>
 
 

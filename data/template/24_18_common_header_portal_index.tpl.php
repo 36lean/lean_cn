@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1379213475, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1379576877, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -68,8 +68,10 @@ body{margin-bottom:50px;font-family: 微软雅黑;background: url( 'static/mot/b
   	<![endif]-->
   	<script src="<?php echo $_G['siteurl'];?>static/mot/jquery.lazyload.js?v=1.8.5" type="text/javascript"></script>
   	
+  	<!-- HTML5 shim, for IE6-8 support of HTML5 elements--><!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script><![endif]-->
 
-  	<script>
+    <script>
   	jQuery( function(){
 jQuery("img").lazyload({effect : "fadeIn"});
   	});
@@ -78,7 +80,6 @@ jQuery("img").lazyload({effect : "fadeIn"});
     }  
     window.onerror = ResumeError;
   	</script>
-
 </head>
 
 

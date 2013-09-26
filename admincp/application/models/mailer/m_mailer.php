@@ -6,6 +6,15 @@ class M_mailer extends CI_Model {
 	public function get_templates_list() {
 		return $this->db->select('id,mail_title,mail_spy,created_date')
 						->from( 'admin_mailtemplate')
+						->order_by('id' , 'desc')
+						->get()->result_array();
+	}
+
+	public function get_active_templates_list() {
+		return $this->db->select('id,mail_title,mail_spy,created_date')
+						->from( 'admin_mailtemplate')
+						->where( array('using'=>1))
+						->order_by('id' , 'desc')
 						->get()->result_array();
 	}
 
@@ -106,12 +115,20 @@ class M_mailer extends CI_Model {
 			return Status::INSERT_FAIL;
 	}
 
-	public function list_task() {
+	public function list_task( $page , $offset ) {
 		return $this->db->select('admin_mailtask.id,admin_mailtask.status,admin_mailtask.task_title,admin_mailtask.created_date,admin_mailtemplate.mail_title')
 						->from( 'admin_mailtask')
-						->join( 'admin_mailtemplate' , 'admin_mailtemplate.id = admin_mailtask.template_id')
+						->join( 'admin_mailtemplate' , 'admin_mailtemplate.id = admin_mailtask.template_id' , 'left')
+						->limit( $offset , ($page-1) * $offset )
 						->order_by('id' , 'desc')
 						->get()->result_array();
+	}
+
+	public function get_task_sum()
+	{
+		return $this->db->select('id')
+						->from('admin_mailtask')
+						->get()->num_rows();
 	}
 
 	public function run_task( $id) {
@@ -138,6 +155,7 @@ class M_mailer extends CI_Model {
 									'mail_title'=> $this->input->post('mail_title'),
 									'mail_template' => $this->input->post('mail_template'),
 									'mail_spy' => $this->input->post('mail_spy') === 'on' ? 1 : 0,
+									'using'    => $this->input->post('using') === 'on' ? 1 : 0 ,
 		));
 
 		if( $status)

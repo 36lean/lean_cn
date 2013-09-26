@@ -6,10 +6,11 @@ class Client_corporation extends CI_Model {
 	public function __construct() {
 		parent::__construct();
 
-		$this->_table = 'admin_client_corporation';
+		$this->_table = 'admin_company';
 	}
 
-	public function fetch_all( $page = 1 , $offset = 100) {
+	public function fetch_all( $page , $offset ) {
+
 		return $this->db->select('*')
 						->from( $this->_table)
 						->limit($offset , ($page-1) * $offset)
@@ -26,32 +27,5 @@ class Client_corporation extends CI_Model {
 				 		->where('id' , $id)
 				 		->get()
 				 		->result_array();
-	}
-
-	public function insert_info() {
-			$info = array(
-				'corp_name'			=> $this->input->post('corp_name' , true),
-				'corp_description' 	=> $this->input->post('corp_description' , true),
-				'corp_area'			=> $this->input->post('corp_area' , true),
-				'corp_master'		=> $this->input->post('corp_master' , true),
-				'corp_contractor' 	=> $this->input->post('corp_contractor' , true),
-				'corp_address'		=> $this->input->post('corp_address' , true),
-				'corp_phone'		=> $this->input->post('corp_phone' , true),
-				'corp_website'		=> $this->input->post('corp_website' , true),
-				'etc'				=> $this->input->post('etc' , true),
-				'generate_date'		=> $this->input->post('generate_date' , true),
-			);
-
-			if( 'on' === $this->input->post('is_sub')) {
-				$info['belongto'] = $this->input->post('belongto');
-			}else {
-				$info['belongto'] = '';
-			}
-
-			if( $this->db->select('corp_name')->from( $this->_table)->where( 'corp_name' , $info['corp_name'])->get()->num_rows()){
-				return 'duplicate';
-			}
-			
-			return $this->db->insert( $this->_table , $info);
 	}
 }

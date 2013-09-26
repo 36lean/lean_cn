@@ -122,8 +122,6 @@
 			<li><a href="<?php echo site_url('portal/view/'.$portal['id']);?>"><?php echo $portal['post_title'];?></a></li>
 		<?php endforeach ?>
 		</ul>
-
-		<?php echo $portals[0]['post_content'];?>
 	</div>
 
 </div>

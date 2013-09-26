@@ -1,17 +1,13 @@
-<div class="box span12">
-    <div class="box-header well" data-original-title>
-        <h2>
+<div class="row-fluid">
+    <div class="page-header" data-original-title>
+        <h4>
             <i class="icon-edit">
             </i>
             创建邮件任务
-        </h2>
-        <div class="box-icon">
-            <a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-            <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-        </div>
+        </h4>
     </div>
 
-    <div class="box-content">
+    <div class="">
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 <div class="control-group">
@@ -19,10 +15,7 @@
                         任务代号
                     </label>
                     <div class="controls">
-                        <input name="task_title" type="text" class="span6" id="typeahead" data-items="4">
-                        <p class="help-block">
-                            Start typing to activate auto complete!
-                        </p>
+                        <input name="task_title" type="text" class="span6" value="<?php echo date('Y年m月d日 h时i分 发送的邮件任务')?>">
                     </div>
                 </div>
                 <div class="control-group">
@@ -37,7 +30,7 @@
                     <?php
                     $times = ceil( $sum / $per) + 1;
                     ?>
-                    <select name="field">
+                    <select class="span6" name="field">
                     <?php
                     for ( $current = 1 ; $current < $times ; $current++) {
                     ?>
@@ -46,19 +39,12 @@
                     }?>
                     </select>
                     
-
-                        <p class="help-block">
+                    <p class="help-block">
                             当前客户总数 <?php echo $sum;?>
-                        </p>
+                    </p>
 
                     </div>
                 </div>
-
-
-
-
-
-
 
                 <div class="control-group">
                     <label class="control-label" for="textarea2">
@@ -80,7 +66,7 @@
                 </div>
                 <div class="form-actions">
                     <button name="add" type="submit" class="btn btn-primary">
-                        创建
+                        创建模板
                     </button>
                     <button type="reset" class="btn">
                         Cancel

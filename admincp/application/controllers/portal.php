@@ -38,15 +38,14 @@ class Portal extends Base_Controller
 	public function index()
 	{
 
-		$this->layout->view('portal/index');
-
+		$this->template->build('portal/index');
 	}
 
 	public function category()
 	{
 		$this->_program();
 
-		$this->layout->view('portal/category');
+		$this->template->build('portal/category');
 	}
 
 	public function spider()
@@ -58,9 +57,9 @@ class Portal extends Base_Controller
 
 		$sources = $this->portal->get_file_ergodic( FCPATH.'/data/spider_source');
 
-		$portals = $this->db->get('attach_posts')->result_array();
+		$portals = $this->db->order_by('id','desc')->get('attach_posts')->result_array();
 
-		$this->layout->view('portal/spider' , array('rules' => $rules , 'sources' => $sources , 'portals' => $portals));
+		$this->template->build('portal/spider' , array('rules' => $rules , 'sources' => $sources , 'portals' => $portals));
 	}
 
 	public function view( $id)
@@ -70,7 +69,7 @@ class Portal extends Base_Controller
 
 		$post = $this->db->where( array('id'=>$id))->get('attach_posts')->row_array();
 
-		$this->layout->view('portal/view' , array('post'=>$post));
+		$this->template->build('portal/view' , array('post'=>$post));
 	}
 
 	public function spider_test( $filename)
@@ -82,6 +81,6 @@ class Portal extends Base_Controller
 
 		$this->portal->get_test_data( $rule , $info );
 
-		$this->layout->view('portal/spider_test');
+		$this->template->build('portal/spider_test');
 	}
 }

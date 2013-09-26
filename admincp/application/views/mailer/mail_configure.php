@@ -11,12 +11,9 @@
 	<i class="icon-info-sign"></i> <button type="button" class="close" data-dismiss="alert">&times;</button> 修改完成
 </div>
 <?php }?>
-<div class="box span12">
-	<div class="box-header well">
-		<h2><i class="icon-info-sign"></i> 邮件服务器设置</h2>
-		<div class="box-icon">
-		<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-		</div>
+<div class="row-fluid">
+	<div class="page-header">
+		<h4><i class="icon-info-sign"></i> 邮件服务器设置</h4>
 	</div>
 
 <div class="box-content">
@@ -80,13 +77,9 @@
 </div>
 
 <div class="box span12">
-					<div class="box-header well" data-original-title>
-						<h2>smtp列表</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
+					<div class="page-header" data-original-title>
+						<h4>smtp列表</h4>
+
 					</div>
 					<div class="box-content">
 						<table class="table table-condensed">

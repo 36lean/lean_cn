@@ -125,10 +125,10 @@ class M_marketing extends CI_Model {
 
 	public function get_email_by_id( $id) {
 		return $this->db->select('id,email,name')
-						->from('admin_client')
+						->from('admin_contacts')
 						->where(array( 'id' => $id))
 						->limit(1)
-						->get()->result_array();
+						->get()->row_array();
 	}
 
 	public function send_save_email() {
@@ -453,5 +453,102 @@ class M_marketing extends CI_Model {
 		}
 
 		return 0;
+	}
+
+	public function get_corporation_by_id( $id)
+	{
+		return $this->db->select('*')
+						->from('admin_company')
+						->where( array('id'=>$id))
+						->get()
+						->row_array();
+	}
+
+	public function save_company()
+	{
+		$id = intval( $this->input->post('id'));
+		unset( $_POST['id']);
+
+		$data = array();
+
+		foreach ($_POST as $key => $value) {
+			$data [$key] = trim( $this->input->post($key));
+		}
+
+		$data['timeupdated'] = time();
+
+		$this->db->where( array('id'=>$id))
+				 ->update( 'admin_company' , $data );
+		return $id;
+	}
+
+	public function get_company_name_by_id( $id)
+	{
+		return $this->db->select('id,name')
+						->from('admin_company')
+						->where( array('id'=>$id))
+						->get()->row_array();
+	}
+
+	public function get_opportunities_by_companyid( $id)
+	{
+		return $this->db->select('*')
+						->from('admin_opportunity')
+						->where( array('company_id'=>$id))
+						->order_by('id' , 'desc')
+						->get()->result_array();
+	}
+
+	public function insert_opportunity()
+	{
+
+		$data = array();
+
+		foreach ($_POST as $key => $value) {
+			$data[$key] = trim( $this->input->post($key));
+		}
+
+		$data['timecreated'] = time();
+
+		$this->db->insert('admin_opportunity' , $data);
+
+		return $data['company_id'];
+
+	}
+
+	public function get_opportunity_by_id( $id)
+	{
+		return $this->db->select('o.* , c.name as company')
+						->from('admin_opportunity o')
+						->join('admin_company c' , 'c.id = o.company_id' , 'left')
+						->where( array('o.id'=>$id))
+						->get()->row_array();
+	}
+
+	public function update_opportunity()
+	{
+		$id = intval( $this->input->post('id'));
+		unset( $_POST['id']);
+
+		$update = array();
+
+		foreach ($_POST as $key => $value) {
+			$update[$key] = trim( $this->input->post($key));
+		}
+
+		$this->db->where( array('id'=>$id))->update('admin_opportunity' , $update);
+
+	}
+
+	public function create_contact_by_company()
+	{
+
+		$save = array();
+
+		foreach ($_POST as $key => $value) {
+			$save[$key] = trim( $this->input->post($key));
+		}
+
+		$this->db->insert('admin_contacts' , $_POST);
 	}
 }

@@ -23,7 +23,5 @@ dataType:'html',
 
 <div class="container">
 <h4><i class="icon-facetime-video"></i> 课程</h4>
-
-<a href="#" ><span class="label label-info pull-right"><i class="icon-angle-down"></i> open</span></a>
 <hr/>
 </div>

@@ -9,7 +9,15 @@
 		$this->load->module('webkit/information/show_information' , array('客户资料更新成功'));
 	}
 }?>
-<div class="row">
+
+
+
+
+<?php
+
+if( $connect || $this->_G['groupid'] === 1){
+?>
+<div class="row-fluid">
 
 <div class="span8">
 <div class="alert alert-info"><i class="icon-comment-alt"></i> 沟通记录</div>
@@ -27,7 +35,7 @@
 <input name="client_id" type="hidden" value="<?php echo $profile['id'];?>" />
 <div class="control-group">
 <div class="controls">
-<textarea class="ckeditor" name="connect_text"></textarea>
+<textarea name="connect_text"></textarea>
 </div>
 </div>
 
@@ -47,8 +55,8 @@
 	<div class="control-group">
 		<div class="controls">
 		<label><strong>选择提醒时间</strong></label>
-    	<div class="input-append date" id="datetimepicker" data-date="<?php echo date('Y-m-d h:i');?>" data-date-format="yyyy-mm-dd hh:ii">
-    	<input name="time" class="span2" size="16" type="text" value="<?php echo date('Y-m-d h:i');?>">
+    	<div class="input-append date datetimepicker" data-date="<?php echo date('Y-m-d h:i');?>" data-date-format="yyyy-mm-dd hh:ii">
+    	<input name="time" class="span12" size="16" type="text" value="<?php echo date('Y-m-d h:i');?>">
     	<span class="add-on"><i class="icon-th"></i></span>
     	</div> 
     </div>
@@ -67,9 +75,142 @@
     </div>
 	</div>
 	</form>
+
+	<hr />
+	<div class="page-header">
+		<h4>拨打办公电话</h4>
+	</div>
+
+	<table class="table table-condensed">
+	<tr>
+		<td>办公电话</td>
+		<td>
+			<?php if( $profile['office_phone']){?><a href="#myModal" role="button" class="btn" data-toggle="modal" rel="<?php echo $profile['office_phone'];?>" idn="<?php echo $profile['id'];?>">
+				<i class="icon-phone"></i> <?php echo $profile['office_phone'];?></a>
+			<?php }?>			
+		</td>
+	</tr>
+
+	<tr>
+		<td>拨打手机</td>
+		<td>
+			<?php if( $profile['mobile']){?><a href="#myModal" role="button" class="btn" data-toggle="modal" rel="<?php echo $profile['mobile'];?>" idn="<?php echo $profile['id'];?>">
+				<i class="icon-phone"></i> <?php echo $profile['mobile'];?></a>
+			<?php }?>
+		</td>
+	</tr>
+	</table>
+
+<script>
+$( function() {
+
+	$('a[data-toggle="modal"]').on('click' , function(){
+		
+		$('.collection > button').addClass('disabled');
+
+		$('div#log').text("");
+
+		var number = $(this).attr('rel');
+		$('#number').text("").append( "<h5>"+number+"</h5>");
+		$('#dial').text("").attr({'value':number});
+		$('#user_id_save').attr({'value':$(this).attr('idn')});
+	});
+
+	$('button#docall').on('click',function(){
+
+		$('div#log').text("");
+
+		var number = $('input#dial').val();
+
+		var user_id = $('#user_id_save').val();
+		
+		request = $.ajax({
+			type:"POST",
+			url: "<?php echo site_url('module/webkit/devkit/pull_dial_request/');?>"+"/"+user_id+"/"+number ,
+		});
+
+		request.done(function(msg) {
+
+			if( "呼叫成功" === msg)
+			{
+				//$('.collection > button').removeClass('disabled');
+				$('div#log').append('<h4>拨号中</h4>');
+				x = 1 ; 
+				setInterval( function() {
+
+					x ++ ;
+					if( x > 15)
+						return ;
+
+					$('div#log').append('.');
+
+				} ,  1000 );
+
+			}
+
+			$('div#log').append('<strong>返回提示: '+msg+'</strong>');
+		});
+
+		$('.collection > button').removeClass('disabled');
+
+		$('.collection > button').on('click' , function() {
+
+			var request = $(this).attr('id');
+
+			request = $.ajax({
+				type:"GET",
+				url: "<?php echo site_url('marketing/');?>"+"/"+request ,
+			});
+
+		});
+
+	});
+});
+</script>
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">拨打电话</h3>
+	</div>
+	<div class="modal-body form-inline">
+
+		<div class="control-group">
+		<div class="controls">
+		
+		<strong>请确认号码: </strong>
+
+		<span id="number"></span>
+
+		<input id="user_id_save" type="hidden" value="" />
+
+		<input id="dial" class="input-medium" type="text" value="" />
+
+		<button class="btn btn-primary" id="docall" name="call"> 拨打</button>
+		
+		</div>
+		</div>	
+
+		<div id="log"></div>
+
+		<!--
+		<div class="btn-group collection">
+			<h5>通话时间统计 : </h5>
+  
+    		<button id="set_start_time" class="btn btn-primary disabled" data-toggle="button">通话开始</button>
+    		<button id="set_give_up" class="btn disabled" data-toggle="button">放弃通话</button>
+    		<button id="set_give_up" class="btn btn-primary disabled" data-toggle="button">通话结束</button>
+    	</div>
+		-->
+
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+	</div>
+</div>
 </div>
 
-<div class="row">
+<div class="row-fluid">
 <div class="span6">
 <div class="alert alert-info"><i class="icon-edit"></i> 预览</div>
 <?php
@@ -90,9 +231,9 @@ $percent = $finish * 100 / count($profile);
 </div>
 
 
-<table class="table table-bordered">
+<table class="table table-bordered" style="font-size:15px;">
 <tr>
-	<td>联系人名字</td><td><?php echo $profile['name'];?></td>
+	<td class="span3">联系人名字</td><td class="span9"><?php echo $profile['name'];?></td>
 </tr>
 <tr>
 	<td>年龄</td><td><?php echo $profile['age'];?></td>
@@ -262,6 +403,16 @@ $(function(){
 	$('.alert').first().append(' ( 没有权限修改，因为你不是管理员或者被未分配 ) ');
 })
 </script>
+<?php
+}
+//如果找不到客户资料
+}else{
+?>
+
+<div class="alert alert-error">
+	<i class="icon-info-sign"></i> 对不起 你要找的客户资料目前不存在或者没有权限访问 请先检查是否导入
+</div>
+
 <?php
 }
 ?>

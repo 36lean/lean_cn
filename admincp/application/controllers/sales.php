@@ -10,6 +10,6 @@ class Sales extends Base_Controller{
 
 	public function index()
 	{
-		$this->layout->view('sales/index');
+		$this->template->build('sales/index');
 	}
 }

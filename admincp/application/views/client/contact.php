@@ -1,6 +1,4 @@
-
-
-<div class="row-fluid">
+<div class="container">
 	<form class="form-inline" action="" method="get">
 		<input name="key" type="text" />
 		<select name="field">
@@ -15,7 +13,7 @@
 	</form>
 </div>
 
-<div class="row-fluid">
+<div class="container">
 
 		<div class="" style="font-size:12px;">
 			<table class="table table-striped ">
@@ -27,7 +25,7 @@
 						<th class="span1">电话</th>
 						<th class="span1">手机号</th>
 						<th class="span3">电邮</th>
-						<th class="span2">负责人</th>
+						<th class="span1">负责人</th>
 						<th class="span2">文件</th>
 						<th class="span1">Actions</th>
 					</tr>

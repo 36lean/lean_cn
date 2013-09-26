@@ -25,34 +25,40 @@ class Course extends Base_Controller {
 
 	public function index() {
 		$list = $this->course->list_course();
-		$this->layout->view('course/index' , array('list' => $list));
+		$this->template->build('course/index' , array('list' => $list));
 	}
 
 	public function list_mode() {
 
-		
-
 		if( isset( $_POST['save'])) {
+
 			unset ( $_POST['DataTables_Table_0_length']);
+
 			unset ( $_POST['save']);
+
 			$this->course->update_course_sortid();
 
 			$this->cache_update();
 		}
+		
 		$list = $this->course->list_course_detail();
+
 		$category = $this->category->get_categories();
 
-		$this->layout->view('course/list_mode' , array('list' => $list , 'category' => $category));	
+		$this->template->build('course/list_mode' , array('list' => $list , 'category' => $category));	
 	}
 
 	public function add_course() {
+
 		$category = $this->course->get_category();
 
 		if( isset( $_POST['build'])) {
+
 			$this->course->build_new_course();
+
 		}
 
-		$this->layout->view('course/add_course' , array('category' => $category));
+		$this->template->build('course/add_course' , array('category' => $category));
 	}
 
 	public function edit_course( $id = 1) {
@@ -71,7 +77,9 @@ class Course extends Base_Controller {
 		}
 		
 		if( isset( $_POST['done'])) {
+
 			$this->course->update_course();
+
 		}else if( isset( $_POST['add_page'])) {
 
 			$this->page->insert_page( $id);
@@ -89,15 +97,18 @@ class Course extends Base_Controller {
 		$pages = $this->page->get_pages_by_lessonid( $id);
 		$config = include_once('../player.config.php');
 
-		$this->layout->view('course/edit_course' , array('course'=> $course , 'category'=> $category , 'pages' => $pages , 'config' => $config));
+		$this->template->build('course/edit_course' , array('course'=> $course , 'category'=> $category , 'pages' => $pages , 'config' => $config));
 	}
 
 	public function add_category() {
+
 		if( $this->input->post('add_category')){
+
 			$this->category->add_category();
+
 		}
 
-		$this->layout->view('course/add_category');
+		$this->template->build('course/add_category');
 	}
 
 	public function del_category( $id) {
@@ -116,7 +127,7 @@ class Course extends Base_Controller {
 		}
 		$this->load->model('course/course_category');
 		$categories_list = $this->course_category->get_categories();
-		$this->layout->view('course/edit_category' , array('list' => $categories_list));
+		$this->template->build('course/edit_category' , array('list' => $categories_list));
 	}
 
 	public function edit_page( $id) {
@@ -164,7 +175,7 @@ class Course extends Base_Controller {
 		$course_info = $this->course_course->get_course_info_by_id( $page_info[0]['lessonid']);
 		$config = include_once('../player.config.php');
 
-		$this->layout->view('course/edit_page' , array('page' => $page_info[0] , 
+		$this->template->build('course/edit_page' , array('page' => $page_info[0] , 
 													   'course' => $course_info[0] , 
 													   'status' => $status , 
 													   'config' => $config,
@@ -204,7 +215,7 @@ class Course extends Base_Controller {
 	
 	public function server_config() {
 		$config = include('../player.config.php');
-		$this->layout->view('course/server_config' , array( 'config' => $config));
+		$this->template->build('course/server_config' , array( 'config' => $config));
 	}
 
 	public function del_course( $id) {
@@ -218,13 +229,17 @@ class Course extends Base_Controller {
 			redirect( base_url() . 'index.php/course/index');
 		}
 
-		$this->layout->view( 'course/del_course' , array( 'info' => $info));
+		$this->template->build( 'course/del_course' , array( 'info' => $info));
 	}
 
 	public function cache_update() {
+
 		$dir = opendir( '.././cache/lesson_index');
+
 		while ($file = readdir( $dir) ) {
+
 			if( preg_match('/(.cache)$/', $file))
+				
 				unlink( '.././cache/lesson_index/'.$file);
 		}
 	}

@@ -73,6 +73,7 @@ class M_portal extends CI_Model
 			$data['post_modified'] = date('Y-m-d h:i:s');
 			$data['post_date']     = date('Y-m-d h:i:s');
 
+			//var_dump( $data);
 			$this->db->insert( 'attach_posts' , $data);
 		}
 	}

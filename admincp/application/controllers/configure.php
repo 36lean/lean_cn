@@ -7,10 +7,64 @@ class Configure extends Base_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		
+		$this->load->model('common/define_data' , 'common');
+
+		$this->load->model('configure/m_configure' , 'configure');
+		
+	}
+
+	public function navigation()
+	{
+		return array(
+			'index_module' => array( 'route' => 'index' , 'alias' => '常规设置' , 'status' => 'active') , 
+			'option_module' => array( 'route' => 'option' , 'alias' => '选项设置' , 'status' => 'active') , 
+			'permission_module' => array( 'route' => 'permission' , 'alias' => '权限设置' , 'status' => 'active') , 
+		);
 	}
 
 	public function index()
 	{
-		$this->layout->view('cofigure/index');
+		$this->template->build('configure/index');
+	}
+
+	public function permission()
+	{
+
+		$this->_program();
+
+		$modules = $this->common->get_modules();
+
+		$groups = $this->configure->get_groups();
+
+		$users = $this->configure->get_users();
+
+		$this->template->build('configure/permission' , array( 'modules' => $modules ,  
+															   'groups'	 => $groups , 
+															   'users'	 => $users , 
+															 )
+		);
+	}
+
+	private function _program()
+	{
+		if( $this->input->post('create_group'))
+		{
+			unset( $_POST['create_group']);
+			
+			$this->configure->add_group_rule();
+
+			redirect( site_url('configure/permission'));
+
+			exit;
+		}
+
+
+		if( $this->input->post('add_to_group'))
+		{
+			$this->configure->add_user_to_group();
+			redirect( site_url('configure/permission'));
+		}
+
 	}
 }

@@ -12,6 +12,7 @@ foreach ($list as $course) {
 ?>
 	
 <div class="span4">
+    <div class="well">
     <a class="pull-left" href="<?php echo base_url()?>index.php/course/edit_course/<?php echo $course['id']?>">
         <img class="grayscale" src="<?php echo $constant['discuz_url']?>uploads/course/<?php echo $course['logo']?>" style="width:120px;height:60px;"/>
     </a>
@@ -27,6 +28,7 @@ foreach ($list as $course) {
         <small><a href="<?php echo base_url()?>index.php/course/edit_course/<?php echo $course['id']?>"><i class="icon-edit"></i> 编辑</a></small> 
         <small><a href="<?php echo base_url()?>index.php/course/del_course/<?php echo $course['id']?>"><i class="icon-remove"></i> 删除</a></small>
      </p>
+    </div>
     </div>
 </div>
 <?php

@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form class="form-inline" action="" method="post">
 <input type="text" name="url" />
 <button class="btn" type="submit" name="enter">Enter</button>
 </form>

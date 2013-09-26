@@ -1,22 +1,20 @@
-<div class="box span12">
-	<div class="box-header well">
-		<h2>
+<div class="container">
+	<div class="page-header">
+		<h3>
 			<i class="icon-info-sign">
 			</i>
 			给客户
 			<?php echo $client[ 'name'];?>
 				写邮件
-		</h2>
+		</h3>
 	</div>
+
 	<div class="box-content">
 		<form class="form-horizontal" action="" method="post">
 		<input name="uid" type="hidden" value="<?php echo $this->_G['uid'];?>">
 		<input name="client_id" type="hidden" value="<?php echo $client['id'];?>">
 			<fieldset>
-				<legend>
-					今天日期:
-					<?php echo date( 'Y/m/d');?>
-				</legend>
+				<p>今天日期: <?php echo date( 'Y/m/d');?></p>
 				
 				<div class="control-group">
 					<label class="control-label" for="to_email">

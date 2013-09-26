@@ -6,7 +6,7 @@ class Finance extends Base_Controller
 	public function index()
 	{
 
-		/*
+		
 		$year = array('2010' , '2011' , '2012' , '2013');
 
 		$data = array();
@@ -22,11 +22,10 @@ class Finance extends Base_Controller
 				$this->db->insert( 'admin_finance' , $record);
 			}
 		}
-		*/
 
 		$return = $this->db->order_by('Issue' , 'desc')->group_by('Issue')->get('admin_finance')->result_array();
 
-		$this->layout->view('finance/index' , array('data'=>$return));
+		$this->template->build('finance/index' , array('data'=>$return));
 
 	}
 }

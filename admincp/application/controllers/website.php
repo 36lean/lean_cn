@@ -23,14 +23,19 @@ class Website extends Base_Controller {
 	public function index() {
 		$this->load->model('website/m_website','website');
 
-		if( isset( $_POST['create'])) {
+		if( isset( $_POST['create'])) 
+		{
 
 			$status = $this->website->create_page();
-		}else {
+		
+		}else 
+		{
+
 			$status = Status::NOTHING;
+			
 		}
 
-		$this->layout->view('website/index' , array('status' => $status));
+		$this->template->build('website/index' , array('status' => $status));
 	}
 
 	public function page_cache() {

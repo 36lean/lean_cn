@@ -66,7 +66,8 @@
 
 						<td class="center">
 							<?php if( $c['mobile']){?><a href="#myModal" role="button" class="btn btn-mini" data-toggle="modal" rel="<?php echo $c['mobile'];?>" idn="<?php echo $c['id'];?>">
-								<i class="icon-phone"></i> <?php echo $c['mobile'];?></a><?php }?></td>
+								<i class="icon-phone"></i> <?php echo $c['mobile'];?></a><?php }?>
+						</td>
 
 						<td class="center">
 							<a href="<?php echo base_url();?>index.php/client/throw_profile/<?php echo $c['id'];?>" target="blank">
@@ -114,7 +115,19 @@ $( function() {
 		request.done(function(msg) {
 			if( "呼叫成功" === msg)
 			{
-				$('.collection > button').removeClass('disabled');
+				//$('.collection > button').removeClass('disabled');
+				$('div#log').append('<h4>拨号中</h4>');
+				x = 1 ; 
+				setInterval( function() {
+
+					x ++ ;
+					if( x > 15)
+						return ;
+
+					$('div#log').append('.');
+
+				} ,  1000 );
+
 			}
 
 			$('div#log').append('<strong>返回提示: '+msg+'</strong>');
@@ -163,6 +176,7 @@ $( function() {
 
 		<div id="log"></div>
 
+		<!--
 		<div class="btn-group collection">
 			<h5>通话时间统计 : </h5>
   
@@ -170,6 +184,7 @@ $( function() {
     		<button id="set_give_up" class="btn disabled" data-toggle="button">放弃通话</button>
     		<button id="set_give_up" class="btn btn-primary disabled" data-toggle="button">通话结束</button>
     	</div>
+		-->
 
 	</div>
 

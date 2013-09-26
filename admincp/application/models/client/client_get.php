@@ -11,7 +11,7 @@ class Client_get extends CI_Model{
 	}
 
 	public function get_sum_of_clients() {
-		return $this->db->select('id')->from('admin_client')->get()->num_rows();
+		return $this->db->select('id')->from('admin_contacts')->get()->num_rows();
 	}
 
 	public function get_contact_tags()

@@ -13,12 +13,47 @@ class Marketing extends Base_Controller{
 		$this->load->model('client/client_excel');
 		$this->load->model('client/client_member' , 'client_member');
 		$this->load->model('common/define_data');
+		$this->load->model('client/client_get' , 'client_get');
 		$this->load->model('program/m_program' , 'program');
 	}
 
 	private function _program()
 	{
 
+		//从企业创建销售机会
+		if( $this->input->post('create_contact_by_company'))
+		{
+			unset( $_POST['create_contact_by_company']);
+
+			$this->marketing->create_contact_by_company();
+		}
+
+		//更新销售机会
+		if( $this->input->post('update_opportunity'))
+		{
+			unset( $_POST['update_opportunity']);
+			$this->marketing->update_opportunity();
+		}
+
+		//创建销售机会
+		if( $this->input->post('create_opportunity'))
+		{
+			unset( $_POST['create_opportunity']);
+			$id = $this->marketing->insert_opportunity();
+			redirect( site_url('marketing/view_corporation/'.$id));
+			exit;
+		}
+
+		//更新企业资料
+		if( $this->input->post('update_company'))
+		{
+			unset( $_POST['update_company']);
+			$id = $this->marketing->save_company();
+			redirect( site_url('marketing/view_corporation/'.$id));
+			exit;
+		}
+
+		//新建档案
 		if( $this->input->post('create_profile'))
 		{
 			unset( $_POST['create_profile']);
@@ -87,8 +122,8 @@ class Marketing extends Base_Controller{
 			array( 'route' => 'corporation' 	, 'alias' => '企业列表' 	, 'status' => 'active' ) ,
 			array( 'route' => 'center' 			, 'alias' => '消息中心' 	, 'status' => 'active') ,
 			array( 'route' => 'create' 			, 'alias' => '新建档案' 	, 'status' => 'active') ,
-			array( 'route' => 'website_member'	, 'alias' => '网站会员'  	, 'status' => 'active' ) ,
-			array( 'route' => 'mail' 			, 'alias' => '邮件工具' 	, 'status' => 'active') ,
+			//array( 'route' => 'website_member'	, 'alias' => '网站会员'  	, 'status' => 'active' ) ,
+			//array( 'route' => 'mail' 			, 'alias' => '邮件工具' 	, 'status' => 'active') ,
 		);
 	}
 
@@ -111,7 +146,7 @@ class Marketing extends Base_Controller{
 			$sum = $this->marketing->sum_of_clients();
 		}
 
-		$this->layout->view('marketing/index' , array( 'client' 		=> $client , 
+		$this->template->build('marketing/index' , array( 'client' 		=> $client , 
 													   'page' 			=> $page , 
 													   'offset' 		=> $offset ,
 													   'sum'    		=> $sum ,
@@ -126,7 +161,7 @@ class Marketing extends Base_Controller{
 
 		$sum = $this->marketing->sum_of_company();
 
-		$this->layout->view('marketing/corporation' , array('corporations'=>$corporations,'offset'=>$offset,'sum'=>$sum));
+		$this->template->build('marketing/corporation' , array('corporations'=>$corporations,'offset'=>$offset,'sum'=>$sum));
 	}
 
 	public function view_corporation( $id)
@@ -137,12 +172,61 @@ class Marketing extends Base_Controller{
 
 		$company = $this->define_data->get_data_by_id('admin_company' , $id , 'id');
 
+		$opportunities = $this->marketing->get_opportunities_by_companyid( $id);
 
-
-		$this->layout->view('marketing/view_corporation' , array('company'=>$company[0],
+		$this->template->build('marketing/view_corporation' , array('company'=>$company[0],
 																 'contacts'=>$contacts,
+																 'opportunities' => $opportunities ,
 																) 
 						   );
+	}
+
+	public function edit_corporation( $id)
+	{
+
+		$this->_program();
+
+		$id = intval( $id);
+
+		$profile = $this->marketing->get_corporation_by_id( $id);
+
+		$this->template->build('marketing/edit_corporation' , array('company'=>$profile));
+	}
+
+	public function add_opportunity ( $id)
+	{
+
+		$this->_program();
+
+		$id = intval( $id);
+
+		$company = $this->marketing->get_company_name_by_id( $id);
+
+		$this->template->build('marketing/add_opportunity' , array('company'=>$company));
+	}
+
+	public function view_opportunity( $id)
+	{
+
+		$this->_program();
+
+		$id = intval( $id);
+
+		$opportunity = $this->marketing->get_opportunity_by_id( $id);
+
+		$this->template->build('marketing/view_opportunity' , array('op'=>$opportunity));
+	}
+
+	public function add_worker( $company_id)
+	{
+
+		$this->_program();
+
+		$company_id = intval( $company_id);
+
+		$tags = $this->client_get->get_contact_tags();
+
+		$this->template->build('marketing/add_worker' , array('company_id'=>$company_id , 'tags'=>$tags));
 	}
 
 	public function connect( $id) 
@@ -156,12 +240,16 @@ class Marketing extends Base_Controller{
 
 		$connect = $this->define_data->get_data_by_id( 'admin_client_connect' , $id , 'client_id');
 
-		$this->layout->view('client/edit_contact' , array('profile' => $this->client_member->get_contact_by_id( $id) , 
-														  'tag' 	=> $tag ,
-														  'connect' => $connect ,
-														  'status'  => isset( $status) ? $status : '',
+		$this->template->build('client/edit_contact' , array('profile' => $this->client_member->get_contact_by_id( $id) , 
+														     'tag' 	=> $tag ,
+														     'connect' => $connect ,
+														     'status'  => isset( $status) ? $status : '',
 														  )
-		);
+							);
+
+
+
+		
 	}
 	
 	public function edit_connect_record( $id)
@@ -178,7 +266,7 @@ class Marketing extends Base_Controller{
 
 		$connect = 	$this->define_data->get_data_by_id('admin_client_connect' , $id , 'id');
 
-		$this->layout->view('client/edit_connect_record' , array('connect'=> isset( $connect[0]) ? $connect[0] : array() ));
+		$this->template->build('client/edit_connect_record' , array('connect'=> isset( $connect[0]) ? $connect[0] : array() ));
 	}
 
 	/*
@@ -203,7 +291,7 @@ class Marketing extends Base_Controller{
 
 		$sum = $this->marketing->get_message_sum( $this->_G['uid']);
 
-		$this->layout->view('marketing/center' , array( 'data'=>$data , 'offset'=>$offset , 'sum' => $sum));
+		$this->template->build('marketing/center' , array( 'data'=>$data , 'offset'=>$offset , 'sum' => $sum));
 	}
 
 	public function remove_message($id)
@@ -225,12 +313,14 @@ class Marketing extends Base_Controller{
 
 	public function send() {
 
-		$this->layout->view('marketing/send');
+		$this->template->build('marketing/send');
 	}
 
 	public function send_invitation( $id) {
+
 		$id = intval( $id);
-		$this->layout->view('marketing/send_invitation');
+
+		$this->template->build('marketing/send_invitation');
 	}
 
 	public function create_client() {
@@ -242,26 +332,28 @@ class Marketing extends Base_Controller{
 		}
 
 		$column = $this->client_config->get_client_mapping();
-		$this->layout->view('marketing/create_client' , array('column' => $column , 'status' => $status));
+		$this->template->build('marketing/create_client' , array('column' => $column , 'status' => $status));
 	}
 
 	public function profile_del( $id) {
+
 		$id = intval( $id);
+		
 		$this->marketing->profile_del( $id);
+		
 		redirect( base_url().'index.php/marketing/index');
+		
 	}
 
-	public function mailto( $id) {
+	public function mailto( $id = 0) {
 
 		$id = intval( $id);
-
-		$client = $this->marketing->get_email_by_id( $id);
 
 		if( isset( $_POST['send_save'])) {
 
 			$this->marketing->send_save_email();
 
-			redirect( base_url() . 'index.php/marketing/send/'.$id);
+			redirect( base_url() . 'index.php/marketing/send/');
 
 		}else if( isset( $_POST['save_only'])) {
 
@@ -270,7 +362,18 @@ class Marketing extends Base_Controller{
 			redirect( base_url() . 'index.php/marketing/receive/'.$id);
 		}
 
-		$this->layout->view('marketing/mailto' , array( 'client' => $client[0],));
+		$client = $this->marketing->get_email_by_id( $id);
+		
+		if( empty( $client))
+		{
+			$client = array(
+				'id'	=> 0 ,
+				'email' => '' ,
+				'name'	=> '' ,
+			);
+		}
+
+		$this->template->build('marketing/mailto' , array( 'client' => $client,));
 
 	}
 
@@ -278,18 +381,18 @@ class Marketing extends Base_Controller{
 		$id = intval( $id);
 		$mail = $this->marketing->get_email_by_salesmanid( $id , $this->_G['uid']);
 
-		$this->layout->view('marketing/view_email' , array( 'mail' => $mail ));
+		$this->template->build('marketing/view_email' , array( 'mail' => $mail ));
 	}
 
 	public function mail_template() {
 		
-		$this->layout->view('marketing/mail_template');
+		$this->template->build('marketing/mail_template');
 
 	}
 
 	public function status( $message)
 	{
-		$this->layout->view('marketing/status' , array('message' => $message));
+		$this->template->build('marketing/status' , array('message' => $message));
 	}
 
 

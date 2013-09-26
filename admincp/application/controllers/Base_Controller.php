@@ -34,7 +34,9 @@ class Base_Controller extends CI_Controller {
 	}
 	//@layout -- top navigation before main-content
 	public function navigation() {
-		return array();
+		return array(
+		 'index_module' => array('route' => 'index' , 'alias' => '未设置导航' , 'status' => 'active') , 
+		 );
 	}
 	//@layout -- left side menu list
 	public function get_controller() {
@@ -54,6 +56,7 @@ class Base_Controller extends CI_Controller {
 	//@user_permission 
 	public function auth() {
 		
+		/*
 		$module = $this->__toString();
 		//第一级权限检查
 		if( false === in_array( 'c_'.$module , $this->_G['resource']) && 1 !== intval( $this->_G['adminid'])) {
@@ -64,6 +67,7 @@ class Base_Controller extends CI_Controller {
 				exit;
 			}
 		}
+		*/
 	}
 
 	public function top_menu()

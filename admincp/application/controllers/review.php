@@ -28,7 +28,7 @@ class Review extends Base_Controller {
 
 		$list = $this->review->get_news_list( $page , $offset);
 
-		$this->layout->view('review/index' , array( 'total' => $total , 
+		$this->template->build('review/index' , array( 'total' => $total , 
 													'offset' => $offset , 
 													'list'  => $list , 
 		));
@@ -51,7 +51,7 @@ class Review extends Base_Controller {
 
 		$category = $this->review->get_news_categories();
 
-		$this->layout->view('review/news' , array('category' 		=> $category , 
+		$this->template->build('review/news' , array('category' 		=> $category , 
 												  'news_success' 	=> isset( $news_success) ? $news_success : null , 
 												  'item_success'    => isset( $item_success) ? $item_success : null ,
 		));
@@ -65,7 +65,7 @@ class Review extends Base_Controller {
 			$content = '';
 		}
 
-		$this->layout->view('review/fetch' , array( 'content' => $content));
+		$this->template->build('review/fetch' , array( 'content' => $content));
 	}
 
 	public function __toString() {

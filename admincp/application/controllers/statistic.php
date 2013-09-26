@@ -9,7 +9,7 @@ class Statistic extends Base_Controller {
 	}
 
 	public function index() {
-		$this->layout->view('statistic/index');
+		$this->template->build('statistic/index');
 	}
 	
 	public function __toString() {

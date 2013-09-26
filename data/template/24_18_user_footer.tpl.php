@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/user/footer.htm', './template/tpl/common/footer.htm', 1377953906, '18', './data/template/24_18_user_footer.tpl.php', './template/tpl', 'user/footer')
+|| checktplrefresh('./template/tpl/user/footer.htm', './template/tpl/common/footer.htm', 1380007105, '18', './data/template/24_18_user_footer.tpl.php', './template/tpl', 'user/footer')
 ;?>
 
 </div>

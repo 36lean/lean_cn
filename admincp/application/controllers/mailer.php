@@ -27,17 +27,20 @@ class Mailer extends Base_Controller {
 			array( 'route' => 'mail_sender', 'alias' => '发送' , 'status' => 'active' ) ,
 			array( 'route' => 'mail_program', 'alias' => '执行' , 'status' => 'active' ) ,
 			array( 'route' => 'mail_configure' , 'alias' => '设置' , 'status' => 'active' ) ,
-
 		);
 	}
 
 	public function index() {
 		if( isset( $_POST['add'])) {
+			
 			$status = $this->mailer->create_template();
+
 		}else {
+
 			$status = Status::NO_ACTION;
 		}
-		$this->layout->view('mailer/index' , array('status' => $status));
+
+		$this->template->build('mailer/index' , array('status' => $status));
 	}
 
 	public function mail_sender( $page = 1 , $offset = 500) {
@@ -45,19 +48,15 @@ class Mailer extends Base_Controller {
 		if( isset( $_POST['add'])) {
 
 			if( Status::INSERT_SUCCESS === $this->mailer->create_task()) {
-				redirect( current_url());
+				redirect( site_url('mailer/mail_program'));
 			}
 		}
 
 		$sum = $this->client_get->get_sum_of_clients();
 
-		//$client = $this->client_get->get_clients_by_batch(  $page , $offset);
+		$template = $this->mailer->get_active_templates_list();
 
-		$template = $this->mailer->get_templates_list();
-
-
-
-		$this->layout->view('mailer/mail_sender' , array('template' => $template ,
+		$this->template->build('mailer/mail_sender' , array('template' => $template ,
 														 'sum'      => $sum ,
 														 )
 		);
@@ -67,21 +66,25 @@ class Mailer extends Base_Controller {
 
 		$template_list = $this->mailer->get_templates_list();
 
-		$this->layout->view('mailer/mail_template' , array('list' => $template_list));
+		$this->template->build('mailer/mail_template' , array('list' => $template_list));
 	}
 
-	public function mail_program() {
-		$tasks = $this->mailer->list_task();
+	public function mail_program( $page = 1, $offset = 15) {
 
-		$this->layout->view('mailer/mail_program' , array( 'tasks' => $tasks));
+		$tasks = $this->mailer->list_task( $page , $offset );
+
+		$sum = $this->mailer->get_task_sum();
+
+		$this->template->build('mailer/mail_program' , array( 'tasks' => $tasks , 'sum' => $sum , 'offset' => $offset));
 	}
 
 	public function run_task( $id) {
+
 		$id = intval( $id);
 
 		$task = $this->mailer->run_task( $id);
 
-		$this->layout->view( 'mailer/run_task' , array( 'task' => $task));
+		$this->template->build( 'mailer/run_task' , array( 'task' => $task));
 		
 	}
 
@@ -110,7 +113,7 @@ class Mailer extends Base_Controller {
 
 		$list = $this->mailer->get_smtp_list();
 
-		$this->layout->view('mailer/mail_configure' , array( 'status' => $status , 'list' => $list));
+		$this->template->build('mailer/mail_configure' , array( 'status' => $status , 'list' => $list));
 	}
 
 	public function edit_config( $id) {
@@ -129,7 +132,7 @@ class Mailer extends Base_Controller {
 
 		$list = $this->mailer->get_smtp_list();
 
-		$this->layout->view('mailer/mail_configure' , array( 'ok' => $ok,'conf' => $conf[0] , 'status' => $status , 'list' => $list));
+		$this->template->build('mailer/mail_configure' , array( 'ok' => $ok,'conf' => $conf[0] , 'status' => $status , 'list' => $list));
 	}
 
 	public function del_config( $id) {
@@ -141,25 +144,33 @@ class Mailer extends Base_Controller {
 	}
 
 	public function template_view( $id) {
-		$id = intval( $id);
-		$template = $this->mailer->get_template_by_id( $id);
 
+		$id = intval( $id);
+		
+		$template = $this->mailer->get_template_by_id( $id);
+		
 		require_once 'data/mail/header.html';
+		
 		echo $template[0]['mail_template'];
+		
 		require_once 'data/mail/footer.html';
 	}
 
 	public function template_edit( $id = 1) {
+
 		$id = intval( $id);
 
 		if( isset( $_POST['update'])) {
-			$this->mailer->template_edit();
 
+			$this->mailer->template_edit();
+			
 			$id = intval( $this->input->post('id'));
+			
 		}
 
 		$template = $this->mailer->get_template_by_id( $id);
-		$this->layout->view('mailer/template_edit' , array('template' => $template[0]));
+
+		$this->template->build('mailer/template_edit' , array('template' => $template[0]));
 	}
 
 	public function send_information( $id) {
@@ -170,12 +181,15 @@ class Mailer extends Base_Controller {
 
 		$spy = $this->mailer->get_spy_data( $id);
 
-		$this->layout->view('mailer/send_information' , array('info' => $info[0] , 'spy' => $spy));
+		$this->template->build('mailer/send_information' , array('info' => $info[0] , 'spy' => $spy));
 	}
 
 	public function template_del( $id) {
+
 		$this->mailer->template_del( $id);
+		
 		redirect( base_url(). 'index.php/mailer/mail_template');
+		
 	}
 
 	public function __toString() {

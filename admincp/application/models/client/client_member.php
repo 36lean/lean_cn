@@ -25,19 +25,17 @@ class Client_member extends CI_Model {
 		return $this->db->get('ucenter_members')->num_rows();
 	}
 
-	public function throw_profile( $id) {
-		$profile = $this->db->select('*')
-							->from('admin_client')
-							->where( array('id' => $id))
-							->get()->result_array();
-		if( isset( $profile[0]['id'])) {
-			$profile = $profile[0];
-			unset( $profile['id']);
-			if( $this->db->insert( 'admin_client_useless' , $profile)) {
-				$this->db->where( array('id' => $id))
-						 ->delete('admin_client' , array('id' => $id));
-				return Status::FINISH;
-			}
+	public function throw_profile( $id , $uid ) {
+		$exist 	= $this->db->select('id')
+						   ->from('admin_contacts')
+						   ->where( array('id' => $id , 'assign_to' => $uid ))
+						   ->get()->num_rows();
+		if( 1 === $exist)
+		{
+			$this->db->where( array('id'=>$id))->update('admin_contacts' , array('close'=>1));
+
+			return Status::FINISH;
+
 		}
 
 		return Status::FAIL;

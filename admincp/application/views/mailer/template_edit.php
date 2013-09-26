@@ -1,14 +1,14 @@
-<div class="box span10">
-    <div class="box-header well" data-original-title>
-        <h2>
+<div class="row-fluid">
+    <div class="page-header" data-original-title>
+        <h4>
             <i class="icon-edit">
             </i>
             编辑邮件模板
-        </h2>
+        </h4>
 
     </div>
 
-    <div class="box-content">
+    <div class="">
         <form class="form-horizontal" action="" method="post">
         <input name="id" type="hidden" value="<?php echo $template['id'];?>">
             <fieldset>
@@ -18,9 +18,6 @@
                     </label>
                     <div class="controls">
                         <input name="mail_title" type="text" class="span6" value="<?php echo $template['mail_title'];?>">
-                        <p class="help-block">
-                            Start typing to activate auto complete!
-                        </p>
                     </div>
                 </div>
                 <div class="control-group">
@@ -39,6 +36,17 @@
                        <input name="mail_spy" type="checkbox" <?php if( $template['mail_spy'] == 1){?>checked<?php }?> />
                         <p class="help-block">
                             会消耗服务器资源
+                        </p>
+                    </div>                    
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="textarea2">
+                        是否启用
+                    </label>
+                    <div class="controls">
+                       <input name="using" type="checkbox" <?php if( $template['using'] == 1){?>checked<?php }?> />
+                        <p class="help-block">
+                            启用这个模板 (不勾选则不会出现在发送的下拉栏)
                         </p>
                     </div>                    
                 </div>
