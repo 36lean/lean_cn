@@ -30,12 +30,12 @@ class M_welcome extends CI_Model {
 
 	public function get_administrator( $uid){
 
-		$user = $this->db->select('updated_date')
-						 ->from('admin_acl')
-						 ->where( array('user_id' => $uid))
+		$user = $this->db->select('timeupdated')
+						 ->from('admin_users')
+						 ->where( array('uid' => $uid))
 						 ->limit(1)
-						 ->get()->result_array();
-		return $user[0];
+						 ->get()->row_array();
+		return $user;
 	}
 
 	public function get_suggestion($page=1,$offset=30) {

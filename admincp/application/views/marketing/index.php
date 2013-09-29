@@ -109,7 +109,7 @@ $( function() {
 		
 		request = $.ajax({
 			type:"POST",
-			url: "<?php echo site_url('module/webkit/devkit/pull_dial_request/');?>"+"/"+user_id+"/"+number ,
+			url: "<?php echo site_url('module/webkit/devkit/pull_dial_request/');?>"+"/"+user_id+"/"+number+"/"+<?php echo $this->_G['uid']?> ,
 		});
 
 		request.done(function(msg) {

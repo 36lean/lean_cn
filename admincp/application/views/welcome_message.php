@@ -1,6 +1,3 @@
-<!--span-->
-
-
 <div class="box span3 well">
 	<div class="box-header " data-original-title>
 		<h4><i class="icon-user"></i> 当前信息</h4>
@@ -13,11 +10,9 @@
 					<strong>账户名称 :</strong> <?php echo $user['user']?><br>
 					<strong>身份类型:</strong> 
 						<span class="label label-success">
-							<?php if($user['adminid'] == 1) echo '管理员';else {
-								echo $user['group'];
-							}?>
+							<?php echo $user['group'];?>
 						</span><br>                                  
-					<strong>最后登陆 :</strong> <?php echo date( 'h:i:s Y/m/d ' , $login['updated_date']);?><br>			
+					<strong>最后登陆 :</strong> <strong><?php echo date( 'h:i:s Y/m/d ' , $login['timeupdated']);?></strong><br>			
 				</li>
 
 				<li>

@@ -11,11 +11,10 @@
 }?>
 
 
-
-
 <?php
 
-if( $connect || $this->_G['groupid'] === 1){
+
+if( $profile ){
 ?>
 <div class="row-fluid">
 
@@ -126,7 +125,7 @@ $( function() {
 		
 		request = $.ajax({
 			type:"POST",
-			url: "<?php echo site_url('module/webkit/devkit/pull_dial_request/');?>"+"/"+user_id+"/"+number ,
+			url: "<?php echo site_url('module/webkit/devkit/pull_dial_request/');?>"+"/"+user_id+"/"+number+"/"+<?php echo $this->_G['uid']?> ,
 		});
 
 		request.done(function(msg) {
@@ -404,15 +403,18 @@ $(function(){
 })
 </script>
 <?php
+
 }
 //如果找不到客户资料
-}else{
+}
+else{
 ?>
 
 <div class="alert alert-error">
-	<i class="icon-info-sign"></i> 对不起 你要找的客户资料目前不存在或者没有权限访问 请先检查是否导入
+	<i class="icon-info-sign"></i> 对不起 你要找的客户资料目前不存在 请先检查是否导入
 </div>
 
 <?php
 }
+
 ?>

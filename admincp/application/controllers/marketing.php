@@ -139,11 +139,11 @@ class Marketing extends Base_Controller{
 		}
 		else
 		{
-			$uid = $this->_G['adminid'] ?  0 : $this->_G['uid'];
+			$uid = $this->_G['uid'];
 		
 			$client = $this->marketing->get_clients( $page , $offset , $uid , $condition);
 		
-			$sum = $this->marketing->sum_of_clients();
+			$sum = $this->marketing->sum_of_clients( $uid);
 		}
 
 		$this->template->build('marketing/index' , array( 'client' 		=> $client , 
@@ -240,7 +240,9 @@ class Marketing extends Base_Controller{
 
 		$connect = $this->define_data->get_data_by_id( 'admin_client_connect' , $id , 'client_id');
 
-		$this->template->build('client/edit_contact' , array('profile' => $this->client_member->get_contact_by_id( $id) , 
+		$profile = $this->client_member->get_contact_by_id( $id);
+
+		$this->template->build('client/edit_contact' , array('profile' =>  $profile, 
 														     'tag' 	=> $tag ,
 														     'connect' => $connect ,
 														     'status'  => isset( $status) ? $status : '',

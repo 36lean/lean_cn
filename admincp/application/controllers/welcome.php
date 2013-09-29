@@ -30,6 +30,13 @@ class Welcome extends Base_Controller {
 		$this->load->model('welcome/m_welcome' , 'welcome');
 	}
 
+	public function navigation() {
+		return array(
+			array( 'route' => 'index' 				, 'alias'=>'欢迎登陆'	, 'status' => 'active' ),
+
+		);
+	}
+
 	public function index()
 	{
 

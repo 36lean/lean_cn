@@ -12,18 +12,22 @@ class Base_Controller extends CI_Controller {
 		//加载缓存
 		$this->load->driver('cache');
 
-		$this->_G = $this->session->userdata('user');	
+		$this->_G = $this->session->userdata('user');
+
 		if( false === $this->_G) {
+
 			redirect( base_url() . 'index.php/user/login');
+
 		}else if( $this->_G['pcode'] !== md5( md5( $this->_G['pstring']) . $this->_G['hash'])) {
+			
 			redirect( base_url() . 'index.php/user/login');
+
 		}
 
 		if( intval( $this->_G['adminid']) === 1) {
 
 
 			$user = $this->session->userdata('user');
-			$user['resource'] = $this->get_controller();
 			$this->session->set_userdata('user' , $user);
 			$this->_G = $this->session->userdata('user');
 		}

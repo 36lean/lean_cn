@@ -17,24 +17,36 @@ class Webkit_devkit_module extends CI_Module
 							 ->register('mot02' , '13387561303')
 							 ->get_vsay_url( 'queryBalance' , array( 'toUser'=>'831lean2013online'));
 
-		var_dump( file_get_contents( $url));
+		//var_dump( file_get_contents( $url));
+		$user = $this->session->userdata('user');
+		var_dump( $user);
 	}
 
 	//namespance : __contact_
-	public function pull_dial_request( $user_id , $phone)
+	public function pull_dial_request( $user_id , $phone , $userid)
 	{
+
+		$user = $this->session->userdata('user');
+
+		if( $userid == 1265)
+			$infoCsrId = 2;
+		else if( $userid == 1084)
+			$infoCsrId = 1;
+		else
+			$infoCsrId = 1;
+
 		$url = $this->program->get_vsay_signature('831lean2013online','2435325uifslkfjalTalk')
 							 ->register('c_'.$phone , $phone)
 							 ->get_vsay_url( 'phoneCall' , array( 'fromUser'	 => 'c_'.$phone , 
 							 									  'toUser' 		 => '831lean2013online' , 
-							 									  'infoCsrId' 	 => 1 ,
+							 									  'infoCsrId' 	 => $infoCsrId ,
 							 									)
 							 );
 
-		//echo $url;
 
 		//$url = 'http://baidu.com';
 		
+
   		$ch = curl_init();
    		curl_setopt($ch, CURLOPT_URL, $url);
    		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
@@ -48,7 +60,7 @@ class Webkit_devkit_module extends CI_Module
 			
 		$return = trim( $return);
 
-
+	
 
 		$cur_user = $this->session->userdata('user');
 
@@ -89,5 +101,6 @@ class Webkit_devkit_module extends CI_Module
 		{
 			echo $return;
 		}
+
 	}
 }

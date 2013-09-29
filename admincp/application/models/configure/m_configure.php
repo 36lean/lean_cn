@@ -51,8 +51,18 @@ class M_configure extends CI_Model
 		}
 	}
 
+	public function update_user_group()
+	{
+		foreach ($_POST as $key => $value) {
+			$this->db->where( array('id'=>$key))->update('admin_users' , array('group_id'=>$value));
+		}
+	}
+
 	public function get_users()
 	{
-		return $this->db->get('admin_users')->result_array();
+		return $this->db->select('u.* , g.name as group_name')
+						->from('admin_users u')
+						->join('admin_groups g' , 'u.group_id = g.id' , 'left')
+						->get()->result_array();
 	}
 }

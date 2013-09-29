@@ -91,7 +91,7 @@
 	</table>
 
 	<div class="page-header"><h4>管理成员</h4></div>
-
+	<form action="" method="post">
 	<table class="table table-condensed">
 
 		<?php foreach ($users as $user) :?>
@@ -105,20 +105,21 @@
 
 						<?php foreach ($groups as $group) :?>
 
-							<option value="<?php echo $group['id'];?>"><?php echo $group['name'];?></option>
+							<option <?php if( $group['id'] === $user['group_id']) {?>selected="selected"<?php }?>value="<?php echo $group['id'];?>"><?php echo $group['name'];?></option>
 
 						<?php endforeach ?>
 
 					</select>
 				</td>
+				<td><span class="label label-info"><?php echo $user['group_name'];?></span></td>
 			</tr>
 
 		<?php endforeach ?>
 
 	</table>
 
-	<button class="btn btn-primary" name="save_changes" value="1">保存设置</button>
-
+	<button class="btn btn-primary" name="update_user_group" type="submit" value="1">保存设置</button>
+	</form>
 </div>
 
 <div class="span3">

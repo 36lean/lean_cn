@@ -16,6 +16,8 @@ class Webkit_menu_module extends CI_Module
 
 		$menu_list = $this->common->get_modules();
 
-		$this->load->view('menu' , array('path'=>$menu_list));
+		$user = $this->session->userdata('user');
+
+		$this->load->view('menu' , array('path'=>$menu_list , 'user'=>$user));
 	}
 }

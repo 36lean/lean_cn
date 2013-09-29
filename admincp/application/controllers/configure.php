@@ -64,6 +64,17 @@ class Configure extends Base_Controller
 		{
 			$this->configure->add_user_to_group();
 			redirect( site_url('configure/permission'));
+
+			exit;
+		}
+
+		if( $this->input->post('update_user_group'))
+		{
+			unset( $_POST['update_user_group']);
+			$this->configure->update_user_group();
+			redirect( site_url('configure/permission'));
+
+			exit;
 		}
 
 	}
