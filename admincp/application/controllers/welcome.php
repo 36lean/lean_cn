@@ -57,7 +57,7 @@ class Welcome extends Base_Controller {
 
 		$this->welcome->update_login_log( $this->_G['uid']);
 
-		$this->layout->view('welcome_message' , array( 
+		$this->template->build('welcome_message' , array( 
 													  'user' => $this->_G,
 													  'login' => $login_log ,
 													  'all'   => $all_users ,
@@ -73,12 +73,12 @@ class Welcome extends Base_Controller {
 
 		$message = $this->welcome->get_message_by_id( $id);
 
-		$this->layout->view('welcome/suggestion' , array('message' => $message));
+		$this->template->build('welcome/suggestion' , array('message' => $message));
 
 	}
 
 	public function test() {
-		$this->layout->view('welcome/test');
+		$this->template->build('welcome/test');
 	}
 	
 	public function __toString() {
