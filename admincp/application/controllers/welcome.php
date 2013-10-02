@@ -55,9 +55,6 @@ class Welcome extends Base_Controller {
 			
 			$suggestion_list = $this->welcome->get_suggestion();
 
-
-
-
 		}else {
 			$suggestion_list = array();
 		}

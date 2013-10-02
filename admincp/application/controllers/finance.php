@@ -7,12 +7,13 @@ class Finance extends Base_Controller
 	{
 
 		
-		$year = array('2010' , '2011' , '2012' , '2013');
+		$year = array('2013');
 
 		$data = array();
 
 		$return = array();
 
+		/*
 		foreach ($year as $y) {
 			$data = json_decode( file_get_contents( 'http://www.foxapi.com/API/Finance.Lottery.ShuangSeQiu/?year='.$y.'&apiid=C8BB2517FBA5296183F8BA181B293B3C&alt=json') , true);
 
@@ -21,6 +22,13 @@ class Finance extends Base_Controller
 				$return[] = $record; 
 				$this->db->insert( 'admin_finance' , $record);
 			}
+		}
+
+		*/
+
+		if( $this->input->post('generate'))
+		{
+			var_dump( $_POST);
 		}
 
 		$return = $this->db->order_by('Issue' , 'desc')->group_by('Issue')->get('admin_finance')->result_array();

@@ -22,8 +22,8 @@ class M_welcome extends CI_Model {
 	}
 
 	public function update_login_log( $uid) {
-		$this->db->where( 'user_id = '.$uid)
-				 ->update('admin_acl' , array('updated_date' => time()));
+		$this->db->where( 'uid = '.$uid)
+				 ->update('admin_users' , array('timeupdated' => time()));
 
 		//var_dump( $this->db->last_query());
 	}

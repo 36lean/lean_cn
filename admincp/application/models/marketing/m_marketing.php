@@ -33,7 +33,11 @@ class M_marketing extends CI_Model {
 	}
 
 	public function sum_of_clients( $uid) {
-		return $this->db->where( array('assign_to'=>$uid))->get('admin_contacts')->num_rows();
+		if( $uid == 0)
+			$where = array();
+		else
+			$where = array('assign_to'=>$uid);
+		return $this->db->where( $where)->get('admin_contacts')->num_rows();
 	}
 
 	public function get_client_profile( $id) {
@@ -550,5 +554,26 @@ class M_marketing extends CI_Model {
 		}
 
 		$this->db->insert('admin_contacts' , $_POST);
+	}
+
+	public function change_contacts_company()
+	{	
+		$keywords = trim( $this->input->post('keyword'));
+		if( isset( $keywords))
+		{
+			if( preg_match( '/^\d+$/', $keywords))
+			{
+				$condition = array('id'=>$id);
+			}else if( preg_match('/^[A-Za-z0-9_\-]+[@][A-Za-z0-9_\-]+\.[A-Za-z0-9_\-]+$/', $keywords))
+			{
+				$condition = array('email'=>$keywords);
+			}else
+			{
+				$condition = array('name'=>$keywords);
+			}
+		}else
+		{
+			$condition = array( 'company_id' => $this->input->post('contact_id'));
+		}
 	}
 }

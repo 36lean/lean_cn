@@ -41,8 +41,8 @@ class Client extends Base_Controller {
 			array( 'route' 	=> 'index' 					, 'alias' => '[ 上传 ]' 	, 'status' => 'active') ,
 			array( 'route' => 'contact' 				, 'alias' => '[ 联系人 ]'	, 'status' => 'active') ,
 			//array( 'route' 	=> 'export' 			, 'alias' => '导出数据' 	, 'status' => 'active') ,
-			array( 'route' 	=> 'client_list'			, 'alias' => '[ 客户列表 ]' , 'status' => 'active') ,
-			array( 'route' 	=> 'view_all_corporation'	, 'alias' => '[ 企业列表 ]' , 'status' => 'active') ,
+			//array( 'route' 	=> 'client_list'			, 'alias' => '[ 客户列表 ]' , 'status' => 'active') ,
+			array( 'route' 	=> 'company'	, 'alias' => '[ 企业列表 ]' , 'status' => 'active') ,
 			array( 'route'  => 'webmember'				, 'alias' => '[ 网站会员 ]' , 'status' => 'active') ,
 			array( 'route' 	=> 'useless_profile'		, 'alias' => '[ 废纸篓 ]' 		, 'status' => 'active') ,
 			array( 'route'  => 'edit_contact' 			, 'alias' => '编辑客户' 	, 'status' => 'disabled') ,
@@ -169,18 +169,18 @@ class Client extends Base_Controller {
 			$condition = '';
 		}
 
-		$uid = $this->_G['adminid'] ?  0 : $this->_G['uid'];
+		$uid = $this->_G['groupid'] == 1 ?  0 : $this->_G['uid'];
 		
 		$clients = $this->marketing->get_clients( $page , $offset , $uid , $condition);
 		
-		$sum = $this->marketing->sum_of_clients();
+		$sum = $this->marketing->sum_of_clients( $uid);
  	
 		$this->template->build('client/contact' , array( 'client' => $clients , 
 													   	 'page' 	=> $page , 
 													     'offset' => $offset,
 													     'sum'    => $sum,
 													    )
-		);		
+		);
 
 		
 	}
@@ -202,6 +202,15 @@ class Client extends Base_Controller {
 														     'status'  => isset( $status) ? $status : '',
 														    )
 		);
+	}
+
+	public function company( $page = 1 , $offset = 30 )
+	{
+		$corporations = $this->marketing->get_corporations( $page , $offset);
+
+		$sum = $this->marketing->sum_of_company();
+
+		$this->template->build('marketing/corporation' , array('corporations'=>$corporations,'offset'=>$offset,'sum'=>$sum));		
 	}
 
 	/*
@@ -276,12 +285,6 @@ class Client extends Base_Controller {
 		$this->template->build('client/add_corporation' , array('final' => $final));
 	}
 
-	public function view_all_corporation( $page = 1 , $offset = 30 ) {
-		$this->template->build('client/view_all_corporation' , array(	'list'  => $this->client_corporation->fetch_all( $page , $offset),
-																		'today' => date('Y/m/d' ,time()),
-		));
-	}
-
 	public function corp_information ( $id) {
 		$id = intval( $id);
 		$info = $this->client_corporation->fetch_by_id( $id);
@@ -329,7 +332,10 @@ class Client extends Base_Controller {
 
 	}
 
-	public function useless_profile() {
+	public function useless_profile( $page = 1 , $offset = 30) {
+
+		$this->
+
 		$this->template->build('client/useless_profile');
 	}
 

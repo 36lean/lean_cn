@@ -46,13 +46,14 @@ class M_program extends CI_Model
 
 		if( 'UserExiste' === file_get_contents($register_url))
 		{
+			//echo 'UserExiste';
 			return $this;
 		}
 		else
 		{	
 			$register = $this->base . 'createUser?fromUser='.$user.'&phoneNumber='.$phone.$this->sign;
 
-			file_get_contents( $register);
+			echo file_get_contents( $register);
 
 			return $this;
 		}

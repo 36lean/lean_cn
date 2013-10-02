@@ -17,105 +17,6 @@ class Marketing extends Base_Controller{
 		$this->load->model('program/m_program' , 'program');
 	}
 
-	private function _program()
-	{
-
-		//从企业创建销售机会
-		if( $this->input->post('create_contact_by_company'))
-		{
-			unset( $_POST['create_contact_by_company']);
-
-			$this->marketing->create_contact_by_company();
-		}
-
-		//更新销售机会
-		if( $this->input->post('update_opportunity'))
-		{
-			unset( $_POST['update_opportunity']);
-			$this->marketing->update_opportunity();
-		}
-
-		//创建销售机会
-		if( $this->input->post('create_opportunity'))
-		{
-			unset( $_POST['create_opportunity']);
-			$id = $this->marketing->insert_opportunity();
-			redirect( site_url('marketing/view_corporation/'.$id));
-			exit;
-		}
-
-		//更新企业资料
-		if( $this->input->post('update_company'))
-		{
-			unset( $_POST['update_company']);
-			$id = $this->marketing->save_company();
-			redirect( site_url('marketing/view_corporation/'.$id));
-			exit;
-		}
-
-		//新建档案
-		if( $this->input->post('create_profile'))
-		{
-			unset( $_POST['create_profile']);
-
-			if( 1 == $this->marketing->build_profile( $this->_G['uid']))
-			{
-				redirect('marketing/status/ok');
-			}else
-			{
-				redirect('marketing/status/fail');
-			}
-		}
-
-		//添加沟通记录
-		if( $this->input->post('add_connect'))
-		{
-			unset( $_POST['add_connect']);
-			if( $this->client_excel->add_connect())
-			{
-				redirect( site_url('marketing/connect/'.$this->input->post('client_id')));
-				exit;
-			}
-		}
-
-		//更新资料
-		if( $this->input->post('save_profile'))
-		{
-			unset( $_POST['save_profile']);
-			if( $this->client_excel->update_contact_profile())
-				return 1;
-			else
-				return -1;
-		}
-
-		//沟通记录更新
-		if( $this->input->post('save_edit'))
-		{
-			return $this->client_excel->update_contact_connect();
-		}else if( $this->input->post('del_connect'))
-		{
-			return $this->client_excel->remove_contact_connect();
-		}
-
-		//添加约定时间
-		if( $this->input->post('submit'))
-		{
-			unset( $_POST['submit']);
-			$id = $this->input->post('contact_id');
-			$this->marketing->add_clock_for_contact();
-			redirect( site_url('marketing/connect/'.$id));
-		}
-
-		if( isset( $_GET['search'])) {
-			unset( $_GET['search']);
-			return $this->marketing->get_search();
-			
-		}else {
-			return '';
-		}
-
-	}
-
 	public function navigation() {
 		return array(
 			array( 'route' => 'index'			, 'alias' => '我的客户列表' , 'status' => 'active' ) ,
@@ -226,7 +127,9 @@ class Marketing extends Base_Controller{
 
 		$tags = $this->client_get->get_contact_tags();
 
-		$this->template->build('marketing/add_worker' , array('company_id'=>$company_id , 'tags'=>$tags));
+		$uncategories = $this->client_member->get_uncategory_contacts();
+
+		$this->template->build('marketing/add_worker' , array('company_id'=>$company_id , 'tags'=>$tags , 'uncategories'=>$uncategories));
 	}
 
 	public function connect( $id) 
@@ -415,6 +318,110 @@ class Marketing extends Base_Controller{
 		echo $this->program->give_up( $this->_G['uid']);
 	}
 
+	private function _program()
+	{
+
+		if( $this->input->post('change_contacts_company'))
+		{
+			$this->marketing->change_contacts_company();
+		}
+
+		//从企业创建销售机会
+		if( $this->input->post('create_contact_by_company'))
+		{
+			unset( $_POST['create_contact_by_company']);
+
+			$this->marketing->create_contact_by_company();
+		}
+
+		//更新销售机会
+		if( $this->input->post('update_opportunity'))
+		{
+			unset( $_POST['update_opportunity']);
+			$this->marketing->update_opportunity();
+		}
+
+		//创建销售机会
+		if( $this->input->post('create_opportunity'))
+		{
+			unset( $_POST['create_opportunity']);
+			$id = $this->marketing->insert_opportunity();
+			redirect( site_url('marketing/view_corporation/'.$id));
+			exit;
+		}
+
+		//更新企业资料
+		if( $this->input->post('update_company'))
+		{
+			unset( $_POST['update_company']);
+			$id = $this->marketing->save_company();
+			redirect( site_url('marketing/view_corporation/'.$id));
+			exit;
+		}
+
+		//新建档案
+		if( $this->input->post('create_profile'))
+		{
+			unset( $_POST['create_profile']);
+
+			if( 1 == $this->marketing->build_profile( $this->_G['uid']))
+			{
+				redirect('marketing/status/ok');
+			}else
+			{
+				redirect('marketing/status/fail');
+			}
+		}
+
+		//添加沟通记录
+		if( $this->input->post('add_connect'))
+		{
+			unset( $_POST['add_connect']);
+			if( $this->client_excel->add_connect())
+			{
+				redirect( site_url('marketing/connect/'.$this->input->post('client_id')));
+				exit;
+			}
+		}
+
+		//更新资料
+		if( $this->input->post('save_profile'))
+		{
+			unset( $_POST['save_profile']);
+			if( $this->client_excel->update_contact_profile())
+				return 1;
+			else
+				return -1;
+		}
+
+		//沟通记录更新
+		if( $this->input->post('save_edit'))
+		{
+			return $this->client_excel->update_contact_connect();
+		}else if( $this->input->post('del_connect'))
+		{
+			return $this->client_excel->remove_contact_connect();
+		}
+
+		//添加约定时间
+		if( $this->input->post('submit'))
+		{
+			unset( $_POST['submit']);
+			$id = $this->input->post('contact_id');
+			$this->marketing->add_clock_for_contact();
+			redirect( site_url('marketing/connect/'.$id));
+		}
+
+		if( isset( $_GET['search'])) {
+			unset( $_GET['search']);
+			return $this->marketing->get_search();
+			
+		}else {
+			return '';
+		}
+
+	}
+	
 	public function __toString() {
 		return strtolower( __CLASS__);
 	}

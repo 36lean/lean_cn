@@ -48,7 +48,7 @@ class Client_member extends CI_Model {
 						->from('admin_contacts c')
 						->join('admin_clienttags t' , 't.id = c.tag' , 'left')
 						->join('admin_company cp' , 'cp.id = c.company_id' , 'left')
-						->join('admin_acl a' , 'a.user_id = c.assign_to' , 'left')
+						->join('admin_users a' , 'a.uid = c.assign_to' , 'left')
 						->join('admin_uploads u' , 'u.id = c.from_file_id' , 'left')
 						->where( array('c.id'=>$id))
 						->get()->row_array();
@@ -56,11 +56,20 @@ class Client_member extends CI_Model {
 
 	public function get_member_by_uid( $uid)
 	{
-		return $this->db->select('m.uid,m.email,m.username,m.regdate,p.position,p.telephone,p.mobile,p.company,p.qq')
+		return $this->db->select('v.*,m.uid,m.email,m.username,m.regdate,p.*')
 		->from('ucenter_members m')
 		->join('common_member_profile p' , 'p.uid = m.uid' , 'left')
+		->join('dsu_vip v' , 'v.uid = m.uid' , 'left')
 		->where( 'm.uid = '.$uid)
-		->order_by('uid','desc')
 		->get()->row_array();
+	}
+
+	public function get_uncategory_contacts()
+	{
+		return $this->db->select('id,name,job')
+						->where( array('company_id' => 0))
+						->from('admin_contacts')
+						->get()
+						->result_array();
 	}
 }

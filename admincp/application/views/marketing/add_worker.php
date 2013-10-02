@@ -118,8 +118,30 @@ $ci = & get_instance();
 
 
 <div class="span6 well">
-	<div class="page-header"><h4>从数据库中选择已有的客户</h4></div>
+	<div class="page-header"><h4>从数据库中选择已有的客户 <small>任选一种方式</small></h4></div>
+	<form action="" method="post">
+	<div class="control-group">
+		<label><strong>输入客户ID,邮箱或者客户名字来添加</strong></label>
+		<div class="controls">
+			<input name="keyword" type="text" />
+		</div>
+	</div>
 
+	<div class="control-group">
+		<label><strong>从未分配的客户档案中选择</strong></label>
+		<div class="controls">
+			<select name="contact_id">
+				<?php foreach ($uncategories as $contact) {?>
+					<option value="<?php echo $contact['id'];?>">
+						<?php echo $contact['name'];?> - <?php echo $contact['job'];?>
+					</option>	
+				<?php }?>
+			</select>
+		</div>
+	</div>	
+
+	<button class="btn btn-info" name="change_contacts_company" value="1">添加职工信息</button>
+	</form>
 </div>
 
 
