@@ -42,9 +42,10 @@ class Client extends Base_Controller {
 			array( 'route' => 'contact' 				, 'alias' => '[ 联系人 ]'	, 'status' => 'active') ,
 			//array( 'route' 	=> 'export' 			, 'alias' => '导出数据' 	, 'status' => 'active') ,
 			//array( 'route' 	=> 'client_list'			, 'alias' => '[ 客户列表 ]' , 'status' => 'active') ,
-			array( 'route' 	=> 'company'	, 'alias' => '[ 企业列表 ]' , 'status' => 'active') ,
+			array( 'route' 	=> 'company'				, 'alias' => '[ 企业列表 ]' , 'status' => 'active') ,
 			array( 'route'  => 'webmember'				, 'alias' => '[ 网站会员 ]' , 'status' => 'active') ,
-			array( 'route' 	=> 'useless_profile'		, 'alias' => '[ 废纸篓 ]' 		, 'status' => 'active') ,
+			array( 'route' 	=> 'useless_profile'		, 'alias' => '[ 废纸篓 ]' 	, 'status' => 'active') ,
+			array( 'route' 	=> 'importdata'				, 'alias' => '[ 当前导入 ]' , 'status' => 'active') ,
 			array( 'route'  => 'edit_contact' 			, 'alias' => '编辑客户' 	, 'status' => 'disabled') ,
 			array( 'route'  => 'turntodb' 				, 'alias' => '编辑导入' 	, 'status' => 'disabled') ,
 		);
@@ -110,8 +111,6 @@ class Client extends Base_Controller {
 	{
 		if( file_exists( 'data/cache/config.conf'))
 		{
-
-
 			$d = opendir('data/excel/');
 
 			$file_list = array();
@@ -243,17 +242,38 @@ class Client extends Base_Controller {
 	}
 
 	public function webmember( $page = 1 , $offset = 50 ) {
+
+		$this->client_member->black_name_list();
+
+		$members = $this->client_member->filter();
+
+		$sum = 0;
+
+		$this->client_member->arrange();
+
+		$title = '筛选结果';
 		
-		$members = $this->client_member->get_website_members($page,$offset);
+		if( !$members){
 
-		$sum = $this->client_member->get_sum_of_members();
+			$title = '网站会员列表';
 
-		$this->template->build('client/webmember', array(		'members' 	=> $members , 
+			$members = $this->client_member->get_website_members($page,$offset);
+
+			$sum = $this->client_member->get_sum_of_members();
+		}
+
+		
+
+		$master = $this->permission->get_admin_lists();
+
+		$this->template->build('client/webmember', array(	 'members' 	=> $members , 
 															 'sum' 		=> $sum ,
 															 'page'     => $page,
 															 'offset'   => $offset,
 															 'current'  => count( $members),
-															 ));
+															 'master' 	=> $master ,
+															 'title'	=> $title , 
+														));
 	}
 
 	public function edit_webmember( $uid)

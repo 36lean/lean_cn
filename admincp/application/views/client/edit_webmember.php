@@ -43,7 +43,7 @@
 					年
 				</option>
 				<?php for( $i = 1914 ; $i <= date('Y') ; $i++){?>
-				<option value="<?php echo $i;?>">
+				<option <?php if( intval( date('Y' , $profile['birthday'])) == $i){?>selected="selected"<?php }?> value="<?php echo $i;?>">
 					<?php echo $i;?>
 				</option>
 				<?php }?>
@@ -56,7 +56,7 @@
 					月
 				</option>
 				<?php for( $i = 1 ; $i <= 12 ; $i++){?>
-				<option value="<?php echo $i;?>">
+				<option <?php if( intval( date('m' , $profile['birthday'])) == $i){?>selected="selected"<?php }?> value="<?php echo $i;?>">
 					<?php echo $i;?>
 				</option>
 				<?php }?>
@@ -67,7 +67,7 @@
 					日
 				</option>
 				<?php for( $i = 1 ; $i <= 31 ; $i++){?>
-				<option value="<?php echo $i;?>">
+				<option <?php if( intval( date('d' , $profile['birthday'])) == $i){?>selected="selected"<?php }?> value="<?php echo $i;?>">
 					<?php echo $i;?>
 				</option>
 				<?php }?>
@@ -386,19 +386,7 @@
 			</select>
 		</td>
 	</tr>
-	<tr>
-		<th>
-			&nbsp;
-		</th>
-		<td colspan="2">
-			<button type="submit" name="save" id="profilesubmitbtn" value="true"
-			class="btn btn-primary" />
-			<strong>
-				保存
-			</strong>
-			</button>
-		</td>
-	</tr>
+
 </table>
 	</form>
 
@@ -433,18 +421,27 @@
 			用户名
 		</th>
 		<td>
-			<?php echo $profile['username'];?>
+			<strong><?php echo $profile['username'];?></strong>
 		</td>
 		<td>
 			&nbsp;
 		</td>
+	</tr>
+	<tr>
+		<th id="th_sightml">
+			Email
+		</th>
+		<td id="td_sightml">
+			<?php echo $profile['email'];?>
+		</td>
+
 	</tr>
 	<tr id="tr_telephone">
 		<th id="th_telephone">
 			固定电话
 		</th>
 		<td id="td_telephone">
-			<input type="text" name="telephone" id="telephone" class="px" value="" tabindex="1" />
+			<input type="text" name="telephone" id="telephone" class="px" value="<?php echo $profile['telephone'];?>" tabindex="1" />
 		</td>
 
 	</tr>
@@ -453,7 +450,7 @@
 			QQ
 		</th>
 		<td id="td_qq">
-			<input type="text" name="qq" id="qq" class="px" value="" tabindex="1" />
+			<input type="text" name="qq" id="qq" class="px" value="<?php echo $profile['qq'];?>" tabindex="1" />
 		</td>
 
 	</tr>
@@ -462,7 +459,7 @@
 			MSN
 		</th>
 		<td id="td_msn">
-			<input type="text" name="msn" id="msn" class="px" value="" tabindex="1" />
+			<input type="text" name="msn" id="msn" class="px" value="<?php echo $profile['msn'];?>" tabindex="1" />
 		</td>
 	</tr>
 	<tr id="tr_mobile">
@@ -470,7 +467,7 @@
 			手机
 		</th>
 		<td id="td_mobile">
-			<input type="text" name="mobile" id="mobile" class="px" value="13247162352" tabindex="1" />
+			<input type="text" name="mobile" id="mobile" class="px" value="<?php echo $profile['mobile'];?>" tabindex="1" />
 		</td>
 	</tr>
 	<tr id="tr_field1">
@@ -478,33 +475,10 @@
 			联系方式
 		</th>
 		<td id="td_field1">
-			<input type="text" name="field1" id="field1" class="px" value="" tabindex="1" />
+			<input type="text" name="field1" id="field1" class="px" value="<?php echo $profile['field1'];?>" tabindex="1" />
 		</td>
 	</tr>
-	<tr>
-		<th id="th_sightml">
-			Email
-		</th>
-		<td id="td_sightml">
-			seekmas@msn.cn
-		</td>
 
-	</tr>
-	<tr>
-		<th>
-			&nbsp;
-		</th>
-		<td colspan="2">
-			<input type="hidden" name="profilesubmit" value="true" />
-			<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true"
-			class="btn btn-primary" />
-			<strong>
-				保存
-			</strong>
-			</button>
-
-		</td>
-	</tr>
 </table>
     	</div>
 
@@ -515,7 +489,7 @@
 			用户名
 		</th>
 		<td>
-			seekmas
+			<strong><?php echo $profile['username'];?></strong>
 		</td>
 		<td>
 			&nbsp;
@@ -526,7 +500,7 @@
 			毕业学校
 		</th>
 		<td id="td_graduateschool">
-			<input type="text" name="graduateschool" id="graduateschool" class="px" value="" tabindex="1" />
+			<input type="text" name="graduateschool" id="graduateschool" class="px" value="<?php echo $profile['graduateschool'];?>" tabindex="1" />
 		</td>
 
 	</tr>
@@ -536,25 +510,25 @@
 		</th>
 		<td id="td_education">
 			<select name="education" id="education" class="ps" tabindex="1">
-				<option value="博士">
+				<option <?php if( $profile['education'] === '博士'){?>selected="selected"<?php }?> value="博士">
 					博士
 				</option>
-				<option value="硕士">
+				<option <?php if( $profile['education'] === '硕士'){?>selected="selected"<?php }?> value="硕士">
 					硕士
 				</option>
-				<option value="本科">
+				<option <?php if( $profile['education'] === '本科'){?>selected="selected"<?php }?> value="本科">
 					本科
 				</option>
-				<option value="专科">
+				<option <?php if( $profile['education'] === '专科'){?>selected="selected"<?php }?> value="专科">
 					专科
 				</option>
-				<option value="中学">
+				<option <?php if( $profile['education'] === '中学'){?>selected="selected"<?php }?> value="中学">
 					中学
 				</option>
-				<option value="小学">
+				<option <?php if( $profile['education'] === '小学'){?>selected="selected"<?php }?> value="小学">
 					小学
 				</option>
-				<option value="其它">
+				<option <?php if( $profile['education'] === '其它'){?>selected="selected"<?php }?> value="其它">
 					其它
 				</option>
 			</select>
@@ -562,21 +536,7 @@
 		</td>
 
 	</tr>
-	<tr>
-		<th>
-			&nbsp;
-		</th>
-		<td colspan="2">
-			<input type="hidden" name="profilesubmit" value="true" />
-			<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true"
-			class="pn pnc" />
-			<strong>
-				保存
-			</strong>
-			</button>
 
-		</td>
-	</tr>
 </table>
     	</div>
 
@@ -587,7 +547,7 @@
 			用户名
 		</th>
 		<td>
-			seekmas
+			<strong><?php echo $profile['username'];?></strong>
 		</td>
 		<td>
 			&nbsp;
@@ -601,8 +561,7 @@
 			职位
 		</th>
 		<td id="td_position">
-			<input type="text" name="position" id="position" class="px" value="无"
-			tabindex="1" />
+			<input type="text" name="position" id="position" class="px" value="<?php echo $profile['position'];?>" tabindex="1" />
 		</td>
 	</tr>
 	<tr id="tr_company">
@@ -613,8 +572,7 @@
 			公司
 		</th>
 		<td id="td_company">
-			<input type="text" name="company" id="company" class="px" value="无" tabindex="1"
-			/>
+			<input type="text" name="company" id="company" class="px" value="<?php echo $profile['company'];?>" tabindex="1" />
 		</td>
 	</tr>
 	<tr id="tr_occupation">
@@ -622,24 +580,10 @@
 			职业
 		</th>
 		<td id="td_occupation">
-			<input type="text" name="occupation" id="occupation" class="px" value=""
-			tabindex="1" />
+			<input type="text" name="occupation" id="occupation" class="px" value="<?php echo $profile['occupation'];?>" tabindex="1" />
 		</td>
 	</tr>
-	<tr>
-		<th>
-			&nbsp;
-		</th>
-		<td colspan="2">
-			<input type="hidden" name="profilesubmit" value="true" />
-			<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true"
-			class="pn pnc" />
-			<strong>
-				保存
-			</strong>
-			</button>
-		</td>
-	</tr>
+
 </table>
     	</div>
 
@@ -650,7 +594,7 @@
 			用户名
 		</th>
 		<td>
-			seekmas
+			<strong><?php echo $profile['username'];?></strong>
 		</td>
 		<td>
 			&nbsp;
@@ -662,13 +606,13 @@
 		</th>
 		<td id="td_idcardtype">
 			<select name="idcardtype" id="idcardtype" class="ps" tabindex="1">
-				<option value="身份证">
+				<option <?php if( $profile['idcardtype'] === '身份证'){?>selected="selected"<?php }?> value="身份证">
 					身份证
 				</option>
-				<option value="护照">
+				<option <?php if( $profile['idcardtype'] === '护照'){?>selected="selected"<?php }?> value="护照">
 					护照
 				</option>
-				<option value="驾驶证">
+				<option <?php if( $profile['idcardtype'] === '驾驶证'){?>selected="selected"<?php }?> value="驾驶证">
 					驾驶证
 				</option>
 			</select>
@@ -681,7 +625,7 @@
 			证件号
 		</th>
 		<td id="td_idcard">
-			<input type="text" name="idcard" id="idcard" class="px" value="" tabindex="1" />
+			<input type="text" name="idcard" id="idcard" class="px" value="<?php echo $profile['idcard'];?>" tabindex="1" />
 
 		</td>
 
@@ -691,7 +635,7 @@
 			邮寄地址
 		</th>
 		<td id="td_address">
-			<input type="text" name="address" id="address" class="px" value="" tabindex="1" />
+			<input type="text" name="address" id="address" class="px" value="<?php echo $profile['address'];?>" tabindex="1" />
 
 		</td>
 
@@ -701,7 +645,7 @@
 			邮编
 		</th>
 		<td id="td_zipcode">
-			<input type="text" name="zipcode" id="zipcode" class="px" value="" tabindex="1" />
+			<input type="text" name="zipcode" id="zipcode" class="px" value="<?php echo $profile['zipcode'];?>" tabindex="1" />
 		</td>
 
 	</tr>
@@ -710,7 +654,7 @@
 			个人主页
 		</th>
 		<td id="td_site">
-			<input type="text" name="site" id="site" class="px" value="" tabindex="1"/>
+			<input type="text" name="site" id="site" class="px" value="<?php echo $profile['site'];?>" tabindex="1"/>
 
 		</td>
 
@@ -721,6 +665,7 @@
 		</th>
 		<td id="td_bio">
 			<textarea name="bio" id="bio" class="pt" rows="2" cols="40" tabindex="1">
+				<?php echo $profile['bio'];?>
 			</textarea>
 
 		</td>
@@ -731,21 +676,14 @@
 			兴趣爱好
 		</th>
 		<td id="td_interest">
-			<textarea name="interest" id="interest" class="pt" rows="3" cols="40"
-			tabindex="1">
+			<textarea name="interest" id="interest" class="pt" rows="3" cols="40" tabindex="1">
+				<?php echo $profile['interest'];?>
 			</textarea>
 
 		</td>
 
 	</tr>
-	<tr>
-		<th id="th_customstatus">
-			自定义头衔
-		</th>
-		<td id="td_customstatus">
-			<input type="text" value="" name="customstatus" id="customstatus" class="px" />
-		</td>
-	</tr>
+
 	<tr>
 		<th id="th_timeoffset">
 			时区
@@ -863,38 +801,10 @@
 			&nbsp;
 		</td>
 	</tr>
-	<tr>
-		<th>
-			&nbsp;
-		</th>
-		<td colspan="2">
-			<input type="hidden" name="profilesubmit" value="true" />
-			<button type="submit" name="profilesubmitbtn" id="profilesubmitbtn" value="true"
-			class="pn pnc" />
-			<strong>
-				保存
-			</strong>
-			</button>
-			<span id="submit_result" class="rq">
-			</span>
-		</td>
-	</tr>
+
 </table>
     	</div>
     </div>
 
 </div>
 
-
-
-
-
-
-
-
-
-<pre>
-<?php
-print_r( $profile);
-?>
-</pre>

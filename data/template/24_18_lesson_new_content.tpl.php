@@ -6,49 +6,45 @@
      <script src="<?php echo $_G['siteurl'];?>static/videojs/video.js" type="text/javascript"></script>
 <script type="text/javascript">
 jQuery(function(){
-  videojs.options.flash.swf = "<?php echo $_G['siteurl'];?>static/videojs/video-js.swf";
-  var Player = videojs("_video_player");
-  
-  videojs("_video_player", {}, function(){
-    alert(100)
-  });
+videojs.options.flash.swf = "<?php echo $_G['siteurl'];?>/static/videojs/video-js.swf";
+var Player = videojs("_video_player");
+var Lang = Array();
+Lang[0] = '简体中文';
+Lang[1] = '繁体中文';
+Lang[2] = '英文';
+var isMobile = {
+     Android: function() {
+         return navigator.userAgent.match(/Android/i) ? true : false;
+    },
+     BlackBerry: function() {
+         return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+     },
+     iOS: function() {
+         return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+     },
+     Windows: function() {
+         return navigator.userAgent.match(/IEMobile/i) ? true : false;
+     },
+     any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+     }
+};
+     if( isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS())
+     var ismobile = true;
+jQuery.ajax({
+type: 'POST',
+url : 'lesson.php?dataajax=1',
+data: 'pageid=<?php echo $content['id'];?>',
+success: function( result){
+result = eval('('+result+')')
 
-  var Lang = Array();
-    Lang[0] = '简体中文';
-    Lang[1] = '繁体中文';
-    Lang[2] = '英文';
-    var isMobile = {
-        Android: function() {
-          return navigator.userAgent.match(/Android/i) ? true : false;
-        },
-        BlackBerry: function() {
-          return navigator.userAgent.match(/BlackBerry/i) ? true : false;
-        },
-        iOS: function() {
-          return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
-        },
-        Windows: function() {
-          return navigator.userAgent.match(/IEMobile/i) ? true : false;
-        },
-        any: function() {
-          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
-        }
-      };
-
-      if( isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS())
-        var ismobile = true;
-      
-      jQuery.ajax({ type: 'POST', url : 'lesson.php?dataajax=1', data: 'pageid=<?php echo $content['id'];?>',
-                  success: function( result){
-                    result = eval('('+result+')')
-
-                  if( ismobile)
-                    Player.src( { type: "video/mp4", src: result['video_mb']});
-                  else
-                    Player.src( { type: "video/mp4", src: result['video_pc']});
-                  }
-                });
-    });
+if( ismobile)
+Player.src( { type: "video/mp4", src: result['video_mb']});
+else
+Player.src( { type: "video/mp4", src: result['video_pc']});
+}
+});
+     });
 </script>
 
     <video id="_video_player" class="video-js vjs-default-skin" controls preload="none" width="auto" height="529" poster="<?php if(file_exists( 'uploads/page/'.$video['image_file'])) { ?><?php echo $_G['siteurl'];?>uploads/page/<?php echo $video['image_file'];?><?php } else { ?><?php echo $config['videourl'];?><?php echo $video['v_path'];?>/PNG/<?php echo $video['image_file'];?><?php } ?>" data-setup="{}">

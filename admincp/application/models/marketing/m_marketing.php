@@ -576,4 +576,46 @@ class M_marketing extends CI_Model {
 			$condition = array( 'company_id' => $this->input->post('contact_id'));
 		}
 	}
+
+	public function get_web_members( $uid , $page , $offset)
+	{
+		if( $uid === 0)
+			$where = array();
+		else
+			$where = array('t.assign_to'=>$uid);
+
+		return $this->db->select('t.id,m.uid,m.username,m.email,m.regdate,p.mobile,p.telephone,p.company,p.position')
+						->from('admin_contacts_tmp t')
+						->join('ucenter_members m' , 'm.uid = t.user_id' , 'left')
+						->join('common_member_profile p' , 'p.uid = t.user_id' , 'left')
+						->where( $where)
+						->limit( $offset , ($page-1)*$offset)
+						->order_by('id' , 'desc')
+						->get()
+						->result_array();
+	}
+
+	public function get_web_members_sum( $uid)
+	{
+
+
+		if( $uid === 0)
+			$where = array();
+		else
+			$where = array('assign_to'=>$uid);
+
+		return $this->db->select('id')
+						->from('admin_contacts_tmp')
+						->where( $where )
+						->get()
+						->num_rows();
+	}
+
+	public function check_member_vaild( $uid , $salesman)
+	{
+		return $this->db->select('id')
+				 	 	->where( array('user_id' => $uid , 'assign_to' => $salesman) )
+				 		->get('admin_contacts_tmp')
+				 		->num_rows();
+	}
 }

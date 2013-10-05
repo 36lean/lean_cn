@@ -34,7 +34,7 @@ if( $profile ){
 <input name="client_id" type="hidden" value="<?php echo $profile['id'];?>" />
 <div class="control-group">
 <div class="controls">
-<textarea name="connect_text"></textarea>
+<textarea class="longtext" name="connect_text"></textarea>
 </div>
 </div>
 
@@ -286,6 +286,15 @@ $percent = $finish * 100 / count($profile);
 	<td>负责人</td>
 	<td><?php echo $profile['salesman'];?></td>
 </tr>
+
+<?php if( $web_profile){?>
+
+<tr>
+	<td>网站会员ID</td>
+	<td><?php echo $web_profile['username'];?></td>
+</tr>	
+
+<?php }?>
 </table>
 
 </div>

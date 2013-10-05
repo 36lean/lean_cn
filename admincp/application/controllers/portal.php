@@ -9,6 +9,8 @@ class Portal extends Base_Controller
 	{
 		parent::__construct();
 		$this->load->model('portal/m_portal' , 'portal');
+
+		$this->load->model('portal/m_article' , 'article');
 	}
 
 	private function _program()
@@ -17,7 +19,8 @@ class Portal extends Base_Controller
 		{
 			unset( $_POST['post_rule']);
 			$this->portal->save_rule();
-		}else if( $this->input->post('post_source'))
+		}
+		else if( $this->input->post('post_source'))
 		{
 			unset( $_POST['post_source']);
 			$this->portal->save_source();
@@ -38,14 +41,30 @@ class Portal extends Base_Controller
 	public function index()
 	{
 
-		$this->template->build('portal/index');
+		$this->article->add_category();
+
+		$this->article->add_article();
+
+		$categories = $this->article->get_categories();
+
+		$this->template->build('portal/index' , array('categories'=>$categories));
 	}
 
-	public function category()
+	public function category( $page = 1 , $offset = 30)
 	{
 		$this->_program();
 
-		$this->template->build('portal/category');
+		$articles = $this->article->get_articles( $page , $offset );
+
+		$sum = $this->article->get_sum_of_articles();
+
+		$categories = $this->article->get_categories();
+
+		$this->template->build('portal/category' , array('articles' => $articles ,
+														 'categories'=> $categories ,
+														 'offset'	=> $offset , 
+														 'sum'		=> $sum , 
+		));
 	}
 
 	public function spider()
@@ -82,5 +101,18 @@ class Portal extends Base_Controller
 		$this->portal->get_test_data( $rule , $info );
 
 		$this->template->build('portal/spider_test');
+	}
+
+	public function edit_article( $id)
+	{
+		$id = intval( $id);
+
+		$this->article->add_article();
+
+		$article = $this->article->get_article_by_id( $id);
+
+		$categories = $this->article->get_categories();
+
+		$this->template->build('portal/edit_article' , array('article'=>$article , 'categories'=>$categories));
 	}
 }

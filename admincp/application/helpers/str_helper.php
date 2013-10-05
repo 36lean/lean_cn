@@ -58,3 +58,10 @@ function cutstr($string, $length, $dot = ' ...') {
 	}
 	return $strcut.$dot;
 }
+
+function form_post_refresh()
+{
+	redirect( $_SERVER['HTTP_REFERER']);
+
+	exit('referer error');
+}

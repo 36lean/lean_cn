@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1379576877, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1380866426, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -132,10 +132,23 @@ jQuery("img").lazyload({effect : "fadeIn"});
 
 <div class="span7" style="position:absolute;bottom:15px;right:30px;">
         <ul class="nav nav-pills pull-right">
+
           	<li <?php if(CURSCRIPT === 'portal' && CURMODULE !== 'aboutus') { ?>class="active"<?php } ?>><a href="portal.php"><i class="icon-home"></i> 首页</a></li>
-          	<li <?php if(CURSCRIPT === 'lesson') { ?>class="active"<?php } ?>><a href="lesson.php"><i class="icon-cloud"></i> 在线课程</a></li>
-          	<li <?php if(CURSCRIPT === 'knowledge') { ?>class="active"<?php } ?>><a href="reader.php"><i class="icon-globe"></i> 新闻</a></li>
-          	<li <?php if($_GET['title'] === 'product') { ?>class="active"<?php } ?>><a href="read.php?title=product"><i class="icon-trophy"></i> 产品版本</a></li>
+          	
+
+ 			<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
+<i class="icon-cloud"></i> 云学院
+<b class="caret"></b>
+</a>
+<ul class="dropdown-menu">
+<li><a href="lesson.php">云学院课程</a></li>
+<li><a href="read.php?title=product">产品版本</a></li>
+</ul>
+    		</li>
+          	
+          	<li <?php if(CURSCRIPT === 'knowledge') { ?>class="active"<?php } ?>><a href="reader.php"><i class="icon-globe"></i> 精益资讯</a></li>
+          	
           	<li <?php if($_GET['title'] === 'aboutus') { ?>class="active"<?php } ?>><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们</a></li>
           	<li <?php if($_GET['title'] === 'contactus') { ?>class="active"<?php } ?>><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们</a></li>
         </ul>

@@ -106,10 +106,23 @@
 	
 	<div class="span7" style="position:absolute;bottom:15px;right:30px;">
         <ul class="nav nav-pills pull-right">
+
           	<li {if CURSCRIPT === 'portal' && CURMODULE !== 'aboutus'}class="active"{/if}><a href="portal.php"><i class="icon-home"></i> 首页</a></li>
-          	<li {if CURSCRIPT === 'lesson'}class="active"{/if}><a href="lesson.php"><i class="icon-cloud"></i> 在线课程</a></li>
-          	<li {if CURSCRIPT === 'knowledge'}class="active"{/if}><a href="reader.php"><i class="icon-globe"></i> 新闻</a></li>
-          	<li {if $_GET['title'] === 'product'}class="active"{/if}><a href="read.php?title=product"><i class="icon-trophy"></i> 产品版本</a></li>
+          	
+
+ 			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
+					<i class="icon-cloud"></i> 云学院
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="lesson.php">云学院课程</a></li>
+					<li><a href="read.php?title=product">产品版本</a></li>
+				</ul>
+    		</li>
+          	
+          	<li {if CURSCRIPT === 'knowledge'}class="active"{/if}><a href="reader.php"><i class="icon-globe"></i> 精益资讯</a></li>
+          	
           	<li {if $_GET['title'] === 'aboutus'}class="active"{/if}><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们</a></li>
           	<li {if $_GET['title'] === 'contactus'}class="active"{/if}><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们</a></li>
         </ul>

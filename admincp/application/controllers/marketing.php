@@ -21,6 +21,7 @@ class Marketing extends Base_Controller{
 		return array(
 			array( 'route' => 'index'			, 'alias' => '我的客户列表' , 'status' => 'active' ) ,
 			array( 'route' => 'corporation' 	, 'alias' => '企业列表' 	, 'status' => 'active' ) ,
+			array( 'route' => 'web' 			, 'alias' => '网站会员' 	, 'status' => 'active') ,
 			array( 'route' => 'center' 			, 'alias' => '消息中心' 	, 'status' => 'active') ,
 			array( 'route' => 'create' 			, 'alias' => '新建档案' 	, 'status' => 'active') ,
 			//array( 'route' => 'website_member'	, 'alias' => '网站会员'  	, 'status' => 'active' ) ,
@@ -145,10 +146,13 @@ class Marketing extends Base_Controller{
 
 		$profile = $this->client_member->get_contact_by_id( $id);
 
+		$web_profile = $this->client_member->get_profile_by_contact_id( $id);
+
 		$this->template->build('client/edit_contact' , array('profile' =>  $profile, 
 														     'tag' 	=> $tag ,
 														     'connect' => $connect ,
 														     'status'  => isset( $status) ? $status : '',
+														     'web_profile' => $web_profile , 
 														  )
 							);
 
@@ -216,9 +220,32 @@ class Marketing extends Base_Controller{
 		));
 	}
 
-	public function send() {
+	public function web( $page = 1 , $offset = 30 )
+	{
 
-		$this->template->build('marketing/send');
+		$uid = $this->_G['groupid'] === 1 ? 0 : $this->_G['uid'] ;
+
+		$contacts = $this->marketing->get_web_members( $uid , $page , $offset );
+
+		$sum = $this->marketing->get_web_members_sum( $this->_G['uid']);
+
+		$this->template->build('marketing/web' , array( 'contacts'=>$contacts , 'sum' => $sum , 'offset' => $offset ));
+	}
+
+	public function web_members( $uid)
+	{
+		$uid = intval( $uid);
+
+		if( $this->_G['groupid'] != 1)
+		{
+			if( 0 === $this->marketing->check_member_vaild( $uid , $this->_G['uid']))
+				$status = false;
+			else 
+				$status = true;
+		}
+
+		$this->client_member->create_contact_by_webuser( $uid);
+		
 	}
 
 	public function send_invitation( $id) {

@@ -47,7 +47,7 @@ $map = $this->config->config['map'];
 <select name="assign_to">
 		<option value="0">选择负责人</option>
 	<?php foreach ($master as $u) :?>
-		<option value="<?php echo $u['user_id'];?>"><?php echo $u['username'];?> - <?php echo $u['role_name'];?></option>
+		<option value="<?php echo $u['uid'];?>"><?php echo $u['username'];?> - <?php echo $u['role_name'];?></option>
 	<?php endforeach ?>
 </select>
 </div>

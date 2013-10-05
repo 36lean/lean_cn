@@ -84,10 +84,10 @@ class M_permission extends CI_Model {
 	}
 
 	public function get_admin_lists() {
-		return $this->db->select(' admin_acl.* , admin_acl_resource.name role_name')
-						->join('admin_acl_resource' , 'admin_acl.resource_id = admin_acl_resource.id' , 'left')
-						->from('admin_acl')
-						->order_by('updated_date','desc')
+		return $this->db->select(' admin_users.* , admin_groups.name role_name')
+						->join('admin_groups' , 'admin_users.group_id = admin_groups.id' , 'left')
+						->from('admin_users')
+						->order_by('timeupdated','desc')
 						->get()->result_array();
 	}
 
