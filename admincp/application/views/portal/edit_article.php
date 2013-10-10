@@ -8,7 +8,9 @@ $meta = json_decode( $article['post_meta'] , true);
 
 ?>
 
+<div class="row">
 
+<div class="span9">
 <form action="" method="post">
 	<input type="hidden" name="id" value="<?php echo $article['id'];?>">
 	<div class="control-group">
@@ -44,6 +46,13 @@ $meta = json_decode( $article['post_meta'] , true);
 		<label><strong>正文</strong></label>
 		<div class="controls">
 			<textarea class="longtext" name="post_content"><?php echo $article['post_content'];?></textarea>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label><strong>文字配图 (图片链接)</strong></label>
+		<div class="controls">
+			<input class="span6" type="text" name="post_banner" value="<?php echo $article['post_banner'];?>"></textarea>
 		</div>
 	</div>
 
@@ -92,14 +101,11 @@ $meta = json_decode( $article['post_meta'] , true);
 
 	<button class="btn btn-primary" type="submit" name="create_news" value="1">更新新闻</button>
 
-	</form>
-
-
-
-
-
-
-
-
-
 </form>
+</div>
+
+<div class="span3">
+	 <?php $this->load->module('webkit/photo_uploads/uploads');?>
+</div>
+
+</div>

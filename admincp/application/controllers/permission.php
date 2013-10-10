@@ -28,7 +28,7 @@ class Permission extends Base_Controller  {
 		$user = $this->permission->get_admin_lists();
 
 
-		$this->layout->view('permission/index' , array('user' => $user));
+		$this->template->build('permission/index' , array('user' => $user));
 	}
 
 	public function per_category() {
@@ -44,7 +44,7 @@ class Permission extends Base_Controller  {
 		}
 
 		$group = $this->permission->get_all_group();
-		$this->layout->view('permission/per_category' , array('controller' 	=> 		$this->get_controller(),
+		$this->template->build('permission/per_category' , array('controller' 	=> 		$this->get_controller(),
 															  'modules'     =>  	$modules,
 			                                                  'group'		=> 		$group
 		));
@@ -65,7 +65,7 @@ class Permission extends Base_Controller  {
 		$resource_list =  $this->permission->get_resource_lists();
 
 
-		$this->layout->view('permission/per_user' , array('lists' => $user_list , 'resource' => $resource_list));
+		$this->template->build('permission/per_user' , array('lists' => $user_list , 'resource' => $resource_list));
 	}
 
 	public function del_user( $id) {
@@ -75,7 +75,7 @@ class Permission extends Base_Controller  {
 	}
 
 	public function sql() {
-		$this->layout->view('permission/sql');
+		$this->template->build('permission/sql');
 	}
 	
 	public function __toString() {

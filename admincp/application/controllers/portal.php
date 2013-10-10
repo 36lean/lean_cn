@@ -25,6 +25,22 @@ class Portal extends Base_Controller
 			unset( $_POST['post_source']);
 			$this->portal->save_source();
 		}
+
+		if( $this->input->post('operation'))
+		{
+			unset( $_POST['operation']);
+
+			$this->article->batch_change();
+		}
+
+		if( $this->input->post('delete'))
+		{
+			unset( $_POST['delete']);
+			unset( $_POST['category']);
+			unset( $_POST['status']);
+
+			$this->article->remove_articles();
+		}
 	}
 
 	public function navigation() {
@@ -38,7 +54,7 @@ class Portal extends Base_Controller
 		);
 	}
 
-	public function index()
+	public function index( $action = '' , $category_id = 0)
 	{
 
 		$this->article->add_category();
@@ -47,10 +63,27 @@ class Portal extends Base_Controller
 
 		$categories = $this->article->get_categories();
 
-		$this->template->build('portal/index' , array('categories'=>$categories));
+		if( $action === 'category' )
+		{
+			$old_category = $this->article->get_category_by_id( $category_id);
+		}else
+		{
+			$old_category = array();
+		}
+
+		$this->template->build('portal/index' , array('categories'=>$categories , 'old_category'=>$old_category));
+
 	}
 
-	public function category( $page = 1 , $offset = 30)
+	public function category_remove( $id)
+	{
+		$id = intval( $id);
+
+		$this->article->category_remove( $id);
+
+	}
+
+	public function category( $page = 1 , $offset = 50)
 	{
 		$this->_program();
 
@@ -114,5 +147,25 @@ class Portal extends Base_Controller
 		$categories = $this->article->get_categories();
 
 		$this->template->build('portal/edit_article' , array('article'=>$article , 'categories'=>$categories));
+	}
+
+	public function seo()
+	{	
+		$this->article->add_center_article();
+
+		$this->article->add_left_article();
+
+		$articles = $this->article->get_home_articles();
+
+		$this->template->build( 'portal/seo' , array('articles'=>$articles));
+	}
+
+	public function config()
+	{
+		$this->article->add_tag();
+
+		$tags = $this->article->get_all_tags();
+
+		$this->template->build('portal/config' , array('tags' => $tags));
 	}
 }

@@ -34,7 +34,7 @@ if( $profile ){
 <input name="client_id" type="hidden" value="<?php echo $profile['id'];?>" />
 <div class="control-group">
 <div class="controls">
-<textarea class="longtext" name="connect_text"></textarea>
+<textarea class="span12" name="connect_text" rows=5></textarea>
 </div>
 </div>
 
@@ -232,19 +232,35 @@ $percent = $finish * 100 / count($profile);
 
 <table class="table table-bordered" style="font-size:15px;">
 <tr>
-	<td class="span3">联系人名字</td><td class="span9"><?php echo $profile['name'];?></td>
+	<td class="span3">联系人名字</td><td class="span9"><strong><?php echo $profile['name'];?></strong></td>
 </tr>
 <tr>
-	<td>年龄</td><td><?php echo $profile['age'];?></td>
+	<td>年龄</td><td><?php echo $profile['age'] ? $profile['age'] : '';?></td>
 </tr>
 <tr>
 	<td>性别</td><td><?php echo ($profile['gender']==1 ? '男' : '女' );?></td>
 </tr>
 <tr>
-	<td>分类</td><td><span class="label label-success"><?php echo $profile['tag_code'].' - '.$profile['tag_name'];?></span></td>
+	<td>分类</td>
+	<td>
+		<?php if( $profile['tag_name']) {?>
+		<span class="label label-success"><?php echo $profile['tag_code'].' - '.$profile['tag_name'];?></span>
+		<?php }else {?>
+		<span class="label label-info">该客户未分类</span>
+		<?php }?>
+	</td>
 </tr>
 <tr>
-	<td><a href="">所在企业</a></td><td><a href="<?php echo site_url('marketing/view_corporation/'.$profile['company_id']);?>"><?php echo $profile['companyname'],' - ',$profile['company_id'];?></td>
+	<td>
+		<a href="">所在企业</a>
+	</td>
+	<td>
+		<?php if( $profile['company_id']){?>
+		<a href="<?php echo site_url('marketing/view_corporation/'.$profile['company_id']);?>"><?php echo $profile['companyname'],' - ',$profile['company_id'];?>
+		<?php }else {?>
+		<span class="label label-info">待分配</span>
+		<?php }?>
+	</td>
 </tr>
 <tr>
 	<td>职务</td><td><?php echo $profile['job'];?></td>
@@ -262,7 +278,7 @@ $percent = $finish * 100 / count($profile);
 	<td>传真</td><td><?php echo $profile['office_fax'];?></td>
 </tr>
 <tr>
-	<td>QQ</td><td><?php echo $profile['qq'];?></td>
+	<td>QQ</td><td><?php echo $profile['qq'] ? $profile['qq'] : '';?></td>
 </tr>
 <tr>
 	<td>地址</td><td><?php echo $profile['address'];?></td>
@@ -308,6 +324,7 @@ $percent = $finish * 100 / count($profile);
 		<label class="control-label">客户类型</label>
 		<div class="controls">
 			<select name="tag">
+				<option value="">待分类</option>
 			<?php foreach ($tag as $t) : ?>
 				<option <?php if( $t['value'] === $profile['tag']){?>selected="selected"<?php }?> value="<?php echo $t['value'];?>"><?php echo $t['name'];?></option>
 			<?php endforeach ;?>
@@ -333,8 +350,9 @@ $percent = $finish * 100 / count($profile);
 		<label class="control-label">性别</label>
 		<div class="controls">
 			<select name="gender">
+				<option value="0">空</option>
 				<option <?php if( $profile['gender'] == 1) echo 'selected="selected"';?> value="1">男</option>
-				<option <?php if( $profile['gender'] == 0) echo 'selected="selected"';?> value="0">女</option>
+				<option <?php if( $profile['gender'] == 2) echo 'selected="selected"';?> value="2">女</option>
 			</select>
 		</div>
 	</div>
@@ -385,7 +403,7 @@ $percent = $finish * 100 / count($profile);
 	<div class="control-group">
 		<label class="control-label">备注信息</label>
 		<div class="controls">
-			<textarea name="description"><?php echo $profile['description'];?></textarea>
+			<textarea class="shorttext" name="description"><?php echo $profile['description'];?></textarea>
 		</div>
 	</div>
 

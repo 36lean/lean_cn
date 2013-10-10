@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1380866426, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1381331375, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -22,9 +22,9 @@
 <meta name="MSSmartTagsPreventParsing" content="True" />
 <meta http-equiv="MSThemeCompatible" content="Yes" />
 <base href="<?php echo $_G['siteurl'];?>" />
-<link href="<?php echo $_G['siteurl'];?>static/bs/css/bootstrap-responsive.min.css" rel="stylesheet" />
+
    	<link href="<?php echo $_G['siteurl'];?>static/mot/professional.css" rel="stylesheet" />
-   	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+   	
     <link type="text/css" href="<?php echo $_G['siteurl'];?>static/bs_jq_ui/css/custom-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet" />
 <!--<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>-->
 <script src="<?php echo $_G['siteurl'];?>static/bs_jq_ui/js/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -48,12 +48,6 @@
 <link rel="stylesheet" type="text/css" id="diy_common" href="data/cache/style_<?php echo STYLEID;?>_css_diy.css?<?php echo VERHASH;?>" />
 <?php } ?>
 
-
-
-
-<!--[if IE 7]>
-   	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-<![endif]-->  	
   	<style type="text/css">
 body{margin-bottom:50px;font-family: 微软雅黑;background: url( 'static/mot/bg.jpg') ;}.container-narrow{margin:0 auto;max-width:700px}.container-narrow>.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
     </style>
@@ -80,6 +74,13 @@ jQuery("img").lazyload({effect : "fadeIn"});
     }  
     window.onerror = ResumeError;
   	</script>
+
+  	<link href="<?php echo $_G['siteurl'];?>static/bs/css/bootstrap.min.css" rel="stylesheet" />
+  	<link href="<?php echo $_G['siteurl'];?>static/bs/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<!--[if IE 7]>
+   	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+<![endif]--> 
 </head>
 
 
@@ -103,7 +104,7 @@ jQuery("img").lazyload({effect : "fadeIn"});
     	</form>
 
 
-      	<ul class="nav pull-right">
+      	<ul class="nav">
 <?php if(!$_G['uid']) { ?>
           	<li class=""><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
             <li class=""><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
@@ -122,15 +123,15 @@ jQuery("img").lazyload({effect : "fadeIn"});
 </div>
 </div>
 
-<div class="container content">
+<div class="container" style="background:#fff;">
 
-<div class="row" style="padding-top:40px;padding-bottom:40px;position:relative">
+<div class="row-fluid" style="padding-top:60px;padding-bottom:40px;position:relative">
 
-<div class="span4">
+<div class="span3" align="center">
 <a href="<?php echo $_G['siteurl'];?>"><img src="<?php echo $_G['siteurl'];?>/static/mot/logo.png" data-original="<?php echo $_G['siteurl'];?>/static/mot/logo.png" /></a>
 </div>
 
-<div class="span7" style="position:absolute;bottom:15px;right:30px;">
+<div class="span9" style="position:absolute;bottom:15px;right:30px;">
         <ul class="nav nav-pills pull-right">
 
           	<li <?php if(CURSCRIPT === 'portal' && CURMODULE !== 'aboutus') { ?>class="active"<?php } ?>><a href="portal.php"><i class="icon-home"></i> 首页</a></li>
@@ -138,19 +139,19 @@ jQuery("img").lazyload({effect : "fadeIn"});
 
  			<li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
-<i class="icon-cloud"></i> 云学院
+<i class="icon-cloud"></i> 云学院 
 <b class="caret"></b>
 </a>
 <ul class="dropdown-menu">
-<li><a href="lesson.php">云学院课程</a></li>
+<li><a href="lesson.php"> 云学院课程 </a></li>
 <li><a href="read.php?title=product">产品版本</a></li>
 </ul>
     		</li>
           	
-          	<li <?php if(CURSCRIPT === 'knowledge') { ?>class="active"<?php } ?>><a href="reader.php"><i class="icon-globe"></i> 精益资讯</a></li>
+          	<li><a href="<?php echo $_G['site_url'];?>news"><i class="icon-globe"></i> 精企新闻 </a></li>
           	
-          	<li <?php if($_GET['title'] === 'aboutus') { ?>class="active"<?php } ?>><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们</a></li>
-          	<li <?php if($_GET['title'] === 'contactus') { ?>class="active"<?php } ?>><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们</a></li>
+          	<li <?php if($_GET['title'] === 'aboutus') { ?>class="active"<?php } ?>><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们 </a></li>
+          	<li <?php if($_GET['title'] === 'contactus') { ?>class="active"<?php } ?>><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们 </a></li>
         </ul>
      </div>
 </div>
@@ -296,4 +297,3 @@ EOF;
 
 </div>
 
-<div class="container">

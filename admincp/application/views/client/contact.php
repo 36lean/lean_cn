@@ -1,9 +1,10 @@
-<div class="container">
-	<form class="form-inline" action="" method="get">
+<div class="container-fluid">
+	<div class="row-fluid">
+	<form class="form-inline" action="" method="post">
 		<input name="key" type="text" />
 		<select name="field">
 			<option value="name">客户名字</option>
-			<option value="corporation_name">公司</option>
+			<option value="c_name">公司</option>
 			<option value="tag">标签</option>
 			<option value="email">电子邮件</option>
 			<option value="phone">电话</option>
@@ -11,14 +12,17 @@
 		</select>
 		<button name="search" class="btn btn-primary" name="submit" type="submit" value=1>搜索</button>
 	</form>
+	</div>
 </div>
 
-<div class="container">
-
+<div class="container-fluid">
+	<div class="row-fluid">
+		<form class="form-inline" action="" method="post">
 		<div class="" style="font-size:12px;">
 			<table class="table table-striped ">
 				<thead>
 					<tr>
+						<th class="span1"></th>
 						<th class="span1">标签</th>
 						<th class="span2">客户</th>
 						<th class="span4">公司</th>
@@ -32,12 +36,12 @@
 				</thead>
 				<tbody>
 					<?php
-
 					$current = count( $client);
 
 					foreach ($client as $c) {
 					?>
 					<tr>
+						<td class="span1"><input type="checkbox" name="<?php echo $c['id'];?>"></td>
 
 						<td class="center"><?php echo $c['tag'];?></td>
 						
@@ -47,13 +51,13 @@
 
 						<td class="center"><?php echo $c['office_phone'];?></td>
 
-						<td class="center"><?php echo $c['mobile'].' ';?></td>
+						<td class="center"><?php echo $c['mobile'];?></td>
 
 						<td class="center"><a href="<?php echo base_url();?>index.php/marketing/mailto/<?php echo $c['id'];?>"> <?php echo $c['email'];?></a></td>
 
-						<td class="center"><?php echo $c['salesman'].' ';?></td>
+						<td class="center"><?php echo $c['salesman'];?></td>
 
-						<td class="center"><?php echo $c['filename'].' ';?></td>
+						<td class="center"><small><?php echo $c['filename'];?></small></td>
 
 						<td class="center">
 							<a href="<?php echo base_url();?>index.php/client/throw_profile/<?php echo $c['id'];?>" target="blank">
@@ -67,41 +71,54 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
-	<!--/span-->
 
-	<!--
-	<div class="box span2">
-		<div class="box-header well" data-original-title>
-			<h2>
-				<i class="icon-user">
-				</i>
-				最近联系
-			</h2>
-		</div>
-		<div class="box-content">
-		<ul>
-		<?php
+<script>
+$( function () {
 
-		$client = $this->session->userdata('cookie');
+	$('#all_pick').on('click' , function() {
+
+		$x = $('input[type="checkbox"]');
+
+		if( $x.first().attr('checked') === 'checked'){
+			$.each( $x , function(){
+
+				$(this).removeAttr('checked');
+
+			});
+			
+			$('#all_pick').attr({'value' : '全选'})	
+
+		}else{
+			
+			$.each( $x , function(){
+
+				$(this).attr({'checked' : 'checked'});
+
+			});
+
+			$('#all_pick').attr({'value' : '全部取消'})	
+		}
+
+	});
+
+});
+</script>
+
+		<input class="btn btn-primary" type="button" id="all_pick" name="all_pick" value="全选" />
 		
-		if( false != $client) {
-			$client = array_reverse( $client);
+		<select name="salesman">
+			<?php foreach ($salesmans as $salesman) { ?>
+				<option value="<?php echo $salesman['uid'];?>"><?php echo $salesman['username'];?></option>
+			<?php }?>
+		</select>
 
-		foreach ($client as $value) {
-			if( !is_array($value))
-				continue;
-		?>
-		<li><h6><a href="<?php echo base_url();?>index.php/marketing/connect/<?php echo $value['id'];?>"><i class="icon-user"></i> <?php echo $value['name'];?></a></h6></li>
-		<?php
-		}}
-		?>
-		</ul>
-		</div>
+
+		<button class="btn btn-primary" type="submit" name="switch_salesman" value="1">修改销售人员</button>
+		</form>
 	</div>
-	-->
 </div>
-<!--/row-->
+
+
 
 <?php 
 $this->load->module('webkit/pagination/show' , array($offset , $sum));

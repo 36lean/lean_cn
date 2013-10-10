@@ -43,22 +43,31 @@ class Mailer extends Base_Controller {
 		$this->template->build('mailer/index' , array('status' => $status));
 	}
 
-	public function mail_sender( $page = 1 , $offset = 500) {
+	public function mail_sender() {
 
 		if( isset( $_POST['add'])) {
 
 			if( Status::INSERT_SUCCESS === $this->mailer->create_task()) {
 				redirect( site_url('mailer/mail_program'));
 			}
+
+		}
+		else if( $this->input->post('add_web_task') )
+		{
+			$this->mailer->create_task( 'web');
+			redirect( site_url('mailer/mail_program'));
 		}
 
 		$sum = $this->client_get->get_sum_of_clients();
 
-		$template = $this->mailer->get_active_templates_list();
+		$sum_members = $this->client_get->get_sum_of_webmembers();
 
-		$this->template->build('mailer/mail_sender' , array('template' => $template ,
-														 'sum'      => $sum ,
-														 )
+		$templates = $this->mailer->get_active_templates_list();
+
+		$this->template->build('mailer/mail_sender' , array('templates' 	=> $templates ,
+														 	'sum'      		=> $sum , 
+														 	'sum_members'	=> $sum_members ,
+														   )
 		);
 	}
 
@@ -151,7 +160,7 @@ class Mailer extends Base_Controller {
 		
 		require_once 'data/mail/header.html';
 		
-		echo $template[0]['mail_template'];
+		echo $template['mail_template'];
 		
 		require_once 'data/mail/footer.html';
 	}
@@ -170,7 +179,9 @@ class Mailer extends Base_Controller {
 
 		$template = $this->mailer->get_template_by_id( $id);
 
-		$this->template->build('mailer/template_edit' , array('template' => $template[0]));
+		
+
+		$this->template->build('mailer/template_edit' , array('templates' => $template));
 	}
 
 	public function send_information( $id) {

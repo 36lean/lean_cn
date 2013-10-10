@@ -4,7 +4,7 @@ require_once FCPATH.'vendor/SwiftMailer/swift_required.php';
 class M_mailer extends CI_Model {
 
 	public function get_templates_list() {
-		return $this->db->select('id,mail_title,mail_spy,created_date')
+		return $this->db->select('id,mail_title,mail_spy,using,created_date')
 						->from( 'admin_mailtemplate')
 						->order_by('id' , 'desc')
 						->get()->result_array();
@@ -79,19 +79,31 @@ class M_mailer extends CI_Model {
 						->get()->result_array();
 	}
 
-	public function create_task() {
+	public function create_task( $type = 'contact') {
 
 		$task = array( 	'task_title' 	=> trim( $this->input->post('task_title')),
 						'offset' 		=> $this->input->post('offset'),
 						'field'         => $this->input->post('field'),
 						'template_id' 	=> $this->input->post('template_id'),
 						'created_date'  => time(),
+						'type'			=> $type , 
 		);
-
-		$list = $this->db->select('id,email')
+		if( $type === 'contact')
+		{
+			$list = $this->db->select('id,email')
 				 		 ->from('admin_client')
 				 		 ->limit( $task['offset'] , ($task['field']-1)*$task['field'] )
+				 		 ->order('id' , 'asc')
 				 		 ->get()->result_array();
+
+		}else if( $type === 'web')
+		{
+			$list = $this->db->select('uid as id,email')
+				 		 ->from('ucenter_members')
+				 		 ->limit( $task['offset'] , ($task['field']-1)*$task['field'] )
+				 		 ->order_by('uid' , 'asc')
+				 		 ->get()->result_array();
+		}
 
 		$id_list = array();
 		$mail_list = array();
@@ -116,7 +128,7 @@ class M_mailer extends CI_Model {
 	}
 
 	public function list_task( $page , $offset ) {
-		return $this->db->select('admin_mailtask.id,admin_mailtask.status,admin_mailtask.task_title,admin_mailtask.created_date,admin_mailtemplate.mail_title')
+		return $this->db->select('admin_mailtask.id,admin_mailtask.status,admin_mailtask.send_times,admin_mailtask.type,admin_mailtask.task_title,admin_mailtask.created_date,admin_mailtemplate.mail_title')
 						->from( 'admin_mailtask')
 						->join( 'admin_mailtemplate' , 'admin_mailtemplate.id = admin_mailtask.template_id' , 'left')
 						->limit( $offset , ($page-1) * $offset )
@@ -133,6 +145,9 @@ class M_mailer extends CI_Model {
 
 	public function run_task( $id) {
 
+
+		$this->db->query( 'update pre_admin_mailtask set send_times = send_times + 1 where id = '.$id );
+		
 		$task = $this->db->select('admin_mailtask.id,admin_mailtask.mail_list,admin_mailtask.template_id,')
 						 ->from('admin_mailtask')
 						 ->join('admin_mailtemplate' , 'admin_mailtemplate.id = admin_mailtask.template_id')
@@ -145,7 +160,7 @@ class M_mailer extends CI_Model {
 		return $this->db->select('*')
 						->from('admin_mailtemplate')
 						->where( array('id' => $id))
-						->get()->result_array();
+						->get()->row_array();
 	}
 
 	public function template_edit() {
@@ -207,7 +222,7 @@ class M_mailer extends CI_Model {
 	}
 
 	public function get_send_task_information( $id) {
-		return $this->db->select('t.id,t.offset,t.field,t.clientid_list,tp.mail_template,tp.id tid')
+		return $this->db->select('t.id,t.offset,t.field,t.type,t.send_times,t.clientid_list,tp.mail_template,tp.id tid')
 				 		->from('admin_mailtask t')
 				 		->join('admin_mailtemplate tp' , 't.template_id = tp.id' , 'left')
 				 		->where( array('t.id' => $id))

@@ -1,20 +1,11 @@
 <script>$( function(){ $('#template_id').hide();})</script>
 <div id="template_id"><?php echo $task['template_id']?></div>
 <div class="box span12">
-	<div class="box-header well" data-original-title>
+	<div class="box-header" data-original-title>
 		<h2>
 			发送列表
 		</h2>
-		<div class="box-icon">
-			<a href="#" class="btn btn-minimize btn-round">
-				<i class="icon-chevron-up">
-				</i>
-			</a>
-			<a href="#" class="btn btn-close btn-round">
-				<i class="icon-remove">
-				</i>
-			</a>
-		</div>
+
 	</div>
 	<div class="box-content">
 		<table class="table table-bordered table-striped table-condensed">
@@ -44,7 +35,7 @@
 						<span class="status"></span>
 					</td>
 					<td class="center">
-						<a href="#">
+						<a href="">
 						<span class="label label-info">
 							再发送
 						</span>

@@ -18,5 +18,13 @@ class Client_get extends CI_Model{
 	{
 		return $this->db->get('admin_clienttags')->result_array();
 	}
+
+	public function get_sum_of_webmembers()
+	{
+		return $this->db->select('uid')
+						->from('ucenter_members')
+						->get()
+						->num_rows();
+	}
 	
 }

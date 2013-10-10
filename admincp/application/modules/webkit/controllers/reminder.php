@@ -18,20 +18,15 @@ class Webkit_reminder_module extends CI_Module
 
 		$data = $this->marketing->get_contact_remind( $ci->_G['uid']);
 
-		$this->load->view('reminder' , array( 'data'=>$data));
-	}
-
-	public function get_timeout_remind()
-	{
-
-		$ci = & get_instance();
-
 		$num = $this->db->select('id')
 						->from( 'admin_client_appointment')
-						->where( array( 'datereminded'=>'>'.time() , 'salesman_id'=>$ci->_G['uid']))
+						->where( 'datereminded > '.time())
+						->where( array( 'salesman_id'=>$ci->_G['uid']))
 						->get()->num_rows();
 
-		echo $num;
+
+		$this->load->view('reminder' , array( 'data'=>$data , 'num' => $num));
 	}
+
 
 }

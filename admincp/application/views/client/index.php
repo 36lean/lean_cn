@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h4>上传Excel文件</h4>
+	<h4>上传Excel文件 <small>上传扩展名为xls的97-2000的excel</small></h4>
 </div>
 
 <form action="" method="post" enctype="multipart/form-data">

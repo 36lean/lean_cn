@@ -24,37 +24,40 @@
     <script src="<?php echo base_url('public/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');?>"></script>
     <script src="//cdnjs.bootcss.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url('public/tinymce/js/tinymce/tinymce.min.js');?>"></script>
+    <script src="<?php echo base_url('public/ckeditor/ckeditor.js');?>"></script>
     <script>
     $(function(){
         $('.datetimepicker').datetimepicker();
 
-                tinymce.init({
-                    selector: ".longtext",
-                    plugins: [
-                        "advlist autolink lists link image charmap print preview anchor",
-                        "searchreplace visualblocks code fullscreen",
-                        "insertdatetime media table contextmenu paste "
+        tinymce.init({
+            selector: ".longtext",
+            plugins: [
+                      "advlist autolink lists link image charmap print preview anchor",
+                      "searchreplace visualblocks code fullscreen",
+                      "insertdatetime media table contextmenu paste "
                     ],
-                    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-                    autosave_ask_before_unload: false,
-                    max_height: 220,
-                    min_height: 220,
-                    height : 220
-                });
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            autosave_ask_before_unload: false,
+            max_height: 420,
+            min_height: 420,
+            height : 420 , 
+            convert_urls : false , 
+            });
 
-                tinymce.init({
-                    selector: ".shorttext",
-                    plugins: [
+            tinymce.init({
+                selector: ".shorttext",
+                plugins: [
                         "advlist autolink lists link image charmap print preview anchor",
                         "searchreplace visualblocks code fullscreen",
                         "insertdatetime media table contextmenu paste "
                     ],
-                    toolbar: false,
-                    autosave_ask_before_unload: false,
-                    max_height: 120,
-                    min_height: 120,
-                    height : 120
-                });
+                toolbar: false,
+                autosave_ask_before_unload: false,
+                max_height: 180,
+                min_height: 180,
+                height : 180 , 
+                convert_urls : false , 
+            });
         });
 
     </script>
@@ -75,9 +78,6 @@ else
         <a class="brand" href="#">精益云管理系统</a>
         <ul class="nav">
             <li class="active"><a href="<?php echo base_url();?>index.php">首页</a></li>
-            
-            <li><a href="<?php echo base_url();?>index.php">消息数: <?php $this->load->module('webkit/reminder/get_timeout_remind');?></a></li>
-            
         </ul>
         <ul class="nav pull-right">
             <li><a href="<?php echo site_url('user/logout');?>"><?php echo $user['user'];?>注销登录</a></li>

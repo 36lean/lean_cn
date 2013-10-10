@@ -1,9 +1,12 @@
 <div class="row">
+
 <div class="span6">
 
 	<div class="page-header">
 		<h4>添加新闻</h4>
 	</div>
+
+ 	<?php $this->load->module('webkit/photo_uploads/uploads');?>
 
 	<form action="" method="post">
 
@@ -40,6 +43,13 @@
 		<label><strong>正文</strong></label>
 		<div class="controls">
 			<textarea class="longtext" name="post_content"></textarea>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label><strong>文字配图 (图片链接)</strong></label>
+		<div class="controls">
+			<input class="span6" type="text" name="post_banner"></textarea>
 		</div>
 	</div>
 
@@ -96,36 +106,63 @@
 <div class="span6">
 
 	<div class="page-header">
-		<h4>添加分类</h4>
+		<h4>管理分类</h4>
 	</div>
 
-	<div class="well">
+	<table class="table table-bordered table-condensed">
+
+
+		<?php foreach ($categories as $category) { ?>
+		<tr>
+			<td><a href="#"><?php echo $category['category_title'];?></a></td>
+			<td><a href="<?php echo site_url('portal/index/category/'.$category['id'])?>">修改</a></td>
+			<td><a href="<?php echo site_url('portal/category_remove/'.$category['id'])?>">删除</a></td>
+		</tr>
+		<?php }?>
+	
+	</table>
+
+	<?php if( isset( $old_category['id'])) {?>
+	<div class="page-header">
+		<h4>修改分类</h4>
+	</div>
+	<?php }else{?>
+	<div class="page-header">
+		<h4>添加分类</h4>
+	</div>
+	<?php }?>
+
+	<div class="">
 	<form action="" method="post">
+
+	<?php if( isset( $old_category['id'])) {?>
+	<input type="hidden" name="id" value="<?php echo $old_category['id'];?>" />
+	<?php }?>
 	<div class="control-group">
 		<label>分类</label>
 		<div class="controls">
-			<input class="span5" name="category_title" type="text" />
+			<input class="span5" name="category_title" type="text" value="<?php if( isset( $old_category['category_title'])) { echo $old_category['category_title']; }?>" />
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label>分类介绍性内容</label>
 		<div class="controls">
-			<textarea class="shorttext" name="summary" rows=5></textarea>
+			<textarea class="shorttext" name="summary" rows=5><?php if( isset( $old_category['summary'])) { echo $old_category['summary']; }?></textarea>
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label>TitleLink</label>
 		<div class="controls">
-			<input class="span5" name="category_link" type="text" />
+			<input class="span5" name="category_link" type="text" value="<?php if( isset( $old_category['category_link'])) { echo $old_category['category_link']; }?>" />
 		</div>
 	</div>
 
 	<div class="control-group">
 		<label>分类列表Keywords</label>
 		<div class="controls">
-			<textarea class="span5" name="keywords" rows=5></textarea>
+			<textarea class="span5" name="keywords" rows=5><?php if( isset( $old_category['keywords'])) { echo $old_category['keywords']; }?></textarea>
 		</div>
 	</div>
 
@@ -133,14 +170,22 @@
 	<div class="control-group">
 		<label>分类列表Description</label>
 		<div class="controls">
-			<textarea class="span5" name="description" rows=5></textarea>
+			<textarea class="span5" name="description" rows=5><?php if( isset( $old_category['description'])) { echo $old_category['description']; }?></textarea>
 		</div>
 	</div>
 
+	<?php if( isset( $old_category['category_title'])) {?>
+	<button class="btn btn-primary" name="create_category" value="1">更新分类列表页</button>
+	<?php } else {?>
 	<button class="btn btn-primary" name="create_category" value="1">创建分类列表页</button>
+	<?php }?>
 
 	</form>
 
+	</div>
+
 </div>
+
+
 
 </div>

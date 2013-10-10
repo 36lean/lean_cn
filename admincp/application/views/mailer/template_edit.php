@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="container">
     <div class="page-header" data-original-title>
         <h4>
             <i class="icon-edit">
@@ -9,15 +9,17 @@
     </div>
 
     <div class="">
+        <?php $this->load->module('webkit/photo_uploads/uploads');?>
+        
         <form class="form-horizontal" action="" method="post">
-        <input name="id" type="hidden" value="<?php echo $template['id'];?>">
+        <input name="id" type="hidden" value="<?php echo $templates['id'];?>">
             <fieldset>
                 <div class="control-group">
                     <label class="control-label" for="typeahead">
                         模板代号
                     </label>
                     <div class="controls">
-                        <input name="mail_title" type="text" class="span6" value="<?php echo $template['mail_title'];?>">
+                        <input name="mail_title" type="text" class="span6" value="<?php echo $templates['mail_title'];?>">
                     </div>
                 </div>
                 <div class="control-group">
@@ -25,7 +27,7 @@
                         邮件模板内容
                     </label>
                     <div class="controls">
-                        <textarea name="mail_template" class="span10" id="textarea2" rows="10"><?php echo $template['mail_template'];?></textarea>
+                        <textarea class="longtext" name="mail_template" class="span10" id="textarea2" rows="10"><?php echo $templates['mail_template'];?></textarea>
                     </div>
                 </div>
                 <div class="control-group">
@@ -33,7 +35,7 @@
                         追踪客户邮件查看情况
                     </label>
                     <div class="controls">
-                       <input name="mail_spy" type="checkbox" <?php if( $template['mail_spy'] == 1){?>checked<?php }?> />
+                       <input name="mail_spy" type="checkbox" <?php if( $templates['mail_spy'] == 1){?>checked<?php }?> />
                         <p class="help-block">
                             会消耗服务器资源
                         </p>
@@ -44,7 +46,7 @@
                         是否启用
                     </label>
                     <div class="controls">
-                       <input name="using" type="checkbox" <?php if( $template['using'] == 1){?>checked<?php }?> />
+                       <input name="using" type="checkbox" <?php if( $templates['using'] == 1){?>checked<?php }?> />
                         <p class="help-block">
                             启用这个模板 (不勾选则不会出现在发送的下拉栏)
                         </p>
@@ -61,7 +63,6 @@
             </fieldset>
         </form>
     </div>
-</div>
 <!--/span-->
 
 

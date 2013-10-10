@@ -26,14 +26,14 @@
 	<tr>
 		<td class="span1">Action</td>
 		<td class="span1">ID</td>
-		<td class="span1">Email</td>
-		<td class="span2">用户名</td>
+		<td class="span2">Email</td>
+		<td class="span1">用户名</td>
 		<!--<td class="span1">电话</td>-->
 		<!--<td class="span1">手机</td>-->
-		<td class="span2">公司</td>
-		<td class="span1">职位</td>
+		<td class="span3">公司</td>
+		<td class="span2">职位</td>
 		<td class="span1">负责人</td>
-		<td class="span1">注册日期</td>
+		<td class="span2">注册日期</td>
 		
 	</tr>
 
@@ -50,7 +50,7 @@
 		<td><?php echo $m['company'];?></td>
 		<td><?php echo $m['position'];?></td>	
 		<td><span class="label label-success"><?php echo $m['salesman'];?></span></td>	
-		<td><?php echo date('Y-m-d h' , $m['regdate']) ;?></td>
+		<td><?php echo date('Y-m-d h:i' , $m['regdate']) ;?></td>
 			
 	</tr>
 

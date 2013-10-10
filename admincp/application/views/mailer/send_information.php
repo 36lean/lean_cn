@@ -21,10 +21,17 @@
 			</dl>
 		</div>
 </div>
+
+
 <div class="row-fluid">
 		<div class="page-header">
 			<h3>
 				收件人ID列表
+				<?php if( $info['type'] === 'web'){?>
+				 ( 本任务发送对象是网站会员 )
+				 <?php } else {?>
+				 ( 客户列表 )
+				 <?php }?>
 			</h3>
 		</div>
 		<div class="">
@@ -35,7 +42,13 @@
 			//$mail_list = explode('+', $info['mail_list']);
 			$mail_list = preg_split('/[,]/', $mail_list);
 			foreach ($mail_list as $key => $contact_id) {?>
+
+			<?php if( $info['type'] === 'web') {?>
+				<span class="badge badge-success"><?php echo $contact_id;?></span>
+			<?php } else {?>
 				<a href="<?php echo site_url('marketing/connect/'.$contact_id);?>"><span class="badge badge-success"><?php echo $contact_id;?></span></a>
+			<?php }?>	
+
 			<?php 
 			if( ($key+1) % 10 === 0)
 				echo '';

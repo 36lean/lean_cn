@@ -37,14 +37,16 @@ class Ajax extends CI_Controller {
 	public function mail_sender() {
 
 		$smtp = $this->mailer->get_mail_config();
+
 		$max_smtp = $this->mailer->get_config_nums();
+		
 		$id = mt_rand(1,$max_smtp) - 1;
+		
 		$smtp = $smtp[$id];
 
 		//preg_match_all('/[+]??\S+[@]\S+[.]\S+[+]??/', $_POST['_email'], $client);
 
 		$client = preg_split('/[\+|\s|\/|+\/]/', $_POST['_email']);
-
 
 		array_pop($client);
 

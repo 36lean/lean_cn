@@ -214,9 +214,9 @@ class Marketing extends Base_Controller{
 
 		$this->_program();
 
-		$this->layout->view('marketing/create',array(
-							'contact_column'=> $this->config->config['map']['contacts'] , 
-							'company_column'=> $this->config->config['map']['company'],
+		$this->template->build('marketing/create',array(
+							   'contact_column'=> $this->config->config['map']['contacts'] , 
+							   'company_column'=> $this->config->config['map']['company'],
 		));
 	}
 

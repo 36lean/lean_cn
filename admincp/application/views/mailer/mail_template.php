@@ -41,7 +41,7 @@
 						</td>
 						<td class="center">
 							
-								<?php echo $template[ 'mail_spy'] ? '<span class="label label-success">Using</span>' : '<span class="label">Disabled</span>'?>
+								<?php echo $template[ 'using'] ? '<span class="label label-success">Using</span>' : '<span class="label">Disabled</span>'?>
 							
 						</td>
 						<td class="center">

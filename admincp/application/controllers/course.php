@@ -88,7 +88,7 @@ class Course extends Base_Controller {
 		if( isset( $_POST['preview'])) {
 			$data = $this->course->course_generate();
 			file_put_contents( 'uploads/generate.tmp', json_encode( $data));
-			$this->layout->view('course/generate_cache' , array( 'data' => $data ,'course_id' => $id));
+			$this->template->build('course/generate_cache' , array( 'data' => $data ,'course_id' => $id));
 			return ;
 		}
 

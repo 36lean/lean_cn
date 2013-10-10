@@ -25,7 +25,7 @@ class Client_member extends CI_Model {
 	}
 
 	public function get_sum_of_members() {
-		return $this->db->get('ucenter_members')->num_rows();
+		return $this->db->where('regip <> 412')->get('ucenter_members')->num_rows();
 	}
 
 	public function throw_profile( $id , $uid ) {
@@ -84,7 +84,12 @@ class Client_member extends CI_Model {
 
 			$column = trim( $this->input->post('column'));
 
-			return $this->db->query('select m.uid,m.email,m.username,m.regdate,p.position,p.telephone,p.mobile,p.company,p.qq,m.username as salesman from pre_ucenter_members m left join pre_common_member_profile p on p.uid = m.uid where m.regip not like \'412\' and m.'.$column.' REGEXP \''.$preg_str.'\'')	
+			if( 'position' === $column )
+				$search = 'p.'.$column;
+			else
+				$search = 'm.'.$column;
+
+			return $this->db->query('select m.uid,m.email,m.username,m.regdate,p.position,p.telephone,p.mobile,p.company,p.qq,m.username as salesman from pre_ucenter_members m left join pre_common_member_profile p on p.uid = m.uid where m.regip not like \'412\' and '.$search.' REGEXP \''.$preg_str.'\'')	
 					 	  ->result_array();
 		}
 	}
@@ -101,9 +106,10 @@ class Client_member extends CI_Model {
 							   'assign_to'		=> $assign_to , 
 				);
 
-				if( $this->db->where( array( 'user_id' => $key , 'assign_to' => $assign_to ))->from( 'admin_contacts_tmp')->get()->num_rows() )
-					continue;
-				$this->db->insert( 'admin_contacts_tmp' , $data);
+				if( $this->db->where( array( 'user_id' => $key ))->from( 'admin_contacts_tmp')->get()->num_rows() )
+					$this->db->where( array('user_id' => $key))->update('admin_contacts_tmp' , array('assign_to' => $assign_to));
+				else
+					$this->db->insert( 'admin_contacts_tmp' , $data);
 			}
 		}
 	}
@@ -124,14 +130,13 @@ class Client_member extends CI_Model {
 
 	public function create_contact_by_webuser( $uid)
 	{
-		echo '<pre>';
+
 
 		$user = $this->db->where( array('user_id'=>$uid))
 				 		 ->from('admin_contacts_tmp')
 				 		 ->get()
 				 		->row_array();
 
-		var_dump( $user);
 
 		if( $user['contact_id'] !== '0'){
 
@@ -181,5 +186,33 @@ class Client_member extends CI_Model {
 						->where( array('contact_id'=>$id))
 						->get()
 						->row_array();
+	}
+
+	public function get_remove_members( $page , $offset )
+	{
+		return $this->db->where( array( 'regip' => '412'))
+						->from('ucenter_members')
+						->limit( $offset , ($page - 1) * $offset )
+						->get()
+						->result_array();
+	}
+
+	public function get_remove_sum()
+	{
+		return $this->db->where( array( 'regip' => '412'))
+						->from('ucenter_members')
+						->get()->num_rows();
+	}
+
+	public function update_salesman()
+	{
+		$assign_to = $this->input->post('salesman');
+
+		unset( $_POST['salesman']);
+
+		foreach ($_POST as $key => $value) {
+			$this->db->where( array( 'id'=>$key))
+					 ->update('admin_contacts' , array('assign_to'=>$assign_to));
+		}
 	}
 }

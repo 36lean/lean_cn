@@ -151,33 +151,38 @@ class Client extends Base_Controller {
 		$this->template->build('client/import_json_cache' , array('data'=>$data,'config'=>$config,'file'=>$file,'master'=>$master,'tags'=>$tags));
 	}
 
-	public function contact( $page = 1 , $offset = 30)
+	public function contact( $page = 1 , $offset = 60)
 	{
 
-		if( isset( $_GET['search'])) {
+		$salesmans = $this->permission->get_admin_lists();
 
-			if( trim( $_GET['key'])) {
+		$condition = $this->_program();
 
-				$condition = $this->marketing->get_search();
+		$uid = ( true ) ?  0 : $this->_G['uid'];
 
-			}else {
-				$condition = '';
-			}
-			
-		}else {
-			$condition = '';
+		if( is_array( $condition))
+		{
+			$clients = $condition;
+
+			$sum = count( $clients);
+		}
+		else
+		{
+		
+			$clients = $this->marketing->get_clients( $page , $offset , $uid , $condition);
+
+			//$this->db->last_query();
+		
+			$sum = $this->marketing->sum_of_clients( $uid);
 		}
 
-		$uid = $this->_G['groupid'] == 1 ?  0 : $this->_G['uid'];
-		
-		$clients = $this->marketing->get_clients( $page , $offset , $uid , $condition);
-		
-		$sum = $this->marketing->sum_of_clients( $uid);
+
  	
-		$this->template->build('client/contact' , array( 'client' => $clients , 
-													   	 'page' 	=> $page , 
-													     'offset' => $offset,
-													     'sum'    => $sum,
+		$this->template->build('client/contact' , array( 'client' 		=> $clients , 
+													   	 'page' 		=> $page , 
+													     'offset' 		=> $offset ,
+													     'sum'    		=> $sum ,
+													     'salesmans' 	=> $salesmans , 
 													    )
 		);
 
@@ -211,18 +216,6 @@ class Client extends Base_Controller {
 
 		$this->template->build('marketing/corporation' , array('corporations'=>$corporations,'offset'=>$offset,'sum'=>$sum));		
 	}
-
-	/*
-	public function export()
-	{
-
-		$title = array( 'email');
-		$data = $this->client_excel->get_export_data();
-		$path = download( $title , $data);
-
-		$this->layout->view('client/export' , array('file' => $path));
-	}
-	*/
 
 	public function dispatch(  $page = 1 , $offset = 20) {
 
@@ -291,7 +284,7 @@ class Client extends Base_Controller {
 	}
 
 	public function find_corporation() {
-		$this->layout->view('client/find_corporation');
+		$this->template->build('client/find_corporation');
 	}
 
 	public function add_corporation() {
@@ -354,9 +347,11 @@ class Client extends Base_Controller {
 
 	public function useless_profile( $page = 1 , $offset = 30) {
 
-		$this->
+		$profiles = $this->client_member->get_remove_members( $page , $offset );
 
-		$this->template->build('client/useless_profile');
+		$sum = $this->client_member->get_remove_sum();
+
+		$this->template->build('client/useless_profile' , array('profiles'=>$profiles , 'offset'=>$offset , 'sum'=>$sum));
 	}
 
 	public function edit_connect_record( $id)
@@ -377,6 +372,12 @@ class Client extends Base_Controller {
 
 	private function _program()
 	{
+
+		if( $this->input->post('switch_salesman'))
+		{
+			unset( $_POST['switch_salesman']);
+			$this->client_member->update_salesman();
+		}
 
 		//添加沟通记录
 		if( $this->input->post('add_connect'))
@@ -431,6 +432,17 @@ class Client extends Base_Controller {
 
 			return true;
 		}
+
+		if( isset( $_POST['search'])) {
+			unset( $_POST['search']);
+			return $this->marketing->get_search();
+			
+		}else {
+			return '';
+		}
+
+
+
 	}
 
 	public function __toString() {

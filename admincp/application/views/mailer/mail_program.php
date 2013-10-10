@@ -14,6 +14,12 @@
           <th class="span3">
             任务代号
           </th>
+          <th class="span1">
+            类型
+          </th>
+          <th class="span1">
+            发送次数
+          </th>
           <th class="span2">
             邮件模板
           </th>
@@ -37,9 +43,15 @@
             <td>
               <?php echo $task[ 'task_title'];?>
             </td>
-            <th>
+            <td>
+              <span class="label label-success"><?php echo $task[ 'type'];?></span>
+            </td>
+            <td>
+              <?php echo $task[ 'send_times'];?>
+            </td>
+            <td>
               <?php echo $task[ 'mail_title']?>
-            </th>
+            </td>
             <td class="center">
               Ready
             </td>

@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="container">
     <?php if( $status === Status::INSERT_SUCCESS) {?>
     <div class="alert alert-success"><i class="icon-info-sign"></i> <button type="button" class="close" data-dismiss="alert">&times;</button>创建成功</div>
     <?php } else if( $status === Status::INSERT_FAIL) {?>
@@ -13,6 +13,9 @@
     </div>
 
     <div class="">
+        <?php $this->load->module('webkit/photo_uploads/uploads');?>
+
+
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 <div class="control-group">
@@ -28,7 +31,7 @@
                         邮件模板内容
                     </label>
                     <div class="controls">
-                        <textarea name="mail_template" class="span10" id="textarea2" rows="10"></textarea>
+                        <textarea name="mail_template" class="span10 longtext" id="textarea2" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="control-group">
@@ -53,6 +56,7 @@
             </fieldset>
         </form>
     </div>
+    
 </div>
 <!--/span-->
 

@@ -16,6 +16,6 @@ class Webkit_pagination_module extends CI_Module
 		$config['per_page'] = $offset;
 		$this->pagination->initialize($config);
 
-		$this->load->view('show'  , array('pagination' => $this->pagination->create_links()));
+		$this->load->view('show'  , array('pagination' => $this->pagination->create_links() , 'sum' => $total , 'offset' => $offset ));
 	}
 }

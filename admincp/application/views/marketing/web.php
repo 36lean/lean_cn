@@ -7,7 +7,7 @@
 	<td class="span1">电话</td>
 	<td class="span2">公司</td>
 	<td class="span1">职位</td>
-	<td class="span1">注册日期</td>
+	<td class="span2">注册日期</td>
 </tr>
 
 
@@ -21,7 +21,7 @@
 		<td><?php echo $contact['telephone'];?></td>
 		<td><?php echo $contact['company'];?></td>
 		<td><?php echo $contact['position'];?></td>
-		<td><?php echo $contact['regdate'];?></td>
+		<td><?php echo date('Y-m-d h:i:s' , $contact['regdate']);?></td>
 	</tr>
 
 <?php }?>

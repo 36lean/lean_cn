@@ -52,7 +52,7 @@ class Website extends Base_Controller {
 			}
 		}
 
-		$this->layout->view('website/page_cache' , array('cache_file' => $cache));
+		$this->template->build('website/page_cache' , array('cache_file' => $cache));
 	}
 
 	public function cache_clean() {
@@ -75,7 +75,7 @@ class Website extends Base_Controller {
 
 		$this->load->model('website/m_website' , 'website');
 		$pages = $this->website->get_static_pages();
-		$this->layout->view('website/static_page_manage' , array('pages' => $pages));
+		$this->template->build('website/static_page_manage' , array('pages' => $pages));
 	}
 
 	public function static_page_edit( $id = 1) {
@@ -86,7 +86,7 @@ class Website extends Base_Controller {
 		}
 
 		$page = $this->website->get_static_page( intval( $id));
-		$this->layout->view('website/static_page_edit' , array('page' => $page[0]));
+		$this->template->build('website/static_page_edit' , array('page' => $page[0]));
 	}
 
 	public function static_page_del( $id) {

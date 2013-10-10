@@ -22,12 +22,6 @@
 	<link rel="stylesheet" type="text/css" id="diy_common" href="data/cache/style_{STYLEID}_css_diy.css?{VERHASH}" />
 	<!--{/if}-->
 	
-	
-	
-
-	<!--[if IE 7]>
-   	<link href="{$_G['siteurl']}static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
-	<![endif]-->  	
   	<style type="text/css">
 	body{margin-bottom:50px;font-family: 微软雅黑;background: url( 'static/mot/bg.jpg') ;}.container-narrow{margin:0 auto;max-width:700px}.container-narrow>.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
     </style>
@@ -54,6 +48,13 @@
     }  
     window.onerror = ResumeError;
   	</script>
+
+  	<link href="{$_G['siteurl']}static/bs/css/bootstrap.min.css" rel="stylesheet" />
+  	<link href="{$_G['siteurl']}static/bs/css/bootstrap-responsive.min.css" rel="stylesheet" />
+  	<link href="{$_G['siteurl']}static/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<!--[if IE 7]>
+   	<link href="{$_G['siteurl']}static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
+	<![endif]--> 
 </head>
 
 
@@ -77,7 +78,7 @@
     	</form>
 
 
-      	<ul class="nav pull-right">
+      	<ul class="nav">
 			{if !$_G['uid']}
           	<li class=""><a href="member.php?mod=logging&action=login">登陆</a></li>
             <li class=""><a href="member.php?mod={$_G[setting][regname]}">注册</a></li>
@@ -96,15 +97,15 @@
 	</div>
 </div>
 
-<div class="container content">
+<div class="container" style="background:#fff;">
 
-<div class="row" style="padding-top:40px;padding-bottom:40px;position:relative">
+<div class="row-fluid" style="padding-top:60px;padding-bottom:40px;position:relative">
 
-	<div class="span4">
+	<div class="span3" align="center">
 		<a href="{$_G['siteurl']}"><img src="{$_G['siteurl']}/static/mot/logo.png" data-original="{$_G['siteurl']}/static/mot/logo.png" /></a>
 	</div>
 	
-	<div class="span7" style="position:absolute;bottom:15px;right:30px;">
+	<div class="span9" style="position:absolute;bottom:15px;right:30px;">
         <ul class="nav nav-pills pull-right">
 
           	<li {if CURSCRIPT === 'portal' && CURMODULE !== 'aboutus'}class="active"{/if}><a href="portal.php"><i class="icon-home"></i> 首页</a></li>
@@ -112,19 +113,19 @@
 
  			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
-					<i class="icon-cloud"></i> 云学院
+					<i class="icon-cloud"></i> 云学院 
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="lesson.php">云学院课程</a></li>
+					<li><a href="lesson.php"> 云学院课程 </a></li>
 					<li><a href="read.php?title=product">产品版本</a></li>
 				</ul>
     		</li>
           	
-          	<li {if CURSCRIPT === 'knowledge'}class="active"{/if}><a href="reader.php"><i class="icon-globe"></i> 精益资讯</a></li>
+          	<li><a href="{$_G['site_url']}news"><i class="icon-globe"></i> 精企新闻 </a></li>
           	
-          	<li {if $_GET['title'] === 'aboutus'}class="active"{/if}><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们</a></li>
-          	<li {if $_GET['title'] === 'contactus'}class="active"{/if}><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们</a></li>
+          	<li {if $_GET['title'] === 'aboutus'}class="active"{/if}><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们 </a></li>
+          	<li {if $_GET['title'] === 'contactus'}class="active"{/if}><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们 </a></li>
         </ul>
      </div>
 </div>
@@ -320,4 +321,4 @@
 
 	</div>
 	
-	<div class="container">
+	

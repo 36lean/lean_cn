@@ -35,9 +35,13 @@ class Webkit_devkit_module extends CI_Module
 		else
 			$infoCsrId = 1;
 
+		$phone_format = $phone;
+
+		$phone_format = preg_replace('/[^0-9]+/', '', $phone_format);
+
 		$url = $this->program->get_vsay_signature('831lean2013online','2435325uifslkfjalTalk')
-							 ->register('c_'.$phone , $phone)
-							 ->get_vsay_url( 'phoneCall' , array( 'fromUser'	 => 'c_'.$phone , 
+							 ->register( $phone_format , $phone_format)
+							 ->get_vsay_url( 'phoneCall' , array( 'fromUser'	 => $phone_format , 
 							 									  'toUser' 		 => '831lean2013online' , 
 							 									  'infoCsrId' 	 => $infoCsrId ,
 							 									)
