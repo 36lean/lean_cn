@@ -64,6 +64,22 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['extra']['hostname'] = 'localhost';
+$db['extra']['username'] = 'root';
+$db['extra']['password'] = '';
+$db['extra']['database'] = 'efront';
+$db['extra']['dbdriver'] = 'mysqli';
+$db['extra']['dbprefix'] = '';
+$db['extra']['pconnect'] = TRUE;
+$db['extra']['db_debug'] = TRUE;
+$db['extra']['cache_on'] = FALSE;
+$db['extra']['cachedir'] = '';
+$db['extra']['char_set'] = 'utf8';
+$db['extra']['dbcollat'] = 'utf8_general_ci';
+$db['extra']['swap_pre'] = '';
+$db['extra']['autoinit'] = TRUE;
+$db['extra']['stricton'] = FALSE;
+
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

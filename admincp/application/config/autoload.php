@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database','layout','uri','session','pagination',
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','str');
+$autoload['helper'] = array('url','str','get_excel');
 
 
 /*

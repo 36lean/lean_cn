@@ -1,14 +1,14 @@
 
 <div class="row-fluid">
 	<div class="span6">
-	<form class="form-inline" action="<?php echo site_url('marketing' , 'search');?>" method="get">
+	<form class="form-inline" action="<?php echo site_url('marketing' , 'search');?>" method="post">
 		<input name="key" type="text" />
 		<select name="field">
 			<option value="name">客户名字</option>
 			<option value="c_name">公司</option>
 			<option value="tag">标签</option>
 			<option value="email">电子邮件</option>
-			<option value="phone">电话</option>
+			<option value="office_phone">电话</option>
 			<option value="mobile">手机号</option>
 		</select>
 		<button name="search" class="btn btn-primary" name="submit" type="submit" value=1>搜索</button>

@@ -25,7 +25,25 @@ class Configure extends Base_Controller
 
 	public function index()
 	{
-		$this->template->build('configure/index');
+
+		$txt = file_get_contents('./uploads/out.txt');
+
+		$array = json_decode( $txt , true);
+
+		$x = array();
+		foreach ($array as $e) {
+			$e = trim( $e);
+			if( !$e)
+				continue;
+
+			$x [] = $this->db->select(' uc.uid , uc.email , uc.username , p.realname , p.gender ,  p.mobile , p.telephone ')
+					 ->from( 'ucenter_members uc')
+					 ->join( 'common_member_profile as p' , 'p.uid = uc.uid' , 'left')
+					 ->like( array('uc.email' => $e) )
+					 ->get()->row_array();
+		}
+		
+		$this->template->build('configure/index' , array('x'=>$x));
 	}
 
 	public function permission()

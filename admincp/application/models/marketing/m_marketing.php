@@ -305,11 +305,25 @@ class M_marketing extends CI_Model {
 					 		->from('admin_company c')
 					 		->join('admin_contacts u' , 'c.id = u.company_id' , 'left')
 							->join('admin_clienttags t' , 'u.tag = t.id' , 'left')
-							->join('admin_users admin' , 'admin.id = c.assign_to ' , 'left')
+							->join('admin_users admin' , 'admin.id = u.assign_to ' , 'left')
 							->join('admin_uploads up' , 'up.id = u.from_file_id' , 'left')
 					 		->like( 'c.'.$field , $key , 'both')
 					 		->get()->result_array();
-		}else{
+		}else if( $field === 'tag')
+		{
+			return $this->db->select( ' u.* , c.name as company_name , t.tag , admin.username as salesman , uploads.filename ')
+							->from('admin_contacts u')
+							->join('admin_clienttags t' , 't.id = u.tag ' , 'right')
+							->join('admin_company c' , 'c.id = u.company_id' , 'left')
+							->join('admin_uploads uploads' , 'uploads.id = u.from_file_id' , 'left')
+							->join('admin_users admin' , 'admin.id = u.assign_to ' , 'left')
+							->join('admin_uploads up' , 'up.id = u.from_file_id' , 'left')
+							->where( array('t.tag' => $key))
+							->get()
+							->result_array();
+
+		}
+		else{
 			return $this->db->select(' u.* , c.name as company_name , t.tag , admin.username as salesman , up.filename')
 							->from('admin_contacts u')
 					 		->join('admin_company c' , 'c.id = u.company_id' , 'left')
@@ -385,7 +399,7 @@ class M_marketing extends CI_Model {
 
 	public function get_contact_details( $page , $offset , $salemanid)
 	{
-		return $this->db->select(' a.id , c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
+		return $this->db->select(' a.id , a.client_id , c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
 						->from('admin_client_appointment a')
 						->join('admin_contacts c' , 'c.id = a.client_id' , 'left')
 						->join('admin_company cp' , 'cp.id = c.company_id' , ' left')

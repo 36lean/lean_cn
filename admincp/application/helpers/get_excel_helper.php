@@ -18,19 +18,38 @@ $objPHPExcel->getProperties()->setCreator("Michael");
 $objPHPExcel->getProperties()->setLastModifiedBy("MOT");
 $objPHPExcel->getProperties()->setTitle("36lean email list");
 $objPHPExcel->getProperties()->setSubject("Emails");
-$objPHPExcel->getProperties()->setDescription("Email list for website");
+$objPHPExcel->getProperties()->setDescription("Array to Excel");
 
 // Add some data
 $objPHPExcel->setActiveSheetIndex(0);
 $basic = 'A';
 foreach ($column as $c) {
+
     $objPHPExcel->getActiveSheet()->SetCellValue( $basic.'1', $c);
-    $count = ord( $basic) - 65;
-    foreach ($datalist[$count] as $key => $d) {
-        $objPHPExcel->getActiveSheet()->SetCellValue( $basic.($key+2) , $d);
-    }
-    $basic = chr( ord( $basic) + 1);
+    
+    $basic ++ ;
 }
+
+$max_length = count( $datalist) - 1;
+
+for ($count = 0; $count <= $max_length; $count++) { 
+
+    $basic = 65;
+
+    var_dump( $datalist[$count]);
+
+    foreach ($datalist[$count] as $key => $d) {
+
+        $basic = chr( $basic);
+
+        $objPHPExcel->getActiveSheet()->SetCellValue( $basic.($count+2) , $d);
+
+        $basic = ord( $basic) + 1;
+    }
+
+    $basic = 65;
+}
+
 
 //$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Hello');
 

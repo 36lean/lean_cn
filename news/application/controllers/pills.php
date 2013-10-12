@@ -8,6 +8,8 @@ class Pills extends CI_Controller
 
 		$this->load->model('article_model');
 
+		$this->load->library('session');
+
 	}
 
 	public function index()

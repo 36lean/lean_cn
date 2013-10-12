@@ -1,31 +1,15 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
-
-
-
+</div>
 <hr />
-
-<?php if(false) { ?>
-<div id="footer" class="navbar-fixed-bottom mot-block-b navbar-transparent">
-<div class="container">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  
-    <ul class="inline">
-      <li><a href="#">已经有了账号?</a></li>
-      <li><a href="#">马上注册</a></li>
-      <li><a href="#">用新浪微博登陆</a></li>
-    </ul>
-
-</div>
-</div>
-<?php } ?>
-
-<div class="container" style="font-size:12px;">
+<div class="container-fluid" style="font-size:12px;">
+  <div class="row-fluid">
         <strong>&copy;36Lean 精益云学院 2009-2013</strong> 
         <ul class="pull-right nav nav-pills">
           <li style="float:right;"><a href="read.php?title=contactus">联系我们</a></li>  
           <li style="float:right;"><a href="read.php?title=aboutus">关于我们</a></li>
           <li style="float:right;"><a href="read.php?title=product"><strong>产品版本</strong></a></li>
         </ul>
+  </div>
 </div>
 
 

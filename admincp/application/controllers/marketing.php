@@ -31,7 +31,11 @@ class Marketing extends Base_Controller{
 
 	public function index( $page = 1 , $offset = 60) {
 
+		
+
 		$condition = $this->_program();
+
+
 
 		if( is_array( $condition))
 		{
@@ -439,8 +443,8 @@ class Marketing extends Base_Controller{
 			redirect( site_url('marketing/connect/'.$id));
 		}
 
-		if( isset( $_GET['search'])) {
-			unset( $_GET['search']);
+		if( isset( $_POST['search'])) {
+			unset( $_POST['search']);
 			return $this->marketing->get_search();
 			
 		}else {

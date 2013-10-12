@@ -1,21 +1,4 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
-<style>
-  .feature-right { margin-bottom: 40px; } 
-  .feature{ margin-bottom: 40px;}
-  .banner { margin-left:70px;} 
-  .quickenter {margin-top:48px;} 
-  .home-sign { text-align:center; padding:40px 40px 50px 40px;} 
-  .home-sign input { height:34px;}
-</style>
-<link href="<?php echo $_G['siteurl'];?>static/videojs/video-js.small.css" rel="stylesheet" type="text/css">
-<script src="<?php echo $_G['siteurl'];?>static/videojs/video.js" type="text/javascript"></script>
-<script type="text/javascript">
-jQuery(function(){
-  videojs.options.flash.swf = "<?php echo $_G['siteurl'];?>/static/videojs/video-js.swf";
-  var Player = videojs("_video_player");
-}
-</script>
-
 <div class="container text-center">
   
   <a href="routing.php">
@@ -61,11 +44,11 @@ jQuery(function(){
   </div>
 
 
-  <div class="home-sign alert-info">
+  <div class="home-sign  alert-info text-center">
     <form class="navbar-form" action="member.php?mod=<?php echo $_G['setting']['regname'];?>" method="post" onsubmit="_submit()">
       <div class="input-append">
-        <input class="span4" name="email" type="text" placeholder="输入您最常用的邮箱">
-        <button name="findout" type="submit" class="btn btn-info btn-large">
+        <input name="email" type="text" placeholder="输入您最常用的邮箱">
+        <button name="findout" type="submit" class="btn btn-info">
           立即注册
         </button>
       </div>
@@ -169,8 +152,8 @@ jQuery(function(){
     <div class="home-sign alert-info">
     <form class="navbar-form" action="member.php?mod=enroll" method="post" onsubmit="_submit()">
       <div class="input-append">
-        <input class="span4 signemail" name="email" type="text"  placeholder="输入您的邮箱" >
-        <button name="findout" type="submit" class="btn btn-danger btn-large">
+        <input name="email" type="text"  placeholder="输入您的邮箱" >
+        <button name="findout" type="submit" class="btn btn-danger">
           立即试听
         </button>
       </div>

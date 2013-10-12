@@ -10,7 +10,7 @@
 	</tr>
 	<?php foreach ($data as $d) :?>
 	<tr>
-		<td class="span2"><a class="tooltips" href="<?php echo site_url('marketing/connect/'.$d['id']);?>" data-toggle="tooltip" title="<?php echo $d['companyname'];?>"><?php echo $d['name'];?></a></td>
+		<td class="span2"><a class="tooltips" href="<?php echo site_url('marketing/connect/'.$d['client_id']);?>" data-toggle="tooltip" title="<?php echo $d['companyname'];?>"><?php echo $d['name'];?></a></td>
 		<td class="span2"><?php echo $d['email'];?></td>
 		<td class="span1"><?php echo $d['office_fax'];?></td>
 		<td class="span1"><?php echo $d['mobile']?></td>

@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1381331375, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1381411587, '18', './data/template/24_18_common_header_portal_index.tpl.php', './template/tpl', 'common/header_portal_index')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -85,32 +85,35 @@ jQuery("img").lazyload({effect : "fadeIn"});
 
 
 <body>
+
+
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
     <div class="container">
+
+
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
     <div class="nav-collapse collapse">
 <ul class="nav">
 <li><a href="javascript:;"  onclick="setHomepage('<?php echo $_G['siteurl'];?>');"><i class="icon-home"></i> 设为首页</a></li>
 <li><a href="<?php echo $_G['siteurl'];?>"  onclick="addFavorite(this.href, '<?php echo $navtitle;?>');return false;"><i class="icon-bookmark-empty"></i> 收藏本站</a></li>
 <li><a href="<?php echo $_G['siteurl'];?>messagebox.php"><i class="icon-envelope-alt"></i> 在线咨询</a></li>
 </ul>
-
-
         <form class="form-inline navbar-form pull-left" action="msearch.php" method="get" style="margin-left:53px;">
     		<div class="input-append">
     			<input name="keywords" type="text" class="span3" placeholder="输入你要找的课程"/>
     			<button name="findout" type="submit" class="btn btn-primary">搜索</button>
     		</div>
     	</form>
-
-
-      	<ul class="nav">
+      	<ul class="nav pull-right">
 <?php if(!$_G['uid']) { ?>
           	<li class=""><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
             <li class=""><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
-
-
-
             <?php } else { ?>
             <li class=""><a href="user.php"><i class="icon-user"></i> <?php echo $_G['username'];?>在线</a></li>
             <li class=""><a href="member.php?mod=logging&amp;action=logout&amp;formhash=<?php echo FORMHASH;?>"> 注销</a></li>
@@ -118,20 +121,22 @@ jQuery("img").lazyload({effect : "fadeIn"});
          	
          	<?php } ?>
       	</ul>
-</div>		
+</div>
+
 </div>
 </div>
 </div>
 
-<div class="container" style="background:#fff;">
+<div class="container main-body">
 
-<div class="row-fluid" style="padding-top:60px;padding-bottom:40px;position:relative">
+<div class="row-fluid">
 
-<div class="span3" align="center">
+<div class="span3" align="center" style="margin-bottom:60px">
 <a href="<?php echo $_G['siteurl'];?>"><img src="<?php echo $_G['siteurl'];?>/static/mot/logo.png" data-original="<?php echo $_G['siteurl'];?>/static/mot/logo.png" /></a>
+
 </div>
 
-<div class="span9" style="position:absolute;bottom:15px;right:30px;">
+<div class="span9">
         <ul class="nav nav-pills pull-right">
 
           	<li <?php if(CURSCRIPT === 'portal' && CURMODULE !== 'aboutus') { ?>class="active"<?php } ?>><a href="portal.php"><i class="icon-home"></i> 首页</a></li>
@@ -294,6 +299,4 @@ EOF;
 <?php } ?>
 <?php if(!empty($_G['setting']['pluginhooks']['global_header'])) echo $_G['setting']['pluginhooks']['global_header'];?>
 <?php } ?>
-
-</div>
 
