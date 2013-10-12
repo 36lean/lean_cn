@@ -1,0 +1,83 @@
+/*!
+ * Motstrap v2.3.2
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @__mot_ .
+ */
+
+table td {
+	margin: 0px;
+	padding: 0px;
+}
+
+table.mot-table {
+	width: 100%;
+	font-size: 12px;
+}
+
+table.mot-table td {
+	border: 1px solid #eee;
+	text-align: center;
+}
+
+table.mot-table td.success {
+	color: #fff;
+	background: #336699;
+}
+
+table.mot-table td.error {
+	color: #fff;
+	background: #339966;
+}
+
+table.mot-table td.warning {
+	color: #fff;
+	background: #993399;
+}
+
+table.mot-table td.info {
+	color: #fff;
+	background: #999999;
+}
+
+a {
+	text-decoration: none;
+	color: #0066CC;
+}
+
+a :hover{
+	text-decoration: none;
+	color: #009933;
+}
+
+select.mot-select {
+	height:20px;
+	font-size: 12px;
+	padding: 0px;
+	margin: 0px;
+	width: 50px;
+}
+textarea.mot-textarea {
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #eee;
+	font-size: 11px;
+}
+button.mot-button {
+	font-size: 12px;
+	padding: 2px;
+	margin: 0px;
+	border: 1px solid #369;
+}
+button.mot-button:hover{
+	font-size: 12px;
+	padding: 2px;
+	margin: 0px;
+	border: 1px solid #369;
+	color: #fff;
+	background: #0066CC ;
+}
+

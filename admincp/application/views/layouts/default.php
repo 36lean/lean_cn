@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <?php global $constant;?>
     <title>
        <?php echo $template['title'];?> | 36lean
@@ -10,21 +10,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- The styles -->
-    <link href="<?php echo base_url();?>public/bootstrap-datetimepicker/css/datetimepicker.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>public/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>public/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href='<?php echo base_url();?>public/font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+    <link href="<?php echo base_url('public/bootstrap-datetimepicker/css/datetimepicker.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('public/bootstrap/css/bootstrap.css');?>" rel="stylesheet">
+    <link href="<?php echo base_url('public/bootstrap/css/bootstrap-responsive.css');?>" rel="stylesheet">
+    <link href='<?php echo base_url('public/font-awesome/css/font-awesome.min.css');?>' rel='stylesheet'>
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="<?php echo base_url('public/mot/css/mot.css');?>" rel="stylesheet">
     <!-- jQuery -->
     <script src="<?php echo base_url('public/charisma/js/jquery-1.7.2.min.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');?>"></script>
     <script src="//cdnjs.bootcss.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url('public/tinymce/js/tinymce/tinymce.min.js');?>"></script>
     <script src="<?php echo base_url('public/ckeditor/ckeditor.js');?>"></script>
+    <script src="<?php echo base_url('public/hovercard/jquery.hovercard.js');?>"></script>
+
     <script>
     $(function(){
         $('.datetimepicker').datetimepicker();

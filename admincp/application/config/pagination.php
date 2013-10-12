@@ -27,7 +27,7 @@ $config['page_query_string'] = FALSE;
 $config['query_string_segment'] = '';
  $config['use_page_numbers'] = TRUE;
 
-$config['full_tag_open'] = '<div class="pagination pagination-centered"><ul>';
+$config['full_tag_open'] = '<div class="pagination pagination-large pagination-centered"><ul>';
 $config['full_tag_close'] = '</ul></div><!--pagination-->';
  
 $config['first_link'] = '&laquo; First';
