@@ -37,4 +37,47 @@ class Sale extends Base_Controller
 							  );
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function update_tag( $id , $tag_id)
+	{
+		$this->sale->update_tag( $id , $tag_id , $this->_G['uid']); 
+	}
+
+	public function add_contact()
+	{
+		$id = intval( $this->input->post('id'));
+		$text = trim( $this->input->post('text'));
+		$this->sale->add_contact( $id , $text , $this->_G['uid']);
+	}
+
 }

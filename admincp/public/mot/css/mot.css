@@ -80,4 +80,7 @@ button.mot-button:hover{
 	color: #fff;
 	background: #0066CC ;
 }
-
+p.mot-small {
+	background: #eee;
+	padding: 2px 10px 2px 10px;
+}
