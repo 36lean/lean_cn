@@ -55,6 +55,19 @@
 	<!--[if IE 7]>
    	<link href="{$_G['siteurl']}static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
 	<![endif]--> 
+  	<!--[if lte IE 6]>
+  	<!-- bsie css patch -->
+  	<link rel="stylesheet" type="text/css" href="{$_G['siteurl']}static/bsie/css/bootstrap-ie6.css">
+	<!-- bsie additional css patch -->
+  	<link rel="stylesheet" type="text/css" href="{$_G['siteurl']}static/bsie/css/ie.css">
+  	<![endif]-->
+  	
+  	<!--[if lte IE 6]>
+  	<!-- bsie js patch, it will only execute in IE6 -->
+  	<script type="text/javascript" src="{$_G['siteurl']}static/bsie/js/bootstrap-ie.js"></script>
+  	<![endif]-->
+
+
 </head>
 
 

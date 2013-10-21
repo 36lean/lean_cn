@@ -71,7 +71,9 @@ class Portal extends Base_Controller
 			$old_category = array();
 		}
 
-		$this->template->build('portal/index' , array('categories'=>$categories , 'old_category'=>$old_category));
+		$tags = $this->article->get_all_tags();
+
+		$this->template->build('portal/index' , array('categories'=>$categories , 'old_category'=>$old_category , 'tags'=>$tags));
 
 	}
 
@@ -167,5 +169,61 @@ class Portal extends Base_Controller
 		$tags = $this->article->get_all_tags();
 
 		$this->template->build('portal/config' , array('tags' => $tags));
+	}
+
+	public function edit_seo( $id)
+	{
+
+		$this->portal->seo_updates();
+
+		$id = intval( $id);
+
+		$data = $this->article->get_seo_by_id( $id);
+
+		$this->template->build('portal/edit_seo' , array('data' => $data));
+	}
+
+	public function remove_seo( $id)
+	{
+		$id = intval( $id);
+
+		$this->article->remove_seo( $id );
+
+		redirect( site_url('portal/seo'));
+	}
+
+	public function refresh()
+	{
+		$d = opendir('../news/db_cache/');
+		while( $f = readdir( $d))
+		{
+
+			if( preg_match('/(\.)|(\.\.)/', $f))
+				continue;
+
+
+			if( is_dir( '../news/db_cache/'.$f))
+			{
+				$d1 = opendir('../news/db_cache/'.$f);
+
+				while( $f1 = readdir($d1))
+				{
+					if( is_file( '../news/db_cache/'.$f.'/'.$f1))
+						unlink( '../news/db_cache/'.$f.'/'.$f1);
+				}
+			}
+			redirect('portal/seo');
+
+		}
+	}
+
+	public function get_title_by_id()
+	{
+		$id = intval( $this->input->post('id'));
+
+		$posts = $this->db->select('post_title,post_content,post_summary')->from('attach_posts')->where( array('id'=>$id))->get()->row_array();
+
+		echo json_encode( $posts);
+
 	}
 }

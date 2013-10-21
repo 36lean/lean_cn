@@ -1,5 +1,5 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('header');?><?php include template('common/header'); ?><div class="container-fluid">
-<div class="row-fluid mot-block-a">
+<div class="row-fluid">
 
 <div class="span2">
 <div class="thumbnail text-center">
@@ -15,8 +15,6 @@
 
 </div>
 </div>
-
-<div class="container margin-top">
 <div class="container-fluid">
 <div class="row-fluid">
 

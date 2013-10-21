@@ -1,84 +1,69 @@
-<?php echo anchor('mailer/del_task/'.$info['id'] , '删除本任务' , 'class="btn btn-primary pull-right"');?>
-<div class="row-fluid">
-		<div class="page-header">
-			<h4>
-				反馈
-			</h4>
-		</div>
-		<div class="box-content">
-			<dl>
-				<dt>
-					邮件查看情况 ( 以下时刻有人查看过邮件 )
-				</dt>
-				<dd>
-					<?php foreach ($spy as $time) {
-					?>
-					[ <i class="icon-time"></i> <?php echo date('Y/m/d h:i:s' , $time['date']);?> ]
-					<?php
-					}?>
-					
-				</dd>
-			</dl>
-		</div>
-</div>
+<?php 
 
+$labels = array();
 
-<div class="row-fluid">
-		<div class="page-header">
-			<h3>
-				收件人ID列表
-				<?php if( $info['type'] === 'web'){?>
-				 ( 本任务发送对象是网站会员 )
-				 <?php } else {?>
-				 ( 客户列表 )
-				 <?php }?>
-			</h3>
-		</div>
-		<div class="">
+$data = array();
 
-			<tr>
-			<?php 
-			$mail_list = $info['clientid_list'];
-			//$mail_list = explode('+', $info['mail_list']);
-			$mail_list = preg_split('/[,]/', $mail_list);
-			foreach ($mail_list as $key => $contact_id) {?>
+foreach ($list as $u) {
+	$labels[] = $u['id'];
 
-			<?php if( $info['type'] === 'web') {?>
-				<span class="badge badge-success"><?php echo $contact_id;?></span>
-			<?php } else {?>
-				<a href="<?php echo site_url('marketing/connect/'.$contact_id);?>"><span class="badge badge-success"><?php echo $contact_id;?></span></a>
-			<?php }?>	
+	$data[] = $u['view'];
+}
 
-			<?php 
-			if( ($key+1) % 10 === 0)
-				echo '';
-			}?>
-			</tr>
+$labels = implode( ',' , $labels);
 
-		</div>
-</div>
-<div class="row-fluid">
-		<div class="page-header">
-			<h4>
-				邮件内容预览
-				<small>
-					Stay Hungry,Stay Foolish
-				</small>
-			</h4>
-		</div>
-		<div class="box-content">
-			<div class="row-fluid ">
-				<div class="span12">
-					<iframe width="100%" height="600px" frameborder=0 src="<?php echo base_url();?>index.php/mailer/template_view/<?php echo $info['tid'];?>">
-					</frame>
-				</div>
-			</div>
-			<!--/row -->
-		</div>
-</div>
-<!--/span-->
-<?php
-
-var_dump( $mail_list);
+$data = implode(',', $data);
 
 ?>
+
+<div class="pag-header">
+	<h4><?php echo $info['task_title'];?></h4>
+	<h4><small>类型 : <?php echo $info['type'] === 'contact' ? '客户列表' : '网站会员';?> | 创建日期 : <?php echo date( 'Y-m-d h-i a' ,$info['created_date']);?></small></h4>
+</div>
+
+<div class="container">
+	<canvas id="canvas" height="200" width="1024"></canvas>
+</div>
+
+
+<table class="table table-condensed">
+	<tr>
+		<td>ID</td>
+		<td>邮箱地址</td>
+		<td>查看次数</td>
+		<td>发送次数</td>
+		<td>客户信息</td>
+	</tr>
+
+	<?php foreach ($list as $email) { ?>
+	<tr>
+		<td><?php echo $email['id'];?></td>
+		<td><?php echo $email['email'];?></td>
+		<td><?php echo $email['view'];?></td>
+		<td><?php echo $email['send'];?></td>
+		<td><?php echo $email['contact_id'] ? '<a href="'.site_url('sale/contact/'.$email['contact_id']).'">'.$email['name'].'</a>' : '网站会员';?></td>
+	</tr>
+	<?php }?>
+
+</table>
+
+
+	<script>
+
+		var barChartData = {
+			labels : 
+
+			[<?php echo $labels;?>],
+
+			datasets : [
+				{
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					data : [<?php echo $data;?>]
+				}
+			]
+			
+		}
+
+	var myLine = new Chart(document.getElementById("canvas").getContext("2d")).Bar(barChartData);
+	</script>

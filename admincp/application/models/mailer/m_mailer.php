@@ -32,26 +32,41 @@ class M_mailer extends CI_Model {
 	*@package['content']
 	*/
 	public function send_mail( $package) {
+		
 		$header = file_get_contents('./data/mail/header.html');
+		
 		$footer = file_get_contents('./data/mail/footer.html');
+
 		$insert_spy_code = '<img src='.base_url().'index.php/ajax/mailer_spy/'.$package['task_id'].'/>';
 
 		$transport = Swift_SmtpTransport::newInstance( $package['mail_smtp'], $package['mail_port']);
+
  		$transport->setUsername( $package['mail_username']);
+
  		$transport->setPassword( $package['mail_password']);
  
  		$mailer = Swift_Mailer::newInstance( $transport);
  
  		$message = Swift_Message::newInstance();
+
  		$message->setFrom(array( $package['mail_username'] => $package['mail_myname']));
+
  		$message->setTo( $package['to_list']);
+
  		$message->setSubject( $package['title'] . ' ' . date('m/d h:i:s'));
+
  		$message->setBody( $header.$package['content'].$insert_spy_code.$package['sign'].$footer, 'text/html', 'utf-8');
+
  		//$message->attach( Swift_Attachment::fromPath('pic.jpg', 'image/jpeg')->setFilename('rename_pic.jpg'));
+
  		try{
-  			$mailer->send($message);
+  			
+  			return $mailer->send($message);
+
  		}catch (Swift_ConnectionException $e){
+
   			echo 'There was a problem communicating with SMTP: ' . $e->getMessage();
+
  		}
 	}
 
@@ -222,11 +237,10 @@ class M_mailer extends CI_Model {
 	}
 
 	public function get_send_task_information( $id) {
-		return $this->db->select('t.id,t.offset,t.field,t.type,t.send_times,t.clientid_list,tp.mail_template,tp.id tid')
-				 		->from('admin_mailtask t')
-				 		->join('admin_mailtemplate tp' , 't.template_id = tp.id' , 'left')
-				 		->where( array('t.id' => $id))
-				 		->get()->result_array();
+		return $this->db->select('*')
+				 		->from('admin_mailtask')
+				 		->where( array('id' => $id))
+				 		->get()->row_array();
 	}
 
 	public function template_del( $id) {
@@ -245,6 +259,16 @@ class M_mailer extends CI_Model {
 		) , array('id' => $_POST['id']));
 	}
 
+	public function get_list_by_taskid( $id)
+	{
 
+		return $this->db->select('maillog.* , contacts.name ')
+						->where( array('task_id'=>$id))
+						->from('admin_maillog maillog')
+						->join('admin_contacts contacts' , 'contacts.id = maillog.contact_id' , 'left')
+						->order_by('view' , 'desc')
+						->get()
+						->result_array();
+	}
 
 }

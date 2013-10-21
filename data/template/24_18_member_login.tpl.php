@@ -1,8 +1,8 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('login');
 0
-|| checktplrefresh('./template/tpl/member/login.htm', './template/default/common/seccheck.htm', 1381285254, '18', './data/template/24_18_member_login.tpl.php', './template/tpl', 'member/login')
+|| checktplrefresh('./template/tpl/member/login.htm', './template/default/common/seccheck.htm', 1381988006, '18', './data/template/24_18_member_login.tpl.php', './template/tpl', 'member/login')
 ;?><?php include template('common/header'); ?><?php $loginhash = 'L'.random(4);?><?php if(empty($_GET['infloat'])) { ?>
-<div id="ct" class="ptm wp w cl">
+<div id="ct" class="container-fluid">
 <div class="nfl" id="main_succeed" style="display: none">
 <div class="f_c altw">
 <div class="alert_right">
@@ -12,14 +12,14 @@
 </div>
 </div>
 </div>
-<div class="container" align="center" id="main_message">
-<div class=" ">
+<div class="row" align="center" id="main_message">
+
+<h2>登录</h2>
+
 <span class="">
 <?php if(!empty($_G['setting']['pluginhooks']['logging_side_top'])) echo $_G['setting']['pluginhooks']['logging_side_top'];?>
 </span>
-<h2>登录</h2>
 </div>
-
 <?php } ?>
 
 <div id="main_messaqge_<?php echo $loginhash;?>"<?php if($auth) { ?> style="width: auto"<?php } ?>>
@@ -32,13 +32,13 @@
 </h3>
 <?php if(!empty($_G['setting']['pluginhooks']['logging_top'])) echo $_G['setting']['pluginhooks']['logging_top'];?>
 <form class="inline" method="post" autocomplete="off" name="login" id="loginform_<?php echo $loginhash;?>" class="cl" onsubmit="<?php if($this->setting['pwdsafety']) { ?>pwmd5('password3_<?php echo $loginhash;?>');<?php } ?>pwdclear = 1;ajaxpost('loginform_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>', 'onerror');return false;" action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes<?php if(!empty($_GET['handlekey'])) { ?>&amp;handlekey=<?php echo $_GET['handlekey'];?><?php } if(isset($_GET['frommessage'])) { ?>&amp;frommessage<?php } ?>&amp;loginhash=<?php echo $loginhash;?>">
-<div class="c cl">
+<div class="row-fluid">
 <input type="hidden" name="formhash" value="<?php echo FORMHASH;?>" />
 <input type="hidden" name="referer" value="<?php echo dreferer(); ?>" />
 <?php if($auth) { ?>
 <input type="hidden" name="auth" value="<?php echo $auth;?>" />
 <?php } ?>
-<div class="container">
+<div class="span12">
 <table class="table">
 <?php if($invite) { ?>
 
@@ -204,41 +204,59 @@ EOF;
 <script src="<?php echo $_G['setting']['jspath'];?>md5.js?<?php echo VERHASH;?>" type="text/javascript" reload="1"></script>
 <?php } ?>
 <div id="layer_lostpw_<?php echo $loginhash;?>" style="display: none;">
-<h3 class="flb">
-<em id="returnmessage3_<?php echo $loginhash;?>">找回密码</em>
+<div class="page-header">
+<h3>
+找回密码
 <span><?php if(!empty($_GET['infloat']) && !isset($_GET['frommessage'])) { ?><a href="javascript:;" class="flbc" onclick="hideWindow('login')" title="关闭">关闭</a><?php } ?></span>
 </h3>
-<form method="post" autocomplete="off" id="lostpwform_<?php echo $loginhash;?>" class="cl" onsubmit="ajaxpost('lostpwform_<?php echo $loginhash;?>', 'returnmessage3_<?php echo $loginhash;?>', 'returnmessage3_<?php echo $loginhash;?>', 'onerror');return false;" action="member.php?mod=lostpasswd&amp;lostpwsubmit=yes&amp;infloat=yes">
-<div class="c cl">
-<input type="hidden" name="formhash" value="<?php echo FORMHASH;?>" />
-<input type="hidden" name="handlekey" value="lostpwform" />
-<div class="rfm">
-<table>
-<tr>
-<th><span class="rq">*</span><label for="lostpw_email">Email:</label></th>
-<td><input type="text" name="email" id="lostpw_email" size="30" value=""  tabindex="1" class="px p_fre" /></td>
-</tr>
-</table>
-</div>
-<div class="rfm">
-<table>
-<tr>
-<th><label for="lostpw_username">用户名:</label></th>
-<td><input type="text" name="username" id="lostpw_username" size="30" value=""  tabindex="1" class="px p_fre" /></td>
-</tr>
-</table>
 </div>
 
-<div class="rfm mbw bw0">
-<table>
-<tr>
-<th></th>
-<td><button class="pn pnc" type="submit" name="lostpwsubmit" value="true" tabindex="100"><span>提交</span></button></td>
-</tr>
-</table>
+
+<div class="row-fluid">
+
+<div class="span2"></div>
+
+<div class="span4">
+<p class="lead">输入我的邮箱</p>
+<form method="post" autocomplete="off" id="lostpwform_<?php echo $loginhash;?>" class="cl" onsubmit="ajaxpost('lostpwform_<?php echo $loginhash;?>', 'returnmessage3_<?php echo $loginhash;?>', 'returnmessage3_<?php echo $loginhash;?>', 'onerror');return false;" action="member.php?mod=lostpasswd&amp;lostpwsubmit=yes&amp;infloat=yes">
+
+<input type="hidden" name="formhash" value="<?php echo FORMHASH;?>" />
+<input type="hidden" name="handlekey" value="lostpwform" />
+
+<div class="control-group">
+<div class="controls">
+<label for="lostpw_email">Email:</label>
+<input type="text" name="email" id="lostpw_email" size="30" value=""  tabindex="1" class="input-large" />
 </div>
 </div>
+
+
+<div class="control-group">
+<div class="controls">
+<button class="btn btn-primary" type="submit" name="lostpwsubmit" value="true" tabindex="100"><span>提交</span></button>
+</div>
+</div>
+
 </form>
+</div>
+
+<div class="span6">
+
+<div class="">
+<blockquote>
+<h3>欢迎回来 !</h3>
+
+<ol>
+<li>输入您的邮箱</li> 
+<li>我们将发送链接到您的邮箱</li> 
+<li>请注意查收邮件</li>
+</ol>
+</blockquote>
+</div>
+
+</div>
+
+
 </div>
 </div>
 
@@ -285,5 +303,5 @@ display('layer_lostpw_<?php echo $loginhash;?>');
 $('lostpw_email').focus();
 <?php } ?>
 </script><?php updatesession();?><?php if(empty($_GET['infloat'])) { ?>
-</div></div></div>
+</div></div>
 <?php } include template('common/footer'); ?>

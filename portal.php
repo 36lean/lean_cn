@@ -23,6 +23,8 @@ require DISCUZ_ROOT.'./source/function/function_portal.php';
 //==============================mot added==============================
 require DISCUZ_ROOT.'./source/function/cache/cache_lesson.php';
 
+
+/*
 loadcache('latest_course');
 if( !isset( $_G['cache']['latest_course'])) {
 	cache_course_info();
@@ -55,12 +57,13 @@ if( !isset( $_G['cache']['hot_course'])) {
 	loadcache('hot_course');
 }
 
+
 $c_top = C::t('b_course')->get_top_course();
 
 $hidden = C::t('b_course')->get_hidden_course();
 $aboutus = C::t('basic_config')->get_aboutus();
 
-
+*/
 //==============================mot added==============================
 
 

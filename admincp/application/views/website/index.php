@@ -55,7 +55,7 @@
 					设计好的HTML代码
 				</label>
 				<div class="controls">
-					<textarea name="htmlcode" class="ckeditor" id="textarea2" rows=7 cols=20>
+					<textarea name="htmlcode" class="kindeditor" id="textarea2" rows=7 cols=20>
 					</textarea>
 				</div>
 			</div>

@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/uploadify/uploadify.css');?>">
 
 
-<script src="<?php echo base_url('public/zclip/jquery.zclip.min.js');?>" type="text/javascript"></script>
+<script src="<?php echo base_url('public/zclip/zeroclipboard.jquery.min.js');?>" type="text/javascript"></script>
 
 <h4>上传图片</h4>
 
@@ -15,11 +15,11 @@
 
 </div>
 
-<a id="copy-button" href="#">Copy</a>
-
 
 <script type="text/javascript">
+
 	<?php $timestamp = time();?>
+
 	$(function() {
 		$('#file_upload').uploadify({
 
@@ -28,26 +28,20 @@
 
 		  'onUploadSuccess' : function ( file, data, response )  {
 
-		  	$('.tips').append(data);
-		  	
+		  	$('.tips').append('<p><img id="append" src="'+data+'" width="300px" data-clipboard-text="'+data+'" /></p>');
+			
+			$('#append').zeroclipboard({
+				text: $('#append').attr('src'),
+				hand: true,
+				sizeMethod: 'outer'
+			});
 
 		  },
 
 		  'onUploadError' : function ( file, errorCode, errorMsg ) {
-
 		  	$('.tips').append('<div class="alert alert-error">上传失败 请联系开发者 errorCode : '+errorCode+' errorMsg : '+errorMsg+'</div>');
-		  
 		  } ,
-
 		});
-
-
-
-			$('#copy-button').zclip({	
-				path:'<?php echo base_url('public/zclip/ZeroClipboard.swf');?>',
-				copy:$('p.tips').text()
-			});
-
 
 	});
 </script>

@@ -9,7 +9,7 @@
 <i class="pull-right icon-chevron-right"></i>推送消息
 </a>
 </li>
-
+<?php if(false) { ?>
 <li <?php if($ac === 'sub_plan') { ?>class="active"<?php } ?>>
 <a href="user.php?ac=sub_plan">
 <i class="icon-calendar"></i>
@@ -74,7 +74,7 @@
 </a>
 </li>
 
-<?php if(false) { ?>
+
 <li>
 <a href="user.php?ac=sub_pad">
 <i class="icon-coffee"></i>
@@ -85,12 +85,21 @@
 
 <li class="nav-header">账户</li>
 
+<li <?php if($ac === 'sub_changepassword') { ?>class="active"<?php } ?>>
+<a href="user.php?ac=sub_changepassword">
+<i class="icon-credit-card"></i>
+<i class="pull-right icon-chevron-right"></i>修改密码
+</a>
+</li>
+
+<?php if(false) { ?>
 <li <?php if($ac === 'sub_vip') { ?>class="active"<?php } ?>>
 <a href="user.php?ac=sub_vip">
 <i class="icon-credit-card"></i>
 <i class="pull-right icon-chevron-right"></i>VIP信息
 </a>
 </li>
+<?php } ?>
 <!--
 <li <?php if($ac === 'sub_other') { ?>class="active"<?php } ?>>
 <a href="user.php?ac=sub_other">

@@ -1,3 +1,9 @@
+<?php if( $status) {?>
+
+	<div class="alert alert-info">测试邮件发送成功 请查收</div>
+
+<?php }?>
+
 <div class="row-fluid">
 	<div class="page-header" data-original-title>
 		<h4>
@@ -68,3 +74,23 @@
 	</div>
 </div>
 <!--/span-->
+
+
+<div class="page-header">
+	<h4>模板测试</h4>
+</div>
+
+<form action="" method="post">
+
+	<label><strong>输入邮箱</strong></label>
+	<input name="email" type="text" />
+
+	<label><strong>选择模板</strong></label>
+	<select name="template_id">
+		<?php foreach ($list as $template) { ?>
+			<option value="<?php echo $template['id'];?>"><?php echo $template['mail_title'];?></option>
+		<?php }?>
+	</select>
+
+	<p><button class="btn btn-primary" name="send_test" value="1">测试发送</button></p>
+</form>

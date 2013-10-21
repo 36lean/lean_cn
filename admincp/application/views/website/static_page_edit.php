@@ -17,7 +17,7 @@
 		</label>
 		<div class="controls">
 
-		<textarea name="html" class="span12" rows=10><?php echo file_get_contents( '../pages/'.$page[ 'path']. '.html'); ?></textarea>
+		<textarea name="html" class="kindeditor" rows=10><?php echo file_get_contents( '../pages/'.$page[ 'path']. '.html'); ?></textarea>
 		</div>
 	</div>
 

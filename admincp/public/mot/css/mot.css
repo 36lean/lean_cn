@@ -84,3 +84,23 @@ p.mot-small {
 	background: #eee;
 	padding: 2px 10px 2px 10px;
 }
+input.datetimepicker {
+	padding: 0px;
+	margin: 0px;
+	width:100px;
+	font-size: 12px;
+}
+
+tr.extra_add td {
+	border: 1px solid #fff;
+}
+
+tr.extra_add td.left{
+	padding: 5px;
+	border: 1px solid #999;
+}
+
+div.mot-box {
+	border: 1px solid #777;
+	margin-bottom: 5px;
+}

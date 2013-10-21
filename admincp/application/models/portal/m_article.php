@@ -120,7 +120,7 @@ class M_article extends CI_Model
 
 	public function add_center_article()
 	{
-		if( $this->input->post('add_center_article'))
+		if( 'home_center' === $this->input->post('position'))
 		{
 			$center = $this->db->select('id')
 					 		   ->from('attach_seo')
@@ -153,17 +153,17 @@ class M_article extends CI_Model
 
 	public function add_left_article()
 	{
-		if( $this->input->post('add_left_article'))
+		if( 'home_left' === $this->input->post('position'))
 		{
 			$center = $this->db->select('id')
 					 		   ->from('attach_seo')
 					 		   ->where( array('position' => $this->input->post('position')))
 					 		   ->get();
 
-				$this->db->insert('attach_seo' , array('article_id' => intval( $this->input->post('article_id') ), 
+				$this->db->insert('attach_seo' , array('article_id' => intval( $this->input->post('center_article_id') ), 
 													   'position'   => trim( $this->input->post('position') ) , 
 													   'banner'		=> trim( $this->input->post('banner') ) ,
-													   'seo_text'	=> trim( $this->input->post('article_hidden') ) ,
+													   'seo_text'	=> trim( $this->input->post('center_article_hidden') ) ,
 													   'timeupdated'=> time() ,
 								));
 		}
@@ -247,5 +247,15 @@ class M_article extends CI_Model
 		return $this->db->where( array('id'=>$id))
 						->get('attach_category')
 						->row_array();
+	}
+
+	public function get_seo_by_id( $id )
+	{
+		return $this->db->where( array('id' => $id))->get('attach_seo')->row_array();
+	}
+
+	public function remove_seo( $id )
+	{
+		$this->db->delete('attach_seo' , array('id'=>$id));
 	}
 }

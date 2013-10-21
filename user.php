@@ -29,6 +29,8 @@ if( 'sub_vip' === $ac) {
 	$vip_credit='extcredits'.$vip->vars['creditid'];
 	$query=DB::fetch($vip->query("SELECT {$vip_credit} FROM pre_common_member_count WHERE uid='{$_G[uid]}'"));
 	$my_credit=$query[$vip_credit];
+
+	$today = time();
 }
 
 if( 'sub_newsfeed' === $ac) {
@@ -86,6 +88,50 @@ if( 'home' === $ac){
 		));
 
 		$successed = TRUE;
+	}
+}
+
+if( 'sub_changepassword' === $ac)
+{
+	if( $_G['formhash'] === $_POST['formhash'])
+	{
+
+		$filter = array();
+
+		unset( $_POST['submit_change']);
+		unset( $_POST['formhash']);
+		unset( $_POST['referer']);
+		foreach ($_POST as $key => $value) {
+			$filter[$key] = trim( $value );
+		}
+
+		$user = C::t('b_userevent')->get_user_by_uid( $_G['uid']);
+
+		if( $_G['username'] !== $user['username'])
+		{
+
+			$status = 1;
+
+		}else if( $filter['new1'] !== $filter['new2'])
+		{
+			$status = 2;
+		
+		}else if( $user['password'] !==  md5( md5( $filter['old']).$user['salt']) )
+		{
+			$status = 3;
+		
+		}else {
+			
+			$salt = cutstr( md5( date() ) , 6 , '');
+			
+			$password = md5( md5( $filter['new1'] ) . $salt );
+
+			C::t('b_userevent')->update_password( $_G['uid'] , $password , $salt);
+
+			$status = 4;
+		}
+
+
 	}
 }
 

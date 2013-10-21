@@ -8,7 +8,7 @@
 
 	<td class="span1"><?php echo $article['id'];?></td>
 
-	<td class="span5"><a href="<?php echo site_url('portal/edit_article/'.$article['id']);?>"><?php echo $article['post_title'];?></a></td>
+	<td class="span5"><a href="<?php echo site_url('portal/edit_article/'.$article['id']);?>" target="blank"><?php echo $article['post_title'];?></a></td>
 
 	<td class="span2">
 

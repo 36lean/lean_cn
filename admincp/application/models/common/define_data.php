@@ -26,6 +26,7 @@ class Define_data extends CI_Model
 		return $this->db->select( $field)
 						->from( $table)
 						->where( array($key_name => $id))
+						->order_by('id', 'asc')
 						->get()
 						->result_array();
 	}
@@ -39,6 +40,7 @@ class Define_data extends CI_Model
 			'product_module' 	=> array( 	'route' => 'course' 	, 'alias' => '产品管理' , 'status' => 'active')  ,
 			'web_module' 		=> array(	'route' => 'website' 	, 'alias' => '网站管理' , 'status' => 'active')  , 
 			'portal_module' 	=> array(	'route' => 'portal' 	, 'alias' => '门户管理' , 'status' => 'active')  , 
+			'log_module' 		=> array(	'route' => 'log' 	, 'alias' => '日志管理' , 'status' => 'active')  ,
 			//'sales_module' => array('route' => 'sales' , 'alias' => '销售机会/订单' , 'status' => 'active') , 
 			//'finanace_module' => array('route' => 'finance' , 'alias' => '财务管理' , 'status' => 'active')  , 
 			'configure_module' 	=> array(	'route' => 'configure'	, 'alias' => '后台设置' , 'status' => 'active')  , 

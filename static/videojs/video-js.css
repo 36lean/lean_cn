@@ -729,9 +729,9 @@ body.vjs-full-window {
 .video-js .vjs-text-track {
   display: none;
   font-size: 2.6em;
-  line-height: 36px;
+  line-height: 40px;
   text-align: center;
-  padding: 5px;
+  padding: 2px;
   margin-bottom: 0.1em;
   /* Transparent black background, or fallback to all black (oldIE) */
   /* background-color-with-alpha */

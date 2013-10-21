@@ -123,4 +123,22 @@ class M_portal extends CI_Model
 
 		return $result;
 	}
+
+	public function seo_updates()
+	{
+		if( $this->input->post('seo_updates'))
+		{
+			unset( $_POST['seo_updates']);
+			$id = intval( $this->input->post('id'));
+			unset( $_POST['id']);
+
+			foreach ($_POST as $key => $value) {
+				$_POST[$key] = trim( $value);
+			}
+
+			$this->db->where( array('id'=>$id))->update('attach_seo' , $_POST);
+
+			redirect('portal/seo');
+		}
+	}
 }

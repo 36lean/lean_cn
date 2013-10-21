@@ -37,6 +37,8 @@ class Marketing extends Base_Controller{
 
 
 
+
+
 		if( is_array( $condition))
 		{
 			$client = $condition;

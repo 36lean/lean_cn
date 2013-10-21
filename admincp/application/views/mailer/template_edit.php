@@ -9,8 +9,6 @@
     </div>
 
     <div class="">
-        <?php $this->load->module('webkit/photo_uploads/uploads');?>
-        
         <form class="form-horizontal" action="" method="post">
         <input name="id" type="hidden" value="<?php echo $templates['id'];?>">
             <fieldset>
@@ -27,7 +25,7 @@
                         邮件模板内容
                     </label>
                     <div class="controls">
-                        <textarea class="longtext" name="mail_template" class="span10" id="textarea2" rows="10"><?php echo $templates['mail_template'];?></textarea>
+                        <textarea class="kindeditor" name="mail_template" class="span10" id="textarea2" rows="10"><?php echo $templates['mail_template'];?></textarea>
                     </div>
                 </div>
                 <div class="control-group">

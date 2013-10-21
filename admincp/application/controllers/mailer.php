@@ -10,6 +10,7 @@ class Mailer extends Base_Controller {
 		parent::__construct();
 		$this->load->model('mailer/m_mailer' , 'mailer');
 		$this->load->model('client/client_get' , 'client_get');
+		$this->load->model('sale/m_mail' , 'm_mail');
 		
 		if( !$this->cache->file->get('smtp')) {
 			$smtp = $this->mailer->get_mail_config();
@@ -24,7 +25,7 @@ class Mailer extends Base_Controller {
 		return array(
 			array( 'route' => 'index' , 'alias' => '创建模板' , 'status' => 'active' ) ,
 			array( 'route' => 'mail_template' , 'alias' => '模板' , 'status' => 'active' ),
-			array( 'route' => 'mail_sender', 'alias' => '发送' , 'status' => 'active' ) ,
+			array( 'route' => 'mail_sender', 'alias' => '创建任务' , 'status' => 'active' ) ,
 			array( 'route' => 'mail_program', 'alias' => '执行' , 'status' => 'active' ) ,
 			array( 'route' => 'mail_configure' , 'alias' => '设置' , 'status' => 'active' ) ,
 		);
@@ -45,16 +46,8 @@ class Mailer extends Base_Controller {
 
 	public function mail_sender() {
 
-		if( isset( $_POST['add'])) {
-
-			if( Status::INSERT_SUCCESS === $this->mailer->create_task()) {
-				redirect( site_url('mailer/mail_program'));
-			}
-
-		}
-		else if( $this->input->post('add_web_task') )
+		if( $id = $this->m_mail->build_task() )
 		{
-			$this->mailer->create_task( 'web');
 			redirect( site_url('mailer/mail_program'));
 		}
 
@@ -73,9 +66,11 @@ class Mailer extends Base_Controller {
 
 	public function mail_template() {
 
+		$status = $this->m_mail->send_test() ? 1 : 0;
+
 		$template_list = $this->mailer->get_templates_list();
 
-		$this->template->build('mailer/mail_template' , array('list' => $template_list));
+		$this->template->build('mailer/mail_template' , array('list' => $template_list , 'status' => $status));
 	}
 
 	public function mail_program( $page = 1, $offset = 15) {
@@ -91,15 +86,18 @@ class Mailer extends Base_Controller {
 
 		$id = intval( $id);
 
-		$task = $this->mailer->run_task( $id);
+		$list = $this->mailer->get_list_by_taskid( $id);
 
-		$this->template->build( 'mailer/run_task' , array( 'task' => $task));
+		$this->template->build( 'mailer/run_task' , array( 'list' => $list));
 		
 	}
 
 	public function del_task( $id)
 	{
 		$id = intval( $id);
+
+		$this->db->where( array('task_id' => $id))
+				 ->update('admin_maillog' , array('task_id'=>0));
 
 		$this->db->delete('admin_mailtask' , array('id'=>$id));
 
@@ -190,9 +188,11 @@ class Mailer extends Base_Controller {
 
 		$info = $this->mailer->get_send_task_information( $id);
 
-		$spy = $this->mailer->get_spy_data( $id);
+		$list = $this->mailer->get_list_by_taskid( $id);
 
-		$this->template->build('mailer/send_information' , array('info' => $info[0] , 'spy' => $spy));
+		//$spy = $this->mailer->get_spy_data( $id);
+
+		$this->template->build('mailer/send_information' , array('info' => $info , 'list'=>$list));
 	}
 
 	public function template_del( $id) {

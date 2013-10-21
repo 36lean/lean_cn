@@ -1,4 +1,7 @@
-<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); if(CURMODULE != 'logging') { ?>
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<div class="container" style="background:#fff;">
+<?php if(CURMODULE != 'logging') { ?>
+
 <script src="<?php echo $_G['setting']['jspath'];?>logging.js?<?php echo VERHASH;?>" type="text/javascript"></script>
 
 <form class="form-inline" method="post" autocomplete="off" id="lsform" action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes&amp;infloat=yes&amp;lssubmit=yes" onsubmit="<?php if($_G['setting']['pwdsafety']) { ?>pwmd5('ls_password');<?php } ?>return lsSubmit();">
@@ -14,9 +17,9 @@
 <td>
 <span>
 <select name="fastloginfield" id="ls_fastloginfield" width="90" tabindex="900">
-<option value="username"><h6>用户名</h6></option>
+<option value="username">用户名</option>
 <?php if(getglobal('setting/uidlogin')) { ?>
-<option value="uid"><h6>UID</h6></option>
+<option value="uid">UID</option>
 <?php } ?>
 <option value="email"><h6>Email</h6></option>
 </select>
@@ -69,3 +72,4 @@
 <?php if($_G['setting']['pwdsafety']) { ?>
 <script src="<?php echo $_G['setting']['jspath'];?>md5.js?<?php echo VERHASH;?>" type="text/javascript" reload="1"></script>
 <?php } } ?>
+

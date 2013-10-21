@@ -25,9 +25,11 @@ class Ajax extends CI_Controller {
 	/*
 	*mail_spy
 	*/
-	public function mailer_spy( $task_id = 0) {
+	public function mailer_spy( $log_id = 0) {
 
-		$this->db->insert('admin_dev_log' , array('task_id' => intval( $task_id) , 'date' => time()));
+		$log_id = intval( $log_id);
+
+		$this->db->query('update pre_admin_maillog set view = view + 1 where id = '.$log_id);
 		$im = imagecreatetruecolor( 1, 1);
 		header('Content-Type:image/png');
 		imagepng($im);
@@ -138,4 +140,5 @@ class Ajax extends CI_Controller {
 		$detail = $this->course->list_course_detail();
 		print_r( $detail);
 	}
+
 }

@@ -13,8 +13,6 @@
     </div>
 
     <div class="">
-        <?php $this->load->module('webkit/photo_uploads/uploads');?>
-
 
         <form class="form-horizontal" action="" method="post">
             <fieldset>
@@ -30,7 +28,7 @@
                     <label class="control-label" for="textarea2">
                         邮件模板内容
                     </label>
-                    <div class="controls">
+                    <div class="kindeditor">
                         <textarea name="mail_template" class="span10 longtext" id="textarea2" rows="10"></textarea>
                     </div>
                 </div>

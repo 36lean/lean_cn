@@ -11,4 +11,3 @@
 
 	<?php endforeach ;?>
 </ul>
-

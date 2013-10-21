@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1381414308, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1382081936, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -81,6 +81,19 @@ jQuery("img").lazyload({effect : "fadeIn"});
 <!--[if IE 7]>
    	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
 <![endif]--> 
+  	<!--[if lte IE 6]>
+  	<!-- bsie css patch -->
+  	<link rel="stylesheet" type="text/css" href="<?php echo $_G['siteurl'];?>static/bsie/css/bootstrap-ie6.css">
+<!-- bsie additional css patch -->
+  	<link rel="stylesheet" type="text/css" href="<?php echo $_G['siteurl'];?>static/bsie/css/ie.css">
+  	<![endif]-->
+  	
+  	<!--[if lte IE 6]>
+  	<!-- bsie js patch, it will only execute in IE6 -->
+  	<script src="<?php echo $_G['siteurl'];?>static/bsie/js/bootstrap-ie.js" type="text/javascript"></script>
+  	<![endif]-->
+
+
 </head>
 
 

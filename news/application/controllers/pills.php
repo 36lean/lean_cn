@@ -60,10 +60,13 @@ class Pills extends CI_Controller
 			$this->article_model->add_click_by_id( $article['id']);
 		}
 
+		if( $article['post_status'] != 1)
+			$article['post_title'] = '文章未找到';
+
 		$meta = json_decode( $article['post_meta'] , true);
 
 		$this->template->set_layout('context')
-					   ->title($article['post_title'])
+					   ->title( $article['post_title'] )
 					   ->set(  'keywords' , $meta['keywords'])
 					   ->set(  'description' ,$meta['description'])
 					   ->build('pills/n' , array('article'=>$article));

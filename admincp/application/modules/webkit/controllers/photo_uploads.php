@@ -9,8 +9,7 @@ class Webkit_photo_uploads_module extends CI_Module
 	}
 
 	public function handle()
-	{
-
+	{	
 		$file = array();
 
 		if( $_FILES['Filedata']['error'] === 0)

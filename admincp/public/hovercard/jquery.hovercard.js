@@ -309,20 +309,24 @@
                         {
                             urlToRequest = username,
                             cardHTML = function (profileData) {
+
+
                                 return '<div class="s-card s-card-pad">' +
                                         (profileData.image ? ('<img class="s-img" src=' + profileData.image + ' />') : '') +
 
-                                        (profileData.name ? ('<p class="lean">名字: ' + profileData.name + ' </p>') : '') +
+                                        (profileData.name ? ('<p><strong>姓名</strong> : ' + profileData.name + ' </p>') : '') +
 
-                                        (profileData.company ? ('<p class="s-desc"><span class="s-strong">公司</span> : ' + profileData.company + '</p>') : '') +
+                                        (profileData.status ? ('<p><strong>客户状态</strong> : ' + profileData.status + '</p>') : '') +
 
-                                        (profileData.phone ? ('<p class="s-desc"><span class="s-strong">电话</span> : ' + profileData.phone + '</p>') : '') +
+                                        (profileData.company ? ('<p><strong>公司</strong> : ' + profileData.company + '</p>') : '') +
 
-                                        (profileData.mobile ? ('<p class="s-desc"><span class="s-strong">手机</span> : ' + profileData.mobile + '</p>') : '') +
+                                        (profileData.phone ? ('<p><strong>电话</strong> : ' + profileData.phone + '</p>') : '') +
 
-                                        (profileData.email ? ('<p class="s-desc"><span class="s-strong">Email</span> : <a href="' + profileData.email + '">' + profileData.email + '</a></p>') : '') +
+                                        (profileData.mobile ? ('<p><strong>手机</strong> : ' + profileData.mobile + '</p>') : '') +
+
+                                        (profileData.email ? ('<p><strong>Email</strong> : <a href="' + profileData.email + '">' + profileData.email + '</a></p>') : '') +
                                         
-                                        (profileData.contact ? ('<p class="s-desc"><span class="s-strong">最近一次沟通记录 :</span></p>' + profileData.contact ) : '') +
+                                        (profileData.contact ? ('<p><strong>最近一次沟通记录 :</strong></p>' + profileData.contact ) : '')
 
                                         '</div>';
                             };

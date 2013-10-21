@@ -53,7 +53,7 @@
               <?php echo $task[ 'mail_title']?>
             </td>
             <td class="center">
-              Ready
+              <?php if( 1==$task['status']) { echo '准备初始化';}?>
             </td>
             <td class="center">
               <?php echo date( 'Y/m/d h:i:s' , $task[ 'created_date']);?>

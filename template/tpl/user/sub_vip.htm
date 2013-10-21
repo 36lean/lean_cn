@@ -11,7 +11,7 @@
 <dl class="dl-horizontal">
 	<dt>{lang vip_start} : </dt> <dd><i class="icon-bell"></i> {eval echo date( 'Y-m-d ', $vip_time['jointime'])}</dd>
 	<dt>{lang vip_end} : </dt> <dd><i class="icon-bell-alt"></i> {eval echo date( 'Y-m-d', $vip_time['exptime'])}</dd>
-	<dt>{lang vip_total} : </dt> <dd><i class="icon-time"></i> {eval echo ($vip_time['exptime'] - $vip_time['jointime'])/86400}天</dd>
+	<dt>{lang vip_total} : </dt> <dd><i class="icon-time"></i> {eval echo intval( ($vip_time['exptime'] - $today)/86400) }天</dd>
 	<dt>{lang vip_money} : </dt> <dd><i class="icon-money"></i> {$my_credit} ￥</dd>
 </dl>
 <hr />
@@ -25,6 +25,5 @@
  <a href="vip.php?action=active" class="btn btn-success"><i class="icon-thumbs-up"></i> {lang vip_active}</a>
 {/if}
 </div>
-
 
 {template user/footer}

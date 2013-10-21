@@ -146,41 +146,59 @@
 		<script type="text/javascript" src="{$_G['setting']['jspath']}md5.js?{VERHASH}" reload="1"></script>
 	<!--{/if}-->
 	<div id="layer_lostpw_$loginhash" style="display: none;">
-		<h3 class="flb">
-			<em id="returnmessage3_$loginhash">{lang getpassword}</em>
+		<div class="page-header">
+		<h3>
+			{lang getpassword}
 			<span><!--{if !empty($_GET['infloat']) && !isset($_GET['frommessage'])}--><a href="javascript:;" class="flbc" onclick="hideWindow('login')" title="{lang close}">{lang close}</a><!--{/if}--></span>
 		</h3>
+		</div>
+
+
+		<div class="row-fluid">
+
+		<div class="span2"></div>
+
+		<div class="span4">
+		<p class="lead">输入我的邮箱</p>
 		<form method="post" autocomplete="off" id="lostpwform_$loginhash" class="cl" onsubmit="ajaxpost('lostpwform_$loginhash', 'returnmessage3_$loginhash', 'returnmessage3_$loginhash', 'onerror');return false;" action="member.php?mod=lostpasswd&lostpwsubmit=yes&infloat=yes">
-			<div class="c cl">
+
 				<input type="hidden" name="formhash" value="{FORMHASH}" />
 				<input type="hidden" name="handlekey" value="lostpwform" />
-				<div class="rfm">
-					<table>
-						<tr>
-							<th><span class="rq">*</span><label for="lostpw_email">{lang email}:</label></th>
-							<td><input type="text" name="email" id="lostpw_email" size="30" value=""  tabindex="1" class="px p_fre" /></td>
-						</tr>
-					</table>
+
+				<div class="control-group">
+				<div class="controls">
+				<label for="lostpw_email">{lang email}:</label>
+				<input type="text" name="email" id="lostpw_email" size="30" value=""  tabindex="1" class="input-large" />
 				</div>
-				<div class="rfm">
-					<table>
-						<tr>
-							<th><label for="lostpw_username">{lang username}:</label></th>
-							<td><input type="text" name="username" id="lostpw_username" size="30" value=""  tabindex="1" class="px p_fre" /></td>
-						</tr>
-					</table>
 				</div>
 
-				<div class="rfm mbw bw0">
-					<table>
-						<tr>
-							<th></th>
-							<td><button class="pn pnc" type="submit" name="lostpwsubmit" value="true" tabindex="100"><span>{lang submit}</span></button></td>
-						</tr>
-					</table>
+
+				<div class="control-group">
+				<div class="controls">
+				<button class="btn btn-primary" type="submit" name="lostpwsubmit" value="true" tabindex="100"><span>{lang submit}</span></button>
 				</div>
-			</div>
+				</div>
+
 		</form>
+		</div>
+
+		<div class="span6">
+
+		<div class="">
+		<blockquote>
+			<h3>欢迎回来 !</h3>
+
+			<ol>
+				<li>输入您的邮箱</li> 
+				<li>我们将发送链接到您的邮箱</li> 
+				<li>请注意查收邮件</li>
+			</ol>
+		</blockquote>
+		</div>
+
+		</div>
+
+
 	</div>
 </div>
 

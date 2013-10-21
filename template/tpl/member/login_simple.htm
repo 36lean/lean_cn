@@ -1,4 +1,6 @@
+<div class="container" style="background:#fff;">
 <!--{if CURMODULE != 'logging'}-->
+
 	<script type="text/javascript" src="{$_G[setting][jspath]}logging.js?{VERHASH}"></script>
 
 	<form class="form-inline" method="post" autocomplete="off" id="lsform" action="member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes" onsubmit="{if $_G['setting']['pwdsafety']}pwmd5('ls_password');{/if}return lsSubmit();">
@@ -71,3 +73,4 @@
 	<!--{/if}-->
 
 <!--{/if}-->
+

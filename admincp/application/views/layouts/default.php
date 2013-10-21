@@ -23,47 +23,29 @@
     <!-- jQuery -->
     <script src="<?php echo base_url('public/charisma/js/jquery-1.7.2.min.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');?>"></script>
-    <script src="//cdnjs.bootcss.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('public/bootstrap/js/bootstrap.js');?>"></script>
     <script src="<?php echo base_url('public/tinymce/js/tinymce/tinymce.min.js');?>"></script>
     <script src="<?php echo base_url('public/ckeditor/ckeditor.js');?>"></script>
     <script src="<?php echo base_url('public/hovercard/jquery.hovercard.js');?>"></script>
 
+    <script charset="utf-8" src="<?php echo base_url('public/kindeditor/kindeditor-all-min.js');?>"></script>
+    <script charset="utf-8" src="<?php echo base_url('public/kindeditor/zh_CN.js');?>"></script>
+    <script src="<?php echo base_url('public/chartjs/Chart.min.js');?>"></script>
     <script>
-    $(function(){
-        $('.datetimepicker').datetimepicker();
-
-        tinymce.init({
-            selector: ".longtext",
-            plugins: [
-                      "advlist autolink lists link image charmap print preview anchor",
-                      "searchreplace visualblocks code fullscreen",
-                      "insertdatetime media table contextmenu paste "
-                    ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-            autosave_ask_before_unload: false,
-            max_height: 420,
-            min_height: 420,
-            height : 420 , 
-            convert_urls : false , 
-            });
-
-            tinymce.init({
-                selector: ".shorttext",
-                plugins: [
-                        "advlist autolink lists link image charmap print preview anchor",
-                        "searchreplace visualblocks code fullscreen",
-                        "insertdatetime media table contextmenu paste "
-                    ],
-                toolbar: false,
-                autosave_ask_before_unload: false,
-                max_height: 180,
-                min_height: 180,
-                height : 180 , 
-                convert_urls : false , 
-            });
+        KindEditor.ready(function(K) {
+                window.editor = K.create('.kindeditor' , {
+                    //id : 'Filedata',
+                    width : '100%' , 
+                    height: '350px' , 
+                    uploadJson : '<?php echo base_url("kind/upload_json.php");?>',
+                    allowFileManager : false ,
+                    //imageUploadJson : '<?php echo site_url('module/webkit/photo_uploads/handle');?>' ,
+                    dir : 'image' , 
+                    urlType : 'domain' ,
+                });
         });
-
     </script>
+
 </head>
 
 <body style="padding:50px;font-size:12px;">
@@ -104,6 +86,7 @@ else
     <h5><small>© 2013 36lean.com</small></h5>
     <h5><small> All rights reserved.</small></h5>
 </div>
+
 
 </body>
 </html>

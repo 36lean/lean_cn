@@ -2,20 +2,67 @@
 
 class M_sale extends CI_Model
 {
-	public function get_sale_contacts( $page , $offset , $sale_id )
+	public function get_sale_contacts( $page , $offset , $sale_id , $condition = '' , $extrawhere = '')
 	{
-		return $this->db->select('contacts.id , contacts.name , contacts.company_id , contacts.email , contacts.display_color , contacts.user_id , contacts.job , company.name as companyname , contacts.office_phone , contacts.mobile , clienttags.tag , clienttags.name as tagname , appointment.datereminded , appointment.event , uploads.filename , client_connect.response ')
+
+		if( is_array( $condition))
+		{
+			$where = $condition;
+
+			$order = 'contacts.id';
+			
+			$sort = 'asc';
+
+		}else if( 'id' === $condition)
+		{
+			
+			$order = 'contacts.id';
+			
+			$sort = 'desc';
+
+		}else if( 'modified_date' === $condition)
+		{
+			$order = 'contacts.modified_date';
+
+			$sort = 'desc';
+
+		}else {
+
+			$order = 'contacts.id';
+			
+			$sort = 'asc';	
+		}
+
+		if( !isset( $where) )
+			$where = 'contacts.id > 0';
+
+		if( trim( $extrawhere )){
+
+			$where .= ' and ('.$extrawhere .')';
+
+			$offset = 2000;
+		}
+
+		$rs = $this->db->select('contacts.id , contacts.name , contacts.company_id , contacts.email , contacts.display_color , contacts.user_id , contacts.job , company.name as companyname , contacts.office_phone , contacts.mobile , clienttags.id as tag_id , clienttags.tag , clienttags.name as tagname , appointment.datereminded , appointment.event , uploads.filename ')
 						->from('admin_contacts contacts')
 						->join('admin_client_appointment appointment' , 'appointment.client_id = contacts.id' , 'left')
 						->join('admin_clienttags clienttags' , 'clienttags.id = contacts.tag' , 'left')
-						->join('admin_company company' , 'company.id = contacts.company_id')
+						->join('admin_company company' , 'company.id = contacts.company_id' , 'left')
 						->join('admin_uploads uploads' , 'uploads.id = contacts.from_file_id' , 'left')
-						->join('admin_client_connect client_connect' , 'client_connect.client_id = contacts.id' , 'left')
-						->where( array('contacts.assign_to' => $sale_id))
+						->where( array('contacts.assign_to' => $sale_id , 'contacts.close' => '0'))
+						->where( $where)
 						->group_by('contacts.id')
+						->order_by( $order , $sort)
 						->limit( $offset , ($page - 1) * $offset )
 						->get()
 						->result_array();
+		return $rs;
+	}
+
+	public function get_connect_log( $client_id )
+	{
+		return $this->db->select('id,')->from('admin_client_connect')->where( array(
+		));
 	}
 
 	public function get_contact_tags()
@@ -29,7 +76,7 @@ class M_sale extends CI_Model
 	{
 		return $this->db->select('id')
 						->from('admin_contacts')
-						->where( array( 'assign_to' => $sale_id ) )
+						->where( array( 'assign_to' => $sale_id , 'close' => '0' ) )
 						->get()
 						->num_rows();
 	}
@@ -79,4 +126,243 @@ class M_sale extends CI_Model
 			echo 911;
 		}
 	}
+
+	public function get_contact_details( $page , $offset , $salemanid)
+	{
+		return $this->db->select(' a.id , a.client_id , c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
+						->from('admin_client_appointment a')
+						->join('admin_contacts c' , 'c.id = a.client_id' , 'left')
+						->join('admin_company cp' , 'cp.id = c.company_id' , ' left')
+						->where( array('salesman_id'=>$salemanid))
+						->order_by('a.datereminded' , 'desc')
+						->limit( $offset , ($page-1)*$offset )
+						->get()->result_array();		
+	}
+	
+	public function remove_remind( $id , $uid)
+	{
+		$num = $this->db->where( array('id'=>$id , 'salesman_id'=>$uid))
+				 		->get('admin_client_appointment')
+				 		->num_rows();
+
+		if( 1 === $num)
+		{
+			return $this->db->delete('admin_client_appointment' , array('id'=>$id));
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	public function get_message_sum($uid)
+	{
+		return $this->db->select('id')
+						->from('admin_client_appointment')
+						->where( array('salesman_id'=>$uid))
+						->get()->num_rows();
+	}
+
+	public function get_today_remind( $sale_id)
+	{
+		$today = strtotime( date('Y-m-d') );
+
+		$last = $today - 1;
+
+		$next = $today+86399;
+
+		return $this->db->select('id')->from('admin_client_appointment')
+									  ->where( 'datereminded > '.$last)
+									  ->where( 'datereminded < '.$next)
+									  ->where( array('salesman_id'=>$sale_id))
+									  ->get()
+									  ->num_rows();
+	}
+
+	public function get_contact_by_id( $id)
+	{
+
+		return $this->db->select('c.* , t.tag as tag_code , t.name as tag_name , cp.name as companyname , cp.address , cp.postid , cp.weburl , a.username as salesman  , u.filename')
+						->from('admin_contacts c')
+						->join('admin_clienttags t' , 't.id = c.tag' , 'left')
+						->join('admin_company cp' , 'cp.id = c.company_id' , 'left')
+						->join('admin_users a' , 'a.uid = c.assign_to' , 'left')
+						->join('admin_uploads u' , 'u.id = c.from_file_id' , 'left')
+						->where( array('c.id'=>$id))
+						->get()->row_array();
+	}
+
+	public function get_profile_by_contact_id( $id)
+	{
+		return $this->db->select('t.* , m.username')
+						->from('admin_contacts_tmp t')
+						->join('ucenter_members m' , 'm.uid = t.user_id')
+						->where( array('contact_id'=>$id))
+						->get()
+						->row_array();
+	}
+
+	public function add_connect()
+	{
+		$target = 
+		array(
+			'client_id' => intval( $this->input->post('client_id')) , 
+			'response'  => $this->input->post('connect_text') , //strip_tags( $this->input->post('connect_text') , '<img>') , 
+			'date'		=> time(), 
+		);
+
+		return $this->db->insert('admin_client_connect' , $target);
+	}
+
+	public function update_contact_connect()
+	{
+
+		$this->db->where(array('id'=>intval( $this->input->post('id'))))
+				 ->update('admin_client_connect' , array('date'=>time() , 'response'=> $this->input->post('response') ));
+
+		return $this->input->post('client_id');
+	}
+
+	public function remove_contact_connect()
+	{
+
+		$this->db->delete( 'admin_client_connect' , array('id'=> intval( $this->input->post('id'))));
+
+		return $this->input->post('client_id');
+	}
+
+	public function update_contact_profile()
+	{	
+		$id = intval( $this->input->post('id'));
+		unset( $_POST['id']);
+
+		$filter = array();
+		foreach ($_POST as $key => $value) {
+			$filter[$key] = trim( $this->input->post($key));
+		}
+
+		return $this->db->where( array( 'id' => $id))
+				 		->update('admin_contacts' , $filter);
+	}
+
+	public function add_clock_for_contact()
+	{
+
+		$ci = & get_instance();
+
+		$new_one = array(
+			  'client_id' 		=> $this->input->post('contact_id') , 
+			  'salesman_id'		=> $ci->_G['uid'] ,
+			  'datereminded' 	=> strtotime( $this->input->post('time')) , 
+			  'event'			=> trim( $this->input->post('message')) ,
+
+		);
+
+		if( $this->db->insert('admin_client_appointment' , $new_one) )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public function add_remind( $sale_id )
+	{
+		$data = array( 
+			'salesman_id' => $sale_id , 
+			'client_id' => intval( $this->input->post('contact_id')) , 
+			'datereminded' => strtotime( trim( $this->input->post('date'))) ,
+			'event'	=> '回访提醒' , 
+		);
+
+		if( $this->db->where( $data)->from('admin_client_appointment')->get()->num_rows )
+			return 0;
+
+		return $this->db->insert( 'admin_client_appointment' , $data );
+	}
+
+	public function get_contacts_log( $id)
+	{
+		return $this->db->select('id,response,date')
+						->from('admin_client_connect')
+						->where( array( 'client_id' => $id ))
+						->order_by('id','desc')
+						->get()
+						->result_array();
+	}
+
+	public function get_searches(  $page , $offset , $sale_id , $condition  )
+	{
+		if( $this->input->post('contact_search') )
+		{	
+			$str = trim( $this->input->post('key'));
+
+			if( preg_match('/^\w\d$/', $str)) {
+				
+				$where = 'clienttags.tag = \''.$str.'\'';
+			}
+			else if( preg_match('/^\d{11}$/', $str) || preg_match('/^[0-9\-]+$/', $str))
+			{
+					
+				$where = 'contacts.mobile = ' . $str . ' or contacts.office_phone like\''.$str.'\'';
+
+			}else if( preg_match('/^[\x{4e00}-\x{9fa5}a-zA-Z]+$/u', $str)) {
+
+				$where = 'contacts.name like \'%'.$str.'%\' or company.name like \'%'.$str.'%\'';
+
+			}else if( preg_match('/^[a-zA-Z\.\-\_0-9]+\@[a-zA-Z\.\-\_0-9]+\.[a-zA-Z\.\-\_0-9]+$/', $str)) {
+				
+				$where = 'contacts.email = \''. $str . '\'' ;
+
+			}else {
+
+				$where = 'companyname =\''.$str.'\'';
+
+			}
+
+			return $this->get_sale_contacts(  $page , $offset , $sale_id , $condition , $where );
+		}
+	}
+
+	public function get_web_members( $uid , $page , $offset)
+	{
+		if( $uid === 0)
+			$where = array();
+		else
+			$where = array('t.assign_to'=>$uid);
+
+		return $this->db->select('t.id,m.uid,m.username,m.email,m.regdate,p.mobile,p.telephone,p.company,p.position')
+						->from('admin_contacts_tmp t')
+						->join('ucenter_members m' , 'm.uid = t.user_id' , 'left')
+						->join('common_member_profile p' , 'p.uid = t.user_id' , 'left')
+						->where( $where)
+						->limit( $offset , ($page-1)*$offset)
+						->order_by('uid' , 'desc')
+						->get()
+						->result_array();
+	}
+
+	public function get_web_members_sum( $uid)
+	{
+
+
+		if( $uid === 0)
+			$where = array();
+		else
+			$where = array('assign_to'=>$uid);
+
+		return $this->db->select('id')
+						->from('admin_contacts_tmp')
+						->where( $where )
+						->get()
+						->num_rows();
+	}
+
+	public function remove_arraged_webmember( $id , $uid)
+	{
+		return $this->db->delete('admin_contacts_tmp' , array('id'=>$id , 'assign_to'=>$uid));
+	}
+	
 }
