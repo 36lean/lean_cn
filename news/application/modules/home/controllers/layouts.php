@@ -13,9 +13,8 @@ class Home_layouts_module extends CI_Module
 		}
 
 		$cache = file_get_contents('./../cache/common/header.html');
-
 		echo $cache;
-		echo '<div class="main-body">';
+
 	}
 
 	public function footer()
@@ -23,13 +22,10 @@ class Home_layouts_module extends CI_Module
 		if( !file_exists( '../cache/common/footer.html'))
 		{
 			echo 'Header Cache Not Found . generate root/cache/common/footer.html first';
-
 			exit;
 		}
-
 		$cache = file_get_contents('./../cache/common/footer.html');
-
-		echo '</div>';
+		
 		echo $cache;
 	}
 }

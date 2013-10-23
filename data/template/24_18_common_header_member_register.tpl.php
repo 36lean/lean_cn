@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1381981101, '18', './data/template/24_18_common_header_member_register.tpl.php', './template/tpl', 'common/header_member_register')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1382502482, '18', './data/template/24_18_common_header_member_register.tpl.php', './template/tpl', 'common/header_member_register')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -81,6 +81,13 @@ jQuery("img").lazyload({effect : "fadeIn"});
 <!--[if IE 7]>
    	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
 <![endif]--> 
+  	<!--[if lte IE 6]>
+  	<link rel="stylesheet" type="text/css" href="<?php echo $_G['siteurl'];?>static/bsie/css/bootstrap-ie6.css">
+  	<link rel="stylesheet" type="text/css" href="<?php echo $_G['siteurl'];?>static/bsie/css/ie.css">
+  	<script src="<?php echo $_G['siteurl'];?>static/bsie/js/bootstrap-ie.js" type="text/javascript"></script>
+  	<![endif]-->
+
+
 </head>
 
 
@@ -131,17 +138,21 @@ jQuery("img").lazyload({effect : "fadeIn"});
 
 <div class="row-fluid">
 
-<div class="span3" align="center" style="margin-bottom:60px">
+<div class="span3" align="center" style="margin-bottom:20px">
 <a href="<?php echo $_G['siteurl'];?>"><img src="<?php echo $_G['siteurl'];?>/static/mot/logo.png" data-original="<?php echo $_G['siteurl'];?>/static/mot/logo.png" /></a>
 
 </div>
 
 <div class="span9">
-        <ul class="nav nav-pills pull-right">
+
+     </div>
+</div>
+
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
 
           	<li <?php if(CURSCRIPT === 'portal' && CURMODULE !== 'aboutus') { ?>class="active"<?php } ?>><a href="portal.php"><i class="icon-home"></i> 首页</a></li>
-          	
-
  			<li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
 <i class="icon-cloud"></i> 云学院 
@@ -152,14 +163,22 @@ jQuery("img").lazyload({effect : "fadeIn"});
 <li><a href="read.php?title=product">产品版本</a></li>
 </ul>
     		</li>
-          	
           	<li><a href="<?php echo $_G['site_url'];?>news"><i class="icon-globe"></i> 精企新闻 </a></li>
-          	
           	<li <?php if($_GET['title'] === 'aboutus') { ?>class="active"<?php } ?>><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们 </a></li>
           	<li <?php if($_GET['title'] === 'contactus') { ?>class="active"<?php } ?>><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们 </a></li>
         </ul>
-     </div>
+    </div>
 </div>
+
+<script>
+jQuery( function () {
+
+$('li.dropdown').on('mouseover' , function(){
+$(this).dropdown('toggle');
+});
+
+});
+</script>
 
 <div class="container">
 <div id="append_parent"></div><div id="ajaxwaitid"></div>

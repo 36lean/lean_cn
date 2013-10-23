@@ -7,7 +7,7 @@
 <?php } else {?>
 
 
-<div id="<?php echo $article['post_title'];?>" class="hidden"></div>
+<div id="<?php echo  trim( strip_tags( $article['post_title']) );?>" class="hidden"></div>
 
 
 <div class="context-body">

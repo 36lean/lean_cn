@@ -53,7 +53,7 @@ class M_mail extends CI_Model
 
 		$template = $this->get_template_by_id( $template_id);
 
- 		$this->message->setTo( array( $email => 'user'));
+ 		$this->message->setTo( array( $email => $email ));
 
  		$this->message->setSubject( $template['mail_title'] );
 
@@ -82,8 +82,20 @@ class M_mail extends CI_Model
 	{
 		if( $this->input->post('send_test'))
 		{
-			return $this->send_mail_contact( trim( $this->input->post('email')) , trim( $this->input->post('template_id')) );
+
+			$list = trim( $this->input->post('email'));
+
+			$emails = explode(',', $list);
+
+			foreach ($emails as $e) {
+				if( preg_match('/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/', $e) )
+				{
+					$this->send_mail_contact( $e , trim( $this->input->post('template_id')) );
+				}
+			}
 		}
+
+		return true;
 		
 	}
 
@@ -117,7 +129,7 @@ class M_mail extends CI_Model
 			{
 				$list = $this->db->select('id contact_id , email')
 						 		 ->from('admin_contacts')
-						         ->limit( $task['offset'] , ($task['page'] - 1) * $task['offset'] )
+						         ->limit( $task['offset'] - $task['page'] + 1 , $task['page'] )
 						         ->order_by('id' , 'asc')
 						         ->get()->result_array();
 
@@ -125,7 +137,7 @@ class M_mail extends CI_Model
 			{
 				$list = $this->db->select('uid , email') 
 								 ->from('ucenter_members')
-								 ->limit( $task['offset'] , ($task['page'] - 1) * $task['offset'] )
+								 ->limit(  $task['offset'] - $task['page'] + 1 , $task['page']  )
 								 ->order_by('uid' , 'asc')
 								 ->get()->result_array();
 			}
@@ -146,9 +158,7 @@ class M_mail extends CI_Model
 				);
 
 				$this->db->insert( 'admin_maillog' , $log);
-
 			}
-
 
 			return $task_id;
 		}
@@ -158,6 +168,7 @@ class M_mail extends CI_Model
 	{
 		return $this->db->select('email,template_id,task_id')
 						->from('admin_maillog')
+						->where( array('id'=>$id))
 						->get()
 						->row_array();
 	}

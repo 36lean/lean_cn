@@ -1,4 +1,4 @@
-<?php if( $status) {?>
+<?php if( $status === 1) {?>
 
 	<div class="alert alert-info">测试邮件发送成功 请查收</div>
 
@@ -77,13 +77,13 @@
 
 
 <div class="page-header">
-	<h4>模板测试</h4>
+	<h4>邮箱列表</h4>
 </div>
 
 <form action="" method="post">
 
-	<label><strong>输入邮箱</strong></label>
-	<input name="email" type="text" />
+	<label><strong>输入邮箱 多个使用逗号 , 隔开</strong></label>
+	<textarea class="span12" rows="5" name="email"></textarea>
 
 	<label><strong>选择模板</strong></label>
 	<select name="template_id">

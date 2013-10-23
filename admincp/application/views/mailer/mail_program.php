@@ -17,15 +17,11 @@
           <th class="span1">
             类型
           </th>
-          <th class="span1">
-            发送次数
-          </th>
+
           <th class="span2">
             邮件模板
           </th>
-          <th class="span2">
-            执行状态
-          </th>
+
           <th class="span2">
             创建日期
           </th>
@@ -46,15 +42,11 @@
             <td>
               <span class="label label-success"><?php echo $task[ 'type'];?></span>
             </td>
-            <td>
-              <?php echo $task[ 'send_times'];?>
-            </td>
+
             <td>
               <?php echo $task[ 'mail_title']?>
             </td>
-            <td class="center">
-              <?php if( 1==$task['status']) { echo '准备初始化';}?>
-            </td>
+
             <td class="center">
               <?php echo date( 'Y/m/d h:i:s' , $task[ 'created_date']);?>
             </td>

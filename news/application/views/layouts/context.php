@@ -30,13 +30,13 @@
 
   <div class="span3">
 
-    <div class="panel panel-success">
-      <div class="panel-heading">实时热门</div>
-      <div class="panel-body">
-        <?php $this->load->module('home/default/get_tags');?>
-      </div>
-    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">快速入口</div>
 
+
+        <?php $this->load->module('home/default/categories');?> 
+
+    </div>
 
     <div class="panel panel-primary">
       <div class="panel-heading">关注我们</div>

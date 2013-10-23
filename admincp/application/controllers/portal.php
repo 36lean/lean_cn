@@ -41,6 +41,11 @@ class Portal extends Base_Controller
 
 			$this->article->remove_articles();
 		}
+
+		if( $this->input->post('test'))
+		{
+			$this->portal->eg_filter();
+		}
 	}
 
 	public function navigation() {
@@ -133,9 +138,20 @@ class Portal extends Base_Controller
 
 		$rule = json_decode( file_get_contents( FCPATH.'data/spider/'.$info['rule_name']) , true );
 
-		$this->portal->get_test_data( $rule , $info );
+		$data = $this->portal->get_test_data( $rule , $info , TRUE );
 
-		$this->template->build('portal/spider_test');
+		$this->template->build('portal/spider_test' , array('data' => $data));
+	}
+
+	public function spider_generate( $filename)
+	{	
+
+		$info = json_decode( file_get_contents( FCPATH.'data/spider_source/'.$filename) , true );
+
+		$rule = json_decode( file_get_contents( FCPATH.'data/spider/'.$info['rule_name']) , true );
+
+		$this->portal->get_test_data( $rule , $info , FALSE );
+
 	}
 
 	public function edit_article( $id)

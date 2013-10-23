@@ -1,4 +1,6 @@
 <?php $this->load->module('home/layouts/header');?>
+
+
 <div class="container-fluid">
 <div class="row-fluid">
 
@@ -36,13 +38,12 @@
     <div class="panel panel-info">
       <div class="panel-heading">快速入口</div>
 
-      <div class="panel-body">
-          
-      </div>
+
+        <?php $this->load->module('home/default/categories');?> 
 
     </div>
 
-      <?php $this->load->module('home/default/categories');?>
+      
 
     </div>
 

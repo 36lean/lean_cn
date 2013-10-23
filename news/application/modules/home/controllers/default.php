@@ -20,7 +20,7 @@ class Home_Default_module extends CI_Module{
 	{
 		$article = $this->article_models->get_center_focus();
 
-		$article_list = $this->article_models->get_today_list(3);
+		$article_list = $this->article_models->get_today_list(10);
 
 		$relations = $this->article_models->get_relation_article( $article['category'] , 16);
 

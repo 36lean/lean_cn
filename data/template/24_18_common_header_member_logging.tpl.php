@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1382081936, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1382430501, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
 ;?>
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -143,8 +143,7 @@ jQuery("img").lazyload({effect : "fadeIn"});
 <div class="container main-body">
 
 <div class="row-fluid">
-
-<div class="span3" align="center" style="margin-bottom:60px">
+<div class="span3" align="center" style="margin-bottom:10px">
 <a href="<?php echo $_G['siteurl'];?>"><img src="<?php echo $_G['siteurl'];?>/static/mot/logo.png" data-original="<?php echo $_G['siteurl'];?>/static/mot/logo.png" /></a>
 
 </div>
@@ -172,6 +171,17 @@ jQuery("img").lazyload({effect : "fadeIn"});
           	<li <?php if($_GET['title'] === 'contactus') { ?>class="active"<?php } ?>><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们 </a></li>
         </ul>
      </div>
+</div>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <a class="brand" href="#">Title</a>
+    <ul class="nav">
+    <li class="active"><a href="#">首页</a></li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+    </ul>
+    </div>
 </div>
 
 <div class="container">

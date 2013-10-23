@@ -79,27 +79,60 @@
 	</div>
 </div>
 
-<div class="span4">
+<div class="span3">
 	<div class="well">
 	<h5>生成采集数据</h5>
+		<ul>
+		<?php foreach ($sources as $source) : ?>
+			<li><?php echo $source;?> <a href="<?php echo site_url('portal/spider_generate/'.$source);?>">生成数据</a></li>
+		<?php endforeach ?>
+		</ul>
 
-	<form action="" method="post">
+
+	</div>
+</div>
+
+<div class="span3">
+	<div class="well">
+	<h5>全文过滤工具</h5>
+
+	<form accept="" method="post">
+
 		<div class="controls">
-			<h5>来源名称</h5>
-				<select class="input-xlarge">
-					<?php foreach ($sources as $source) { ?>
-					<option value="<?php echo $source;?>"><?php echo $source;?></option>
-					<?php }?>
-				</select>
+			<label>选择过滤的字段</label>
+			<select name="column">
+
+				<option value="post_titlelink">post_titlelink</option>
+				<option value="post_author">post_author</option>
+				<option value="post_summary">post_summary</option>
+				<option value="post_content">post_content</option>
+				<option value="post_title">post_title</option>
+				<option value="post_meta">post_meta</option>
+
+
+			</select>
 		</div>
 
 		<div class="controls">
-			<button class="btn btn-primary" name="post_rule" value="1">生成数据</button>
-		</div>		
+			<label>关键字正则</label>
+			<input name="preg" type="text" />
+		</div>	
+
+		<div class="controls">
+			<label>替换为</label>
+			<input name="replace" type="text" />
+		</div>
+
+		<div class="controls">
+			<label></label>
+			<button class="btn btn-primary" name="test" value="1">测试</button>
+		</div>
 
 	</form>
+
 	</div>
 </div>
+
 </div>
 
 

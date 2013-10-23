@@ -22,7 +22,7 @@ $meta = json_decode( $article['post_meta'] , true);
 			<label><strong>标题</strong></label>
 		</div>
 		<div class="span10">
-			<input class="span6" name="post_title" value="<?php echo $article['post_title'];?>" type="text" />
+			<input class="span6" name="post_title" value="<?php echo trim( strip_tags( $article['post_title'] ) );?>" type="text" />
 		</div>
 	</div>
 
@@ -39,7 +39,15 @@ $meta = json_decode( $article['post_meta'] , true);
 	<div class="control-group">
 		<label><strong>正文</strong></label>
 		<div class="controls">
-			<textarea class="kindeditor" name="post_content"><?php echo $article['post_content'];?></textarea>
+			<div class="row">
+				
+				<div class="span6"><textarea class="kindeditor" name="post_content"><?php echo $article['post_content'];?></textarea></div>
+
+				<div class="span6">
+					<pre>
+					<?php echo $article['post_content'];?>
+					</pre>
+				</div>
 		</div>
 	</div>
 
@@ -88,7 +96,7 @@ $meta = json_decode( $article['post_meta'] , true);
 		<div class="span10">
 			<select name="category">
 				<?php foreach ($categories as $c) { ?>
-				<option <?php if( $article['post_status'] == $c['id']){?>selected="selected"<?php }?> value="<?php echo $c['id'];?>"><?php echo $c['category_title'];?></option>
+				<option <?php if( $article['category'] == $c['id']){?>selected="selected"<?php }?> value="<?php echo $c['id'];?>"><?php echo $c['category_title'];?></option>
 				<?php }?>
 			</select>
 		</div>

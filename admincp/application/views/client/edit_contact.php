@@ -1,79 +1,59 @@
 <?php if( isset( $status)){
-
 	if( $status === -1)
-	{
-		$this->load->module('webkit/information/show_information' , array('客户资料更新失败'));
-	}
+	{$this->load->module('webkit/information/show_information' , array('客户资料更新失败'));}
 	else if( $status === 1)
-	{
-		$this->load->module('webkit/information/show_information' , array('客户资料更新成功'));
-	}
+	{$this->load->module('webkit/information/show_information' , array('客户资料更新成功'));}
 }?>
-
-
 <?php
-
-
 if( $profile ){
 ?>
 <div class="row-fluid">
-
-<div class="span8">
+<div class="span6">
 <div class="alert alert-info"><i class="icon-comment-alt"></i> 沟通记录</div>
 <table class="table table-striped">
 <?php foreach ($connect as $conn) : ?>
 <tr>
-	<td class="span3"><a href="<?php echo site_url('marketing/edit_connect_record/'.$conn['id']);?>"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo date('m-d h:s' , $conn['date']) ;?></td>
-	<td class="span9">
-	<?php echo $conn['response'];?>
+	<td class="span1"><a href="<?php echo site_url('sale/edit_connect_record/'.$conn['id']);?>">Edit</a>
+	</td>
+	<td class="span4">
+		[ <?php if( 'am' === date('a')) {
+
+			$h = date('h' , $conn['date']);
+
+		}else if( 'pm' === date('a'))
+		{
+			$h = date('h'  , $conn['date'])+12;
+		}	
+
+		?>
+		<strong><?php echo date("Y-m-d ".$h.":i" , $conn['date']) ;?></strong> ]
+	</td>
+	
+	<td class="span8">
+		<?php echo $conn['response'];?>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
+
+</div>
+
+<div class="span6">
+
 <form action="" method="post">
 <input name="client_id" type="hidden" value="<?php echo $profile['id'];?>" />
 <div class="control-group">
 <div class="controls">
-<textarea class="span12" name="connect_text" rows=5></textarea>
+<textarea class="kindeditor" name="connect_text" rows=5></textarea>
 </div>
 </div>
 
 <div class="control-group">
 <div class="controls">
-<button class="btn btn-success" name="add_connect" value="1">添加记录</button>
+<button class="btn btn-success" name="add_connect" value="1">添加沟通记录</button>
 </div>
 </div>
 </form>
-
-</div>
-
-<div class="span4">
-	<form action="" method="post">
-	<input name="contact_id" type="hidden" value="<?php echo $profile['id'];?>" />
-	<div class="alert alert-info"><i class="icon-time"></i> 约定提醒</div>
-	<div class="control-group">
-		<div class="controls">
-		<label><strong>选择提醒时间</strong></label>
-    	<div class="input-append date datetimepicker" data-date="<?php echo date('Y-m-d h:i');?>" data-date-format="yyyy-mm-dd hh:ii">
-    	<input name="time" class="span12" size="16" type="text" value="<?php echo date('Y-m-d h:i');?>">
-    	<span class="add-on"><i class="icon-th"></i></span>
-    	</div> 
-    </div>
-
-    <div class="control-group">
-    	<div class="controls">
-    	<label><strong>备注信息</strong></label>
-    	<div><input name="message" type="text" /></div>
-    	</div>
-    </div>
-
-    <div class="control-group">
-    	<div class="controls">
-    	<div><button name="submit" type="submit" class="btn btn-primary" value="1" ><i class="icon-time"></i> 添加</button></div>
-    	</div>
-    </div>
-	</div>
-	</form>
 
 	<hr />
 	<div class="page-header">
@@ -208,7 +188,9 @@ $( function() {
 	</div>
 </div>
 </div>
+</div>
 
+<div class="container-fluid">
 <div class="row-fluid">
 <div class="span6">
 <div class="alert alert-info"><i class="icon-edit"></i> 预览</div>
@@ -250,13 +232,14 @@ $percent = $finish * 100 / count($profile);
 		<?php }?>
 	</td>
 </tr>
+
 <tr>
 	<td>
 		<a href="">所在企业</a>
 	</td>
 	<td>
 		<?php if( $profile['company_id']){?>
-		<a href="<?php echo site_url('marketing/view_corporation/'.$profile['company_id']);?>"><?php echo $profile['companyname'],' - ',$profile['company_id'];?>
+		<a href="<?php echo site_url('marketing/view_corporation/'.$profile['company_id']);?>"><?php echo $profile['companyname'],' - ',$profile['company_id'];?></a>
 		<?php }else {?>
 		<span class="label label-info">待分配</span>
 		<?php }?>
@@ -303,7 +286,7 @@ $percent = $finish * 100 / count($profile);
 	<td><?php echo $profile['salesman'];?></td>
 </tr>
 
-<?php if( $web_profile){?>
+<?php if( isset( $web_profile) ){?>
 
 <tr>
 	<td>网站会员ID</td>
@@ -314,6 +297,7 @@ $percent = $finish * 100 / count($profile);
 </table>
 
 </div>
+
 
 <div class="span6">
 <div class="alert alert-info"><i class="icon-edit"></i> 编辑</div>
@@ -403,7 +387,7 @@ $percent = $finish * 100 / count($profile);
 	<div class="control-group">
 		<label class="control-label">备注信息</label>
 		<div class="controls">
-			<textarea class="shorttext" name="description"><?php echo $profile['description'];?></textarea>
+			<textarea name="description"><?php echo $profile['description'];?></textarea>
 		</div>
 	</div>
 
@@ -415,6 +399,11 @@ $percent = $finish * 100 / count($profile);
 </form>
 </div>
 </div>
+</div>
+
+</div>
+
+
 
 <?php
 if( $this->_G['groupid'] !== 1 && ( $profile['assign_to'] != $this->_G['uid']))
@@ -429,6 +418,9 @@ $(function(){
 	$('.alert').first().append(' ( 没有权限修改，因为你不是管理员或者被未分配 ) ');
 })
 </script>
+
+
+
 <?php
 
 }
@@ -445,3 +437,4 @@ else{
 }
 
 ?>
+

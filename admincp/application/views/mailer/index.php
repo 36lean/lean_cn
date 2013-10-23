@@ -13,7 +13,6 @@
     </div>
 
     <div class="">
-
         <form class="form-horizontal" action="" method="post">
             <fieldset>
                 <div class="control-group">
@@ -28,8 +27,8 @@
                     <label class="control-label" for="textarea2">
                         邮件模板内容
                     </label>
-                    <div class="kindeditor">
-                        <textarea name="mail_template" class="span10 longtext" id="textarea2" rows="10"></textarea>
+                    <div class="controls">
+                        <textarea name="mail_template" class="span10 kindeditor" id="textarea2" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="control-group">

@@ -30,7 +30,7 @@ class M_portal extends CI_Model
 
 	}
 
-	public function get_test_data( $rule , $info )
+	public function get_test_data( $rule , $info , $debug = FALSE )
 	{
 
 		$data = array();
@@ -48,6 +48,15 @@ class M_portal extends CI_Model
 				$z = pq( $li);
 			
 				$href = $z->attr('href');
+
+				
+
+				if( preg_match('/^([\.]|[\/])/', $href)){
+
+					$href = str_replace('../../', '', $href);
+
+					$href = 'http://firehare.blog.51cto.com/blog/'.$href;
+				}
 
 				//$href = preg_replace('=^[http]|[https]://=', '', $href);
 
@@ -71,10 +80,17 @@ class M_portal extends CI_Model
 			}	
 
 			$data['post_modified'] = date('Y-m-d h:i:s');
-			$data['post_date']     = date('Y-m-d h:i:s');
+			//$data['post_date']     = date('Y-m-d h:i:s');
 
 			//var_dump( $data);
-			$this->db->insert( 'attach_posts' , $data);
+
+			if( $this->db->select('id')->from('attach_posts')->where( array('post_content' => $data['post_content']))->get()->num_rows() === 0 )
+			{
+
+				if( $debug)
+					return $data; 
+				$this->db->insert( 'attach_posts' , $data);
+			}
 		}
 	}
 
@@ -140,5 +156,35 @@ class M_portal extends CI_Model
 
 			redirect('portal/seo');
 		}
+	}
+
+	public function eg_filter()
+	{
+
+		var_dump( $_POST);
+
+		$mode = trim( $this->input->post('preg'));
+
+		$column = $this->input->post('column');
+
+		$data = $this->db->select( 'id,'.$column)
+						 ->from( 'attach_posts')
+						 ->get()
+						 ->result_array();
+
+		echo '<pre>';
+
+		foreach ($data as $text) {
+				
+			preg_match( '/'.$mode .'/i', $text[$column] , $match);
+
+			if( count( $match ) ){
+				echo $text['id'];
+				var_dump( $match);
+			}
+
+		}
+		echo '</pre>';
+
 	}
 }

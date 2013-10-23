@@ -107,7 +107,7 @@ class M_mailer extends CI_Model {
 		{
 			$list = $this->db->select('id,email')
 				 		 ->from('admin_client')
-				 		 ->limit( $task['offset'] , ($task['field']-1)*$task['field'] )
+				 		 ->limit( $task['offset'] - $task['page'] + 1 , $task['page'] )
 				 		 ->order('id' , 'asc')
 				 		 ->get()->result_array();
 
@@ -115,7 +115,7 @@ class M_mailer extends CI_Model {
 		{
 			$list = $this->db->select('uid as id,email')
 				 		 ->from('ucenter_members')
-				 		 ->limit( $task['offset'] , ($task['field']-1)*$task['field'] )
+				 		 ->limit( $task['offset'] - $task['page'] + 1 , $task['page'] )
 				 		 ->order_by('uid' , 'asc')
 				 		 ->get()->result_array();
 		}

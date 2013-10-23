@@ -38,9 +38,9 @@
 
                     <label class="control-label">用户区域</label>
                     <div class="controls">
-                        Page<input class="span2" name="page" type="text" value="1" />
-                        Offset <input class="span2" name="offset" type="text" value="100" />
-                        <span class="label label-success">(用户ID范围为: ( Page-1 ) * Offset - Page * Offset )</span>
+                        From <input class="span2" name="page" type="text" value="1" />
+                        To <input class="span2" name="offset" type="text" value="100" />
+                        
                         <span class="label label-info">参考: 客户总数量<?php echo $sum;?> | 会员总数 <?php echo $sum_members;?></span>
                     </div>
 

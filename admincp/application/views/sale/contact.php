@@ -15,7 +15,7 @@ if( $profile ){
 <tr>
 	<td class="span1"><a href="<?php echo site_url('sale/edit_connect_record/'.$conn['id']);?>">Edit</a>
 	</td>
-	<td class="span3">
+	<td class="span4">
 		[ <?php if( 'am' === date('a')) {
 
 			$h = date('h' , $conn['date']);
