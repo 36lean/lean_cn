@@ -98,4 +98,11 @@ class Home_Default_module extends CI_Module{
 
 		$this->load->view('home/get_tags' , array( 'tags' => $tags));
 	}
+
+	public function high_click()
+	{
+		$articles = $this->article_models->get_high_click();
+
+		$this->load->view('home/high_click' , array('articles' => $articles));
+	}
 }

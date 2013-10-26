@@ -6,6 +6,11 @@
 
 <?php } else {?>
 
+<?php if( isset( $article['banner'] ) ){?>
+<p class="text-center">
+	<img src="<?php echo $article['banner'];?>"> />
+</p>
+<?php }?>
 
 <div id="<?php echo  trim( strip_tags( $article['post_title']) );?>" class="hidden"></div>
 

@@ -17,6 +17,8 @@ class Webkit_photo_uploads_module extends CI_Module
 
 			$re = preg_split('/(\.)/', $_FILES['Filedata']['name']);
 
+			$re[1] = strtolower( $re[1]);
+
 			if( !in_array( $re[1], array('png' , 'jpeg' , 'jpg' , 'bmp' , 'ico' , 'gif')))
 			{
 				echo 'file type error : '.$re[1];

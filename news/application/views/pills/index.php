@@ -13,10 +13,11 @@
 </div>
 </div>
 
-<!--
+<?php if( false){?>
 <div class="container" align="center">
 	<img src="http://www.36lean.com/static/mot/banner.jpg" />
 </div>
 
 <?php $this->load->module('home/default/all_category');?>
--->
+
+<?php }?>

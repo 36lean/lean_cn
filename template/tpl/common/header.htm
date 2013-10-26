@@ -110,26 +110,17 @@
 
 <div class="container main-body">
 
-<div class="row-fluid">
-
-	<div class="span3" align="center" style="margin-bottom:20px">
-		<a href="{$_G['siteurl']}"><img src="{$_G['siteurl']}/static/mot/logo.png" data-original="{$_G['siteurl']}/static/mot/logo.png" /></a>
-
-	</div>
-	
-	<div class="span9">
-
-     </div>
-</div>
+<p>
+	<a href="{$_G['siteurl']}"><img src="{$_G['siteurl']}/static/mot/logo.png" data-original="{$_G['siteurl']}/static/mot/logo.png" /></a>
+</p>
 
 <div class="navbar">
     <div class="navbar-inner">
         <ul class="nav">
-
           	<li {if CURSCRIPT === 'portal' && CURMODULE !== 'aboutus'}class="active"{/if}><a href="portal.php"><i class="icon-home"></i> 首页</a></li>
  			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
-					<i class="icon-cloud"></i> 云学院 
+					<i class="icon-cloud"></i> 精益云学院 
 					<b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
@@ -137,22 +128,17 @@
 					<li><a href="read.php?title=product">产品版本</a></li>
 				</ul>
     		</li>
-          	<li><a href="{$_G['site_url']}news"><i class="icon-globe"></i> 精企新闻 </a></li>
+          	<li><a href="{$_G['site_url']}news"><i class="icon-globe"></i> 精企资讯 </a></li>
           	<li {if $_GET['title'] === 'aboutus'}class="active"{/if}><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们 </a></li>
           	<li {if $_GET['title'] === 'contactus'}class="active"{/if}><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们 </a></li>
+        </ul>
+
+        <ul class="nav pull-right">
+        	<li><a href="read.php?title=contactus"><i class="icon-phone"></i> 021-62128213</a></li>
         </ul>
     </div>
 </div>
 
-<script>
-jQuery( function () {
-
-	$('li.dropdown').on('mouseover' , function(){
-		$(this).dropdown('toggle');
-	});
-
-});
-</script>
 
 <div class="container">
 	<div id="append_parent"></div><div id="ajaxwaitid"></div>

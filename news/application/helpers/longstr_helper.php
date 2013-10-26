@@ -58,3 +58,31 @@ function cutstr($string, $length, $dot = ' ...') {
 	}
 	return $strcut.$dot;
 }
+
+function getkey($contents){  
+	$rows = strip_tags($contents);
+	$arr = array(' ',' ',"\s", "\r\n", "\n", "\r", "\t", ">", "“", "”","<br />");
+	$qc_rows = str_replace($arr, '', $rows);
+
+	if(strlen($qc_rows)>2400)
+	{
+	
+		$qc_rows = substr($qc_rows, '0', '2400');
+	
+	}
+
+	$data = @implode('', file("http://keyword.discuz.com/related_kw.html?title=$qc_rows&ics=utf-8&ocs=utf-8"));
+
+	var_dump( $data );
+
+	preg_match_all("/<kw>(.*)A\[(.*)\]\](.*)><\/kw>/",$data, $out, PREG_SET_ORDER);
+
+	$key="";
+
+	for($i=0;$i<5;$i++)
+	{
+		$key=$key.$out[$i][2];
+		if($out[$i][2])$key=$key.",";
+	}
+	return $key; 
+}

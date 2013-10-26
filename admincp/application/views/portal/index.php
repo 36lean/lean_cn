@@ -112,13 +112,19 @@
 
 		<div class="span10">
 			<div class="hero-unit">
+				
+				<label>新增标签</label>
+    			<div class="input-append">
+    				<input class="span2" id="tag_name" type="text">
+    				<button class="btn" id="add_tag" type="button">添加到标签库</button>
+   	 			</div>
 
+   	 			<label>给当前创建的新闻增加标签</label>
 				<?php foreach ($tags as $t) { ?>
-					
-					<span class="label label-info"><?php echo $t['tagname'];?></span>
-
+					<a class="tag_link" href="javascript:void(0);"  id="<?php echo $t['id'];?>">
+					<span class="label <?php if( in_array($t['id'], $current_tag)){?>label-info<?php }?>"><?php echo $t['tagname'];?></span>
+					</a>
 				<?php }?>
-
 			</div>
 		</div>
 
@@ -146,7 +152,62 @@
 
 	</form>                  
 </div>
+<script>
+$( function(){
 
+		$('a.tag_link').on('click' , function(){
+
+			var id = $(this).attr('id');
+
+			var article_id = 0;
+
+			$object = $(this).children('span');
+
+			$.ajax( {
+
+				url : "<?php echo site_url('portal/add_tag_for_article');?>" , 
+				data : { 'tag_id' : id , 'article_id' : article_id } ,
+				type : 'POST' ,
+				success : function( data ){
+					if( '1' === data)
+					{
+						$object.addClass('label-info');
+					}else if( '2' === data)
+					{
+						$object.removeClass('label-info');
+					}
+				} ,
+			});
+		});
+
+
+		$('#add_tag').on('click' , function() {
+
+			$('#tips').remove();
+
+			$button = $(this);
+
+			var tag_str = $('#tag_name').val();
+
+			$.ajax( {
+				url : "<?php echo site_url('portal/add_tag_for_library');?>" , 
+				data : { 'tag_name' : tag_str } , 
+				type : 'POST' , 
+				success : function( data ){
+					if( '1' === data){
+						$('span.label').last().after('<span class="label">'+tag_str+'</label>')
+					}else  if( '2' === data )
+					{
+						$button.after('<p id="tips"><span class="label label-success">标签存在</span></p>');
+					}
+				},
+
+			} );
+
+		});
+				
+});
+</script>
 
 
 

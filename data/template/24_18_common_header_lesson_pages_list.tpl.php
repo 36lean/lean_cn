@@ -1,15 +1,12 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1381995287, '18', './data/template/24_18_common_header_lesson_pages_list.tpl.php', './template/tpl', 'common/header_lesson_pages_list')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1382764992, '18', './data/template/24_18_common_header_lesson_pages_list.tpl.php', './template/tpl', 'common/header_lesson_pages_list')
 ;?>
 ﻿<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>" />
-<meta http-equiv="Cache-Control" content="max-age=7200" />
+<meta http-equiv="Cache-Control" content="max-age=0" />
 <?php if($_G['config']['output']['iecompatible']) { ?><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE<?php echo $_G['config']['output']['iecompatible'];?>" /><?php } ?>
 <title><?php if(!empty($navtitle)) { ?><?php echo $navtitle;?> - <?php } if(empty($nobbname)) { ?> <?php echo $_G['setting']['bbname'];?> - <?php } ?> 全球第一家中文精益学习平台</title>
 <?php echo $_G['setting']['seohead'];?>
@@ -82,14 +79,8 @@ jQuery("img").lazyload({effect : "fadeIn"});
    	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
 <![endif]--> 
   	<!--[if lte IE 6]>
-  	<!-- bsie css patch -->
   	<link rel="stylesheet" type="text/css" href="<?php echo $_G['siteurl'];?>static/bsie/css/bootstrap-ie6.css">
-<!-- bsie additional css patch -->
   	<link rel="stylesheet" type="text/css" href="<?php echo $_G['siteurl'];?>static/bsie/css/ie.css">
-  	<![endif]-->
-  	
-  	<!--[if lte IE 6]>
-  	<!-- bsie js patch, it will only execute in IE6 -->
   	<script src="<?php echo $_G['siteurl'];?>static/bsie/js/bootstrap-ie.js" type="text/javascript"></script>
   	<![endif]-->
 
@@ -142,22 +133,17 @@ jQuery("img").lazyload({effect : "fadeIn"});
 
 <div class="container main-body">
 
-<div class="row-fluid">
-
-<div class="span3" align="center" style="margin-bottom:60px">
+<p>
 <a href="<?php echo $_G['siteurl'];?>"><img src="<?php echo $_G['siteurl'];?>/static/mot/logo.png" data-original="<?php echo $_G['siteurl'];?>/static/mot/logo.png" /></a>
+</p>
 
-</div>
-
-<div class="span9">
-        <ul class="nav nav-pills pull-right">
-
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav">
           	<li <?php if(CURSCRIPT === 'portal' && CURMODULE !== 'aboutus') { ?>class="active"<?php } ?>><a href="portal.php"><i class="icon-home"></i> 首页</a></li>
-          	
-
  			<li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
-<i class="icon-cloud"></i> 云学院 
+<i class="icon-cloud"></i> 精益云学院 
 <b class="caret"></b>
 </a>
 <ul class="dropdown-menu">
@@ -165,14 +151,17 @@ jQuery("img").lazyload({effect : "fadeIn"});
 <li><a href="read.php?title=product">产品版本</a></li>
 </ul>
     		</li>
-          	
-          	<li><a href="<?php echo $_G['site_url'];?>news"><i class="icon-globe"></i> 精企新闻 </a></li>
-          	
+          	<li><a href="<?php echo $_G['site_url'];?>news"><i class="icon-globe"></i> 精企资讯 </a></li>
           	<li <?php if($_GET['title'] === 'aboutus') { ?>class="active"<?php } ?>><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们 </a></li>
           	<li <?php if($_GET['title'] === 'contactus') { ?>class="active"<?php } ?>><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们 </a></li>
         </ul>
-     </div>
+
+        <ul class="nav pull-right">
+        	<li><a href="read.php?title=contactus"><i class="icon-phone"></i> 021-62128213</a></li>
+        </ul>
+    </div>
 </div>
+
 
 <div class="container">
 <div id="append_parent"></div><div id="ajaxwaitid"></div>

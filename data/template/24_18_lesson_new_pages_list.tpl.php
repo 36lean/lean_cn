@@ -95,8 +95,8 @@ jQuery( function() {
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
   <?php } else { ?>
-            <?php if(is_array($pages)) foreach($pages as $p) { ?>            <div class="container-fluid">
-            <div class="row-fluid well">
+            <?php if(is_array($pages)) foreach($pages as $p) { ?>            <div class="container-fluid lesson-item">
+            <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="<?php echo $p['id'];?>" href="lesson.php?page_content=<?php echo $p['id'];?>" title="<?php echo $p['title'];?>">
                 

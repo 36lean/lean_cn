@@ -359,10 +359,84 @@ class M_sale extends CI_Model
 						->get()
 						->num_rows();
 	}
+	
+	public function check_member_vaild( $uid , $salesman)
+	{
+		return $this->db->select('id')
+				 	 	->where( array('user_id' => $uid , 'assign_to' => $salesman) )
+				 		->get('admin_contacts_tmp')
+				 		->num_rows();
+	}
+
+	public function create_contact_by_webuser( $uid)
+	{
+
+
+		$user = $this->db->where( array('user_id'=>$uid))
+				 		 ->from('admin_contacts_tmp')
+				 		 ->get()
+				 		 ->row_array();
+
+
+		if( isset( $user['contact_id']) ){
+
+			redirect( site_url('sale/contact/'.$user['contact_id']));
+
+			exit;
+		}
+
+		$data = $this->db->from('common_member_profile p')
+						 ->join('ucenter_members m' , 'm.uid = p.uid')
+						 ->where( array('m.uid'=>$uid))
+						 ->get()
+						 ->row_array();
+		
+		if( !$data)
+			return ;
+		
+		//var_dump( $data);
+
+		$contact = array(
+			'assign_to'		=>	$user['assign_to']	,
+			'user_id'		=> 	$user['user_id']	,
+			'username'		=> 	$data['username'] 	,
+			'name'			=> 	$data['realname']	,
+			'email'			=> 	$data['email']		,
+			'job'			=>  $data['position']	,
+			'qq'			=> 	$data['qq']			,
+			'gender'		=> 	$data['gender']		,
+			'office_phone'	=>$data['telephone']	,
+			'mobile'		=> 	$data['mobile']		,
+			'description'	=> 	$data['company']	,
+			'modified_date'	=>	time() 				,	
+		);
+
+		$this->db->insert( 'admin_contacts'	, $contact);
+
+		$this->db->where( array('user_id'=>$uid))->update( 'admin_contacts_tmp' , array('contact_id'=>$this->db->insert_id()));
+
+		redirect( current_url());
+	} 
 
 	public function remove_arraged_webmember( $id , $uid)
 	{
 		return $this->db->delete('admin_contacts_tmp' , array('id'=>$id , 'assign_to'=>$uid));
 	}
+
+	public function get_expense_members( $page , $offset )
+	{
+		return $this->db->select('m.uid,m.username,m.email,v.jointime,v.exptime')
+						->from('dsu_vip v')
+						->join('common_member m' , 'm.uid = v.uid')
+						->order_by('uid' , 'desc')
+						->get()->result_array();
+	}
 	
+	public function get_extension_sum()
+	{
+		return $this->db->select('m.uid')
+						->from('dsu_vip v')
+						->join('common_member m' , 'm.uid = v.uid')
+						->get()->num_rows();
+	}
 }

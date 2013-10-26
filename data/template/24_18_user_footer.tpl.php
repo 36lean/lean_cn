@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/user/footer.htm', './template/tpl/common/footer.htm', 1382078210, '18', './data/template/24_18_user_footer.tpl.php', './template/tpl', 'user/footer')
+|| checktplrefresh('./template/tpl/user/footer.htm', './template/tpl/common/footer.htm', 1382667020, '18', './data/template/24_18_user_footer.tpl.php', './template/tpl', 'user/footer')
 ;?>
 
 </div>
@@ -9,11 +9,6 @@
 <div class="container-fluid" style="font-size:12px;">
   <div class="row-fluid">
         <strong>&copy;36Lean 精益云学院 2009-2013</strong> 
-        <ul class="pull-right nav nav-pills">
-          <li style="float:right;"><a href="read.php?title=contactus">联系我们</a></li>  
-          <li style="float:right;"><a href="read.php?title=aboutus">关于我们</a></li>
-          <li style="float:right;"><a href="read.php?title=product"><strong>产品版本</strong></a></li>
-        </ul>
   </div>
 </div>
 

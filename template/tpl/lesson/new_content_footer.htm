@@ -1,0 +1,11 @@
+<script>
+jQuery( function() {
+	jQuery.ajax({
+		url : 'lesson.php',
+		type : 'GET',
+		data : { click_collection : 1 , id: "{$content['id']}", type:'p'},
+		dataType:'html',
+	});
+});
+</script>
+<!--{template common/footer}-->

@@ -18,22 +18,25 @@
 <hr/>
 
 <?php foreach ($article_list as $art) { ?>
-	<h4><a href="<?php echo site_url('pills/n/'.$art['id']);?>"><?php echo $art['post_title'];?></a></h4>
 	<div class="row-fluid">
+	<div class="span12">
+	<h4><a href="<?php echo site_url('pills/n/'.$art['id']);?>"><?php echo $art['post_title'];?></a></h4>
+	<div class="mot-info">
 		<img class="span3 link_photo" src="<?php echo $art['post_banner'] ? $art['post_banner'] : base_url('public/mot/no_photo.png') ;?>">
 		<p><?php echo cutstr( strip_tags( $art['post_content'] ) , 500 , ' ... ' );?></p>
-		<p class="text-right"><a href="<?php echo site_url('pills/n/'.$art['id']);?>" class="pull-right">继续阅读 »</a></p>
+		<p class="text-right"><a href="<?php echo site_url('pills/n/'.$art['id']);?>">继续阅读 »</a></p>
 	</div>
-
+	</div>
+	</div>
 <?php }?>
 
 
-
+<?php if( false){?>
 <div class="row-fluid">
 <div class="span6">
 	<ul class="relation">
 	<?php foreach ($relations as $key=>$re) {?>
-		<li><a href="<?php echo site_url('pills/n/'.$re['id']);?>" title="<?php echo $re['post_title'];?>"><?php echo $re['post_title'];?></a> <small class="text-right"><?php echo date('Y-m-d' , $re['post_modified'])?></small></li>
+		<li><a href="<?php echo site_url('pills/n/'.$re['id']);?>" title="<?php echo strip_tags( $re['post_title'] );?>"><?php echo strip_tags( $re['post_title'] );?></a> <small class="text-right"><?php echo date('Y-m-d' , $re['post_modified'])?></small></li>
 		<?php if( $key === 7){?>
 	</ul>
 	</div>
@@ -46,3 +49,4 @@
 
 </div>
 </div>
+<?php }?>

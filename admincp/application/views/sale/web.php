@@ -16,7 +16,7 @@
 
 	<tr>
 		<td><?php echo $contact['uid'];?></td>
-		<td><a href="<?php echo site_url('marketing/web_members/'.$contact['uid']);?>"><?php echo $contact['username'];?></td>
+		<td><a href="<?php echo site_url('sale/web_members/'.$contact['uid']);?>"><?php echo $contact['username'];?></td>
 		<td><?php echo $contact['email'];?></td>
 		<td><?php echo $contact['mobile'];?></td>
 		<td><?php echo $contact['telephone'];?></td>

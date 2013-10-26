@@ -19,9 +19,11 @@ class Sale extends Base_Controller
 		return array(
 			array('route' => 'index' 		, 'alias' => '客户列表' , 'status' => 'active') ,
 			array('route' => 'web' 			, 'alias' => '网站会员' , 'status' => 'active') ,
+			array('route' => 'expense' 		, 'alias' => '付费会员' , 'status' => 'active') ,
 			array('route' => 'remind' 		, 'alias' => '今日提醒' , 'status' => 'active') ,
 			array('route' => 'allremind' 	, 'alias' => '所有提醒' , 'status' => 'active') ,
 			array('route' => 'cleanlist' 	, 'alias' => '清理列表' , 'status' => 'active') ,
+			array( 'route' => 'create' 		, 'alias' => '新建档案' , 'status' => 'active') ,
 		);
 	}
 
@@ -87,6 +89,18 @@ class Sale extends Base_Controller
 													  'offset'   	=> $offset ,  
 													) 
 		);
+	}
+
+	public function expense( $page = 1 , $offset = 30)
+	{
+
+
+		$list = $this->sale->get_expense_members( $page , $offset );
+
+		$sum = $this->sale->get_extension_sum();
+
+		$this->template->build('sale/expense' , array('list'=>$list , 'offset' => $offset , 'sum' => $sum));
+
 	}
 
 	public function remind( $page = 1 , $offset = 30 )
@@ -292,6 +306,11 @@ class Sale extends Base_Controller
 
 		redirect( site_url('sale/web'));
 	}
+	
+	public function status( $message)
+	{
+		$this->template->build('marketing/status' , array('message' => $message));
+	}
 
 	private function _program()
 	{
@@ -346,10 +365,10 @@ class Sale extends Base_Controller
 
 			if( 1 == $this->marketing->build_profile( $this->_G['uid']))
 			{
-				redirect('marketing/status/ok');
+				redirect('sale/status/ok');
 			}else
 			{
-				redirect('marketing/status/fail');
+				redirect('sale/status/fail');
 			}
 		}
 
@@ -433,4 +452,32 @@ class Sale extends Base_Controller
 
 		redirect( site_url('mailer/run_task/'.$info['task_id']));
 	}
+
+	public function create()
+	{
+
+		$this->_program();
+
+		$this->template->build('marketing/create',array(
+							   'contact_column'=> $this->config->config['map']['contacts'] , 
+							   'company_column'=> $this->config->config['map']['company'],
+		));
+	}
+
+	public function web_members( $uid)
+	{
+		$uid = intval( $uid);
+
+		if( $this->_G['groupid'] != 1)
+		{
+			if( 0 === $this->sale->check_member_vaild( $uid , $this->_G['uid']))
+				$status = false;
+			else 
+				$status = true;
+		}
+
+		$this->sale->create_contact_by_webuser( $uid);
+		
+	}
+
 }

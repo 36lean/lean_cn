@@ -1,0 +1,56 @@
+a {
+      text-decoration: none;
+      color: #1576a6;
+}
+
+a:hover {
+      text-decoration: none;
+      color: #009933;
+}
+
+div.mot-info {
+	border: 1px solid #eee;
+	padding: 15px;
+	margin-bottom: 20px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	min-height: 150px;
+}
+
+div.mot-info-hover {
+	background: #eee;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+
+	-webkit-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+	-moz-box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+	box-shadow: 1px 1px 1px rgba(0,0,0, .29), inset 1px 1px 1px rgba(255,255,255, .44);
+
+	-webkit-transition: all 0.15s ease;
+	-moz-transition: all 0.15s ease;
+	-o-transition: all 0.15s ease;
+	-ms-transition: all 0.15s ease;
+	transition: all 0.15s ease;
+}
+
+div.left-info {
+	border-right: 1px solid #eee;
+	padding: 10px;
+}
+
+div.left-info-hover {
+	background: #eee;
+}
+
+li.mot-click-link {
+	font-size: 12px;
+}
+p.mot-author-sign {
+	padding-top: 10px;
+}
+.mot-tag {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

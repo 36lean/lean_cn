@@ -9,11 +9,11 @@
 
     <div class="carousel-inner">    
       <div class="active item">
-        <a href="routing.php" target="_blank"><img src="http://www.36lean.com/static/mot/banner.jpg"  /></a>
+        <a href="routing.php" target="_blank"><img src="static/mot/banner.jpg"  /></a>
       </div>
 
       <div class="item">
-        <a href="routing.php" target="_blank"><img src="http://www.36lean.com/static/mot/banner2.jpg"  /></a>
+        <a href="routing.php" target="_blank"><img src="static/mot/banner2.jpg"  /></a>
       </div>
 
     </div>  <!-- Carousel nav -->  
@@ -31,26 +31,26 @@
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="txt span4">
-          <img src="http://36lean.com/static/mot/yun-step1.png">
+          <img src="static/mot/yun-step1.png">
             <h3>注册账号</h3>
         </div>
 
         <div class="txt span4">
-          <img src="http://36lean.com/static/mot/yun-step2.png">
+          <img src="static/mot/yun-step2.png">
           <h3>购买课程</h3>
         </div>
         <div class="txt span4">
-          <img src="http://36lean.com/static/mot/yun-step3.png">
+          <img src="static/mot/yun-step3.png">
           <h3>开始学习</h3>
         </div>
     </div>
   </div>
 
 
-  <div class="home-sign  alert-info text-center">
-    <form class="navbar-form" action="member.php?mod={$_G[setting][regname]}" method="post" onsubmit="_submit()">
+  <div class="alert-info text-center mot-block">
+    <form action="member.php?mod={$_G[setting][regname]}" method="post" onsubmit="_submit()">
       <div class="input-append">
-        <input name="email" type="text" placeholder="输入您最常用的邮箱">
+        <input class="input-medium" name="email" type="text" placeholder="输入您最常用的邮箱">
         <button name="findout" type="submit" class="btn btn-info">
           立即注册
         </button>
@@ -152,10 +152,10 @@
   </div>
 
 
-    <div class="home-sign alert-info">
-    <form class="navbar-form" action="member.php?mod=enroll" method="post" onsubmit="_submit()">
+    <div class="alert-info text-center mot-block">
+    <form action="member.php?mod=enroll" method="post" onsubmit="_submit()">
       <div class="input-append">
-        <input name="email" type="text"  placeholder="输入您的邮箱" >
+        <input class="input-medium" name="email" type="text"  placeholder="输入您的邮箱" >
         <button name="findout" type="submit" class="btn btn-danger">
           立即试听
         </button>

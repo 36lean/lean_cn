@@ -68,34 +68,50 @@
 
 
 <h3>当前设置</h3>
-<div class="container-fluid">
-<div class="row-fluid">
+
+<table class="table">
+	<tr>
+		<td>位置</td>
+		<td>标题</td>
+		<td>分类</td>
+		<td>浏览量</td>
+		<td>隐藏</td>
+		<td>删除</td>
+		
+		<td>操作</td>
+		<td>封面图</td>
+	</tr>
 	<?php foreach ($articles as $key=>$article) { ?>
-	<div class="span3">
-		<ul style="border:1px solid #999;padding:20px;">
-			<li>位置 : [ <strong><?php echo $article['position'];?></strong> ]</li>
-			<li>标题 : <?php echo cutstr( $article['post_title'] , 25);?></li>
-			<li>分类 : <?php echo $article['category_title'];?></li>
-			<li>浏览量 : <?php echo $article['click'];?></li>
-			<li><img src="<?php echo $article['banner'];?>" height="100px" /></li>
-			<li>设置时间 : <?php echo date( 'Y-m-d h:i' , $article['timeupdated']);?></li>
-			<li>操作: 
-					<a href="<?php echo site_url('portal/edit_seo/'.$article['id']);?>">编辑</a> 
-					<a href="<?php echo site_url('portal/remove_seo/'.$article['id']);?>">删除</a> 
-			</li>
-		</ul>
-	</div>
+	<tr>
+		<td><strong><?php echo $article['position'];?></strong></td>
 
-	<?php if( ($key+1) % 4 === 0) {?>
+		<td>
+			<a href="<?php echo site_url('portal/edit_article/'.$article['article_id']);?>"><?php echo strip_tags( $article['post_title'] );?></a> 
+		</td>
 
-	</div></div>
-	<div class="container-fluid"><div class="row-fluid">
 
+		<td><?php echo $article['category_title'];?></td>
+
+		<td><?php echo $article['click'];?></td>
+
+		<td><?php echo $article['post_status'] ? '可见' : '隐藏';?></td>
+
+		<td><?php echo $article['remove'] ? '是' : '否';?></td>
+		
+		<td> 
+			<a href="<?php echo site_url('portal/edit_seo/'.$article['id']);?>">编辑</a>
+			<a href="<?php echo site_url('portal/remove_seo/'.$article['id']);?>">删除</a> 
+		</td>
+
+		<td><img src="<?php echo $article['banner'];?>" width="100px" width="100px"/></td>
+	
+	</tr>
 	<?php }?>
+</table>
 
-	<?php }?>
-</div>
-</div>
+
+
+
 
 <script>
 $( function () {

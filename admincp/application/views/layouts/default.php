@@ -36,7 +36,7 @@
                 window.editor = K.create('.kindeditor' , {
                     //id : 'Filedata',
                     width : '100%' , 
-                    height: '350px' , 
+                    height: '450px' , 
                     uploadJson : '<?php echo base_url("kind/upload_json.php");?>',
                     allowFileManager : false ,
                     //imageUploadJson : '<?php echo site_url('module/webkit/photo_uploads/handle');?>' ,

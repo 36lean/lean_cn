@@ -1,10 +1,11 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
-<div class="container">
-  <p><a href="user.php?ac=sub_plan"><img class="img-polaroid lazy" src="<?php echo $_G['siteurl'];?>static/mot/course_banner.gif" data-original="<?php echo $_G['siteurl'];?>static/mot/course_banner.gif" width="99%" /></a></p>
-  
-  <div class="row">
+<p><a href="user.php?ac=sub_plan"><img class="img-polaroid lazy" src="<?php echo $_G['siteurl'];?>static/mot/course_banner.gif" data-original="<?php echo $_G['siteurl'];?>static/mot/course_banner.gif" width="99%" /></a></p>
+
+<div class="container-fluid">
+  <div class="row-fluid">
     <?php if(is_array($c)) foreach($c as $key=>$course) { ?>    <div class="span4">
-      <div class="content"  style="height:420px;">
+      <div class="lesson-box">
+
       <div class="page-header">
         <h3>
           <?php echo $course['fullname'];?>
@@ -13,43 +14,26 @@
           </small>
         </h3>
       </div>
-      <div>
-
         <div class="page-header">
           <a href="lesson.php?pages_list=<?php echo $course['id'];?>">
             <img class="lazy" width="100%" style="height:120px" src="uploads/small/<?php echo $course['logo'];?>"  data-original="uploads/small/<?php echo $course['logo'];?>"
             alt="<?php echo $course['fullname'];?>" />
           </a>
         </div>
-        
-        <div>
-          <p>
-            <?php echo cutstr( $course['summary'] , 80 , ' ... ');?>          </p>
-          <p class="text-right"><a href="lesson.php?pages_list=<?php echo $course['id'];?>"> 更多 <i class="icon-share-alt"></i></a></p>
-            <a class="btn btn-primary start-button" href="lesson.php?pages_list=<?php echo $course['id'];?>">
-              开始学习
-            </a>
-        </div>
-      </div>
+          <p class="lead"> <?php echo cutstr( $course['summary'] , 80 , ' ... ');?> </p>
+          <p class="text-center"><a class="btn btn-primary btn-large" href="lesson.php?pages_list=<?php echo $course['id'];?>">开始学习</a></p>
     </div>
   </div>
 
     <?php if(($key+1)%3 === 0) { ?>
-    </div></div>
-<div class="container">
-  <div class="row"><?php } ?>
+    </div>
+    </div>
+<div class="container-fluid">
+  <div class="row-fluid"><?php } ?>
     <?php } ?>
 
   </div>
 </div>
-
-
-  
-
-
-
-
-
 
     <div class="span12 pagination" align="center">
       <?php if(isset($_GET['category'])) { ?>
