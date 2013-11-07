@@ -21,11 +21,9 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url('public/mot/css/mot.css');?>" rel="stylesheet">
     <!-- jQuery -->
-    <script src="<?php echo base_url('public/charisma/js/jquery-1.7.2.min.js');?>"></script>
+    <script src="<?php echo base_url('public/jquery-1.9.1.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap/js/bootstrap.js');?>"></script>
-    <script src="<?php echo base_url('public/tinymce/js/tinymce/tinymce.min.js');?>"></script>
-    <script src="<?php echo base_url('public/ckeditor/ckeditor.js');?>"></script>
     <script src="<?php echo base_url('public/hovercard/jquery.hovercard.js');?>"></script>
 
     <script charset="utf-8" src="<?php echo base_url('public/kindeditor/kindeditor-all-min.js');?>"></script>
@@ -36,7 +34,7 @@
                 window.editor = K.create('.kindeditor' , {
                     //id : 'Filedata',
                     width : '100%' , 
-                    height: '450px' , 
+                    height: '350px' , 
                     uploadJson : '<?php echo base_url("kind/upload_json.php");?>',
                     allowFileManager : false ,
                     //imageUploadJson : '<?php echo site_url('module/webkit/photo_uploads/handle');?>' ,
@@ -44,6 +42,10 @@
                     urlType : 'domain' ,
                 });
         });
+
+    $(function(){
+        $('.datetimepicker').datetimepicker();
+    });
     </script>
 
 </head>
@@ -55,6 +57,13 @@ if( $ci instanceof Base_Controller)
     $user = $ci->_G;
 else 
     $user = $ci->session->userdata('status');
+
+$ci->load->model('sale/m_mail' , 'm_mail');
+
+$counter = $ci->m_mail->get_mail_effective_times();
+
+if( ! $counter)
+    $counter['current_times'] = 0;
 ?>
 
 <div class="navbar navbar-fixed-top">
@@ -65,6 +74,9 @@ else
             <li class="active"><a href="<?php echo base_url();?>index.php">首页</a></li>
         </ul>
         <ul class="nav pull-right">
+        <li class="divider-vertical"></li>
+            <li><a href="#">今日剩余发送量 : <?php echo 1000 - $counter['current_times'];?></a></li>
+            <li class="divider-vertical"></li>
             <li><a href="<?php echo site_url('user/logout');?>"><?php echo $user['user'];?>注销登录</a></li>
         </ul>
 </div>

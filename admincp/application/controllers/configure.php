@@ -20,6 +20,7 @@ class Configure extends Base_Controller
 			'index_module' => array( 'route' => 'index' , 'alias' => '常规设置' , 'status' => 'active') , 
 			'option_module' => array( 'route' => 'option' , 'alias' => '选项设置' , 'status' => 'active') , 
 			'permission_module' => array( 'route' => 'permission' , 'alias' => '权限设置' , 'status' => 'active') , 
+			'testing_module' => array( 'route' => 'testing' , 'alias' => '状态检测' , 'status' => 'active') , 
 		);
 	}
 
@@ -62,6 +63,17 @@ class Configure extends Base_Controller
 															   'users'	 => $users , 
 															 )
 		);
+	}
+
+	public function testing()
+	{
+
+		$video = $this->configure->get_all_video();
+
+
+		$this->template->build('configure/testing' , array(
+			'video' => $video
+		));
 	}
 
 	private function _program()

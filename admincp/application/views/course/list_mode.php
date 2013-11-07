@@ -21,7 +21,7 @@
 
 <tbody>
 <?php 
-var_dump( $category);
+
 foreach ($list as $course) {
 ?>
 <tr>

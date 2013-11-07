@@ -24,8 +24,6 @@
     <script src="<?php echo base_url('public/charisma/js/jquery-1.7.2.min.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap/js/bootstrap.js');?>"></script>
-    <script src="<?php echo base_url('public/tinymce/js/tinymce/tinymce.min.js');?>"></script>
-    <script src="<?php echo base_url('public/ckeditor/ckeditor.js');?>"></script>
     <script src="<?php echo base_url('public/hovercard/jquery.hovercard.js');?>"></script>
 
     <script charset="utf-8" src="<?php echo base_url('public/kindeditor/kindeditor-all-min.js');?>"></script>

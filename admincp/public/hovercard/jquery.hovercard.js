@@ -318,11 +318,17 @@
 
                                         (profileData.status ? ('<p><strong>客户状态</strong> : ' + profileData.status + '</p>') : '') +
 
+                                        (profileData.gender ? ('<p><strong>性别</strong> : ' + profileData.gender + ' </p>') : '') +
+
                                         (profileData.company ? ('<p><strong>公司</strong> : ' + profileData.company + '</p>') : '') +
+
+                                        (profileData.job ? ('<p><strong>职位</strong> : ' + profileData.job + '</p>') : '') +
 
                                         (profileData.phone ? ('<p><strong>电话</strong> : ' + profileData.phone + '</p>') : '') +
 
                                         (profileData.mobile ? ('<p><strong>手机</strong> : ' + profileData.mobile + '</p>') : '') +
+
+                                        (profileData.account ? ('<p><strong>网站帐号</strong> : ' + profileData.account + '</p>') : '') +
 
                                         (profileData.email ? ('<p><strong>Email</strong> : <a href="' + profileData.email + '">' + profileData.email + '</a></p>') : '') +
                                         

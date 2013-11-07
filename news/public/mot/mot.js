@@ -1,4 +1,5 @@
 $(function(){
+    $('.dropdown-toggle').dropdown()
 
     $('div.mot-info').on('mouseover' , function() {
       $(this).addClass('mot-info-hover');

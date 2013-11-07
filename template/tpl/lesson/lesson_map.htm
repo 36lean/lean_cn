@@ -1,0 +1,40 @@
+<!--{template common/header}-->
+<ol>
+{loop $course $key $c}
+
+<li>
+<div class="page-header">
+	<h5><a href="lesson.php?pages_list={$c['id']}">{$c['fullname']}</a> <small>{$c['summary']}</small></h5>
+</div>
+<table class="table table-stripeds">
+<tr>
+	<td class="span4">标题</td>
+	<td class="span1">语音</td>
+	<td class="span1">时长</td>
+	<td class="span6">介绍</td>
+</tr>
+{loop $pages $key $p}
+
+	{if $p['lessonid'] === $c['id']}
+
+	<tr>
+	<td><a class="label label-info" href="lesson.php?page_content={$p['id']}">{$p['title']}</a></td> 
+	<td><span class="label label-info">语音 : {eval echo $p['v_voice'] == 1 ? '英语' : '中文'}</span></td>
+	<td><span class="label label-info">{$p['v_time']}</span></td>
+	
+	<td><small>{$p['cn_intro']}</small></td>
+	</tr>
+
+	{eval unset( $pages[$key])}
+
+	{/if}
+
+{/loop}
+</table>
+
+</li>
+{/loop}
+</ol>
+
+
+<!--{template common/footer}-->

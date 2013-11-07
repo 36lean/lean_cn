@@ -1,0 +1,85 @@
+O:12:"CI_DB_result":8:{s:7:"conn_id";N;s:9:"result_id";N;s:12:"result_array";a:1:{i:0;a:18:{s:2:"id";s:3:"531";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:5601:"
+    		  <ul class=" list-paddingleft-2">
+<li><p>原文出处：<a textvalue="method_parameters.html" target="_self" href="http://symfony.com/doc/master/cookbook/routing/method_parameters.html">method_parameters.html</a></p></li>
+<li><p>原文作者：<a target="_self" href="https://github.com/FriendsOfSymfony">FriendsOfSymfony</a></p></li>
+<li><p>授权许可：<a href="http://creativecommons.cn/" title="http://www.creativecommons.cn/licenses/by-nc-sa/1.0/" rel="nofollow" target="_blank">创作共用协议</a></p></li>
+<li><p>翻译人员：FireHare</p></li>
+<li><p>校对人员：</p></li>
+<li><p>适用版本：Symfony 2.3.0</p></li>
+<li><p>文章状态：草译阶段</p></li>
+</ul>
+<h1 class="title_01">How to use HTTP Methods beyond GET and POST in Routes</h1>
+<span id="index-0"></span><p>The HTTP method of a request is one of the requirements that can be checked when seeing if it matches a route. This is introduced in the routing chapter of the book "<a class="reference internal" href="http://symfony.com/doc/master/book/routing.html"><em>Routing</em></a>" with examples using GET and POST. You can also use other HTTP verbs in this way. For example, if you have a blog post entry then you could use the same URL path to show it, make changes to it and delete it by matching on GET, PUT and DELETE.</p>
+<p>在查看是否匹配路由时，请求中的HTTP方法将作为请求的一部分而被检查。这在"<a class="reference internal" href="http://symfony.com/doc/master/book/routing.html"><em>Routing</em></a>"书中的路由章节通过使用GET和POST举例介绍过。您通过这样方式来使用其它HTTP动词。例如，如果您有一个博客文章条目，然后您就可以使用相同的URL路径，通过匹配GET、PUT和DELETE来显示、修改和删除它。</p>
+<pre class="brush:as3;toolbar:false;">blog_show:
+    path:     /blog/{slug}
+    defaults: { _controller: AcmeDemoBundle:Blog:show }
+    methods:   [GET]
+blog_update:
+    path:     /blog/{slug}
+    defaults: { _controller: AcmeDemoBundle:Blog:update }
+    methods:   [PUT]
+blog_delete:
+    path:     /blog/{slug}
+    defaults: { _controller: AcmeDemoBundle:Blog:delete }
+    methods:   [DELETE]</pre>
+<div class="section" id="faking-the-method-with-method">
+<h2>Faking the Method with _method（通过_method伪造方法）</h2>
+<div class="admonition-wrapper"><div class="admonition admonition-note">
+<p class="last">The <tt class="docutils literal"><code>_method</code></tt> functionality shown here is disabled by default in Symfony 2.2 and enabled by default in Symfony 2.3. To control it in Symfony 2.2, you must call <tt class="docutils literal"><code><a class="reference external" href="http://api.symfony.com/master/Symfony/Component/HttpFoundation/Request.html#enableHttpMethodParameterOverride%28%29" title="Symfony\Component\HttpFoundation\Request::enableHttpMethodParameterOverride()">Request::enableHttpMethodParameterOverride</a></code></tt>before you handle the request (e.g. in your front controller). In Symfony2.3, use the <a class="reference internal" href="http://symfony.com/doc/master/reference/configuration/framework.html#configuration-framework-http-method-override"><em>http_method_override</em></a> option.</p>
+<p class="last"><tt class="docutils literal"><code>_method</code></tt> 在这里显示的功能在Symfony 2.2中默认是禁用的，而在Symfony 2.3中默认是启用的。在Symfony 2.2中要控制它，您必须在您处理请求之前（如在您的前端控制器中）调用<tt class="docutils literal"><code><a class="reference external" href="http://api.symfony.com/master/Symfony/Component/HttpFoundation/Request.html#enableHttpMethodParameterOverride%28%29" title="Symfony\Component\HttpFoundation\Request::enableHttpMethodParameterOverride()">Request::enableHttpMethodParameterOverride</a></code></tt>。在Symfony 2.3中，则使<em>用</em><a class="reference internal" href="http://symfony.com/doc/master/reference/configuration/framework.html#configuration-framework-http-method-override"><em>http_method_override</em></a> 配置项。</p>
+<p class="last"><br><tt class="docutils literal"></tt></p>
+</div></div>
+<p>Unfortunately, life isn't quite this simple, since most browsers do notsupport sending PUT and DELETE requests. Fortunately Symfony2 provides youwith a simple way of working around this limitation. By including a <tt class="docutils literal"><code>_method </code></tt>parameter in the query string or parameters of an HTTP request, Symfony2 willuse this as the method when matching routes. Forms automatically include a hidden field for this parameter if their submission method is not GET or POST.See <a class="reference internal" href="http://symfony.com/doc/master/book/forms.html#book-forms-changing-action-and-method"><em>the related chapter in the forms documentation</em></a>for more information.</p>
+<p>不幸的是，生活并非如此简单，因为大多数浏览器并不支持发送 PUT 和 DELETE 请求。幸运的是Symfony2 为您提供了一个简单方法来绕过这一限制。通过在HTTP请求中的查询字符串或参数中包含 <tt class="docutils literal"><code>_method</code></tt> 参数，Symfony2将在匹配路由时将其作为方法使用。如果表单提交方法不是GET或POST时，它们将自动为这一参数创建一个隐藏字段。更多情况请参见： <a class="reference internal" href="http://symfony.com/doc/master/book/forms.html#book-forms-changing-action-and-method"><em>the related chapter in the forms documentation</em></a></p>
+</div>
+<h2><br></h2>
+    		";s:10:"post_title";s:166:"
+
+	 		<img src="http://blog.51cto.com/image/skin/artType03.jpg">
+
+
+    		    Symfony2CookBook：如何在路由中使用GET和POST以外的HTTP方法
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"0";s:6:"remove";s:1:"0";s:14:"category_title";s:24:"Symfony2 手册翻译版";}}s:13:"result_object";a:1:{i:0;O:8:"stdClass":18:{s:2:"id";s:3:"531";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:5601:"
+    		  <ul class=" list-paddingleft-2">
+<li><p>原文出处：<a textvalue="method_parameters.html" target="_self" href="http://symfony.com/doc/master/cookbook/routing/method_parameters.html">method_parameters.html</a></p></li>
+<li><p>原文作者：<a target="_self" href="https://github.com/FriendsOfSymfony">FriendsOfSymfony</a></p></li>
+<li><p>授权许可：<a href="http://creativecommons.cn/" title="http://www.creativecommons.cn/licenses/by-nc-sa/1.0/" rel="nofollow" target="_blank">创作共用协议</a></p></li>
+<li><p>翻译人员：FireHare</p></li>
+<li><p>校对人员：</p></li>
+<li><p>适用版本：Symfony 2.3.0</p></li>
+<li><p>文章状态：草译阶段</p></li>
+</ul>
+<h1 class="title_01">How to use HTTP Methods beyond GET and POST in Routes</h1>
+<span id="index-0"></span><p>The HTTP method of a request is one of the requirements that can be checked when seeing if it matches a route. This is introduced in the routing chapter of the book "<a class="reference internal" href="http://symfony.com/doc/master/book/routing.html"><em>Routing</em></a>" with examples using GET and POST. You can also use other HTTP verbs in this way. For example, if you have a blog post entry then you could use the same URL path to show it, make changes to it and delete it by matching on GET, PUT and DELETE.</p>
+<p>在查看是否匹配路由时，请求中的HTTP方法将作为请求的一部分而被检查。这在"<a class="reference internal" href="http://symfony.com/doc/master/book/routing.html"><em>Routing</em></a>"书中的路由章节通过使用GET和POST举例介绍过。您通过这样方式来使用其它HTTP动词。例如，如果您有一个博客文章条目，然后您就可以使用相同的URL路径，通过匹配GET、PUT和DELETE来显示、修改和删除它。</p>
+<pre class="brush:as3;toolbar:false;">blog_show:
+    path:     /blog/{slug}
+    defaults: { _controller: AcmeDemoBundle:Blog:show }
+    methods:   [GET]
+blog_update:
+    path:     /blog/{slug}
+    defaults: { _controller: AcmeDemoBundle:Blog:update }
+    methods:   [PUT]
+blog_delete:
+    path:     /blog/{slug}
+    defaults: { _controller: AcmeDemoBundle:Blog:delete }
+    methods:   [DELETE]</pre>
+<div class="section" id="faking-the-method-with-method">
+<h2>Faking the Method with _method（通过_method伪造方法）</h2>
+<div class="admonition-wrapper"><div class="admonition admonition-note">
+<p class="last">The <tt class="docutils literal"><code>_method</code></tt> functionality shown here is disabled by default in Symfony 2.2 and enabled by default in Symfony 2.3. To control it in Symfony 2.2, you must call <tt class="docutils literal"><code><a class="reference external" href="http://api.symfony.com/master/Symfony/Component/HttpFoundation/Request.html#enableHttpMethodParameterOverride%28%29" title="Symfony\Component\HttpFoundation\Request::enableHttpMethodParameterOverride()">Request::enableHttpMethodParameterOverride</a></code></tt>before you handle the request (e.g. in your front controller). In Symfony2.3, use the <a class="reference internal" href="http://symfony.com/doc/master/reference/configuration/framework.html#configuration-framework-http-method-override"><em>http_method_override</em></a> option.</p>
+<p class="last"><tt class="docutils literal"><code>_method</code></tt> 在这里显示的功能在Symfony 2.2中默认是禁用的，而在Symfony 2.3中默认是启用的。在Symfony 2.2中要控制它，您必须在您处理请求之前（如在您的前端控制器中）调用<tt class="docutils literal"><code><a class="reference external" href="http://api.symfony.com/master/Symfony/Component/HttpFoundation/Request.html#enableHttpMethodParameterOverride%28%29" title="Symfony\Component\HttpFoundation\Request::enableHttpMethodParameterOverride()">Request::enableHttpMethodParameterOverride</a></code></tt>。在Symfony 2.3中，则使<em>用</em><a class="reference internal" href="http://symfony.com/doc/master/reference/configuration/framework.html#configuration-framework-http-method-override"><em>http_method_override</em></a> 配置项。</p>
+<p class="last"><br><tt class="docutils literal"></tt></p>
+</div></div>
+<p>Unfortunately, life isn't quite this simple, since most browsers do notsupport sending PUT and DELETE requests. Fortunately Symfony2 provides youwith a simple way of working around this limitation. By including a <tt class="docutils literal"><code>_method </code></tt>parameter in the query string or parameters of an HTTP request, Symfony2 willuse this as the method when matching routes. Forms automatically include a hidden field for this parameter if their submission method is not GET or POST.See <a class="reference internal" href="http://symfony.com/doc/master/book/forms.html#book-forms-changing-action-and-method"><em>the related chapter in the forms documentation</em></a>for more information.</p>
+<p>不幸的是，生活并非如此简单，因为大多数浏览器并不支持发送 PUT 和 DELETE 请求。幸运的是Symfony2 为您提供了一个简单方法来绕过这一限制。通过在HTTP请求中的查询字符串或参数中包含 <tt class="docutils literal"><code>_method</code></tt> 参数，Symfony2将在匹配路由时将其作为方法使用。如果表单提交方法不是GET或POST时，它们将自动为这一参数创建一个隐藏字段。更多情况请参见： <a class="reference internal" href="http://symfony.com/doc/master/book/forms.html#book-forms-changing-action-and-method"><em>the related chapter in the forms documentation</em></a></p>
+</div>
+<h2><br></h2>
+    		";s:10:"post_title";s:166:"
+
+	 		<img src="http://blog.51cto.com/image/skin/artType03.jpg">
+
+
+    		    Symfony2CookBook：如何在路由中使用GET和POST以外的HTTP方法
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"0";s:6:"remove";s:1:"0";s:14:"category_title";s:24:"Symfony2 手册翻译版";}}s:20:"custom_result_object";a:0:{}s:11:"current_row";i:0;s:8:"num_rows";i:1;s:8:"row_data";N;}

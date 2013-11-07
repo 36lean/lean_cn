@@ -6,7 +6,7 @@ $base_url = str_replace('news/', '' , base_url());
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Cache-Control" content="max-age=7200" />
-<title><?php echo $template['title'];?> - 精企资讯 - 精企网 -  全球第一家中文精益学习平台</title>
+<title><?php echo $template['title'];?> - 精企资讯 - 精企网 -  全球第一家中文精益资讯平台</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="精益培训,精益视频,精益博客,精益生产,改善项目,精益5s,生产管理,现场管理" />
 <meta name="description" content="一站式在线精益学习平台,改善在线学院主要业务是精益培训" />
@@ -40,6 +40,7 @@ $base_url = str_replace('news/', '' , base_url());
     <link href="http://127.0.0.1/lean/static/bs/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?php echo base_url('public/bootstrap2/css/bootstrap-responsive.css');?>" rel="stylesheet" />
     <link href="<?php echo base_url('public/font/css/font-awesome.min.css');?>" rel="stylesheet" />
+    <script src="<?php echo base_url('public/bootstrap2/js/bootstrap.min.js');?>"></script>
 <!--[if IE 7]>
     <link href="<?php echo $base_url;?>/static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
 <![endif]--> 
@@ -56,7 +57,19 @@ $base_url = str_replace('news/', '' , base_url());
 </head>
 
 <body>
+<?php
+foreach ($_COOKIE as $key => $value) {
+  if(preg_match('/sid/', $key))
+    $sessionid = $_COOKIE[$key];
+}
 
+if( isset( $sessionid))
+{
+  $ci = & get_instance();
+  $user_info = $ci->db->select('username')->from('common_session')->where( array('sid'=>$sessionid))->get()->row_array();
+}
+
+?>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
     <div class="container">
@@ -81,6 +94,9 @@ $base_url = str_replace('news/', '' , base_url());
           <button name="findout" type="submit" class="btn btn-primary">搜索</button>
         </div>
       </form>
+     <ul class="nav pull-right">
+
+      </ul>
 </div>
 </div>
 </div>
@@ -97,7 +113,7 @@ $base_url = str_replace('news/', '' , base_url());
         <ul class="nav">
             <li><a href="<?php echo $base_url;?>portal.php"><i class="icon-home"></i> 首页</a></li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $base_url;?>lesson.php">
                 <i class="icon-cloud"></i> 精益云学院 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">

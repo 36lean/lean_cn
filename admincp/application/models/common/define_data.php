@@ -37,7 +37,7 @@ class Define_data extends CI_Model
 			'client_module' 	=> array( 	'route' => 'client' 	, 'alias' => '客户管理' , 'status' => 'active')  , 
 			'sale_module' 		=> array(	'route' => 'sale' 		, 'alias' => '市场销售' , 'status' => 'active')  , 
 			'mailer_module' 	=> array(	'route' => 'mailer' 	, 'alias' => '邮件工具' , 'status' => 'active')  , 
-			'product_module' 	=> array( 	'route' => 'course' 	, 'alias' => '产品管理' , 'status' => 'active')  ,
+			'product_module' 	=> array( 	'route' => 'course' 	, 'alias' => '课程/考试' , 'status' => 'active')  ,
 			'web_module' 		=> array(	'route' => 'website' 	, 'alias' => '网站管理' , 'status' => 'active')  , 
 			'portal_module' 	=> array(	'route' => 'portal' 	, 'alias' => '门户管理' , 'status' => 'active')  , 
 			'log_module' 		=> array(	'route' => 'log' 	, 'alias' => '日志管理' , 'status' => 'active')  ,

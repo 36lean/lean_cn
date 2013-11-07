@@ -4,7 +4,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
 	<meta http-equiv="Cache-Control" content="max-age=0" />
 	<!--{if $_G['config']['output']['iecompatible']}--><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE{$_G['config']['output']['iecompatible']}" /><!--{/if}-->
-	<title><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> 全球第一家中文精益学习平台</title>
+	<title>
+	{if CURSCRIPT === 'lesson'}
+	精益云学院 国内唯一一家精益在线学习平台
+	{else}
+	<!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> 
+	全球首家精益资讯平台
+	{/if}
+
+	</title>
+	<!-- ImRFlh_dHTCTsp4644ggrvTftV8 -->
 	$_G['setting']['seohead']
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="keywords" content="精益培训,精益视频,精益博客,精益生产,改善项目,精益5s,生产管理,现场管理" />

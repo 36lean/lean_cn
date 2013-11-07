@@ -1,0 +1,181 @@
+O:12:"CI_DB_result":8:{s:7:"conn_id";N;s:9:"result_id";N;s:12:"result_array";a:18:{i:0;a:4:{s:2:"id";s:3:"612";s:10:"post_title";s:34:"编译安装带WineTools的WineCVS";s:13:"post_modified";s:10:"1382597229";s:14:"post_titlelink";s:0:"";}i:1;a:4:{s:2:"id";s:3:"611";s:10:"post_title";s:15:"开发者资源";s:13:"post_modified";s:10:"1382521048";s:14:"post_titlelink";s:0:"";}i:2;a:4:{s:2:"id";s:3:"610";s:10:"post_title";s:33:"从现在开始要学习Python了";s:13:"post_modified";s:10:"1382605120";s:14:"post_titlelink";s:0:"";}i:3;a:4:{s:2:"id";s:3:"609";s:10:"post_title";s:129:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Postgres的介绍和安装
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:4;a:4:{s:2:"id";s:3:"608";s:10:"post_title";s:122:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    30分钟学会Zope3
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:5;a:4:{s:2:"id";s:3:"607";s:10:"post_title";s:142:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    JAVA中文支持指南（Vera Yuanti）
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:6;a:4:{s:2:"id";s:3:"606";s:10:"post_title";s:160:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    X300等低端ATI显卡在Dapper的Gnome上使用XGL指南
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:7;a:4:{s:2:"id";s:3:"605";s:10:"post_title";s:128:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Seam开发环境的搭建
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:8;a:4:{s:2:"id";s:3:"604";s:10:"post_title";s:141:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    使用Seam-gen生成基础项目骨架
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:9;a:4:{s:2:"id";s:3:"603";s:10:"post_title";s:125:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Seam的中文化支持
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:10;a:4:{s:2:"id";s:3:"602";s:10:"post_title";s:143:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Seam开发环境中的中文乱码问题
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:11;a:4:{s:2:"id";s:3:"601";s:10:"post_title";s:146:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Seam 如何得到 JSF 页面提交的参数
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:12;a:4:{s:2:"id";s:3:"600";s:10:"post_title";s:127:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    数据库Schema的解释
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:13;a:4:{s:2:"id";s:3:"599";s:10:"post_title";s:135:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony2 app/console命令收集
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:14;a:4:{s:2:"id";s:3:"598";s:10:"post_title";s:152:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony1.4.11学习笔记（一）：设置环境
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:15;a:4:{s:2:"id";s:3:"597";s:10:"post_title";s:155:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony1.4.11学习笔记（三）：设置虚拟机
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:16;a:4:{s:2:"id";s:3:"596";s:10:"post_title";s:152:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony1.4.11学习笔记（二）：创建项目
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:17;a:4:{s:2:"id";s:3:"595";s:10:"post_title";s:152:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony1.4.11学习笔记（四）：数据模型
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}}s:13:"result_object";a:18:{i:0;O:8:"stdClass":4:{s:2:"id";s:3:"612";s:10:"post_title";s:34:"编译安装带WineTools的WineCVS";s:13:"post_modified";s:10:"1382597229";s:14:"post_titlelink";s:0:"";}i:1;O:8:"stdClass":4:{s:2:"id";s:3:"611";s:10:"post_title";s:15:"开发者资源";s:13:"post_modified";s:10:"1382521048";s:14:"post_titlelink";s:0:"";}i:2;O:8:"stdClass":4:{s:2:"id";s:3:"610";s:10:"post_title";s:33:"从现在开始要学习Python了";s:13:"post_modified";s:10:"1382605120";s:14:"post_titlelink";s:0:"";}i:3;O:8:"stdClass":4:{s:2:"id";s:3:"609";s:10:"post_title";s:129:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Postgres的介绍和安装
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:4;O:8:"stdClass":4:{s:2:"id";s:3:"608";s:10:"post_title";s:122:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    30分钟学会Zope3
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:5;O:8:"stdClass":4:{s:2:"id";s:3:"607";s:10:"post_title";s:142:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    JAVA中文支持指南（Vera Yuanti）
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:6;O:8:"stdClass":4:{s:2:"id";s:3:"606";s:10:"post_title";s:160:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    X300等低端ATI显卡在Dapper的Gnome上使用XGL指南
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:7;O:8:"stdClass":4:{s:2:"id";s:3:"605";s:10:"post_title";s:128:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Seam开发环境的搭建
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:8;O:8:"stdClass":4:{s:2:"id";s:3:"604";s:10:"post_title";s:141:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    使用Seam-gen生成基础项目骨架
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:9;O:8:"stdClass":4:{s:2:"id";s:3:"603";s:10:"post_title";s:125:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Seam的中文化支持
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:10;O:8:"stdClass":4:{s:2:"id";s:3:"602";s:10:"post_title";s:143:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Seam开发环境中的中文乱码问题
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:11;O:8:"stdClass":4:{s:2:"id";s:3:"601";s:10:"post_title";s:146:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Seam 如何得到 JSF 页面提交的参数
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:12;O:8:"stdClass":4:{s:2:"id";s:3:"600";s:10:"post_title";s:127:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    数据库Schema的解释
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:13;O:8:"stdClass":4:{s:2:"id";s:3:"599";s:10:"post_title";s:135:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony2 app/console命令收集
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:14;O:8:"stdClass":4:{s:2:"id";s:3:"598";s:10:"post_title";s:152:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony1.4.11学习笔记（一）：设置环境
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:15;O:8:"stdClass":4:{s:2:"id";s:3:"597";s:10:"post_title";s:155:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony1.4.11学习笔记（三）：设置虚拟机
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:16;O:8:"stdClass":4:{s:2:"id";s:3:"596";s:10:"post_title";s:152:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony1.4.11学习笔记（二）：创建项目
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}i:17;O:8:"stdClass":4:{s:2:"id";s:3:"595";s:10:"post_title";s:152:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Symfony1.4.11学习笔记（四）：数据模型
+                ";s:13:"post_modified";s:4:"2013";s:14:"post_titlelink";s:0:"";}}s:20:"custom_result_object";a:0:{}s:11:"current_row";i:0;s:8:"num_rows";i:18;s:8:"row_data";N;}

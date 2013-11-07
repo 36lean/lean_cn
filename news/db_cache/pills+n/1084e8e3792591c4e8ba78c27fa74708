@@ -1,0 +1,893 @@
+O:12:"CI_DB_result":8:{s:7:"conn_id";N;s:9:"result_id";N;s:12:"result_array";a:1:{i:0;a:18:{s:2:"id";s:3:"593";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:31202:"
+    		  <ul>
+<li>原文出处：FOSRestBundle自带的index.rst</li>
+    <li>原文作者：<a href="https://github.com/FriendsOfSymfony/UserBundle" target="_blank">FriendsOfSymfony</a>
+</li>
+    <li>授权许可：<a href="http://creativecommons.cn/" title="http://www.creativecommons.cn/licenses/by-nc-sa/1.0/" rel="nofollow" target="_blank">创作共用协议</a>
+</li>
+    <li>翻译人员：FireHare</li>
+    <li>校对人员：FireHare</li>
+    <li>适用版本：Symfony 2</li>
+    <li>文章状态：草译阶段</li>
+</ul>
+<p>RestBundle<br>
+==========<br><br>
+This bundle provides various tools to rapidly develop RESTful API's &amp; applications with Symfony2.<br>
+这个Bundle提供各种工具来使Symfony2能够快速开发Rest风格的API和应用程序。<br><br>
+Its currently under development so key pieces that are planned are still missing.<br>
+它当前正在开发，因此其关键部分仍在规划中，并不明了。<br><br>
+For now the Bundle provides a view layer to enable output format agnostic Controllers,<br>
+which includes the ability to handle redirects differently based on a service container<br>
+aware Serializer service that can lazy load encoders and normalizers.<br>
+现在该Bundle提供一个视图层可以使输出格式与控制器无关，控制器有着处理不同重定向的功能，而该功能基于知道序列化服务可以延迟加载编码和正规化的服务容器。<br><br>
+Furthermore a custom route loader can be used to when following a method<br>
+naming convention to automatically provide routes for multiple actions by simply<br>
+configuring the name of a controller.<br>
+此外，通过简单配置控制器名，一个自定义路由加载器可以遵循方法的命名约定去自动提供多操作路由。<br><br>
+It also has support for RESTful decoding of HTTP request body and Accept headers<br>
+as well as a custom Exception controller that assists in using appropriate HTTP<br>
+status codes.<br>
+它也支持HTTP请求包体和Accept头的REST风格解码，以及使用适当HTTP状态码的自定义异常控制器。<br><br>
+Eventually the bundle will also provide normalizers for form and validator instances as<br>
+well as provide a solution to generation end user documentation describing the REST API.<br>
+最后，Bundle也为表单和验证器实例提供正规化，以及提供生成描述REST API最终用户文档的解决方案。<br><br>
+Installation<br>
+安装<br>
+============<br><br>
+    1. Add this bundle to your project as a Git submodule:<br>
+    1. 将该Bundle当作Git子模组添加到您项目中：<br><br>
+        $ git submodule add git://github.com/FriendsOfSymfony/FOSRestBundle.git vendor/bundles/FOS/FOSRestBundle</p>
+<p>    译者注：如果使用deps文件的话，可以添加以下语句：<br>
+    [FOSRestBundle]<br>
+        git=git://github.com/FriendsOfSymfony/FOSRestBundle.git<br>
+        target=/bundles/FOS/RestBundle<br><br>
+    2. 将FOS名称空间添加到您的自动加载器中：<br><br>
+        // app/autoload.php<br>
+        $loader-&gt;registerNamespaces(array(<br>
+            'FOS' =&gt; __DIR__.'/../vendor/bundles',<br>
+            // your other namespaces<br>
+        ));<br><br>
+    3. 将该Bundle添加到您应用程序内核中：<br><br>
+        // application/ApplicationKernel.php<br>
+        public function registerBundles()<br>
+        {<br>
+          return array(<br>
+              // ...<br>
+              new FOS\RestBundle\FOSRestBundle(),<br>
+              // ...<br>
+          );<br>
+        }<br><br>
+Examples<br>
+示例<br>
+========<br><br>
+The LiipHelloBundle provides several examples for the RestBundle:<br>
+LiipHelloBundle为RestBundle提供了几个例子：<br>
+https://github.com/liip/HelloBundle<br><br>
+There is also a fork of the Symfony2 Standard Edition that is configured to show the LiipHelloBundle examples:<br>
+还有一个Symfony2标准版的派生版本，配置用于显示LiipHelloBundle示例：<br>
+https://github.com/lsmith77/symfony-standard/tree/techtalk<br><br>
+Configuration<br>
+配置<br>
+=============<br><br>
+Basic configuration<br>
+基本配置<br>
+-------------------<br><br>
+The RestBundle allows adapting several classes it uses. Alternatively entire<br>
+services may be adapted. In the following examples the default Json encoder class<br>
+is modified and a custom serializer service is configured:<br>
+RestBundle允许调整它所用的类。此外，整个服务也可以调整。在下列例子中将改变缺省的Json编码类，并配置自定义的序列化服务：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        classes:<br>
+            json: MyProject\MyBundle\Serializer\Encoder\JsonEncoder<br>
+        services:<br>
+            serializer: my.serializer<br><br>
+Note the service for the RSS encoder needs to be defined in a custom bundle:<br>
+注意RSS编码的服务需要在自定义Bundle中定义<br><br>
+    &lt;service id="my.encoder.rss" class="MyProject\MyBundle\Serializer\Encoder\RSSEncoder" /&gt;<br><br>
+View support<br>
+视图支持<br>
+------------<br><br>
+Registering a custom encoder requires modifying your configuration options.<br>
+Following is an example adding support for a custom RSS encoder while removing<br>
+support for xml.<br>
+注册自定义编码器需要修改您的配置选项。下列例子添加对自定义RSS编码器的支持，同时取消到XML的支持。<br><br>
+When using View::setResourceRoute() the default behavior of forcing<br>
+a redirect to the route for html is disabled.<br>
+当使用View::setResourceRoute()时强制重定向到html路由的缺省行为将被禁用。<br><br>
+The default JSON encoder class is modified and a custom serializer service<br>
+is configured.<br>
+缺省的JSON编码器类被修改，自定义的序列化服务被配置。<br><br>
+The a default normalizer is registered with the ``fos_rest.get_set_method_normalizer``.<br>
+缺省的正规化通过``fos_rest.get_set_method_normalizer``来注册。<br><br>
+Also a default key for any form instances inside view parameters is set to ``form``.<br>
+视图中所有表单实例的缺省关键词都被设为``form``。<br><br>
+Finally the HTTP response status code for failed validation is set to ``400``:<br>
+最后HTTP响应的状态码因为验证失败被设为``400``：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        formats:<br>
+            rss: my.encoder.rss<br>
+            xml: false<br>
+        force_redirects:<br>
+            html: false<br>
+        normalizers:<br>
+            - "fos_rest.get_set_method_normalizer"<br>
+        default_form_key: form<br>
+        failed_validation: HTTP_BAD_REQUEST<br><br>
+Listener support<br>
+监听器支持<br>
+----------------<br><br>
+To enable the Request body decoding, Request format and the Response flash message listener<br>
+simply adapt your configuration as follows:<br>
+为了启用请求体解码，请求格式和响应“闪”消息监听器简单适配您的配置，如下所示：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        format_listener: true<br>
+        body_listener: true<br>
+        flash_message_listener: true<br><br>
+In the behavior of the format listener can be configured in a more granular fashion.<br>
+Below you can see the defaults in case ``format_listener`` is set to true as above:<br>
+格式监听器的行为可以进行更细化地配置。下面您可以看到``format_listener``象上面一样被缺省设置为true：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        format_listener:<br>
+            default_priorities:<br>
+                - html<br>
+                - "*/*"<br>
+            fallback_format: html<br><br>
+In the behavior of the flash message listener can be configured in a more granular fashion.<br>
+Below you can see the defaults in case ``flash_message_listener`` is set to true as above:<br>
+“闪”消息监听器的行为也可以进行更细化地配置。下面您可以看到``flash_message_listener``象上面一样被缺省设置为true：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        flash_message_listener:<br>
+            name: flashes<br>
+            path: /<br>
+            domain: ~<br>
+            secure: false<br>
+            httpOnly: true<br><br>
+You may also specify a ``default_format`` that the routing loader will use for<br>
+the ``_format`` parameter if none is specified.<br>
+您也可以指定``default_format``，这样路由加载器将在``_format``参数被设为none时使用。<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        routing_loader:<br>
+            default_format: json<br><br>
+Note that setting ``default_priorities`` to a non empty array enables Accept header negotiations.<br>
+Also note in case for example more complex Accept header negotiations are required, the user should<br>
+either set a custom ``FormatListener`` class or register their own "onKernelController" event.<br>
+注意将``default_priorities``设置为一个非空数组可以启动Accept头协商。更值得注意的是，要求更复杂的Accept头协商的例子，用户设置自定义的``FormatListener``类或注册它们自己的"onKernelController"事件。<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        classes:<br>
+            format_listener: MyProject\MyBundle\Controller\FormatListener<br><br>
+Note see the section about the view support in regards to how to register/unregister<br>
+encoders for specific formats as the request body decoding uses encoders for decoding.<br>
+注意参阅视图支持一节关于如何为特定格式注册／注销编码器，用于请求包体解码该格式。<br><br>
+SensioFrameworkExtraBundle support<br>
+SensioFrameworkExtraBundle支持<br>
+----------------------------------<br><br>
+This requires adding the SensioFrameworkExtraBundle to you vendors:<br>
+这要求将SensioFrameworkExtraBundle添加到您的vendors中：<br><br>
+    $ git submodule add git://github.com/sensio/SensioFrameworkExtraBundle.git vendor/bundles/Sensio/Bundle/FrameworkExtraBundle<br><br>
+Make sure to disable view annotations in the SensioFrameworkExtraBundle config,<br>
+enable or disable any of the other features depending on your needs:<br>
+确保在SensioFrameworkExtraBundle配置中禁用视图注释功能，其它功能按您所需启动或禁用：<br><br>
+    # app/config.yml<br>
+    sensio_framework_extra:<br>
+        view:    { annotations: false }<br>
+        router:  { annotations: true }<br><br>
+Finally enable the SensioFrameworkExtraBundle listener in the RestBundle:<br>
+最后在RestBundle中启动SensioFrameworkExtraBundle监听器：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        frameworkextra_bundle: true<br><br>
+JMSSerializerBundle support<br>
+JMSSerializerBundle支持<br>
+---------------------------<br><br>
+Note: Temporarily please use this fork https://github.com/lsmith77/SerializerBundle/tree/use_core<br>
+注意：暂时请使用这个分支https://github.com/lsmith77/SerializerBundle/tree/use_core<br><br>
+This requires adding the JMSSerializerBundle to you vendors:<br>
+这要求将JMSSerializerBundle添加到您的vendors中：<br><br>
+    $ git submodule add git://github.com/schmittjoh/SerializerBundle.git vendor/bundles/JMS/SerializerBundle<br><br>
+Finally enable the JMSSerializerBundle support in the RestBundle:<br>
+最后在RestBundle中启动JMSSerializerBundle支持：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        serializer_bundle: true<br><br>
+When using JMSSerializerBundle the ``normalizers`` config option is ignored as in this case<br>
+annotations should be used to register specific normalizers for a given class.<br>
+当使用JMSSerializerBundle，``normalizers``配置选项将被忽略，因为在这种情况下，注释将用于为指定类注册特定的normalizers。<br><br>
+ExceptionController support<br>
+ExceptionController支持<br>
+---------------------------<br><br>
+The RestBundle view layer aware ExceptionController is enabled as follows:<br>
+RestBundle视图层知道ExceptionController被启动，如下所示：<br><br>
+    # app/config.yml<br>
+    framework:<br>
+        exception_controller: "FOS\RestBundle\Controller\ExceptionController::showAction"<br><br>
+To map Exception classes to HTTP response status codes an ``exception_map`` may be configured,<br>
+where the keys match a fully qualified class name and the values are either an integer HTTP response<br>
+status code or a string matching a class constant of the ``FOS\RestBundle\Response\Codes`` class:<br>
+要将Exception类映射到HTTP响应状态码，需要配置``exception_map``，其中键匹配全限定类名，值是集成HTTP响应状态码或符合``FOS\RestBundle\Response\Codes``类内容的字符串。<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        exception:<br>
+            codes:<br>
+                "Symfony\Component\Routing\Matcher\Exception\NotFoundException": 404<br>
+                "Doctrine\ORM\OptimisticLockException": HTTP_CONFLICT<br>
+            messages:<br>
+                "Acme\HelloBundle\Exception\MyExceptionWithASafeMessage": true<br><br>
+Routing<br>
+路由<br>
+=======<br><br>
+The RestBundle provides custom route loaders to help in defining REST friendly routes.<br>
+RestBundle提供自定义路由加载器去帮助定义REST风格的路由。<br><br>
+Single RESTful controller routes<br>
+单个REST风格的控制器路由<br>
+--------------------------------<br><br>
+    # app/config/routing.yml<br>
+    users:<br>
+      type:     rest<br>
+      resource: Acme\HelloBundle\Controller\UsersController<br><br>
+This will tell Symfony2 to automatically generate proper REST routes from your `UsersController` action names.<br>
+Notice `type: rest` option. It's required so that the RestBundle can find which routes are supported.<br>
+这将告诉Symfony2从您`UsersController`的动作名中自动生成适当的REST路由。<br>
+请注意`type: rest`选项，这样RestBundle可以找到哪个路由被支持。<br><br>
+## Define resource actions<br><br>
+    class UsersController extends Controller<br>
+    {<br>
+        public function getUsersAction()<br>
+        {} // `get_users`    [GET] /users<br><br>
+        public function newUsersAction()<br>
+        {} // `new_users`    [GET] /users/new<br><br>
+        public function postUsersAction()<br>
+        {} // `post_users`   [POST] /users<br><br>
+        public function patchUsersAction()<br>
+        {} // `patch_users`   [PATCH] /users<br><br>
+        public function getUserAction($slug)<br>
+        {} // `get_user`     [GET] /users/{slug}<br><br>
+        public function editUserAction($slug)<br>
+        {} // `edit_user`    [GET] /users/{slug}/edit<br><br>
+        public function putUserAction($slug)<br>
+        {} // `put_user`     [PUT] /users/{slug}<br><br>
+        public function patchUserAction($slug)<br>
+        {} // `patch_user`   [PATCH] /users/{slug}<br><br>
+        public function lockUserAction($slug)<br>
+        {} // `lock_user`    [PUT] /users/{slug}/lock<br><br>
+        public function banUserAction($slug, $id)<br>
+        {} // `ban_user`     [PUT] /users/{slug}/ban<br><br>
+        public function removeUserAction($slug)<br>
+        {} // `remove_user`  [GET] /users/{slug}/remove<br><br>
+        public function deleteUserAction($slug)<br>
+        {} // `delete_user`  [DELETE] /users/{slug}<br><br>
+        public function getUserCommentsAction($slug)<br>
+        {} // `get_user_comments`    [GET] /users/{slug}/comments<br><br>
+        public function newUserCommentsAction($slug)<br>
+        {} // `new_user_comments`    [GET] /users/{slug}/comments/new<br><br>
+        public function postUserCommentsAction($slug)<br>
+        {} // `post_user_comments`   [POST] /users/{slug}/comments<br><br>
+        public function getUserCommentAction($slug, $id)<br>
+        {} // `get_user_comment`     [GET] /users/{slug}/comments/{id}<br><br>
+        public function editUserCommentAction($slug, $id)<br>
+        {} // `edit_user_comment`    [GET] /users/{slug}/comments/{id}/edit<br><br>
+        public function putUserCommentAction($slug, $id)<br>
+        {} // `put_user_comment`     [PUT] /users/{slug}/comments/{id}<br><br>
+        public function voteUserCommentAction($slug, $id)<br>
+        {} // `vote_user_comment`    [PUT] /users/{slug}/comments/{id}/vote<br><br>
+        public function removeUserCommentAction($slug, $id)<br>
+        {} // `remove_user_comment`  [GET] /users/{slug}/comments/{id}/remove<br><br>
+        public function deleteUserCommentAction($slug, $id)<br>
+        {} // `delete_user_comment`  [DELETE] /users/{slug}/comments/{id}<br>
+    }<br><br><br>
+That's all. All your resource (`UsersController`) actions will get mapped to the proper routes<br>
+as shown in the comments in the above example. Here are a few things to note:<br>
+就这样，正如上面示例中注释所显示的那样，所有您的资源（`UsersController`）动作将被映射到适当的路由。<br><br>
+### REST Actions<br>
+### REST动作<br><br>
+There are 5 actions that have special meaning in regards to REST and have the following behavior:<br>
+对REST来说有5个动作是有着特殊含义的：<br><br>
+* **get** - this action accepts *GET* requests to the url */resources* and returns all resources for this type. Shown as<br>
+`UsersController::getUsersAction()` above. This action also accepts *GET* requests to the url */resources/{id}* and<br>
+returns a single resource for this type. Shown as `UsersController::getUserAction()` above.<br>
+* **get** - 该动作接收到URL：*/resources*的*GET*请求，并为该类型返回所有的资源。正如上例`UsersController::getUsersAction()`所示。该动作也接受到URL：*/resources/{id}*的*GET*请求并为该类型返回单个资源。<br>
+* **post** - this action accepts *POST* requests to the url */resources* and creates a new resource of this type. Shown<br>
+as `UsersController::postUsersAction()` above.<br>
+* **post** - 该动作接收到URL：*/resources*的*POST*请求，并创建该类型的响应。正如上例`UsersController::postUsersAction()`所示。<br>
+* **put** - this action accepts *PUT* requests to the url */resources/{id}* and updates a single resource for this type.<br>
+Shown as `UsersController::putUserAction()` above.<br>
+* **put** - 该动作接收到URL：*/resources/{id}*的*PUT*请求，并更新该类型的单个资源。正如上例`UsersController::putUserAction()`所示。 <br>
+* **delete** - this action accepts *DELETE* requests to the url */resources/{id}* and deltes a single resource for this<br>
+type. Shown as `UsersController::deleteUserAction()` above.<br>
+* **delete** -  该动作接收到URL：*/resources/{id}*的*DELETE*请求，并删除该类型的单个资源。正如上例 `UsersController::deleteUserAction()`所示。<br>
+* **patch** - this action accepts *PATCH* requests to the url */resources* and is supposed to partially modify collection<br>
+of resources (e.g. apply batch modifications to subset of resources). Shown as `UsersController::patchUsersAction()` above.<br>
+This action also accepts *PATCH* requests to the url */resources/{id}* and is supposed to partially modify the resource. <br>
+Shown as `UsersController::patchUserAction()` above.<br>
+* **patch** -该动作接收到URL：*/resources*的 *PATCH* 请求，并假定被部分修改资源集（如：对资源的子集应用批处理）。正如上例`UsersController::patchUsersAction()` 所示。该动作还接受到URL：*/resources/{id}*的*PATCH*请求，并假定部分修改了该资源。正如上例`UsersController::patchUserAction()` 所示。<br><br>
+### Conventional Actions<br>
+### 常规动作<br><br>
+HATEOAS, or Hypermedia as the Engine of Application State, is an aspect of REST which allows clients to interact with the<br>
+REST service with hypertext - most commonly through an HTML page. There are 3 Conventional Action routings that are<br>
+supported by this bundle:<br>
+HATEOAS或超媒体作为应用程序状态引擎，是REST（允许客户通过超文本，通常是HTML页，与REST服务交互）的一个方面，本Bundle支持有3个常规动作路由：<br><br>
+* **new** - A hypermedia representation that acts as the engine to *POST*. Typically this is a form that allows the client<br>
+to *POST* a new resource. Shown as `UsersController::newUsersAction()` above.<br>
+* **new** - 一个超媒体表现充当*POST*引擎。典型地，允许客户端去*POST*一个新资源的表单。正如上例`UsersController::newUsersAction()`所示。<br>
+* **edit** - A hypermedia representation that acts as the engine to *PUT*. Typically this is a form that allows the client<br>
+to *PUT*, or update, an existing resource. Shown as `UsersController::editUserAction()` above.<br>
+* **edit** - 一个超媒体表现充当*PUT*引擎。典型地，允许客户端去*PUT*或更新一个已存在的资源。正如上例 `UsersController::editUserAction()`所示。<br>
+* **remove** - A hypermedia representation that acts as the engine to *DELETE*. Typically this is a form that allows the<br>
+client to *DELETE* an existing resource. Commonly a confirmation form. Shown as `UsersController::removeUserAction()` above.<br>
+* **remove** - A hypermedia representation that acts as the engine to *DELETE*. 一个超媒体表现充当*DELETE*引擎。典型地，允许客户端去*DELETE*一个已存在的资源。正如上例`UsersController::removeUserAction()`所示。<br><br>
+### Custom PUT Actions<br>
+### 自定义PUT动作<br><br>
+All actions that do not match the ones listed in the sections above will register as a *PUT* action. In the controller<br>
+shown above, these actions are `UsersController::lockUserAction()` and `UsersController::banUserAction()`. You could<br>
+just as easily create a method called `UsersController::promoteUserAction()` which would take a *PUT* request to the url<br>
+*/users/{slug}/promote*. This allows for easy updating of aspects of a resource, without having to deal with the<br>
+resource as a whole at the standard *PUT* endpoint.<br>
+所有不能匹配本节上述列表中的动作将作为*PUT*动作注册。如上面控制器展示的`UsersController::lockUserAction()`和`UsersController::banUserAction()`那样。您可以很容易地创建一个名为`UsersController::promoteUserAction()`的方法，它将*PUT*请求发送到URL：*/users/{slug}/promote*。这样可以很容易地更新资源的某些方面，而无须将其作为标准*PUT*终端的整体进行处理。<br><br>
+### Sub-Resource Actions<br>
+### 子资源动作<br><br>
+Of course it's possible and common to have sub or child resources. They are easily defined within the same controller by<br>
+following the naming convention  - as seen in the example above with<br>
+`UsersController::getUserCommentsAction()`. This is a good strategy to follow when the child resource needs the parent<br>
+resource's ID in order to look up itself. <br>
+当然，拥有子资源是常见的。它们可以很容易地在同一控制器中通过`ResourceController::actionResourceSubResource()`来定义，正如上面示例中`UsersController::getUserCommentsAction()`一样。在子资源需要父资源ID查找自身时这是一个很好的策略。<br><br>
+Relational RESTful controllers routes<br>
+关系REST风格控制器路由<br>
+-------------------------------------<br><br>
+Sometimes it's better to place subresource actions in their own controller, especially when<br>
+you have more than 2 subresource actions.<br>
+有时，将子资源动作放在它们自己的控制器中会更好。尤其是当您拥有2个以上子资源的动作时。<br><br>
+## Resource collection<br>
+## 资源集<br><br>
+In this case, you must first specify resource relations in special rest YML or XML collection:<br>
+在这种情况下，您必须首先指定在特定的REST风格的YML或XML集中的资源关系：<br><br>
+    # src/Acme/HelloBundle/Resources/config/users_routes.yml<br>
+    users:<br>
+      type:     rest<br>
+      resource: "@AcmeHello\Controller\UsersController"<br>
+    <br>
+    comments:<br>
+      type:     rest<br>
+      parent:   users<br>
+      resource: "@AcmeHello\Controller\CommentsController"<br><br>
+Notice `parent: users` option in the second case. This option specifies that the comments resource<br>
+is child of the users resource. In this case, your `UsersController` MUST always have a single<br>
+resource `get...` action:<br>
+注意第二部分的`parent: users`选项。该选项指定了comments资源是users资源的子资源。在这种情况下，您的`UsersController`必须总是拥有单个资源`get...`动作：<br><br>
+    class UsersController extends Controller<br>
+    {<br>
+        public function getUserAction($slug)<br>
+        {} // `get_user`   [GET] /users/{slug}<br>
+    <br>
+        ...<br>
+    }<br><br>
+It's used to determine the parent collection name. Controller name itself not used in routes<br>
+auto-generation process and can be any name you like.<br>
+它常用于确定父资源集名。控制器名自身并不用于路由自动协商过程，它可以是您想要的任何名字。<br><br>
+## Define child resource controller<br>
+## 定义子资源控制器<br><br>
+`CommentsController` actions now will looks like:<br>
+`CommentsController`动作现在看上去象：<br><br>
+    class CommentsController extends Controller<br>
+    {<br>
+        public function voteCommentAction($slug, $id)<br>
+        {} // `vote_user_comment`   [PUT] /users/{slug}/comments/{id}/vote<br>
+        <br>
+        public function getCommentsAction($slug)<br>
+        {} // `get_user_comments`   [GET] /users/{slug}/comments<br>
+        <br>
+        public function getCommentAction($slug, $id)<br>
+        {} // `get_user_comment`    [GET] /users/{slug}/comments/{id}<br>
+        <br>
+        public function deleteCommentAction($slug, $id)<br>
+        {} // `delete_user_comment` [DELETE] /users/{slug}/comments/{id}<br>
+        <br>
+        public function newCommentsAction($slug)<br>
+        {} // `new_user_comments`   [GET] /users/{slug}/comments/new<br><br>
+        public function editCommentAction($slug, $id)<br>
+        {} // `edit_user_comment`   [GET] /users/{slug}/comments/{id}/edit<br><br>
+        public function removeCommentAction($slug, $id)<br>
+        {} // `remove_user_comment` [GET] /users/{slug}/comments/{id}/remove<br>
+    }<br><br>
+Notice, we got rid of the `User` part in action names. That is because the RestBundle routing<br>
+already knows, that `CommentsController::...` is child resources of `UsersController::getUser()`<br>
+resource.<br>
+注意，我们摆脱了动作名中的`User`部分。那是因为RestBundle路由已经知道，`CommentsController::...`是`UsersController::getUser()`资源的子资源。<br><br>
+## Include resource collections in application routing<br>
+## 在应用程序路由中包含资源集<br><br>
+Last step is mapping of your collection routes into the application `routing.yml`:<br>
+最后一步是将您的集合路由映射放入应用程序的`routing.yml`文件中：<br><br>
+    # app/config/routing.yml<br>
+    users:<br>
+      type:     rest<br>
+      resource: "@AcmeHello/Resources/config/users_routes.yml"<br><br>
+That's all. Note that it's important to use the `type: rest` param when including your application's<br>
+routing file. Without it, rest routes will still work but resource collections will fail. If you get an<br>
+exception that contains `...routing loader does not support given key: "parent"...` then you are most likely missing<br>
+the `type: rest` param in your application level routes include.<br>
+就是这样。注意当包含您应用程序路由文件时使用`type: rest`参数是重要的。没有它，REST路由仍然可以工作，但资源集将失败。如果您得到了一个内容为`...routing loader does not support given key: "parent"...`的异常，那么您最有可能在您的应用程序级别的路由中没有包含`type: rest`参数。<br><br>
+## Routes naming<br>
+## 路由命名<br><br>
+RestBundle uses REST paths to generate route name. This means, that URL:<br>
+RestBundle使用REST风格的路径来生成路由名。这就意味着，URL：<br><br>
+    [PUT] /users/{slug}/comments/{id}/vote<br><br>
+will become the route with the name:<br>
+的路由名为：<br><br>
+    vote_user_comment<br><br>
+For further examples, see comments of controllers in the code above.<br>
+更多示例，参见上例代码中控制器的注释部分。<br><br>
+### Naming collisions<br>
+### 命名冲突<br><br>
+Sometimes, routes auto-naming will lead to route names collisions, so RestBundle route<br>
+collections provides a `name_prefix` (`name-prefix` for xml and @NamePrefix for<br>
+annotations) parameter:<br>
+有时，路由自动命名会导致路由名冲突，因此RestBundle路由集提供了`name_prefix`（在XML中是`name_prefix`而注释中则是@NamePrefix）参数：<br><br>
+    # src/Acme/HelloBundle/Resources/config/users_routes.yml<br>
+    comments:<br>
+      type:         rest<br>
+      resource:     "@AcmeHello\Controller\CommentsController"<br>
+      name_prefix:  api_<br><br>
+With this configuration, route name would become:<br>
+通过上述配置，路由名就会变成：<br><br>
+    api_vote_user_comment<br><br>
+Say NO to name collisions!<br>
+对命名冲突说不吧！<br>
+ </p>
+    		";s:10:"post_title";s:136:"
+
+	 		<img src="http://blog.51cto.com/image/skin/artType03.jpg">
+
+
+    		    Symfony2插件FOSRestBundle的使用说明
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"1";s:6:"remove";s:1:"0";s:14:"category_title";s:24:"Symfony2 手册翻译版";}}s:13:"result_object";a:1:{i:0;O:8:"stdClass":18:{s:2:"id";s:3:"593";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:31202:"
+    		  <ul>
+<li>原文出处：FOSRestBundle自带的index.rst</li>
+    <li>原文作者：<a href="https://github.com/FriendsOfSymfony/UserBundle" target="_blank">FriendsOfSymfony</a>
+</li>
+    <li>授权许可：<a href="http://creativecommons.cn/" title="http://www.creativecommons.cn/licenses/by-nc-sa/1.0/" rel="nofollow" target="_blank">创作共用协议</a>
+</li>
+    <li>翻译人员：FireHare</li>
+    <li>校对人员：FireHare</li>
+    <li>适用版本：Symfony 2</li>
+    <li>文章状态：草译阶段</li>
+</ul>
+<p>RestBundle<br>
+==========<br><br>
+This bundle provides various tools to rapidly develop RESTful API's &amp; applications with Symfony2.<br>
+这个Bundle提供各种工具来使Symfony2能够快速开发Rest风格的API和应用程序。<br><br>
+Its currently under development so key pieces that are planned are still missing.<br>
+它当前正在开发，因此其关键部分仍在规划中，并不明了。<br><br>
+For now the Bundle provides a view layer to enable output format agnostic Controllers,<br>
+which includes the ability to handle redirects differently based on a service container<br>
+aware Serializer service that can lazy load encoders and normalizers.<br>
+现在该Bundle提供一个视图层可以使输出格式与控制器无关，控制器有着处理不同重定向的功能，而该功能基于知道序列化服务可以延迟加载编码和正规化的服务容器。<br><br>
+Furthermore a custom route loader can be used to when following a method<br>
+naming convention to automatically provide routes for multiple actions by simply<br>
+configuring the name of a controller.<br>
+此外，通过简单配置控制器名，一个自定义路由加载器可以遵循方法的命名约定去自动提供多操作路由。<br><br>
+It also has support for RESTful decoding of HTTP request body and Accept headers<br>
+as well as a custom Exception controller that assists in using appropriate HTTP<br>
+status codes.<br>
+它也支持HTTP请求包体和Accept头的REST风格解码，以及使用适当HTTP状态码的自定义异常控制器。<br><br>
+Eventually the bundle will also provide normalizers for form and validator instances as<br>
+well as provide a solution to generation end user documentation describing the REST API.<br>
+最后，Bundle也为表单和验证器实例提供正规化，以及提供生成描述REST API最终用户文档的解决方案。<br><br>
+Installation<br>
+安装<br>
+============<br><br>
+    1. Add this bundle to your project as a Git submodule:<br>
+    1. 将该Bundle当作Git子模组添加到您项目中：<br><br>
+        $ git submodule add git://github.com/FriendsOfSymfony/FOSRestBundle.git vendor/bundles/FOS/FOSRestBundle</p>
+<p>    译者注：如果使用deps文件的话，可以添加以下语句：<br>
+    [FOSRestBundle]<br>
+        git=git://github.com/FriendsOfSymfony/FOSRestBundle.git<br>
+        target=/bundles/FOS/RestBundle<br><br>
+    2. 将FOS名称空间添加到您的自动加载器中：<br><br>
+        // app/autoload.php<br>
+        $loader-&gt;registerNamespaces(array(<br>
+            'FOS' =&gt; __DIR__.'/../vendor/bundles',<br>
+            // your other namespaces<br>
+        ));<br><br>
+    3. 将该Bundle添加到您应用程序内核中：<br><br>
+        // application/ApplicationKernel.php<br>
+        public function registerBundles()<br>
+        {<br>
+          return array(<br>
+              // ...<br>
+              new FOS\RestBundle\FOSRestBundle(),<br>
+              // ...<br>
+          );<br>
+        }<br><br>
+Examples<br>
+示例<br>
+========<br><br>
+The LiipHelloBundle provides several examples for the RestBundle:<br>
+LiipHelloBundle为RestBundle提供了几个例子：<br>
+https://github.com/liip/HelloBundle<br><br>
+There is also a fork of the Symfony2 Standard Edition that is configured to show the LiipHelloBundle examples:<br>
+还有一个Symfony2标准版的派生版本，配置用于显示LiipHelloBundle示例：<br>
+https://github.com/lsmith77/symfony-standard/tree/techtalk<br><br>
+Configuration<br>
+配置<br>
+=============<br><br>
+Basic configuration<br>
+基本配置<br>
+-------------------<br><br>
+The RestBundle allows adapting several classes it uses. Alternatively entire<br>
+services may be adapted. In the following examples the default Json encoder class<br>
+is modified and a custom serializer service is configured:<br>
+RestBundle允许调整它所用的类。此外，整个服务也可以调整。在下列例子中将改变缺省的Json编码类，并配置自定义的序列化服务：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        classes:<br>
+            json: MyProject\MyBundle\Serializer\Encoder\JsonEncoder<br>
+        services:<br>
+            serializer: my.serializer<br><br>
+Note the service for the RSS encoder needs to be defined in a custom bundle:<br>
+注意RSS编码的服务需要在自定义Bundle中定义<br><br>
+    &lt;service id="my.encoder.rss" class="MyProject\MyBundle\Serializer\Encoder\RSSEncoder" /&gt;<br><br>
+View support<br>
+视图支持<br>
+------------<br><br>
+Registering a custom encoder requires modifying your configuration options.<br>
+Following is an example adding support for a custom RSS encoder while removing<br>
+support for xml.<br>
+注册自定义编码器需要修改您的配置选项。下列例子添加对自定义RSS编码器的支持，同时取消到XML的支持。<br><br>
+When using View::setResourceRoute() the default behavior of forcing<br>
+a redirect to the route for html is disabled.<br>
+当使用View::setResourceRoute()时强制重定向到html路由的缺省行为将被禁用。<br><br>
+The default JSON encoder class is modified and a custom serializer service<br>
+is configured.<br>
+缺省的JSON编码器类被修改，自定义的序列化服务被配置。<br><br>
+The a default normalizer is registered with the ``fos_rest.get_set_method_normalizer``.<br>
+缺省的正规化通过``fos_rest.get_set_method_normalizer``来注册。<br><br>
+Also a default key for any form instances inside view parameters is set to ``form``.<br>
+视图中所有表单实例的缺省关键词都被设为``form``。<br><br>
+Finally the HTTP response status code for failed validation is set to ``400``:<br>
+最后HTTP响应的状态码因为验证失败被设为``400``：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        formats:<br>
+            rss: my.encoder.rss<br>
+            xml: false<br>
+        force_redirects:<br>
+            html: false<br>
+        normalizers:<br>
+            - "fos_rest.get_set_method_normalizer"<br>
+        default_form_key: form<br>
+        failed_validation: HTTP_BAD_REQUEST<br><br>
+Listener support<br>
+监听器支持<br>
+----------------<br><br>
+To enable the Request body decoding, Request format and the Response flash message listener<br>
+simply adapt your configuration as follows:<br>
+为了启用请求体解码，请求格式和响应“闪”消息监听器简单适配您的配置，如下所示：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        format_listener: true<br>
+        body_listener: true<br>
+        flash_message_listener: true<br><br>
+In the behavior of the format listener can be configured in a more granular fashion.<br>
+Below you can see the defaults in case ``format_listener`` is set to true as above:<br>
+格式监听器的行为可以进行更细化地配置。下面您可以看到``format_listener``象上面一样被缺省设置为true：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        format_listener:<br>
+            default_priorities:<br>
+                - html<br>
+                - "*/*"<br>
+            fallback_format: html<br><br>
+In the behavior of the flash message listener can be configured in a more granular fashion.<br>
+Below you can see the defaults in case ``flash_message_listener`` is set to true as above:<br>
+“闪”消息监听器的行为也可以进行更细化地配置。下面您可以看到``flash_message_listener``象上面一样被缺省设置为true：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        flash_message_listener:<br>
+            name: flashes<br>
+            path: /<br>
+            domain: ~<br>
+            secure: false<br>
+            httpOnly: true<br><br>
+You may also specify a ``default_format`` that the routing loader will use for<br>
+the ``_format`` parameter if none is specified.<br>
+您也可以指定``default_format``，这样路由加载器将在``_format``参数被设为none时使用。<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        routing_loader:<br>
+            default_format: json<br><br>
+Note that setting ``default_priorities`` to a non empty array enables Accept header negotiations.<br>
+Also note in case for example more complex Accept header negotiations are required, the user should<br>
+either set a custom ``FormatListener`` class or register their own "onKernelController" event.<br>
+注意将``default_priorities``设置为一个非空数组可以启动Accept头协商。更值得注意的是，要求更复杂的Accept头协商的例子，用户设置自定义的``FormatListener``类或注册它们自己的"onKernelController"事件。<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        classes:<br>
+            format_listener: MyProject\MyBundle\Controller\FormatListener<br><br>
+Note see the section about the view support in regards to how to register/unregister<br>
+encoders for specific formats as the request body decoding uses encoders for decoding.<br>
+注意参阅视图支持一节关于如何为特定格式注册／注销编码器，用于请求包体解码该格式。<br><br>
+SensioFrameworkExtraBundle support<br>
+SensioFrameworkExtraBundle支持<br>
+----------------------------------<br><br>
+This requires adding the SensioFrameworkExtraBundle to you vendors:<br>
+这要求将SensioFrameworkExtraBundle添加到您的vendors中：<br><br>
+    $ git submodule add git://github.com/sensio/SensioFrameworkExtraBundle.git vendor/bundles/Sensio/Bundle/FrameworkExtraBundle<br><br>
+Make sure to disable view annotations in the SensioFrameworkExtraBundle config,<br>
+enable or disable any of the other features depending on your needs:<br>
+确保在SensioFrameworkExtraBundle配置中禁用视图注释功能，其它功能按您所需启动或禁用：<br><br>
+    # app/config.yml<br>
+    sensio_framework_extra:<br>
+        view:    { annotations: false }<br>
+        router:  { annotations: true }<br><br>
+Finally enable the SensioFrameworkExtraBundle listener in the RestBundle:<br>
+最后在RestBundle中启动SensioFrameworkExtraBundle监听器：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        frameworkextra_bundle: true<br><br>
+JMSSerializerBundle support<br>
+JMSSerializerBundle支持<br>
+---------------------------<br><br>
+Note: Temporarily please use this fork https://github.com/lsmith77/SerializerBundle/tree/use_core<br>
+注意：暂时请使用这个分支https://github.com/lsmith77/SerializerBundle/tree/use_core<br><br>
+This requires adding the JMSSerializerBundle to you vendors:<br>
+这要求将JMSSerializerBundle添加到您的vendors中：<br><br>
+    $ git submodule add git://github.com/schmittjoh/SerializerBundle.git vendor/bundles/JMS/SerializerBundle<br><br>
+Finally enable the JMSSerializerBundle support in the RestBundle:<br>
+最后在RestBundle中启动JMSSerializerBundle支持：<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        serializer_bundle: true<br><br>
+When using JMSSerializerBundle the ``normalizers`` config option is ignored as in this case<br>
+annotations should be used to register specific normalizers for a given class.<br>
+当使用JMSSerializerBundle，``normalizers``配置选项将被忽略，因为在这种情况下，注释将用于为指定类注册特定的normalizers。<br><br>
+ExceptionController support<br>
+ExceptionController支持<br>
+---------------------------<br><br>
+The RestBundle view layer aware ExceptionController is enabled as follows:<br>
+RestBundle视图层知道ExceptionController被启动，如下所示：<br><br>
+    # app/config.yml<br>
+    framework:<br>
+        exception_controller: "FOS\RestBundle\Controller\ExceptionController::showAction"<br><br>
+To map Exception classes to HTTP response status codes an ``exception_map`` may be configured,<br>
+where the keys match a fully qualified class name and the values are either an integer HTTP response<br>
+status code or a string matching a class constant of the ``FOS\RestBundle\Response\Codes`` class:<br>
+要将Exception类映射到HTTP响应状态码，需要配置``exception_map``，其中键匹配全限定类名，值是集成HTTP响应状态码或符合``FOS\RestBundle\Response\Codes``类内容的字符串。<br><br>
+    # app/config.yml<br>
+    fos_rest:<br>
+        exception:<br>
+            codes:<br>
+                "Symfony\Component\Routing\Matcher\Exception\NotFoundException": 404<br>
+                "Doctrine\ORM\OptimisticLockException": HTTP_CONFLICT<br>
+            messages:<br>
+                "Acme\HelloBundle\Exception\MyExceptionWithASafeMessage": true<br><br>
+Routing<br>
+路由<br>
+=======<br><br>
+The RestBundle provides custom route loaders to help in defining REST friendly routes.<br>
+RestBundle提供自定义路由加载器去帮助定义REST风格的路由。<br><br>
+Single RESTful controller routes<br>
+单个REST风格的控制器路由<br>
+--------------------------------<br><br>
+    # app/config/routing.yml<br>
+    users:<br>
+      type:     rest<br>
+      resource: Acme\HelloBundle\Controller\UsersController<br><br>
+This will tell Symfony2 to automatically generate proper REST routes from your `UsersController` action names.<br>
+Notice `type: rest` option. It's required so that the RestBundle can find which routes are supported.<br>
+这将告诉Symfony2从您`UsersController`的动作名中自动生成适当的REST路由。<br>
+请注意`type: rest`选项，这样RestBundle可以找到哪个路由被支持。<br><br>
+## Define resource actions<br><br>
+    class UsersController extends Controller<br>
+    {<br>
+        public function getUsersAction()<br>
+        {} // `get_users`    [GET] /users<br><br>
+        public function newUsersAction()<br>
+        {} // `new_users`    [GET] /users/new<br><br>
+        public function postUsersAction()<br>
+        {} // `post_users`   [POST] /users<br><br>
+        public function patchUsersAction()<br>
+        {} // `patch_users`   [PATCH] /users<br><br>
+        public function getUserAction($slug)<br>
+        {} // `get_user`     [GET] /users/{slug}<br><br>
+        public function editUserAction($slug)<br>
+        {} // `edit_user`    [GET] /users/{slug}/edit<br><br>
+        public function putUserAction($slug)<br>
+        {} // `put_user`     [PUT] /users/{slug}<br><br>
+        public function patchUserAction($slug)<br>
+        {} // `patch_user`   [PATCH] /users/{slug}<br><br>
+        public function lockUserAction($slug)<br>
+        {} // `lock_user`    [PUT] /users/{slug}/lock<br><br>
+        public function banUserAction($slug, $id)<br>
+        {} // `ban_user`     [PUT] /users/{slug}/ban<br><br>
+        public function removeUserAction($slug)<br>
+        {} // `remove_user`  [GET] /users/{slug}/remove<br><br>
+        public function deleteUserAction($slug)<br>
+        {} // `delete_user`  [DELETE] /users/{slug}<br><br>
+        public function getUserCommentsAction($slug)<br>
+        {} // `get_user_comments`    [GET] /users/{slug}/comments<br><br>
+        public function newUserCommentsAction($slug)<br>
+        {} // `new_user_comments`    [GET] /users/{slug}/comments/new<br><br>
+        public function postUserCommentsAction($slug)<br>
+        {} // `post_user_comments`   [POST] /users/{slug}/comments<br><br>
+        public function getUserCommentAction($slug, $id)<br>
+        {} // `get_user_comment`     [GET] /users/{slug}/comments/{id}<br><br>
+        public function editUserCommentAction($slug, $id)<br>
+        {} // `edit_user_comment`    [GET] /users/{slug}/comments/{id}/edit<br><br>
+        public function putUserCommentAction($slug, $id)<br>
+        {} // `put_user_comment`     [PUT] /users/{slug}/comments/{id}<br><br>
+        public function voteUserCommentAction($slug, $id)<br>
+        {} // `vote_user_comment`    [PUT] /users/{slug}/comments/{id}/vote<br><br>
+        public function removeUserCommentAction($slug, $id)<br>
+        {} // `remove_user_comment`  [GET] /users/{slug}/comments/{id}/remove<br><br>
+        public function deleteUserCommentAction($slug, $id)<br>
+        {} // `delete_user_comment`  [DELETE] /users/{slug}/comments/{id}<br>
+    }<br><br><br>
+That's all. All your resource (`UsersController`) actions will get mapped to the proper routes<br>
+as shown in the comments in the above example. Here are a few things to note:<br>
+就这样，正如上面示例中注释所显示的那样，所有您的资源（`UsersController`）动作将被映射到适当的路由。<br><br>
+### REST Actions<br>
+### REST动作<br><br>
+There are 5 actions that have special meaning in regards to REST and have the following behavior:<br>
+对REST来说有5个动作是有着特殊含义的：<br><br>
+* **get** - this action accepts *GET* requests to the url */resources* and returns all resources for this type. Shown as<br>
+`UsersController::getUsersAction()` above. This action also accepts *GET* requests to the url */resources/{id}* and<br>
+returns a single resource for this type. Shown as `UsersController::getUserAction()` above.<br>
+* **get** - 该动作接收到URL：*/resources*的*GET*请求，并为该类型返回所有的资源。正如上例`UsersController::getUsersAction()`所示。该动作也接受到URL：*/resources/{id}*的*GET*请求并为该类型返回单个资源。<br>
+* **post** - this action accepts *POST* requests to the url */resources* and creates a new resource of this type. Shown<br>
+as `UsersController::postUsersAction()` above.<br>
+* **post** - 该动作接收到URL：*/resources*的*POST*请求，并创建该类型的响应。正如上例`UsersController::postUsersAction()`所示。<br>
+* **put** - this action accepts *PUT* requests to the url */resources/{id}* and updates a single resource for this type.<br>
+Shown as `UsersController::putUserAction()` above.<br>
+* **put** - 该动作接收到URL：*/resources/{id}*的*PUT*请求，并更新该类型的单个资源。正如上例`UsersController::putUserAction()`所示。 <br>
+* **delete** - this action accepts *DELETE* requests to the url */resources/{id}* and deltes a single resource for this<br>
+type. Shown as `UsersController::deleteUserAction()` above.<br>
+* **delete** -  该动作接收到URL：*/resources/{id}*的*DELETE*请求，并删除该类型的单个资源。正如上例 `UsersController::deleteUserAction()`所示。<br>
+* **patch** - this action accepts *PATCH* requests to the url */resources* and is supposed to partially modify collection<br>
+of resources (e.g. apply batch modifications to subset of resources). Shown as `UsersController::patchUsersAction()` above.<br>
+This action also accepts *PATCH* requests to the url */resources/{id}* and is supposed to partially modify the resource. <br>
+Shown as `UsersController::patchUserAction()` above.<br>
+* **patch** -该动作接收到URL：*/resources*的 *PATCH* 请求，并假定被部分修改资源集（如：对资源的子集应用批处理）。正如上例`UsersController::patchUsersAction()` 所示。该动作还接受到URL：*/resources/{id}*的*PATCH*请求，并假定部分修改了该资源。正如上例`UsersController::patchUserAction()` 所示。<br><br>
+### Conventional Actions<br>
+### 常规动作<br><br>
+HATEOAS, or Hypermedia as the Engine of Application State, is an aspect of REST which allows clients to interact with the<br>
+REST service with hypertext - most commonly through an HTML page. There are 3 Conventional Action routings that are<br>
+supported by this bundle:<br>
+HATEOAS或超媒体作为应用程序状态引擎，是REST（允许客户通过超文本，通常是HTML页，与REST服务交互）的一个方面，本Bundle支持有3个常规动作路由：<br><br>
+* **new** - A hypermedia representation that acts as the engine to *POST*. Typically this is a form that allows the client<br>
+to *POST* a new resource. Shown as `UsersController::newUsersAction()` above.<br>
+* **new** - 一个超媒体表现充当*POST*引擎。典型地，允许客户端去*POST*一个新资源的表单。正如上例`UsersController::newUsersAction()`所示。<br>
+* **edit** - A hypermedia representation that acts as the engine to *PUT*. Typically this is a form that allows the client<br>
+to *PUT*, or update, an existing resource. Shown as `UsersController::editUserAction()` above.<br>
+* **edit** - 一个超媒体表现充当*PUT*引擎。典型地，允许客户端去*PUT*或更新一个已存在的资源。正如上例 `UsersController::editUserAction()`所示。<br>
+* **remove** - A hypermedia representation that acts as the engine to *DELETE*. Typically this is a form that allows the<br>
+client to *DELETE* an existing resource. Commonly a confirmation form. Shown as `UsersController::removeUserAction()` above.<br>
+* **remove** - A hypermedia representation that acts as the engine to *DELETE*. 一个超媒体表现充当*DELETE*引擎。典型地，允许客户端去*DELETE*一个已存在的资源。正如上例`UsersController::removeUserAction()`所示。<br><br>
+### Custom PUT Actions<br>
+### 自定义PUT动作<br><br>
+All actions that do not match the ones listed in the sections above will register as a *PUT* action. In the controller<br>
+shown above, these actions are `UsersController::lockUserAction()` and `UsersController::banUserAction()`. You could<br>
+just as easily create a method called `UsersController::promoteUserAction()` which would take a *PUT* request to the url<br>
+*/users/{slug}/promote*. This allows for easy updating of aspects of a resource, without having to deal with the<br>
+resource as a whole at the standard *PUT* endpoint.<br>
+所有不能匹配本节上述列表中的动作将作为*PUT*动作注册。如上面控制器展示的`UsersController::lockUserAction()`和`UsersController::banUserAction()`那样。您可以很容易地创建一个名为`UsersController::promoteUserAction()`的方法，它将*PUT*请求发送到URL：*/users/{slug}/promote*。这样可以很容易地更新资源的某些方面，而无须将其作为标准*PUT*终端的整体进行处理。<br><br>
+### Sub-Resource Actions<br>
+### 子资源动作<br><br>
+Of course it's possible and common to have sub or child resources. They are easily defined within the same controller by<br>
+following the naming convention  - as seen in the example above with<br>
+`UsersController::getUserCommentsAction()`. This is a good strategy to follow when the child resource needs the parent<br>
+resource's ID in order to look up itself. <br>
+当然，拥有子资源是常见的。它们可以很容易地在同一控制器中通过`ResourceController::actionResourceSubResource()`来定义，正如上面示例中`UsersController::getUserCommentsAction()`一样。在子资源需要父资源ID查找自身时这是一个很好的策略。<br><br>
+Relational RESTful controllers routes<br>
+关系REST风格控制器路由<br>
+-------------------------------------<br><br>
+Sometimes it's better to place subresource actions in their own controller, especially when<br>
+you have more than 2 subresource actions.<br>
+有时，将子资源动作放在它们自己的控制器中会更好。尤其是当您拥有2个以上子资源的动作时。<br><br>
+## Resource collection<br>
+## 资源集<br><br>
+In this case, you must first specify resource relations in special rest YML or XML collection:<br>
+在这种情况下，您必须首先指定在特定的REST风格的YML或XML集中的资源关系：<br><br>
+    # src/Acme/HelloBundle/Resources/config/users_routes.yml<br>
+    users:<br>
+      type:     rest<br>
+      resource: "@AcmeHello\Controller\UsersController"<br>
+    <br>
+    comments:<br>
+      type:     rest<br>
+      parent:   users<br>
+      resource: "@AcmeHello\Controller\CommentsController"<br><br>
+Notice `parent: users` option in the second case. This option specifies that the comments resource<br>
+is child of the users resource. In this case, your `UsersController` MUST always have a single<br>
+resource `get...` action:<br>
+注意第二部分的`parent: users`选项。该选项指定了comments资源是users资源的子资源。在这种情况下，您的`UsersController`必须总是拥有单个资源`get...`动作：<br><br>
+    class UsersController extends Controller<br>
+    {<br>
+        public function getUserAction($slug)<br>
+        {} // `get_user`   [GET] /users/{slug}<br>
+    <br>
+        ...<br>
+    }<br><br>
+It's used to determine the parent collection name. Controller name itself not used in routes<br>
+auto-generation process and can be any name you like.<br>
+它常用于确定父资源集名。控制器名自身并不用于路由自动协商过程，它可以是您想要的任何名字。<br><br>
+## Define child resource controller<br>
+## 定义子资源控制器<br><br>
+`CommentsController` actions now will looks like:<br>
+`CommentsController`动作现在看上去象：<br><br>
+    class CommentsController extends Controller<br>
+    {<br>
+        public function voteCommentAction($slug, $id)<br>
+        {} // `vote_user_comment`   [PUT] /users/{slug}/comments/{id}/vote<br>
+        <br>
+        public function getCommentsAction($slug)<br>
+        {} // `get_user_comments`   [GET] /users/{slug}/comments<br>
+        <br>
+        public function getCommentAction($slug, $id)<br>
+        {} // `get_user_comment`    [GET] /users/{slug}/comments/{id}<br>
+        <br>
+        public function deleteCommentAction($slug, $id)<br>
+        {} // `delete_user_comment` [DELETE] /users/{slug}/comments/{id}<br>
+        <br>
+        public function newCommentsAction($slug)<br>
+        {} // `new_user_comments`   [GET] /users/{slug}/comments/new<br><br>
+        public function editCommentAction($slug, $id)<br>
+        {} // `edit_user_comment`   [GET] /users/{slug}/comments/{id}/edit<br><br>
+        public function removeCommentAction($slug, $id)<br>
+        {} // `remove_user_comment` [GET] /users/{slug}/comments/{id}/remove<br>
+    }<br><br>
+Notice, we got rid of the `User` part in action names. That is because the RestBundle routing<br>
+already knows, that `CommentsController::...` is child resources of `UsersController::getUser()`<br>
+resource.<br>
+注意，我们摆脱了动作名中的`User`部分。那是因为RestBundle路由已经知道，`CommentsController::...`是`UsersController::getUser()`资源的子资源。<br><br>
+## Include resource collections in application routing<br>
+## 在应用程序路由中包含资源集<br><br>
+Last step is mapping of your collection routes into the application `routing.yml`:<br>
+最后一步是将您的集合路由映射放入应用程序的`routing.yml`文件中：<br><br>
+    # app/config/routing.yml<br>
+    users:<br>
+      type:     rest<br>
+      resource: "@AcmeHello/Resources/config/users_routes.yml"<br><br>
+That's all. Note that it's important to use the `type: rest` param when including your application's<br>
+routing file. Without it, rest routes will still work but resource collections will fail. If you get an<br>
+exception that contains `...routing loader does not support given key: "parent"...` then you are most likely missing<br>
+the `type: rest` param in your application level routes include.<br>
+就是这样。注意当包含您应用程序路由文件时使用`type: rest`参数是重要的。没有它，REST路由仍然可以工作，但资源集将失败。如果您得到了一个内容为`...routing loader does not support given key: "parent"...`的异常，那么您最有可能在您的应用程序级别的路由中没有包含`type: rest`参数。<br><br>
+## Routes naming<br>
+## 路由命名<br><br>
+RestBundle uses REST paths to generate route name. This means, that URL:<br>
+RestBundle使用REST风格的路径来生成路由名。这就意味着，URL：<br><br>
+    [PUT] /users/{slug}/comments/{id}/vote<br><br>
+will become the route with the name:<br>
+的路由名为：<br><br>
+    vote_user_comment<br><br>
+For further examples, see comments of controllers in the code above.<br>
+更多示例，参见上例代码中控制器的注释部分。<br><br>
+### Naming collisions<br>
+### 命名冲突<br><br>
+Sometimes, routes auto-naming will lead to route names collisions, so RestBundle route<br>
+collections provides a `name_prefix` (`name-prefix` for xml and @NamePrefix for<br>
+annotations) parameter:<br>
+有时，路由自动命名会导致路由名冲突，因此RestBundle路由集提供了`name_prefix`（在XML中是`name_prefix`而注释中则是@NamePrefix）参数：<br><br>
+    # src/Acme/HelloBundle/Resources/config/users_routes.yml<br>
+    comments:<br>
+      type:         rest<br>
+      resource:     "@AcmeHello\Controller\CommentsController"<br>
+      name_prefix:  api_<br><br>
+With this configuration, route name would become:<br>
+通过上述配置，路由名就会变成：<br><br>
+    api_vote_user_comment<br><br>
+Say NO to name collisions!<br>
+对命名冲突说不吧！<br>
+ </p>
+    		";s:10:"post_title";s:136:"
+
+	 		<img src="http://blog.51cto.com/image/skin/artType03.jpg">
+
+
+    		    Symfony2插件FOSRestBundle的使用说明
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"1";s:6:"remove";s:1:"0";s:14:"category_title";s:24:"Symfony2 手册翻译版";}}s:20:"custom_result_object";a:0:{}s:11:"current_row";i:0;s:8:"num_rows";i:1;s:8:"row_data";N;}

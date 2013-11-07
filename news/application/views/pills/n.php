@@ -1,3 +1,9 @@
+<?php if( isset( $user_info)){
+
+	var_dump( $user_info);
+}?>
+
+
 <?php if( $article['post_status'] != 1){?>
 
 <script>

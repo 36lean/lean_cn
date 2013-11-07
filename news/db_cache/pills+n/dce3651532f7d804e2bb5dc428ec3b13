@@ -1,0 +1,63 @@
+O:12:"CI_DB_result":8:{s:7:"conn_id";N;s:9:"result_id";N;s:12:"result_array";a:1:{i:0;a:18:{s:2:"id";s:3:"609";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:2476:"
+    		  <p><span class="postbody">介绍 <br>
+======= <br>
+目前Mysql被炒得沸沸扬扬，热火朝天，但我却对大家为什么不用PostgreSQL感到很不理解，甚至很多人都不知道PostgreSQL是什么， PostgreSQL 是一种非常复杂的对象-关系型数据库管理系统（ORDBMS），也是目前功能最强大，特性最丰富和最复杂的自由软件数据库系统。有些特性甚至连商业数据库都不具备。这个起源于伯克利（BSD）的数据库研究计划目前已经衍生成一项国际开发项目，并且有非常广泛的用户。据我了解国内四大国产数据库，其中三个都是基于PostgreSQL开发的！不过不知道为什么大家都对Mysql情有独钟，要知道无论从功能、性能还是软件自由程度而言，Mysql与 PostgreSQL相比简直不是一个数量级的，而且官方中文文档也很齐备。大家可以访问http: //www.pgsqldb.org看看吧，尤其是那篇《PostgreSQL 的昨天、今天和明天》。 <br>
+安装 <br>
+======== <br>
+测试环境：Ubuntu Linux 5.10 （Breezy） <br>
+在Ubuntu下安装软件是一种享受，安装PostgreSQL也不例外： <br>
+代码: <br>
+$sudo apt-get install postgresql-8.0 <br>
+这样就安装好了PostgreSQL 8.0了，该安装将自动创建一个缺省的数据库集群（pgsqldb.org中的译法）“main”，且生成一个数据库超级用户postgres。 <br>
+接下来就是要对数据库用户及权限进行设置了，首先要得到超级用户postgres的一个Shell，在这里可以通过下面的方式得到： <br>
+代码: <br>
+$sudo -u postgres sh <br>
+在这个Shell中创建一个同你用户相同的数据库用户，在这里我使用firehare，因为这也是我登录Ubuntu的用户名 <br>
+代码: <br>
+$createuser -A -D firehare <br>
+然后为该用户创建一个数据库，在这里我以mydb为例 <br>
+[code]$createdb -O firehare mydb <br>
+注意以上操作都是在用户postgres的Shell中完成的，然后退出该用户Shell环境，进入自己用户的Shell中。 <br>
+[code]$exit[/code] <br>
+现在做用firehare用户，你可以通过下面的命令连接到你的mydb数据库中了 <br>
+$psql mydb <br>
+退出用/q</span></p>
+<p>本文出自 “<a href="http://firehare.blog.51cto.com">野火兔的窝</a>” 博客，请务必保留此出处<a href="http://firehare.blog.51cto.com/809276/588268">http://firehare.blog.51cto.com/809276/588268</a></p>
+    		";s:10:"post_title";s:129:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Postgres的介绍和安装
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"3";s:6:"remove";s:1:"0";s:14:"category_title";s:24:"Symfony2 手册翻译版";}}s:13:"result_object";a:1:{i:0;O:8:"stdClass":18:{s:2:"id";s:3:"609";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:2476:"
+    		  <p><span class="postbody">介绍 <br>
+======= <br>
+目前Mysql被炒得沸沸扬扬，热火朝天，但我却对大家为什么不用PostgreSQL感到很不理解，甚至很多人都不知道PostgreSQL是什么， PostgreSQL 是一种非常复杂的对象-关系型数据库管理系统（ORDBMS），也是目前功能最强大，特性最丰富和最复杂的自由软件数据库系统。有些特性甚至连商业数据库都不具备。这个起源于伯克利（BSD）的数据库研究计划目前已经衍生成一项国际开发项目，并且有非常广泛的用户。据我了解国内四大国产数据库，其中三个都是基于PostgreSQL开发的！不过不知道为什么大家都对Mysql情有独钟，要知道无论从功能、性能还是软件自由程度而言，Mysql与 PostgreSQL相比简直不是一个数量级的，而且官方中文文档也很齐备。大家可以访问http: //www.pgsqldb.org看看吧，尤其是那篇《PostgreSQL 的昨天、今天和明天》。 <br>
+安装 <br>
+======== <br>
+测试环境：Ubuntu Linux 5.10 （Breezy） <br>
+在Ubuntu下安装软件是一种享受，安装PostgreSQL也不例外： <br>
+代码: <br>
+$sudo apt-get install postgresql-8.0 <br>
+这样就安装好了PostgreSQL 8.0了，该安装将自动创建一个缺省的数据库集群（pgsqldb.org中的译法）“main”，且生成一个数据库超级用户postgres。 <br>
+接下来就是要对数据库用户及权限进行设置了，首先要得到超级用户postgres的一个Shell，在这里可以通过下面的方式得到： <br>
+代码: <br>
+$sudo -u postgres sh <br>
+在这个Shell中创建一个同你用户相同的数据库用户，在这里我使用firehare，因为这也是我登录Ubuntu的用户名 <br>
+代码: <br>
+$createuser -A -D firehare <br>
+然后为该用户创建一个数据库，在这里我以mydb为例 <br>
+[code]$createdb -O firehare mydb <br>
+注意以上操作都是在用户postgres的Shell中完成的，然后退出该用户Shell环境，进入自己用户的Shell中。 <br>
+[code]$exit[/code] <br>
+现在做用firehare用户，你可以通过下面的命令连接到你的mydb数据库中了 <br>
+$psql mydb <br>
+退出用/q</span></p>
+<p>本文出自 “<a href="http://firehare.blog.51cto.com">野火兔的窝</a>” 博客，请务必保留此出处<a href="http://firehare.blog.51cto.com/809276/588268">http://firehare.blog.51cto.com/809276/588268</a></p>
+    		";s:10:"post_title";s:129:"
+
+             <img src="http://blog.51cto.com/image/skin/artType01.jpg">
+
+
+    		    Postgres的介绍和安装
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"3";s:6:"remove";s:1:"0";s:14:"category_title";s:24:"Symfony2 手册翻译版";}}s:20:"custom_result_object";a:0:{}s:11:"current_row";i:0;s:8:"num_rows";i:1;s:8:"row_data";N;}

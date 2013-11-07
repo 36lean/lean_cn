@@ -9,6 +9,14 @@
 <i class="pull-right icon-chevron-right"></i>推送消息
 </a>
 </li>
+
+<li>
+<a href="checkout.php">
+<i class="icon-coffee"></i>
+<i class="pull-right icon-chevron-right"></i>在线测试
+</a>
+</li>
+
 <?php if(false) { ?>
 <li <?php if($ac === 'sub_plan') { ?>class="active"<?php } ?>>
 <a href="user.php?ac=sub_plan">

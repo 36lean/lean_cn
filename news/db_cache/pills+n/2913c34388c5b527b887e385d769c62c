@@ -1,0 +1,715 @@
+O:12:"CI_DB_result":8:{s:7:"conn_id";N;s:9:"result_id";N;s:12:"result_array";a:1:{i:0;a:18:{s:2:"id";s:3:"452";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:26437:"
+    		  <ul class=" list-paddingleft-2">
+<li><p>原文出处：<a textvalue="3-listener-support.md" target="_self" href="https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/3-listener-support.md">3-listener-support.md</a></p></li>
+<li><p>原文作者：<a target="_self" href="https://github.com/FriendsOfSymfony">FriendsOfSymfony</a></p></li>
+<li><p>授权许可：<a href="http://creativecommons.cn/" title="http://www.creativecommons.cn/licenses/by-nc-sa/1.0/" rel="nofollow" target="_blank">创作共用协议</a></p></li>
+<li><p>翻译人员：FireHare</p></li>
+<li><p>校对人员：</p></li>
+<li><p>适用版本：FOSRestBundle 0.12.0</p></li>
+<li><p>文章状态：草译阶段</p></li>
+</ul>
+<h1>Step 3: Listener support</h1>
+<p><a href="http://symfony.com/doc/master/cookbook/service_container/event_listener.html">Listeners</a>  are a way to hook into the request handling. This Bundle provides various events from decoding the request content in the request (body listener), determining the correct response format (format listener), reading parameters from the request(parameter fetcher listener), to formatting the response either with a template engine like twig or to f.e. xml or json using a serializer (view response listener)) as well as automatically setting the accepted http methods in the response (accept listener).</p>
+<p><a target="_self" href="http://symfony.com/doc/master/cookbook/service_container/event_listener.html">监听器</a>是勾进请求处理的一种途径。本功能包提供从请求中解码请求内容（body监听器）、确定当前响应格式（格式监听器）、从请求中读取参数（参数提取监听器），到象twig这样的模板引擎或者使用序列化器生成xml或json来格式化响应（视图响应监听器）以及在响应中自动设置接收http方法（接受监听器）的不同的事件。</p>
+<p><br></p>
+<p>With this in mind we now turn to explain each one of them.</p>
+<p>接下来，我们将逐个对其进行说明：<br></p>
+<p><br></p>
+<p>All listeners except the <code>mime_type</code> one are disabled by default.  You can enable one or more of these listeners.  For example, below you can see how to enable all listeners:</p>
+<p>在缺省状态下，所有监听器除了mime_type之外都被禁用。您可以启用其中的一个或更多。例如，下面您就可以看到如何启用使用监听器：</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'</pre>
+<h3>View Response listener（视图响应监听器）</h3>
+<p>The view response listener makes it possible to simply return a <code>View </code>instance from action controllers. The final output will then automatically be processed via the listener by the <code>fos_rest.view_handler</code> service.</p>
+<p>视图响应监听器可以简单地从控制器Action中返回View实例。然后最终输出将通过 <code>fos_rest.view_handler</code> 服务自动监听处理。</p>
+<p><br></p>
+<p>This requires adding the SensioFrameworkExtraBundle to your vendors:</p>
+<p>该功能要求在您的vendors中添加SensioFrameworkExtraBundle功能包：</p>
+<p><a href="http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html">http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html</a></p>
+<p><br></p>
+<p>Now inside a controller its possible to simply return a <code>View</code> instance.</p>
+<p>现在控制器中可以简单地返回View实例了。</p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+use FOS\RestBundle\View\View;
+class UsersController
+{
+    public function getUsersAction()
+    {
+        $view = View::create();
+        ...
+        $view-&gt;setData($data);
+        return $view;
+    }
+}</pre>
+<div class="highlight">
+<pre><span class="o"></span></pre>
+<p>As this feature is heavily based on the SensioFrameworkBundle, the example can further be simplified by using the various annotations supported by that bundle. There is also one additional annotation called <code>@View()</code> which extends from the <code>@Template()</code> annotation.</p>
+<p>由于该特性很大程度上基于 SensioFrameworkBundle功能包，因此通过使用该功能包支持的不同注释，上述示例还可以进一步简化。这里还有一个从 <code>@Template()</code> 注释扩展的 <code>@View()</code> 注释。<br><br></p>
+<p>The <code>@View()</code> and <code>@Template()</code> annotations behave essentially the samewith a minor difference. When <code>view_response_listener</code> is set to <code>true</code> instead of <code>force</code> and <code>@View()</code> is not used, then rendering will be delegated to SensioFrameworkExtraBundle. <code><br></code></p>
+<p><code>@View()</code> 和 <code>@Template()</code>注释作用基本相同，仅有细微的差别。当 <code>view_response_listener</code><br> 设置为 true 而不是 force，同时 <code>@View()</code>也没被使用，那么渲染将被委派给SensioFrameworkExtraBundle功能包。</p>
+<p><br></p>
+<p>Note that it is necessary to disable view annotations in SensioFrameworkExtraBundle so that FOSRestBundle can take over the handling.</p>
+<p>注意这需要禁用SensioFrameworkExtraBundle功能包中的view注释，以便 FOSRestBundle 功能包可以接管该处理。<br></p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    view:
+        view_response_listener: force
+sensio_framework_extra:
+    view:    { annotations: false }
+    router:  { annotations: true }</pre>
+<p><br></p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+use FOS\RestBundle\Controller\Annotations\View;
+class UsersController
+{
+    /**
+     * @View()
+     */
+    public function getUsersAction()
+    {
+        ...
+        return $data;
+    }
+}</pre>
+<p>If <code>@View()</code> is used, the template variable name used to render templating formats can be configured (default  <code>'data'</code>):</p>
+<p>如果使用 <code>@View()</code> 注释，那么模板变量名可以被配置用于渲染模板格式（缺省为'data'）：</p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+/**
+ * @View(templateVar="users")
+ */
+public function getUsersAction()
+{
+    //...
+}</pre>
+<p>The status code of the view can also be configured:</p>
+<p>视图的状态码也可以被配置：<br></p>
+</div>
+<pre class="brush:php;toolbar:false;">&lt;?php
+/**
+ * @View(statusCode=204)
+ */
+public function deleteUserAction()
+{
+    //...
+}</pre>
+<p>The groups for the serializer can be configured as follows:</p>
+<p>如下所示，序列化器组也可以被配置：</p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+/**
+ * @View(serializerGroups={"group1", "group2"})
+ */
+public function getUsersAction()
+{
+    //...
+}</pre>
+<p>See the following example code for more details:</p>
+<p>更多细节请参见下面示例代码：<br></p>
+<p><a href="https://github.com/liip/LiipHelloBundle/blob/master/Controller/ExtraController.php">https://github.com/liip/LiipHelloBundle/blob/master/Controller/ExtraController.php</a></p>
+<p><br></p>
+<h3>Body listener（Body监听器）<br>
+</h3>
+<p>The Request body decoding listener makes it possible to decode the contents of a request in order to populate the "request" parameter bag of the Request. This for example allows to receive data that normally would be sent via POST as<code> application/x-www-form-url encode</code> in a different format (for example application/json) in a PUT.</p>
+<p>请求体解码监听器使得解码请求内容并将其填充到Request请求参数包成为可能。例如，它可以允许正常情况下以<code>application/x-www-form-url</code>方式编码，通过POST发送的数据能够以不同的编码方式（如application/json）通过PUT发送。</p>
+<p><br></p>
+<p>You can add a decoder for a custom format. You can also replace the default decoder services provided by the bundle for the <code>json</code> and <code>xml</code> formats.Below you can see how to override the decoder for the json format (the xml decoder is explicitly kept to its default service):</p>
+<p>您可以为定制的格式添加解码器。您也可以替换通过功能包为json和xml格式提供的缺省的解码器服务。接下来您将看到如何为json格式覆写解码器（xml解码器则明确确定为其缺省服务）：</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    body_listener:
+        decoders:
+            json: acme.decoder.json
+            xml: fos_rest.decoder.xml</pre>
+<p>Your custom decoder service must use a class that implements the <code>FOS\Rest\Decoder\DecoderInterface</code>.</p>
+<p>您自定义的解码器服务必须使用实现了<code>FOS\Rest\Decoder\DecoderInterface</code>接口的类。</p>
+<p><br></p>
+<p>If you want to be able to use form with checkbox and have true and false value (without any issue) you have to use : fos_rest.decoder.jsontoform (available since fosrest 0.8.0)</p>
+<p>如果您想使用带复选框的表单，并产生 true 和 false 值（这没任何问题），您将不得不使用：fos_rest.decoder.jsontoform（该功能在 fosrest 0.8.0版本之后启用）。</p>
+<h3>Request Body Converter Listener（请求体转换监听器）</h3>
+<p><a href="http://symfony.com/doc/master/bundles/SensioFrameworkExtraBundle/annotations/converters.html">Converters</a> are a way to populate objects and inject them as controller method arguments.The Request body converter makes it possible to deserialize the request body into an object.</p>
+<p><a target="_self" href="http://symfony.com/doc/master/bundles/SensioFrameworkExtraBundle/annotations/converters.html">转换器</a>是填充对象并将其作为控制器方法参数注入的一种方式。请求体转换使得将请求体反序列化为对象成为可能。</p>
+<p><br></p>
+<p>This converter requires that you have installed <a href="http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html">SensioFrameworkExtraBundle</a> and have the converters enabled:</p>
+<p>该转换器要求您安装 <a href="http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html">SensioFrameworkExtraBundle</a> 功能包并启用转换器功能：</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+sensio_framework_extra:
+    request: { converters: true }</pre>
+<p>To enable the Request body converter, add the following configuration:</p>
+<p>要启用请求体转换，还需要添加下列配置：</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    body_converter:
+        enabled: true</pre>
+<p>Note: You will probably want to disable the automatic route generation (<code>@NoRoute</code>)for routes using the body converter, and instead define the routes manually to avoid having the deserialized, type hinted objects (<code>$post in this example</code>) appearin the route as a parameter.</p>
+<p>注意：在使用body转换时，您可能希望禁用自动路由生成功能（<code>@NoRoute</code>），而手工设置路由以避免反序列化的、类型暗示对象（在本例中是$post）作为参数出现在路由里。</p>
+<p><br></p>
+<p>Now, in the following example, the request body will be deserialized into a new instance of <code>Post</code> and injected into the <code>$post</code> variable:</p>
+<p>现在，在下面的例子里，请求体将被反序列化到一个新的Post示例中，并将其注入到$post变量中：</p>
+<pre class="brush:php;toolbar:false;">use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+// ...
+/**
+ * @ParamConverter("post", converter="fos_rest.request_body")
+ */
+public function putPostAction(Post $post)
+{
+    // ...
+}</pre>
+<p>You can configure the context used by the serializer during deserialization via the <code>deserializationContext</code> option:</p>
+<p>在通过 <code>deserializationContext</code>选项进行反序列化期间，您可以通过序列化器来配置上下文：</p>
+<pre class="brush:php;toolbar:false;">/**
+ * @ParamConverter("post", converter="fos_rest.request_body", options={"deserializationContext"={"groups"={"group1", "group2"}, "version"="1.0"}})
+ */
+public function putPostAction(Post $post)
+{
+    // ...
+}</pre>
+<h4>Validation（验证）</h4>
+<p>If you would like to validate the deserialized object, you can do so by enabling validation:</p>
+<p>如果您想验证反序列对象，您可以通过启用验证功能来实现：<br></p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    body_converter:
+        enabled: true
+        validate: true
+        validation_errors_argument: validationErrors # This is the default value</pre>
+<p>The validation errors will be set on the <code>validationErrors</code> controller argument:</p>
+<p>验证错误将被设置在控制器参数 <code>validationErrors</code>上<br></p>
+<pre class="brush:php;toolbar:false;">/**
+ * @ParamConverter("post", converter="fos_rest.request_body")
+ */
+public function putPostAction(Post $post, ConstraintViolationListInterface $validationErrors)
+{
+    if (count($validationErrors) &gt; 0) {
+        // Handle validation errors
+    }
+    // ...
+}</pre>
+<h3>Format listener（格式监听器）</h3>
+<p>The Request format listener attempts to determine the best format for the request based on the Request's Accept-Header and the format priority configuration. This way it becomes possible to leverage Accept-Headers to determine the request format, rather than a file extension (like foo.json).</p>
+<p>请求格式监听器基于Request的接收头和格式的优先级配置来尝试确定最佳格式。这种方式可以利用接收头来确定请求格式，而非文件扩展名（如foo.json）。</p>
+<p><br></p>
+<p>The <code>default_priorities</code> define the order of formats as the application prefers.  The algorithm iteratively examines the provided Accept header first looking at all the options with the highest <code>q</code>. The first priority that matches is returned. If none match the next lowest set of Accept headers with equal <code>q</code> is examined and so on until there are no more Accept headers to check. In this case <code>fallback_format</code> is used.</p>
+<p><code>default_priorities</code> 定义了应用程序偏好的格式顺序。该算法抚今迭代检查所提供的接收头，首先查找所有具有最高 <code>q</code> 的选项，第一优先匹配返回。如果没有匹配，则检查下一个有着相同 <code>q</code> 的最低接收头，直到没有接收头检查。在这种格式下使用 <code>fallback_format</code></p>
+<p><code><br></code></p>
+<p>Note that if <code>_format</code> is matched inside the route, then a virtual Acceptheader setting is added with a <code>q</code> setting one lower than the lowest Acceptheader, meaning that format is checked for a match in the priorities last. If <code>prefer_extension</code> is set to <code>true</code> then the virtual Accept header will be one higher than the highest <code>q</code> causing the extension to be checked first.</p>
+<p>注意， if <code>_format</code> 在路由中匹配，那么将添加一个虚拟接收头设置，该设置有着比最低接收头更低的 q 设置，这就意味着该格式将是最后优先级匹配。如果<code>prefer_extension</code> 设置为 true，那么虚拟接收头将比最高的 <code>q</code> 还高，这将引起扩展将被最先检查。</p>
+<p><br></p>
+<p>Note that setting <code>default_priorities</code> to a non empty array enables Accept header negotiations, while adding '*/*' to the priorities will effectively cause any priority to match.</p>
+<p>注意将<code>default_priorities</code>设置为非空数组，将启用接收头协商，这时添加到优先级中的'*/*'是有效的，它将匹配任何优先级。</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    format_listener:
+        default_priorities: ['json', html, '*/*']
+        fallback_format: json
+        prefer_extension: true</pre>
+<p>For example using the above configuration and the following Accept header:</p>
+<p>例如使用上述配置及下列接收头：</p>
+<pre class="brush:as3;toolbar:false;">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,application/json</pre>
+<p>And the following route:</p>
+<p>以及以下路由：</p>
+<pre class="brush:as3;toolbar:false;">hello:
+    pattern:  /foo.{_format}
+    defaults: { _controller: foo.controller:indexAction, _format: ~ }</pre>
+<p>When calling:</p>
+<p>当调用：<br></p>
+<ul class=" list-paddingleft-2">
+<li><p><code>/foo</code> will lead to setting the request format to <code>json</code></p></li>
+<li><p><code>/foo 将导致设置请求格式为json</code></p></li>
+<li><p><code>/foo.html</code> will lead to setting the request format to <code>html</code></p></li>
+<li><p><code>/foo.html 将导致设置请求格式为html</code></p></li>
+</ul>
+<p>Note that the format needs to either be supported by the <code>Request</code> class natively or it needs to be added as documented here:</p>
+<p>注意在这里格式需要被Request类自身支持，也需要在下面文档记录才被添加：<br></p>
+<p><a href="http://symfony.com/doc/current/cookbook/request/mime_type.html">http://symfony.com/doc/current/cookbook/request/mime_type.html</a></p>
+<h3>Mime type listener（Mime类型监听器）</h3>
+<p>This listener allows registering additional mime types in the <code>Request </code>class.  It works similar to the following cookbook entry:</p>
+<p>该监听器允许在Request类中注册额外的Mime类型。它的工作原理与下面食谱项相似：<br></p>
+<p><a href="http://symfony.com/doc/current/cookbook/request/mime_type.html">http://symfony.com/doc/current/cookbook/request/mime_type.html</a></p>
+<h3>Param fetcher listener（参数提取监听器）</h3>
+<p>The param fetcher listener simply sets the ParamFetcher instance as a request attributeconfigured for the matched controller so that the user does not need to do this manually.</p>
+<p>参数提取监听器为匹配控制器的请求属性配置而简单设置ParamFetcher实例，而无须用户手动设置。<br></p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    param_fetcher_listener: true</pre>
+<p><br></p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+use FOS\RestBundle\Request\ParamFetcher;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+class FooController extends Controller
+{
+    /**
+     * Will look for a page query parameter, ie. ?page=XX
+     * If not passed it will be automatically be set to the default of "1"
+     * If passed but doesn't match the requirement "\d+" it will be also be set to the default of "1"
+     * Note that if the value matches the default then no validation is run.
+     * So make sure the default value really matches your expectations.
+     *
+     * @QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
+     *
+     * In some case you also want to have a strict requirements but accept a null value, this is possible
+     * thanks to the nullable option.
+     * If ?count= parameter is set, the requirements will be checked strictly, if not, the null value will be used.
+     * If you set the strict parameter without a nullable option, this will result in an error if the parameter is
+     * missing from the query.
+     *
+     * @QueryParam(name="count", requirements="\d+", strict=true, nullable=true, description="Item count limit")
+     *
+     * Will look for a firstname request parameters, ie. firstname=foo in POST data.
+     * If not passed it will error out when read out of the ParamFetcher since RequestParam defaults to strict=true
+     * If passed but doesn't match the requirement "\d+" it will also error out (400 Bad Request)
+     * Note that if the value matches the default then no validation is run.
+     * So make sure the default value really matches your expectations.
+     *
+     * @RequestParam(name="firstname", requirements="[a-z]+", description="Firstname.")
+     *
+     * If you want to work with array: ie. ?ids[]=1&amp;ids[]=2&amp;ids[]=1337, use:
+     *
+     * @QueryParam(array="true", name="ids", requirements="\d+", default="1", description="List of ids")
+     * (works with QueryParam and RequestParam)
+     *
+     * It will validate each entries of ids with your requirement, by this way, if an entry is invalid,
+     * this one will be replaced by default value.
+     *
+     * ie: ?ids[]=1337&amp;ids[]=notinteger will return array(1337, 1);
+     * If ids is not defined, array(1) will be given
+     *
+     * Array must have a single depth or it will return default value. It's difficult to validate with
+     * preg_match each deeps of array, if you want to deal with that, use another validation system.
+     *
+     * @param ParamFetcher $paramFetcher
+     */
+    public function getArticlesAction(ParamFetcher $paramFetcher)
+    {
+        $page = $paramFetcher-&gt;get('page');
+        $articles = array('bim', 'bam', 'bingo');
+        return array('articles' =&gt; $articles, 'page' =&gt; $page);
+    }</pre>
+<p>Note: There is also <code>$paramFetcher-&gt;all()</code> to fetch all configured query parameters at once. And also both <code>$paramFetcher-&gt;get()</code> and <code>$paramFetcher-&gt;all()</code> support and optional <code>$strict</code> parameter to throw a <code>\RuntimeException</code> on a validation error.</p>
+<p>注意：这里还可以使用  <code>$paramFetcher-&gt;all()</code> 一次性获取所有配置的查询参数。它支持 <code>$paramFetcher-&gt;get()</code> 和 <code>$paramFetcher-&gt;all()</code>两种方式，同时可选参数 <code>$strict</code><br> 将在验证错误时抛出<code>\RuntimeException</code> 异常。</p>
+<p><br></p>
+<p>Optionally the listener can also already set all configured query parameters as request attributes</p>
+<p>可选的监听器也已经设置了所有配置的查询参数作为请求属性。<br></p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    param_fetcher_listener: force</pre>
+<p><br></p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+class FooController extends Controller
+{
+    /**
+     * @QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
+     *
+     * @param string $page
+     */
+    public function getArticlesAction($page)
+    {
+        $articles = array('bim', 'bam', 'bingo');
+        return array('articles' =&gt; $articles, 'page' =&gt; $page);
+    }</pre>
+<h3>Allowed Http Methods Listener（允许的HTTP方法监听器）</h3>
+<p>This listener add the <code>Allow</code> HTTP header to each request appending all allowed methods for a given resource.</p>
+<p>对于给定资源，本监听器添加允许HTTP头，允许每个请求附加所有被允许的方法。</p>
+<p><br></p>
+<p>Let's say we have the following routes:</p>
+<p>比方说我们有以下路由：</p>
+<pre class="brush:as3;toolbar:false;">api_get_users
+api_post_users
+api_get_user</pre>
+<p>A <code>GET</code> request to <code>api_get_users</code> will response in:</p>
+<p>一个 <code>GET</code> 发送到 <code>api_get_users</code> 的请求将被响应：</p>
+<pre class="brush:as3;toolbar:false;">&lt; HTTP/1.0 200 OK
+&lt; Date: Sat, 16 Jun 2012 15:17:22 GMT
+&lt; Server: Apache/2.2.22 (Ubuntu)
+&lt; allow: GET, POST</pre>
+<p>You need to enable this listener like this as it is disabled by default:</p>
+<p>您需要象这样启用该监听器，因为它在缺省状态下是被禁用的：</p>
+<pre class="brush:as3;toolbar:false;">fos_rest:
+    allowed_methods_listener: true</pre>
+<h3>Security Exception Listener（安全异常监听器）</h3>
+<p>By default it is the responsibility of firewall access points to deal with AccessDeniedExceptions.For example the <code>form</code> entry point will redirect to the login page. However for a RESTful application proper response HTTP status codes should be provided. This listener is triggered before the normal exception listener and firewall entry points and forces returning either a 403 or 401 status code for any of the formats configured.</p>
+<p>缺省状态下，防火墙访问点负责处理AccessDeniedExceptions。例如表单接入点将重定向到 登录页面。然而在REST风格的应用程序中将提供适当HTTP状态码。该监听器在正常异常监听器和防火墙访问点之前被触发，并为任何格式配置强制返回403或401状态码。</p>
+<p><br></p>
+<p>It will return 401 for <code>Symfony\Component\Security\Core\Exception\AuthenticationException</code> or 403 for<code>Symfony\Component\Security\Core\Exception\AccessDeniedException</code>.</p>
+<p>它将为<code>Symfony\Component\Security\Core\Exception\AuthenticationException</code>返回401,或者为<code>Symfony\Component\Security\Core\Exception\AccessDeniedException</code>返回403。</p>
+<p><br></p>
+<p>You need to enable this listener like this as it is disabled by default:</p>
+<p>您需要象这样启用该监听器，因为它在缺省状态下是被禁用的：</p>
+<pre class="brush:as3;toolbar:false;">fos_rest:
+    access_denied_listener:
+        # all requests using the 'json' format will return a 403 on an access denied violation
+        json: true</pre>
+<p>It is also recommended to enable the exception controller described in the next chapter.</p>
+<p>建议启用异常控制器，这将在下一章节说明。</p>
+<h2>That was it!</h2>
+<p><a href="https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/index.md">Return to the index</a> or continue reading about <a href="https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/4-exception-controller-support.md">ExceptionController support</a>.</p>
+<p><a target="_self" href="http://firehare.blog.51cto.com/809276/1247893">返回指南页</a>或继续阅读<a textvalue="异常控制器支持" target="_self" href="http://firehare.blog.51cto.com/blog/809276/1253458">异常控制器支持</a></p>
+<p><br></p>
+    		";s:10:"post_title";s:134:"
+
+	 		<img src="http://blog.51cto.com/image/skin/artType03.jpg">
+
+
+    		    FOSRestBundle功能包：监听器支持
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"2";s:6:"remove";s:1:"0";s:14:"category_title";s:24:"Symfony2 手册翻译版";}}s:13:"result_object";a:1:{i:0;O:8:"stdClass":18:{s:2:"id";s:3:"452";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:26437:"
+    		  <ul class=" list-paddingleft-2">
+<li><p>原文出处：<a textvalue="3-listener-support.md" target="_self" href="https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/3-listener-support.md">3-listener-support.md</a></p></li>
+<li><p>原文作者：<a target="_self" href="https://github.com/FriendsOfSymfony">FriendsOfSymfony</a></p></li>
+<li><p>授权许可：<a href="http://creativecommons.cn/" title="http://www.creativecommons.cn/licenses/by-nc-sa/1.0/" rel="nofollow" target="_blank">创作共用协议</a></p></li>
+<li><p>翻译人员：FireHare</p></li>
+<li><p>校对人员：</p></li>
+<li><p>适用版本：FOSRestBundle 0.12.0</p></li>
+<li><p>文章状态：草译阶段</p></li>
+</ul>
+<h1>Step 3: Listener support</h1>
+<p><a href="http://symfony.com/doc/master/cookbook/service_container/event_listener.html">Listeners</a>  are a way to hook into the request handling. This Bundle provides various events from decoding the request content in the request (body listener), determining the correct response format (format listener), reading parameters from the request(parameter fetcher listener), to formatting the response either with a template engine like twig or to f.e. xml or json using a serializer (view response listener)) as well as automatically setting the accepted http methods in the response (accept listener).</p>
+<p><a target="_self" href="http://symfony.com/doc/master/cookbook/service_container/event_listener.html">监听器</a>是勾进请求处理的一种途径。本功能包提供从请求中解码请求内容（body监听器）、确定当前响应格式（格式监听器）、从请求中读取参数（参数提取监听器），到象twig这样的模板引擎或者使用序列化器生成xml或json来格式化响应（视图响应监听器）以及在响应中自动设置接收http方法（接受监听器）的不同的事件。</p>
+<p><br></p>
+<p>With this in mind we now turn to explain each one of them.</p>
+<p>接下来，我们将逐个对其进行说明：<br></p>
+<p><br></p>
+<p>All listeners except the <code>mime_type</code> one are disabled by default.  You can enable one or more of these listeners.  For example, below you can see how to enable all listeners:</p>
+<p>在缺省状态下，所有监听器除了mime_type之外都被禁用。您可以启用其中的一个或更多。例如，下面您就可以看到如何启用使用监听器：</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'</pre>
+<h3>View Response listener（视图响应监听器）</h3>
+<p>The view response listener makes it possible to simply return a <code>View </code>instance from action controllers. The final output will then automatically be processed via the listener by the <code>fos_rest.view_handler</code> service.</p>
+<p>视图响应监听器可以简单地从控制器Action中返回View实例。然后最终输出将通过 <code>fos_rest.view_handler</code> 服务自动监听处理。</p>
+<p><br></p>
+<p>This requires adding the SensioFrameworkExtraBundle to your vendors:</p>
+<p>该功能要求在您的vendors中添加SensioFrameworkExtraBundle功能包：</p>
+<p><a href="http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html">http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html</a></p>
+<p><br></p>
+<p>Now inside a controller its possible to simply return a <code>View</code> instance.</p>
+<p>现在控制器中可以简单地返回View实例了。</p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+use FOS\RestBundle\View\View;
+class UsersController
+{
+    public function getUsersAction()
+    {
+        $view = View::create();
+        ...
+        $view-&gt;setData($data);
+        return $view;
+    }
+}</pre>
+<div class="highlight">
+<pre><span class="o"></span></pre>
+<p>As this feature is heavily based on the SensioFrameworkBundle, the example can further be simplified by using the various annotations supported by that bundle. There is also one additional annotation called <code>@View()</code> which extends from the <code>@Template()</code> annotation.</p>
+<p>由于该特性很大程度上基于 SensioFrameworkBundle功能包，因此通过使用该功能包支持的不同注释，上述示例还可以进一步简化。这里还有一个从 <code>@Template()</code> 注释扩展的 <code>@View()</code> 注释。<br><br></p>
+<p>The <code>@View()</code> and <code>@Template()</code> annotations behave essentially the samewith a minor difference. When <code>view_response_listener</code> is set to <code>true</code> instead of <code>force</code> and <code>@View()</code> is not used, then rendering will be delegated to SensioFrameworkExtraBundle. <code><br></code></p>
+<p><code>@View()</code> 和 <code>@Template()</code>注释作用基本相同，仅有细微的差别。当 <code>view_response_listener</code><br> 设置为 true 而不是 force，同时 <code>@View()</code>也没被使用，那么渲染将被委派给SensioFrameworkExtraBundle功能包。</p>
+<p><br></p>
+<p>Note that it is necessary to disable view annotations in SensioFrameworkExtraBundle so that FOSRestBundle can take over the handling.</p>
+<p>注意这需要禁用SensioFrameworkExtraBundle功能包中的view注释，以便 FOSRestBundle 功能包可以接管该处理。<br></p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    view:
+        view_response_listener: force
+sensio_framework_extra:
+    view:    { annotations: false }
+    router:  { annotations: true }</pre>
+<p><br></p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+use FOS\RestBundle\Controller\Annotations\View;
+class UsersController
+{
+    /**
+     * @View()
+     */
+    public function getUsersAction()
+    {
+        ...
+        return $data;
+    }
+}</pre>
+<p>If <code>@View()</code> is used, the template variable name used to render templating formats can be configured (default  <code>'data'</code>):</p>
+<p>如果使用 <code>@View()</code> 注释，那么模板变量名可以被配置用于渲染模板格式（缺省为'data'）：</p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+/**
+ * @View(templateVar="users")
+ */
+public function getUsersAction()
+{
+    //...
+}</pre>
+<p>The status code of the view can also be configured:</p>
+<p>视图的状态码也可以被配置：<br></p>
+</div>
+<pre class="brush:php;toolbar:false;">&lt;?php
+/**
+ * @View(statusCode=204)
+ */
+public function deleteUserAction()
+{
+    //...
+}</pre>
+<p>The groups for the serializer can be configured as follows:</p>
+<p>如下所示，序列化器组也可以被配置：</p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+/**
+ * @View(serializerGroups={"group1", "group2"})
+ */
+public function getUsersAction()
+{
+    //...
+}</pre>
+<p>See the following example code for more details:</p>
+<p>更多细节请参见下面示例代码：<br></p>
+<p><a href="https://github.com/liip/LiipHelloBundle/blob/master/Controller/ExtraController.php">https://github.com/liip/LiipHelloBundle/blob/master/Controller/ExtraController.php</a></p>
+<p><br></p>
+<h3>Body listener（Body监听器）<br>
+</h3>
+<p>The Request body decoding listener makes it possible to decode the contents of a request in order to populate the "request" parameter bag of the Request. This for example allows to receive data that normally would be sent via POST as<code> application/x-www-form-url encode</code> in a different format (for example application/json) in a PUT.</p>
+<p>请求体解码监听器使得解码请求内容并将其填充到Request请求参数包成为可能。例如，它可以允许正常情况下以<code>application/x-www-form-url</code>方式编码，通过POST发送的数据能够以不同的编码方式（如application/json）通过PUT发送。</p>
+<p><br></p>
+<p>You can add a decoder for a custom format. You can also replace the default decoder services provided by the bundle for the <code>json</code> and <code>xml</code> formats.Below you can see how to override the decoder for the json format (the xml decoder is explicitly kept to its default service):</p>
+<p>您可以为定制的格式添加解码器。您也可以替换通过功能包为json和xml格式提供的缺省的解码器服务。接下来您将看到如何为json格式覆写解码器（xml解码器则明确确定为其缺省服务）：</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    body_listener:
+        decoders:
+            json: acme.decoder.json
+            xml: fos_rest.decoder.xml</pre>
+<p>Your custom decoder service must use a class that implements the <code>FOS\Rest\Decoder\DecoderInterface</code>.</p>
+<p>您自定义的解码器服务必须使用实现了<code>FOS\Rest\Decoder\DecoderInterface</code>接口的类。</p>
+<p><br></p>
+<p>If you want to be able to use form with checkbox and have true and false value (without any issue) you have to use : fos_rest.decoder.jsontoform (available since fosrest 0.8.0)</p>
+<p>如果您想使用带复选框的表单，并产生 true 和 false 值（这没任何问题），您将不得不使用：fos_rest.decoder.jsontoform（该功能在 fosrest 0.8.0版本之后启用）。</p>
+<h3>Request Body Converter Listener（请求体转换监听器）</h3>
+<p><a href="http://symfony.com/doc/master/bundles/SensioFrameworkExtraBundle/annotations/converters.html">Converters</a> are a way to populate objects and inject them as controller method arguments.The Request body converter makes it possible to deserialize the request body into an object.</p>
+<p><a target="_self" href="http://symfony.com/doc/master/bundles/SensioFrameworkExtraBundle/annotations/converters.html">转换器</a>是填充对象并将其作为控制器方法参数注入的一种方式。请求体转换使得将请求体反序列化为对象成为可能。</p>
+<p><br></p>
+<p>This converter requires that you have installed <a href="http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html">SensioFrameworkExtraBundle</a> and have the converters enabled:</p>
+<p>该转换器要求您安装 <a href="http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html">SensioFrameworkExtraBundle</a> 功能包并启用转换器功能：</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+sensio_framework_extra:
+    request: { converters: true }</pre>
+<p>To enable the Request body converter, add the following configuration:</p>
+<p>要启用请求体转换，还需要添加下列配置：</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    body_converter:
+        enabled: true</pre>
+<p>Note: You will probably want to disable the automatic route generation (<code>@NoRoute</code>)for routes using the body converter, and instead define the routes manually to avoid having the deserialized, type hinted objects (<code>$post in this example</code>) appearin the route as a parameter.</p>
+<p>注意：在使用body转换时，您可能希望禁用自动路由生成功能（<code>@NoRoute</code>），而手工设置路由以避免反序列化的、类型暗示对象（在本例中是$post）作为参数出现在路由里。</p>
+<p><br></p>
+<p>Now, in the following example, the request body will be deserialized into a new instance of <code>Post</code> and injected into the <code>$post</code> variable:</p>
+<p>现在，在下面的例子里，请求体将被反序列化到一个新的Post示例中，并将其注入到$post变量中：</p>
+<pre class="brush:php;toolbar:false;">use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+// ...
+/**
+ * @ParamConverter("post", converter="fos_rest.request_body")
+ */
+public function putPostAction(Post $post)
+{
+    // ...
+}</pre>
+<p>You can configure the context used by the serializer during deserialization via the <code>deserializationContext</code> option:</p>
+<p>在通过 <code>deserializationContext</code>选项进行反序列化期间，您可以通过序列化器来配置上下文：</p>
+<pre class="brush:php;toolbar:false;">/**
+ * @ParamConverter("post", converter="fos_rest.request_body", options={"deserializationContext"={"groups"={"group1", "group2"}, "version"="1.0"}})
+ */
+public function putPostAction(Post $post)
+{
+    // ...
+}</pre>
+<h4>Validation（验证）</h4>
+<p>If you would like to validate the deserialized object, you can do so by enabling validation:</p>
+<p>如果您想验证反序列对象，您可以通过启用验证功能来实现：<br></p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    body_converter:
+        enabled: true
+        validate: true
+        validation_errors_argument: validationErrors # This is the default value</pre>
+<p>The validation errors will be set on the <code>validationErrors</code> controller argument:</p>
+<p>验证错误将被设置在控制器参数 <code>validationErrors</code>上<br></p>
+<pre class="brush:php;toolbar:false;">/**
+ * @ParamConverter("post", converter="fos_rest.request_body")
+ */
+public function putPostAction(Post $post, ConstraintViolationListInterface $validationErrors)
+{
+    if (count($validationErrors) &gt; 0) {
+        // Handle validation errors
+    }
+    // ...
+}</pre>
+<h3>Format listener（格式监听器）</h3>
+<p>The Request format listener attempts to determine the best format for the request based on the Request's Accept-Header and the format priority configuration. This way it becomes possible to leverage Accept-Headers to determine the request format, rather than a file extension (like foo.json).</p>
+<p>请求格式监听器基于Request的接收头和格式的优先级配置来尝试确定最佳格式。这种方式可以利用接收头来确定请求格式，而非文件扩展名（如foo.json）。</p>
+<p><br></p>
+<p>The <code>default_priorities</code> define the order of formats as the application prefers.  The algorithm iteratively examines the provided Accept header first looking at all the options with the highest <code>q</code>. The first priority that matches is returned. If none match the next lowest set of Accept headers with equal <code>q</code> is examined and so on until there are no more Accept headers to check. In this case <code>fallback_format</code> is used.</p>
+<p><code>default_priorities</code> 定义了应用程序偏好的格式顺序。该算法抚今迭代检查所提供的接收头，首先查找所有具有最高 <code>q</code> 的选项，第一优先匹配返回。如果没有匹配，则检查下一个有着相同 <code>q</code> 的最低接收头，直到没有接收头检查。在这种格式下使用 <code>fallback_format</code></p>
+<p><code><br></code></p>
+<p>Note that if <code>_format</code> is matched inside the route, then a virtual Acceptheader setting is added with a <code>q</code> setting one lower than the lowest Acceptheader, meaning that format is checked for a match in the priorities last. If <code>prefer_extension</code> is set to <code>true</code> then the virtual Accept header will be one higher than the highest <code>q</code> causing the extension to be checked first.</p>
+<p>注意， if <code>_format</code> 在路由中匹配，那么将添加一个虚拟接收头设置，该设置有着比最低接收头更低的 q 设置，这就意味着该格式将是最后优先级匹配。如果<code>prefer_extension</code> 设置为 true，那么虚拟接收头将比最高的 <code>q</code> 还高，这将引起扩展将被最先检查。</p>
+<p><br></p>
+<p>Note that setting <code>default_priorities</code> to a non empty array enables Accept header negotiations, while adding '*/*' to the priorities will effectively cause any priority to match.</p>
+<p>注意将<code>default_priorities</code>设置为非空数组，将启用接收头协商，这时添加到优先级中的'*/*'是有效的，它将匹配任何优先级。</p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    format_listener:
+        default_priorities: ['json', html, '*/*']
+        fallback_format: json
+        prefer_extension: true</pre>
+<p>For example using the above configuration and the following Accept header:</p>
+<p>例如使用上述配置及下列接收头：</p>
+<pre class="brush:as3;toolbar:false;">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8,application/json</pre>
+<p>And the following route:</p>
+<p>以及以下路由：</p>
+<pre class="brush:as3;toolbar:false;">hello:
+    pattern:  /foo.{_format}
+    defaults: { _controller: foo.controller:indexAction, _format: ~ }</pre>
+<p>When calling:</p>
+<p>当调用：<br></p>
+<ul class=" list-paddingleft-2">
+<li><p><code>/foo</code> will lead to setting the request format to <code>json</code></p></li>
+<li><p><code>/foo 将导致设置请求格式为json</code></p></li>
+<li><p><code>/foo.html</code> will lead to setting the request format to <code>html</code></p></li>
+<li><p><code>/foo.html 将导致设置请求格式为html</code></p></li>
+</ul>
+<p>Note that the format needs to either be supported by the <code>Request</code> class natively or it needs to be added as documented here:</p>
+<p>注意在这里格式需要被Request类自身支持，也需要在下面文档记录才被添加：<br></p>
+<p><a href="http://symfony.com/doc/current/cookbook/request/mime_type.html">http://symfony.com/doc/current/cookbook/request/mime_type.html</a></p>
+<h3>Mime type listener（Mime类型监听器）</h3>
+<p>This listener allows registering additional mime types in the <code>Request </code>class.  It works similar to the following cookbook entry:</p>
+<p>该监听器允许在Request类中注册额外的Mime类型。它的工作原理与下面食谱项相似：<br></p>
+<p><a href="http://symfony.com/doc/current/cookbook/request/mime_type.html">http://symfony.com/doc/current/cookbook/request/mime_type.html</a></p>
+<h3>Param fetcher listener（参数提取监听器）</h3>
+<p>The param fetcher listener simply sets the ParamFetcher instance as a request attributeconfigured for the matched controller so that the user does not need to do this manually.</p>
+<p>参数提取监听器为匹配控制器的请求属性配置而简单设置ParamFetcher实例，而无须用户手动设置。<br></p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    param_fetcher_listener: true</pre>
+<p><br></p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+use FOS\RestBundle\Request\ParamFetcher;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+class FooController extends Controller
+{
+    /**
+     * Will look for a page query parameter, ie. ?page=XX
+     * If not passed it will be automatically be set to the default of "1"
+     * If passed but doesn't match the requirement "\d+" it will be also be set to the default of "1"
+     * Note that if the value matches the default then no validation is run.
+     * So make sure the default value really matches your expectations.
+     *
+     * @QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
+     *
+     * In some case you also want to have a strict requirements but accept a null value, this is possible
+     * thanks to the nullable option.
+     * If ?count= parameter is set, the requirements will be checked strictly, if not, the null value will be used.
+     * If you set the strict parameter without a nullable option, this will result in an error if the parameter is
+     * missing from the query.
+     *
+     * @QueryParam(name="count", requirements="\d+", strict=true, nullable=true, description="Item count limit")
+     *
+     * Will look for a firstname request parameters, ie. firstname=foo in POST data.
+     * If not passed it will error out when read out of the ParamFetcher since RequestParam defaults to strict=true
+     * If passed but doesn't match the requirement "\d+" it will also error out (400 Bad Request)
+     * Note that if the value matches the default then no validation is run.
+     * So make sure the default value really matches your expectations.
+     *
+     * @RequestParam(name="firstname", requirements="[a-z]+", description="Firstname.")
+     *
+     * If you want to work with array: ie. ?ids[]=1&amp;ids[]=2&amp;ids[]=1337, use:
+     *
+     * @QueryParam(array="true", name="ids", requirements="\d+", default="1", description="List of ids")
+     * (works with QueryParam and RequestParam)
+     *
+     * It will validate each entries of ids with your requirement, by this way, if an entry is invalid,
+     * this one will be replaced by default value.
+     *
+     * ie: ?ids[]=1337&amp;ids[]=notinteger will return array(1337, 1);
+     * If ids is not defined, array(1) will be given
+     *
+     * Array must have a single depth or it will return default value. It's difficult to validate with
+     * preg_match each deeps of array, if you want to deal with that, use another validation system.
+     *
+     * @param ParamFetcher $paramFetcher
+     */
+    public function getArticlesAction(ParamFetcher $paramFetcher)
+    {
+        $page = $paramFetcher-&gt;get('page');
+        $articles = array('bim', 'bam', 'bingo');
+        return array('articles' =&gt; $articles, 'page' =&gt; $page);
+    }</pre>
+<p>Note: There is also <code>$paramFetcher-&gt;all()</code> to fetch all configured query parameters at once. And also both <code>$paramFetcher-&gt;get()</code> and <code>$paramFetcher-&gt;all()</code> support and optional <code>$strict</code> parameter to throw a <code>\RuntimeException</code> on a validation error.</p>
+<p>注意：这里还可以使用  <code>$paramFetcher-&gt;all()</code> 一次性获取所有配置的查询参数。它支持 <code>$paramFetcher-&gt;get()</code> 和 <code>$paramFetcher-&gt;all()</code>两种方式，同时可选参数 <code>$strict</code><br> 将在验证错误时抛出<code>\RuntimeException</code> 异常。</p>
+<p><br></p>
+<p>Optionally the listener can also already set all configured query parameters as request attributes</p>
+<p>可选的监听器也已经设置了所有配置的查询参数作为请求属性。<br></p>
+<pre class="brush:as3;toolbar:false;"># app/config/config.yml
+fos_rest:
+    param_fetcher_listener: force</pre>
+<p><br></p>
+<pre class="brush:php;toolbar:false;">&lt;?php
+class FooController extends Controller
+{
+    /**
+     * @QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
+     *
+     * @param string $page
+     */
+    public function getArticlesAction($page)
+    {
+        $articles = array('bim', 'bam', 'bingo');
+        return array('articles' =&gt; $articles, 'page' =&gt; $page);
+    }</pre>
+<h3>Allowed Http Methods Listener（允许的HTTP方法监听器）</h3>
+<p>This listener add the <code>Allow</code> HTTP header to each request appending all allowed methods for a given resource.</p>
+<p>对于给定资源，本监听器添加允许HTTP头，允许每个请求附加所有被允许的方法。</p>
+<p><br></p>
+<p>Let's say we have the following routes:</p>
+<p>比方说我们有以下路由：</p>
+<pre class="brush:as3;toolbar:false;">api_get_users
+api_post_users
+api_get_user</pre>
+<p>A <code>GET</code> request to <code>api_get_users</code> will response in:</p>
+<p>一个 <code>GET</code> 发送到 <code>api_get_users</code> 的请求将被响应：</p>
+<pre class="brush:as3;toolbar:false;">&lt; HTTP/1.0 200 OK
+&lt; Date: Sat, 16 Jun 2012 15:17:22 GMT
+&lt; Server: Apache/2.2.22 (Ubuntu)
+&lt; allow: GET, POST</pre>
+<p>You need to enable this listener like this as it is disabled by default:</p>
+<p>您需要象这样启用该监听器，因为它在缺省状态下是被禁用的：</p>
+<pre class="brush:as3;toolbar:false;">fos_rest:
+    allowed_methods_listener: true</pre>
+<h3>Security Exception Listener（安全异常监听器）</h3>
+<p>By default it is the responsibility of firewall access points to deal with AccessDeniedExceptions.For example the <code>form</code> entry point will redirect to the login page. However for a RESTful application proper response HTTP status codes should be provided. This listener is triggered before the normal exception listener and firewall entry points and forces returning either a 403 or 401 status code for any of the formats configured.</p>
+<p>缺省状态下，防火墙访问点负责处理AccessDeniedExceptions。例如表单接入点将重定向到 登录页面。然而在REST风格的应用程序中将提供适当HTTP状态码。该监听器在正常异常监听器和防火墙访问点之前被触发，并为任何格式配置强制返回403或401状态码。</p>
+<p><br></p>
+<p>It will return 401 for <code>Symfony\Component\Security\Core\Exception\AuthenticationException</code> or 403 for<code>Symfony\Component\Security\Core\Exception\AccessDeniedException</code>.</p>
+<p>它将为<code>Symfony\Component\Security\Core\Exception\AuthenticationException</code>返回401,或者为<code>Symfony\Component\Security\Core\Exception\AccessDeniedException</code>返回403。</p>
+<p><br></p>
+<p>You need to enable this listener like this as it is disabled by default:</p>
+<p>您需要象这样启用该监听器，因为它在缺省状态下是被禁用的：</p>
+<pre class="brush:as3;toolbar:false;">fos_rest:
+    access_denied_listener:
+        # all requests using the 'json' format will return a 403 on an access denied violation
+        json: true</pre>
+<p>It is also recommended to enable the exception controller described in the next chapter.</p>
+<p>建议启用异常控制器，这将在下一章节说明。</p>
+<h2>That was it!</h2>
+<p><a href="https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/index.md">Return to the index</a> or continue reading about <a href="https://github.com/FriendsOfSymfony/FOSRestBundle/blob/master/Resources/doc/4-exception-controller-support.md">ExceptionController support</a>.</p>
+<p><a target="_self" href="http://firehare.blog.51cto.com/809276/1247893">返回指南页</a>或继续阅读<a textvalue="异常控制器支持" target="_self" href="http://firehare.blog.51cto.com/blog/809276/1253458">异常控制器支持</a></p>
+<p><br></p>
+    		";s:10:"post_title";s:134:"
+
+	 		<img src="http://blog.51cto.com/image/skin/artType03.jpg">
+
+
+    		    FOSRestBundle功能包：监听器支持
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"2";s:6:"remove";s:1:"0";s:14:"category_title";s:24:"Symfony2 手册翻译版";}}s:20:"custom_result_object";a:0:{}s:11:"current_row";i:0;s:8:"num_rows";i:1;s:8:"row_data";N;}

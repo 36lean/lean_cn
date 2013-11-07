@@ -20,6 +20,7 @@ class Sale extends Base_Controller
 			array('route' => 'index' 		, 'alias' => '客户列表' , 'status' => 'active') ,
 			array('route' => 'web' 			, 'alias' => '网站会员' , 'status' => 'active') ,
 			array('route' => 'expense' 		, 'alias' => '付费会员' , 'status' => 'active') ,
+			array( 'route' => 'recent' 		, 'alias' => '最近联系人' , 'status' => 'active') ,
 			array('route' => 'remind' 		, 'alias' => '今日提醒' , 'status' => 'active') ,
 			array('route' => 'allremind' 	, 'alias' => '所有提醒' , 'status' => 'active') ,
 			array('route' => 'cleanlist' 	, 'alias' => '清理列表' , 'status' => 'active') ,
@@ -29,7 +30,7 @@ class Sale extends Base_Controller
 
 	public function index( $page = 1 , $offset = 16 )
 	{
-		
+
 		$sale_id = $this->_G['uid'];
 		//FILTER
 		$search = $this->session->userdata('search');
@@ -76,12 +77,13 @@ class Sale extends Base_Controller
 
 		}	
 
+
 		$sum = $this->sale->get_contact_sum( $sale_id);
 
 		$tags = $this->sale->get_contact_tags();
 
 		$remind_num = $this->sale->get_today_remind( $sale_id);
-
+		
 		$this->template->build('sale/index' , array ( 'contacts' 	=> $contacts ,
 													  'tags'	 	=> $tags , 
 													  'remind_num'	=> $remind_num , 
@@ -114,11 +116,11 @@ class Sale extends Base_Controller
 
 		$next = ( $today+86399 );
 
-		$data = $this->sale->get_contact_details( $page , $offset , $sale_id);
+		$data = $this->sale->get_contact_details( $page , $offset , $sale_id , $last , $next);
 
 		$sum = $this->sale->get_message_sum( $this->_G['uid']);
 
-		$this->template->build('sale/remind' , array( 'data'	=>	$data , 
+		$this->template->build('sale/remind' , array( 'contacts'	=>	$data , 
 													  'offset'	=>	$offset , 
 													  'sum' 	=> 	$sum ,
 													  'last'    =>  $last , 
@@ -143,11 +145,11 @@ class Sale extends Base_Controller
 
 		$sum = $this->sale->get_message_sum( $this->_G['uid']);
 
-		$this->template->build('sale/allremind' , array( 'data'	=>	$data , 
-													  'offset'	=>	$offset , 
-													  'sum' 	=> 	$sum ,
-													  'last'    =>  $last , 
-													  'next'    =>  $next ,
+		$this->template->build('sale/allremind' , array( 'contacts'	=>	$data , 
+													  	 'offset'	=>	$offset , 
+													  	 'sum' 	=> 	$sum ,
+													  	 'last'    =>  $last , 
+													  	 'next'    =>  $next ,
 													)
 		);
 
@@ -184,11 +186,14 @@ class Sale extends Base_Controller
 
 		$web_profile = $this->sale->get_profile_by_contact_id( $id);
 
+		$from_website = $this->sale->is_contact_from_website( $id);
+
 		$this->template->build('sale/contact' , array(       'profile' =>  $profile, 
 														     'tag' 	=> $tag ,
 														     'connect' => $connect ,
 														     'status'  => isset( $status) ? $status : '',
 														     'web_profile' => $web_profile , 
+														     'is_contact_from_website' => $from_website , 
 														  )
 							);
 
@@ -205,6 +210,20 @@ class Sale extends Base_Controller
 		$sum = $this->sale->get_web_members_sum( $this->_G['uid']);
 
 		$this->template->build('sale/web' , array( 'contacts'=>$contacts , 'sum' => $sum , 'offset' => $offset ));
+	}
+
+	public function recent( $page = 1 , $offset = 30)
+	{
+
+		$contacts = $this->sale->get_contacts_by_contactlog( $page , $offset ); 
+
+		$sum = $this->sale->get_sum_by_contactlog(); 
+
+		$this->template->build('sale/recent' , array( 'contacts'=>$contacts , 
+													  'sum' => $sum , 
+													  'offset' => $offset 
+													)
+		);
 	}
 
 	public function add_remind()
@@ -478,6 +497,22 @@ class Sale extends Base_Controller
 
 		$this->sale->create_contact_by_webuser( $uid);
 		
+	}
+
+	public function cleanlist()
+	{
+		$list = $this->sale->get_cleaned_contacts();
+
+		$this->template->build('sale/cleanlist' , array('list'=>$list));
+	}
+
+	public function return_contact( $id)
+	{
+		$id = intval( $id);
+
+		$this->db->where( array('id'=>$id))->update( 'admin_contacts' , array('close' => 0));
+
+		redirect( 'sale/cleanlist');
 	}
 
 }

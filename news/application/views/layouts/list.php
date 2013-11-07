@@ -6,7 +6,7 @@ $base_url = str_replace('news/', '' , base_url());
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Cache-Control" content="max-age=7200" />
-<title><?php echo $template['title'];?> - 精企网 -  全球第一家中文精益学习平台</title>
+<title><?php echo $template['title'];?> - 精企网 - 全球首家精益资讯平台</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="keywords" content="<?php if( isset( $keywords) ) echo $keywords;?>" />
@@ -40,6 +40,7 @@ $base_url = str_replace('news/', '' , base_url());
     <link href="http://www.36lean.com/static/bs/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?php echo base_url('public/bootstrap2/css/bootstrap-responsive.css');?>" rel="stylesheet" />
     <link href="<?php echo base_url('public/font/css/font-awesome.min.css');?>" rel="stylesheet" />
+    <script src="<?php echo base_url('public/bootstrap2/js/bootstrap.min.js');?>"></script>
 <!--[if IE 7]>
     <link href="<?php echo $base_url;?>/static/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet" />
 <![endif]--> 
@@ -55,7 +56,19 @@ $base_url = str_replace('news/', '' , base_url());
     <script src="<?php echo base_url('public/mot/mot.js');?>" type="text/javascript"></script>
 </head>
 <body>
+<?php
+foreach ($_COOKIE as $key => $value) {
+  if(preg_match('/sid/', $key))
+    $sessionid = $_COOKIE[$key];
+}
 
+if( isset( $sessionid))
+{
+  $ci = & get_instance();
+  $user_info = $ci->db->select('username')->from('common_session')->where( array('sid'=>$sessionid))->get()->row_array();
+}
+
+?>
 
 
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -82,6 +95,9 @@ $base_url = str_replace('news/', '' , base_url());
           <button name="findout" type="submit" class="btn btn-primary">搜索</button>
         </div>
       </form>
+     <ul class="nav pull-right">
+
+      </ul>
 </div>
 </div>
 </div>
@@ -98,7 +114,7 @@ $base_url = str_replace('news/', '' , base_url());
         <ul class="nav">
             <li><a href="<?php echo $base_url;?>portal.php"><i class="icon-home"></i> 首页</a></li>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="lesson.php">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo $base_url;?>lesson.php">
                 <i class="icon-cloud"></i> 精益云学院 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
@@ -110,6 +126,7 @@ $base_url = str_replace('news/', '' , base_url());
             <!--<li><a href="<?php echo $base_url;?>news/blog"><i class="icon-globe"></i>精企资讯</a>-->
 
             <li class="active"><a href="<?php echo $base_url;?>news"><i class="icon-globe"></i> 精企资讯 </a></li>
+            <li><a href="<?php echo $base_url;?>read.php?title=leanshop"><i class="icon-shopping-cart"></i> 精企商城 </a></li>
             
             <!--<li><a href="<?php echo $base_url;?>store"><i class="icon-globe"></i> 精益商城</a>-->
 
@@ -118,24 +135,17 @@ $base_url = str_replace('news/', '' , base_url());
         </ul>
 
         <ul class="nav pull-right">
+            <?php if( isset( $user_info) && $user_info['username']){?>
+            <li class=""><a href="<?php echo $base_url;?>user.php"><i class="icon-user"></i> <?php echo $user_info['username'];?>在线</a></li>
+            <?php }else {?>
+            <li class=""><a href="<?php echo $base_url;?>member.php?mod=logging&action=login">登陆</a></li>
+            <li class=""><a href="<?php echo $base_url;?>member.php?mod=enroll">注册</a></li>
+            <?php }?>
           <li><a href="read.php?title=contactus"><i class="icon-phone"></i> 021-62128213</a></li>
         </ul>
     </div>
 </div>
 <div class="container">
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <ul class="breadcrumb">
   <li><a href="<?php echo $base_url;?>">首页</a> <span class="divider">/</span>  </li>
@@ -185,19 +195,22 @@ $base_url = str_replace('news/', '' , base_url());
 
   
 </div>
+
 <hr />
 <div class="container-fluid" style="font-size:12px;">
   <div class="row-fluid">
-        <strong>&copy;36Lean 精企网 2009-2013</strong> 
+        <strong>&copy;36Lean 精企网 2013</strong> 
+
+        &nbsp;&nbsp;&nbsp;&nbsp;备案编号 : 沪ICP备13007809号
   </div>
 </div>
 
-
-<script src="http://www.36lean.com/static/bs/js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{$_G['siteurl']}static/mot/professional.js"></script>
+<script type="text/javascript" src="{$_G['siteurl']}static/bs/js/bootstrap.min.js"></script>
 <!--[if IE]>
 <script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
 <![endif--> 
-<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" charset="utf-8"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

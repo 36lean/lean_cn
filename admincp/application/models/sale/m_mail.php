@@ -67,7 +67,23 @@ class M_mail extends CI_Model
 
  	 		if( $id == 1)
  	 		{
+ 	 			
  	 			$this->db->query('update pre_admin_maillog set send = send + 1 where id = '.$log_id);
+
+ 	 			$counter =  $this->db->select('id')->from('admin_mail_counter')->where( array('date'=>date('Y-m-d')))->get() ;
+
+ 	 			if( $counter->num_rows() )
+ 	 			{
+
+ 	 				$counter = $counter->row_array();
+
+ 	 				$this->db->query('update pre_admin_mail_counter set current_times = current_times + 1 where id = '.$counter['id'] );
+
+ 	 			}else
+ 	 			{
+ 	 				$this->db->insert('admin_mail_counter' , array( 'date' => date('Y-m-d') , 'current_times' => 1));
+ 	 			}
+
  	 		}
 
  	 		return $id;
@@ -173,4 +189,11 @@ class M_mail extends CI_Model
 						->row_array();
 	}
 
+	public function get_mail_effective_times()
+	{
+		return $this->db->select('current_times')
+						->from('admin_mail_counter')
+						->where( array('date' => date('Y-m-d')))
+						->get()->row_array();
+	}
 }

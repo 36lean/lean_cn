@@ -89,7 +89,7 @@ class Client_member extends CI_Model {
 			else
 				$search = 'm.'.$column;
 
-			return $this->db->query('select m.uid,m.email,m.username,m.regdate,p.position,p.telephone,p.mobile,p.company,p.qq,m.username as salesman from pre_ucenter_members m left join pre_common_member_profile p on p.uid = m.uid where m.regip not like \'412\' and '.$search.' REGEXP \''.$preg_str.'\'')	
+			return $this->db->query('select m.uid,m.email,m.username,m.regdate,p.position,p.telephone,p.mobile,p.company,p.qq,pre_admin_users.username as salesman from pre_ucenter_members m left join pre_common_member_profile p on p.uid = m.uid left join pre_admin_contacts_tmp on pre_admin_contacts_tmp.user_id = m.uid left join pre_admin_users on pre_admin_users.uid = pre_admin_contacts_tmp.assign_to  where m.regip not like \'412\' and '.$search.' REGEXP \''.$preg_str.'\'')	
 					 	  ->result_array();
 		}
 	}

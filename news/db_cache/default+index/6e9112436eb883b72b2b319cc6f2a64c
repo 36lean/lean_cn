@@ -1,0 +1,343 @@
+O:12:"CI_DB_result":8:{s:7:"conn_id";N;s:9:"result_id";N;s:12:"result_array";a:1:{i:0;a:19:{s:2:"id";s:3:"444";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:27107:"
+    		  <h1>LiipThemeBundle</h1>
+<div>LiipThemeBundle可以让您为您的每个Bundle添加主题。该主题一般位于您的Bundle目录的<code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">Resources/themes/&lt;主题名&gt;</code>或正常的 <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">Resources/views</code>（如果没有找到的话）文件夹中。</div>
+<h2>安装</h2>
+<h3>步骤1：下载 LiipThemeBundle</h3>
+<div>进入Symfony2.1.x的根目录，打开 <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">composer.json</code> 文件，在"require":选项中添加：</div>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span class="string">"require"</span><span>: { </span></span></li>
+<li><span>    ... , </span></li>
+<li class="alt"><span>    <span class="string">"liip/theme-bundle"</span><span>: </span><span class="string">"dev-master"</span><span> </span></span></li>
+<li><span>}, </span></li>
+</ol></pre>
+<p>然后运行composer脚本，下载 LiipThemeBundle</p>
+<pre><ol class="dp-sql"><li class="alt"><span><span>php composer.phar </span><span class="keyword">update</span><span> </span></span></li></ol></pre>
+<h3>步骤2：启用 LiipThemeBundle</h3>
+<p>下载完成后，在内核中启用 LiipThemeBundle</p>
+<pre><ol class="dp-c">
+<li class="alt"><span><span>&lt;?php </span></span></li>
+<li><span><span class="comment">// app/AppKernel.php</span><span> </span></span></li>
+<li class="alt"><span> </span></li>
+<li><span><span class="keyword">public</span><span> </span><span class="keyword">function</span><span> registerBundles() </span></span></li>
+<li class="alt"><span>{ </span></li>
+<li><span>    <span class="vars">$bundles</span><span> = </span><span class="keyword">array</span><span>( </span></span></li>
+<li class="alt"><span>        <span class="comment">// ...</span><span> </span></span></li>
+<li><span>        <span class="keyword">new</span><span> Liip\ThemeBundle\LiipThemeBundle(), </span></span></li>
+<li class="alt"><span>    ); </span></li>
+<li><span>} </span></li>
+</ol></pre>
+<h3>步骤3：导入 LiipThemeBundle 路由文件</h3>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/routing.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    resource: <span class="string">"@LiipThemeBundle/Resources/config/routing.xml"</span><span> </span></span></li>
+<li><span>    prefix: /theme </span></li>
+</ol></pre>
+<h2>配置</h2>
+<p>在配置文件中需要列出所有的主题列表及当前主题。注意，当前主题必须在主题列表中</p>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    themes: [<span class="string">'web'</span><span>, </span><span class="string">'tablet'</span><span>, </span><span class="string">'phone'</span><span>] </span></span></li>
+<li><span>    active_theme: <span class="string">'web'</span><span> </span></span></li>
+</ol></pre>
+<h3>可选配置项</h3>
+<p>可以基于 Cookie 来选择当前主题：</p>
+<pre><ol class="dp-xml">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    cookie: </span></li>
+<li><span>        name: NameOfTheCookie </span></li>
+<li class="alt"><span>        lifetime: 31536000 # 1 year in seconds </span></li>
+<li><span>        path: / </span></li>
+<li class="alt"><span>        domain: ~ </span></li>
+<li><span>        secure: false </span></li>
+<li class="alt"><span>        http_only: false </span></li>
+</ol></pre>
+<p>也可以基于用户代理自动设置主题 Cookie：</p>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    autodetect_theme: <span class="keyword">true</span><span> </span></span></li>
+</ol></pre>
+<p> autodetect_theme 选项也可以设为 DIC 服务 ID，该服务需要实现 <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">Liip\ThemeBundle\Helper\DeviceDetectionInterface</code> 接口。</p>
+<p>如果不想让用户自己改变主题，可以停用该 Bundle 的控制器：</p>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    load_controllers: <span class="keyword">false</span><span> </span></span></li>
+</ol></pre>
+<h3>主题的层级顺序</h3>
+<p>Bundle 在应用模板时是按以下层级顺序进行的（让我们先假设有一个名为<span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">phone</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span>的主题，其模板文件为<span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">BundleName/Resources/template.html.twig</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span>@BundleName/Resources/template.html.twig）：</p>
+<ol style="margin: 15px 0px; padding: 0px 0px 0px 30px; border: 0px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; ">
+<li style="margin: 0px; padding: 0px; border: 0px; ">覆写主题目录： <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app/Resources/themes/phone/BundleName/template.html.twig</code>
+</li>
+    <li style="margin: 0px; padding: 0px; border: 0px; ">覆写视图目录： <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app/Resources/BundleName/views/template.html.twig</code>
+</li>
+    <li style="margin: 0px; padding: 0px; border: 0px; ">Bundle的主题目录： <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">src/BundleName/Resources/themes/phone/template.html.twig</code>
+</li>
+    <li style="margin: 0px; padding: 0px; border: 0px; ">Bundle的视图目录： <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">src/BundleName/Resources/views/template.html.twig</code>
+</li>
+</ol>
+<p>举个例子，如果您想将一些自定义的 TwigBundle 错误页面集成到您的主题架构中，那么您将需要使用这个目录结构：<span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">app/Resources/themes/phone/TwigBundle/Exception/error404.html.twig</code></p>
+<p><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); ">当使用全局范围的模板时，将使用下列顺序（如</span><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); ">模板文件为 </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">::template.html.twig</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> 的名为</span><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">phone</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> 的主题）：</span></p>
+<ol style="margin: 15px 0px; padding: 0px 0px 0px 30px; border: 0px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; ">
+<li style="margin: 0px; padding: 0px; border: 0px; ">覆写主题目录：  <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app/Resources/themes/phone/template.html.twig</code>
+</li>
+    <li style="margin: 0px; padding: 0px; border: 0px; ">覆写视图目录：  <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app/Resources/views/template.html.twig</code>
+</li>
+</ol>
+<h4>改变主题的层级顺序</h4>
+<p><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); ">您可以通过一些配置命令来改变层级顺序： </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">path_patterns.app_resource</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); ">  、  </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">path_patterns.bundle_resource</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> 和 </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">path_patterns.bundle_resource_dir</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> 。 如：</span></p>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    path_patterns: </span></li>
+<li><span>        app_resource: </span></li>
+<li class="alt"><span>            - %%app_path%%/themes/%%current_theme%%/%%template%% </span></li>
+<li><span>            - %%app_path%%/themes/fallback_theme/%%template%% </span></li>
+<li class="alt"><span>            - %%app_path%%/views/%%template%% </span></li>
+<li><span>        bundle_resource: </span></li>
+<li class="alt"><span>            - %%bundle_path%%/Resources/themes/%%current_theme%%/%%template%% </span></li>
+<li><span>            - %%bundle_path%%/Resources/themes/fallback_theme/%%template%% </span></li>
+<li class="alt"><span>        bundle_resource_dir: </span></li>
+<li><span>            - %%dir%%/themes/%%current_theme%%/%%bundle_name%%/%%template%% </span></li>
+<li class="alt"><span>            - %%dir%%/themes/fallback_theme/%%bundle_name%%/%%template%% </span></li>
+<li><span>            - %%dir%%/%%bundle_name%%/%%override_path%% </span></li>
+</ol></pre>
+<h5>层级顺序通配符</h5>
+<p>
+</p>
+<table style="margin: 15px 0px; padding: 0px; border: 0px; border-collapse: collapse; border-spacing: 0px; font: inherit; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; line-height: 22px; text-align: start; "><tbody style="margin: 0px; padding: 0px; border: 0px; ">
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); ">
+<th style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">占位符</th>
+            <th style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">说明</th>
+            <th style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">示例</th>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(248, 248, 248); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%app_path%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">应用程序Path where application located</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app</code></td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%bundle_path%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">Bundle所在目录</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">src/Vendor/CoolBundle/VendorCoolBundle</code></td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(248, 248, 248); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%bundle_name%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">Bundle名</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">VendorCoolBundle</code></td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%dir%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">首先查找的目录</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "> </td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(248, 248, 248); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%current_theme%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">当前激活的主题名</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "> </td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%template%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">模板名</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">view.html.twig</code></td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(248, 248, 248); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%override_path%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">同上，只是带视图目录</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">views/list.html.twig</code></td>
+        </tr>
+</tbody></table>
+<h3>切换当前主题</h3>
+<p style="margin: 0px 0px 15px; padding: 0px; border: 0px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; ">对于这个问题，可参见 ThemeRequestListener.</p>
+<p style="margin: 15px 0px; padding: 0px; border: 0px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; ">如果在请求初期没有模板被渲染，您可以使用主题服务，从而主地改变主题：</p>
+<pre><ol class="dp-c">
+<li class="alt"><span><span class="vars">$activeTheme</span><span> = </span><span class="vars">$container</span><span>-&gt;get(</span><span class="string">'liip_theme.active_theme'</span><span>); </span></span></li>
+<li><span><span class="func">echo</span><span> </span><span class="vars">$activeTheme</span><span>-&gt;getName(); </span></span></li>
+<li class="alt"><span><span class="vars">$activeTheme</span><span>-&gt;setName(</span><span class="string">"phone"</span><span>); </span></span></li>
+</ol></pre>
+<h2>常见问题</h2>
+<h3>Assetic：dump 不检查 Resources/{theme}/views 目录:</h3>
+<p>当使用 assetic:dump 命令进行资源转储时, assetic 只检查用以生成资源的 Resources/views 目录，它并不检查 Resources/{theme}/views 目录。</p>
+<p>当前最简单的解决办法：既然问题出在 assetic 不扫描主题目录，那么将 assetic 区块放入 Bundle/Ressources/views 目录中的模板，并从主题模板中包含它。</p>
+<p> </p>
+    		";s:10:"post_title";s:123:"
+
+	 		<img src="http://blog.51cto.com/image/skin/artType03.jpg">
+
+
+    		    Symfony2插件LiipThemeBundle
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"8";s:6:"remove";s:1:"0";s:6:"banner";s:69:"http://127.0.0.1/lean/admincp/uploads/photos/20131023032511927293.jpg";s:8:"seo_text";s:0:"";}}s:13:"result_object";a:1:{i:0;O:8:"stdClass":19:{s:2:"id";s:3:"444";s:14:"post_titlelink";s:0:"";s:11:"post_banner";s:0:"";s:11:"post_author";s:9:"精企网";s:12:"post_summary";s:0:"";s:12:"post_content";s:27107:"
+    		  <h1>LiipThemeBundle</h1>
+<div>LiipThemeBundle可以让您为您的每个Bundle添加主题。该主题一般位于您的Bundle目录的<code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">Resources/themes/&lt;主题名&gt;</code>或正常的 <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">Resources/views</code>（如果没有找到的话）文件夹中。</div>
+<h2>安装</h2>
+<h3>步骤1：下载 LiipThemeBundle</h3>
+<div>进入Symfony2.1.x的根目录，打开 <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">composer.json</code> 文件，在"require":选项中添加：</div>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span class="string">"require"</span><span>: { </span></span></li>
+<li><span>    ... , </span></li>
+<li class="alt"><span>    <span class="string">"liip/theme-bundle"</span><span>: </span><span class="string">"dev-master"</span><span> </span></span></li>
+<li><span>}, </span></li>
+</ol></pre>
+<p>然后运行composer脚本，下载 LiipThemeBundle</p>
+<pre><ol class="dp-sql"><li class="alt"><span><span>php composer.phar </span><span class="keyword">update</span><span> </span></span></li></ol></pre>
+<h3>步骤2：启用 LiipThemeBundle</h3>
+<p>下载完成后，在内核中启用 LiipThemeBundle</p>
+<pre><ol class="dp-c">
+<li class="alt"><span><span>&lt;?php </span></span></li>
+<li><span><span class="comment">// app/AppKernel.php</span><span> </span></span></li>
+<li class="alt"><span> </span></li>
+<li><span><span class="keyword">public</span><span> </span><span class="keyword">function</span><span> registerBundles() </span></span></li>
+<li class="alt"><span>{ </span></li>
+<li><span>    <span class="vars">$bundles</span><span> = </span><span class="keyword">array</span><span>( </span></span></li>
+<li class="alt"><span>        <span class="comment">// ...</span><span> </span></span></li>
+<li><span>        <span class="keyword">new</span><span> Liip\ThemeBundle\LiipThemeBundle(), </span></span></li>
+<li class="alt"><span>    ); </span></li>
+<li><span>} </span></li>
+</ol></pre>
+<h3>步骤3：导入 LiipThemeBundle 路由文件</h3>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/routing.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    resource: <span class="string">"@LiipThemeBundle/Resources/config/routing.xml"</span><span> </span></span></li>
+<li><span>    prefix: /theme </span></li>
+</ol></pre>
+<h2>配置</h2>
+<p>在配置文件中需要列出所有的主题列表及当前主题。注意，当前主题必须在主题列表中</p>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    themes: [<span class="string">'web'</span><span>, </span><span class="string">'tablet'</span><span>, </span><span class="string">'phone'</span><span>] </span></span></li>
+<li><span>    active_theme: <span class="string">'web'</span><span> </span></span></li>
+</ol></pre>
+<h3>可选配置项</h3>
+<p>可以基于 Cookie 来选择当前主题：</p>
+<pre><ol class="dp-xml">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    cookie: </span></li>
+<li><span>        name: NameOfTheCookie </span></li>
+<li class="alt"><span>        lifetime: 31536000 # 1 year in seconds </span></li>
+<li><span>        path: / </span></li>
+<li class="alt"><span>        domain: ~ </span></li>
+<li><span>        secure: false </span></li>
+<li class="alt"><span>        http_only: false </span></li>
+</ol></pre>
+<p>也可以基于用户代理自动设置主题 Cookie：</p>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    autodetect_theme: <span class="keyword">true</span><span> </span></span></li>
+</ol></pre>
+<p> autodetect_theme 选项也可以设为 DIC 服务 ID，该服务需要实现 <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">Liip\ThemeBundle\Helper\DeviceDetectionInterface</code> 接口。</p>
+<p>如果不想让用户自己改变主题，可以停用该 Bundle 的控制器：</p>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    load_controllers: <span class="keyword">false</span><span> </span></span></li>
+</ol></pre>
+<h3>主题的层级顺序</h3>
+<p>Bundle 在应用模板时是按以下层级顺序进行的（让我们先假设有一个名为<span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">phone</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span>的主题，其模板文件为<span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">BundleName/Resources/template.html.twig</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span>@BundleName/Resources/template.html.twig）：</p>
+<ol style="margin: 15px 0px; padding: 0px 0px 0px 30px; border: 0px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; ">
+<li style="margin: 0px; padding: 0px; border: 0px; ">覆写主题目录： <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app/Resources/themes/phone/BundleName/template.html.twig</code>
+</li>
+    <li style="margin: 0px; padding: 0px; border: 0px; ">覆写视图目录： <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app/Resources/BundleName/views/template.html.twig</code>
+</li>
+    <li style="margin: 0px; padding: 0px; border: 0px; ">Bundle的主题目录： <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">src/BundleName/Resources/themes/phone/template.html.twig</code>
+</li>
+    <li style="margin: 0px; padding: 0px; border: 0px; ">Bundle的视图目录： <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">src/BundleName/Resources/views/template.html.twig</code>
+</li>
+</ol>
+<p>举个例子，如果您想将一些自定义的 TwigBundle 错误页面集成到您的主题架构中，那么您将需要使用这个目录结构：<span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">app/Resources/themes/phone/TwigBundle/Exception/error404.html.twig</code></p>
+<p><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); ">当使用全局范围的模板时，将使用下列顺序（如</span><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); ">模板文件为 </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">::template.html.twig</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> 的名为</span><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">phone</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> 的主题）：</span></p>
+<ol style="margin: 15px 0px; padding: 0px 0px 0px 30px; border: 0px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; ">
+<li style="margin: 0px; padding: 0px; border: 0px; ">覆写主题目录：  <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app/Resources/themes/phone/template.html.twig</code>
+</li>
+    <li style="margin: 0px; padding: 0px; border: 0px; ">覆写视图目录：  <code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app/Resources/views/template.html.twig</code>
+</li>
+</ol>
+<h4>改变主题的层级顺序</h4>
+<p><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); ">您可以通过一些配置命令来改变层级顺序： </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">path_patterns.app_resource</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); ">  、  </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">path_patterns.bundle_resource</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> 和 </span><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; color: rgb(51, 51, 51); ">path_patterns.bundle_resource_dir</code><span style="color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; background-color: rgb(255, 255, 255); "> 。 如：</span></p>
+<pre><ol class="dp-sql">
+<li class="alt"><span><span># app/config/config.yml </span></span></li>
+<li><span>liip_theme: </span></li>
+<li class="alt"><span>    path_patterns: </span></li>
+<li><span>        app_resource: </span></li>
+<li class="alt"><span>            - %%app_path%%/themes/%%current_theme%%/%%template%% </span></li>
+<li><span>            - %%app_path%%/themes/fallback_theme/%%template%% </span></li>
+<li class="alt"><span>            - %%app_path%%/views/%%template%% </span></li>
+<li><span>        bundle_resource: </span></li>
+<li class="alt"><span>            - %%bundle_path%%/Resources/themes/%%current_theme%%/%%template%% </span></li>
+<li><span>            - %%bundle_path%%/Resources/themes/fallback_theme/%%template%% </span></li>
+<li class="alt"><span>        bundle_resource_dir: </span></li>
+<li><span>            - %%dir%%/themes/%%current_theme%%/%%bundle_name%%/%%template%% </span></li>
+<li class="alt"><span>            - %%dir%%/themes/fallback_theme/%%bundle_name%%/%%template%% </span></li>
+<li><span>            - %%dir%%/%%bundle_name%%/%%override_path%% </span></li>
+</ol></pre>
+<h5>层级顺序通配符</h5>
+<p>
+</p>
+<table style="margin: 15px 0px; padding: 0px; border: 0px; border-collapse: collapse; border-spacing: 0px; font: inherit; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; line-height: 22px; text-align: start; "><tbody style="margin: 0px; padding: 0px; border: 0px; ">
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); ">
+<th style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">占位符</th>
+            <th style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">说明</th>
+            <th style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">示例</th>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(248, 248, 248); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%app_path%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">应用程序Path where application located</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">app</code></td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%bundle_path%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">Bundle所在目录</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">src/Vendor/CoolBundle/VendorCoolBundle</code></td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(248, 248, 248); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%bundle_name%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">Bundle名</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">VendorCoolBundle</code></td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%dir%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">首先查找的目录</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "> </td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(248, 248, 248); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%current_theme%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">当前激活的主题名</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "> </td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%template%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">模板名</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; background-color: rgb(248, 248, 248); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">view.html.twig</code></td>
+        </tr>
+<tr style="margin: 0px; padding: 0px; border-width: 1px 0px 0px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(248, 248, 248); ">
+<td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">%override_path%</code></td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); ">同上，只是带视图目录</td>
+            <td style="margin: 0px; padding: 6px 13px; border: 1px solid rgb(204, 204, 204); "><code style="margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; white-space: nowrap; ">views/list.html.twig</code></td>
+        </tr>
+</tbody></table>
+<h3>切换当前主题</h3>
+<p style="margin: 0px 0px 15px; padding: 0px; border: 0px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; ">对于这个问题，可参见 ThemeRequestListener.</p>
+<p style="margin: 15px 0px; padding: 0px; border: 0px; color: rgb(51, 51, 51); font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 22px; ">如果在请求初期没有模板被渲染，您可以使用主题服务，从而主地改变主题：</p>
+<pre><ol class="dp-c">
+<li class="alt"><span><span class="vars">$activeTheme</span><span> = </span><span class="vars">$container</span><span>-&gt;get(</span><span class="string">'liip_theme.active_theme'</span><span>); </span></span></li>
+<li><span><span class="func">echo</span><span> </span><span class="vars">$activeTheme</span><span>-&gt;getName(); </span></span></li>
+<li class="alt"><span><span class="vars">$activeTheme</span><span>-&gt;setName(</span><span class="string">"phone"</span><span>); </span></span></li>
+</ol></pre>
+<h2>常见问题</h2>
+<h3>Assetic：dump 不检查 Resources/{theme}/views 目录:</h3>
+<p>当使用 assetic:dump 命令进行资源转储时, assetic 只检查用以生成资源的 Resources/views 目录，它并不检查 Resources/{theme}/views 目录。</p>
+<p>当前最简单的解决办法：既然问题出在 assetic 不扫描主题目录，那么将 assetic 区块放入 Bundle/Ressources/views 目录中的模板，并从主题模板中包含它。</p>
+<p> </p>
+    		";s:10:"post_title";s:123:"
+
+	 		<img src="http://blog.51cto.com/image/skin/artType03.jpg">
+
+
+    		    Symfony2插件LiipThemeBundle
+                ";s:11:"post_status";s:1:"1";s:9:"post_from";s:0:"";s:8:"category";s:1:"6";s:14:"comment_status";s:0:"";s:9:"post_meta";s:0:"";s:13:"post_modified";s:4:"2013";s:9:"post_type";s:0:"";s:13:"comment_count";s:1:"0";s:5:"click";s:1:"8";s:6:"remove";s:1:"0";s:6:"banner";s:69:"http://127.0.0.1/lean/admincp/uploads/photos/20131023032511927293.jpg";s:8:"seo_text";s:0:"";}}s:20:"custom_result_object";a:0:{}s:11:"current_row";i:0;s:8:"num_rows";i:1;s:8:"row_data";N;}

@@ -90,4 +90,21 @@ class Course_page extends CI_Model {
 		$this->db->delete( $this->lesson_video , array('id' => $video[0]['film_id']));
 		return $video[0]['lessonid'];
 	}
+
+	public function update_page()
+	{
+		
+		if( $this->db->select('id')->where( array('id'=>intval( $this->input->post('id')) ))->from('b_video')->get()->num_rows() )
+		{
+			$id = intval( $this->input->post('id'));
+			unset( $_POST['id']);
+
+			foreach ($_POST as $key => $value) {
+				$_POST[$key] = trim( $this->input->post($key));
+			}
+
+			return $this->db->where( array('id'=>$id))->update('b_video' , $_POST);
+		}
+
+	}
  }

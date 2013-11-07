@@ -19,4 +19,6 @@ class Webkit_dial_module extends CI_Module
 
 		echo '<a href="'.$url.'">'.$number.'</a>';
 	}
+
+	
 }

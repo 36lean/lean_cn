@@ -3,7 +3,7 @@
 <hr />
 <div class="container-fluid" style="font-size:12px;">
   <div class="row-fluid">
-        <strong>&copy;36Lean 精益云学院 2009-2013</strong> 
+        <strong>&copy;36Lean 精企网 2013</strong> 
 
         &nbsp;&nbsp;&nbsp;&nbsp;备案编号 : 沪ICP备13007809号
   </div>

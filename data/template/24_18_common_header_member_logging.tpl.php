@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1382766569, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1383460756, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
 ;?>
 ﻿<!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>" />
 <meta http-equiv="Cache-Control" content="max-age=0" />
 <?php if($_G['config']['output']['iecompatible']) { ?><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE<?php echo $_G['config']['output']['iecompatible'];?>" /><?php } ?>
-<title><?php if(!empty($navtitle)) { ?><?php echo $navtitle;?> - <?php } if(empty($nobbname)) { ?> <?php echo $_G['setting']['bbname'];?> - <?php } ?> 全球第一家中文精益学习平台</title>
+<title>
+<?php if(CURSCRIPT === 'lesson') { ?>
+精益云学院 国内唯一一家精益在线学习平台
+<?php } else { if(!empty($navtitle)) { ?><?php echo $navtitle;?> - <?php } if(empty($nobbname)) { ?> <?php echo $_G['setting']['bbname'];?> - <?php } ?> 
+全球首家精益资讯平台
+<?php } ?>
+
+</title>
 <?php echo $_G['setting']['seohead'];?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="精益培训,精益视频,精益博客,精益生产,改善项目,精益5s,生产管理,现场管理" />
@@ -115,21 +122,15 @@ jQuery("img").lazyload({effect : "fadeIn"});
     		</div>
     	</form>
       	<ul class="nav pull-right">
-<?php if(!$_G['uid']) { ?>
-          	<li class=""><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
-            <li class=""><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
-            <?php } else { ?>
-            <li class=""><a href="user.php"><i class="icon-user"></i> <?php echo $_G['username'];?>在线</a></li>
-            <li class=""><a href="member.php?mod=logging&amp;action=logout&amp;formhash=<?php echo FORMHASH;?>"> 注销</a></li>
-            	<?php if($_G['adminid'] == 1) { ?><li class="pull-right"><a href="admincp/index.php">管理</a></li><?php } ?>
-         	
-         	<?php } ?>
+
       	</ul>
 </div>
 
 </div>
 </div>
 </div>
+
+
 
 <div class="container main-body">
 
@@ -152,11 +153,21 @@ jQuery("img").lazyload({effect : "fadeIn"});
 </ul>
     		</li>
           	<li><a href="<?php echo $_G['site_url'];?>news"><i class="icon-globe"></i> 精企资讯 </a></li>
+          	<li <?php if($_GET['title'] === 'leanshop') { ?>class="active"<?php } ?>><a href="<?php echo $_G['site_url'];?>read.php?title=leanshop"><i class="icon-shopping-cart"></i> 精企商城 </a></li>
           	<li <?php if($_GET['title'] === 'aboutus') { ?>class="active"<?php } ?>><a href="read.php?title=aboutus"><i class="icon-group"></i> 关于我们 </a></li>
           	<li <?php if($_GET['title'] === 'contactus') { ?>class="active"<?php } ?>><a href="read.php?title=contactus"><i class="icon-phone"></i> 联系我们 </a></li>
         </ul>
 
         <ul class="nav pull-right">
+<?php if(!$_G['uid']) { ?>
+          	<li class=""><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
+            <li class=""><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
+            <?php } else { ?>
+            <li class=""><a href="user.php"><i class="icon-user"></i> <?php echo $_G['username'];?>在线</a></li>
+            <li class=""><a href="member.php?mod=logging&amp;action=logout&amp;formhash=<?php echo FORMHASH;?>"> 注销</a></li>
+            	<?php if($_G['adminid'] == 1) { ?><li class="pull-right"><a href="admincp/index.php">管理</a></li><?php } ?>
+         	
+         	<?php } ?>        	
         	<li><a href="read.php?title=contactus"><i class="icon-phone"></i> 021-62128213</a></li>
         </ul>
     </div>

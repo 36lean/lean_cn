@@ -93,7 +93,7 @@ class Home_article_models extends CI_Model
 		return $this->db->limit( $num)->get('attach_tags')->result_array();
 	}
 
-	public function get_high_click( $top_number = 20)
+	public function get_high_click( $top_number = 40)
 	{
 		return $this->db->select('id,post_title,click')
 						->from('attach_posts')

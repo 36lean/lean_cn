@@ -32,7 +32,7 @@ class Welcome extends Base_Controller {
 
 	public function navigation() {
 		return array(
-			array( 'route' => 'index' 				, 'alias'=>'欢迎登陆'	, 'status' => 'active' ),
+			array( 'route' => 'welcome/index' 	, 'alias'=>'欢迎登陆'	, 'status' => 'active' ),
 
 		);
 	}

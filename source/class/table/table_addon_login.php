@@ -30,7 +30,7 @@ class table_addon_login extends discuz_table {
 
 		if( !$session)
 		{
-			DB::query('insert into '.DB::table( $this->_table).' (uid , token , ip , time) values('.$uid.',\''.$token.'\ ,ip = \''.$ip.' \' , time = '.time().')');
+			DB::query('insert into '.DB::table( $this->_table).' (uid , token , ip , time) values('.$uid.',\''.$token.'\' ,ip = \''.$ip.' \' , time = '.time().')');
 
 		}else if( $token !== $session['token'])
 		{

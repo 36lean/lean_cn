@@ -107,4 +107,33 @@ class Webkit_devkit_module extends CI_Module
 		}
 
 	}
+
+	public function query_balance()
+	{
+		
+		$this->load->driver('cache' , array('adapter'=>'file'));
+
+		$url = $this->program->get_vsay_signature('831lean2013online','2435325uifslkfjalTalk')
+							 ->register('mot02' , '13387561303')
+							 ->get_vsay_url( 'queryBalance' , array( 'toUser'=>'831lean2013online'));
+
+  		$ch = curl_init();
+   		curl_setopt($ch, CURLOPT_URL, $url);
+   		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+   		curl_setopt($ch, CURLOPT_USERAGENT, '	Mozilla/5.0 (Windows NT 6.1; rv:23.0) Gecko/20100101 Firefox/23.0');
+   		//curl_setopt($ch, CURLOPT_REFERER,_REFERER_);
+   		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+		$query_balance = @curl_exec($ch);
+
+		if( !$foo = $this->cache->get('query_balance'))
+		{
+			$this->cache->save('query_balance', $query_balance, 300);
+
+		}
+
+		echo $foo;
+		
+   		curl_close($ch);		
+	}
 }

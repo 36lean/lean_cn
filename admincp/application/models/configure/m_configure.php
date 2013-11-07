@@ -65,4 +65,12 @@ class M_configure extends CI_Model
 						->join('admin_groups g' , 'u.group_id = g.id' , 'left')
 						->get()->result_array();
 	}
+
+	public function get_all_video()
+	{
+		return $this->db->select(' p.title , v.*')
+						->from('b_lesson_pages p')
+						->join('b_video v' , 'v.id = p.film_id' , 'right')
+						->get()->result_array();
+	}
 }

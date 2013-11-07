@@ -220,7 +220,7 @@ $percent = $finish * 100 / count($profile);
 	<td>年龄</td><td><?php echo $profile['age'] ? $profile['age'] : '';?></td>
 </tr>
 <tr>
-	<td>性别</td><td><?php echo ($profile['gender']==1 ? '男' : '女' );?></td>
+	<td>性别</td><td><?php echo ( $profile['gender'] == 1 ? '男' : ( $profile['gender'] ==2 ? '女' : '保密')  );?></td>
 </tr>
 <tr>
 	<td>分类</td>
@@ -279,7 +279,7 @@ $percent = $finish * 100 / count($profile);
 	<td>备注信息</td><td><?php echo $profile['description'];?></td>
 </tr>
 <tr>
-	<td>来源</td> <td><?php if( $profile['filename']){?>文件导入 : <strong><?php echo $profile['filename'];?></strong><?php }else{?>人工录入<?php }?></td>
+	<td>来源</td> <td><?php if( $is_contact_from_website) { echo '网站会员'; }  else if( $profile['filename']){?>文件导入 : <strong><?php echo $profile['filename'];?></strong><?php }else{?>人工录入<?php }?></td>
 </tr>
 <tr>
 	<td>负责人</td>

@@ -1,0 +1,109 @@
+{template common/header}
+
+<div class="page-header">
+	<h4>{$signup['title']}</h4>
+</div>
+
+<form action="" method="post">
+
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="id" value="{$signup['id']}">
+
+{loop $checkout $key $c}
+
+	<h5>{eval echo $key+1} . {$c['title']}</h5>
+	<h5> <small>{$c['question']}</small></h5>
+	<hr/>
+
+	{if isset( $finish_part[$c['id']])}
+
+		<input type="hidden" name="{$c['id']}" value="{$finish_part[$c['id']]}" />
+	
+		{if $finish_part[$c['id']] === $c['answer']}
+			<span class="label label-success">我的结果 : 正确</span>
+		{else}
+			<span class="label label-warning">我的结果 : 错误</span>
+		{/if}
+	
+		<div class="controls">
+			<label class="radio">
+			<input name="{$c['id']}" value="1" {if $finish_part[$c['id']] == 1}checked="checked"{/if} disabled="disabled"  type="radio" />
+				{if $c['answer'] == 1} <span class="alert alert-success">A . {$c['item_1']}</span> <i class="icon-ok"></i>
+				{else}
+				A . {$c['item_1']}
+				{/if}
+			</label>
+		</div>
+
+		<div class="controls">
+			<label class="radio">
+			<input name="{$c['id']}" value="2" {if $finish_part[$c['id']] == 2} checked="checked"{/if} disabled="disabled" type="radio" />
+				{if $c['answer'] == 2} <span class="alert alert-success">B . {$c['item_2']}</span> <i class="icon-ok"></i>
+				{else}
+				B . {$c['item_2']}
+				{/if}
+			</label>
+		</div>
+
+		<div class="controls">
+			<label class="radio">
+			<input name="{$c['id']}" value="3" {if $finish_part[$c['id']] == 3} checked="checked"{/if} disabled="disabled"  type="radio" />
+				{if $c['answer'] == 3} <span class="alert alert-success">C . {$c['item_3']}</span> <i class="icon-ok"></i>
+				{else}
+				C . {$c['item_3']}
+				{/if}
+			</label>
+		</div>
+
+		<div class="controls">
+			<label class="radio">
+			<input name="{$c['id']}" value="4" {if $finish_part[$c['id']] == 4} checked="checked"{/if} disabled="disabled"  type="radio" />
+				{if $c['answer'] == 4} <span class="alert alert-success">D . {$c['item_4']}</span> <i class="icon-ok"></i>
+				{else}
+				D . {$c['item_4']}
+				{/if}
+			</label>
+		</div>
+
+		{else}
+
+		<div class="controls">
+			<label class="radio">
+			<input name="{$c['id']}" value="1" type="radio" />
+				A . {$c['item_1']}
+			</label>
+		</div>
+
+		<div class="controls">
+			<label class="radio">
+			<input name="{$c['id']}" value="2" type="radio" />
+				B . {$c['item_2']}
+			</label>
+		</div>
+
+		<div class="controls">
+			<label class="radio">
+			<input name="{$c['id']}" value="3" type="radio" />
+				C . {$c['item_3']}
+			</label>
+		</div>
+
+		<div class="controls">
+			<label class="radio">
+			<input name="{$c['id']}" value="4" type="radio" />
+				D . {$c['item_4']}
+			</label>
+		</div>		
+
+		{/if}
+
+{/loop}
+
+<div class="page-header">
+		<div class="controls">
+			<button class="btn btn-primary" type="submit" name="done" value="1">交卷</button>
+		</div>
+</div>
+
+</form>
+{template common/footer}

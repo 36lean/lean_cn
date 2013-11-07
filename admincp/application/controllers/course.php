@@ -11,6 +11,7 @@ class Course extends Base_Controller {
 		$this->load->model('course/course_course' , 'course');
 		$this->load->model('course/course_category' , 'category');
 		$this->load->model('course/course_page' , 'page');
+		$this->load->model('course/m_checkout' , 'checkout');
 	}
 
 	public function navigation() {
@@ -19,13 +20,18 @@ class Course extends Base_Controller {
 			array(  'route'=>'add_course', 'alias' => '添加课程' , 'status' => 'active' ) , 
 			array(  'route'=> 'add_category', 'alias' => '添加分类' , 'status' => 'active') ,
 			array(  'route'=> 'edit_category','alias' => '编辑分类' , 'status' => 'active' ) ,
+			array(  'route'=> 'test','alias' => '考试系统' , 'status' => 'active' ) ,
 			array(  'route'=>'server_config' ,'alias' => '设置' , 'status' => 'active' ) , 
 		);
 	}
 
 	public function index() {
+		
 		$list = $this->course->list_course();
-		$this->template->build('course/index' , array('list' => $list));
+
+		$category = $this->category->get_categories();
+
+		$this->template->build('course/index' , array('list' => $list , 'category' => $category));
 	}
 
 	public function list_mode() {
@@ -241,6 +247,85 @@ class Course extends Base_Controller {
 			if( preg_match('/(.cache)$/', $file))
 				
 				unlink( '.././cache/lesson_index/'.$file);
+		}
+	}
+
+	public function test( $id = 0)
+	{
+
+		$id = intval( $id);
+
+		if( $id > 0)
+		{
+			$data = $this->checkout->get_question_by_id( $id);
+		}
+		else
+		{
+			$data = array();
+		}
+
+		$this->checkout->add_checkout();
+
+		$this->template->build('course/test' , array('data' => $data));
+	}
+
+	public function bucket( $id = 0)
+	{
+
+		$id = intval( $id);
+
+		if( $id > 0)
+		{
+			$data = $this->checkout->get_bucket_by_id( $id);
+
+			$data ['checkout_list'] = json_decode( $data ['checkout_list'] , true);
+
+			$data ['checkout_list'] = $this->checkout->get_checklist_by_array( $data ['checkout_list']);
+		}else
+		{
+			$data = array();
+		}
+
+		$this->checkout->add_bucket();
+
+		$list = $this->checkout->list_test( 1 , 1000 );
+
+		$this->template->build('course/bucket' , array('list'=>$list , 'data' => $data ));
+	}
+
+	public function list_test( $page = 1 , $offset = 100 )
+	{
+		$list = $this->checkout->list_test( $page , $offset );
+
+		$this->template->build('course/list_test' , array('list'=>$list));
+	}
+
+	public function list_bucket()
+	{
+		$list = $this->checkout->list_bucket();
+
+		$this->template->build('course/list_bucket' , array('list' => $list));
+	}
+
+	public function remove_bucket( $id)
+	{
+		$id = intval( $id);
+		$this->db->delete('addon_bucket' , array('id'=>$id));
+		redirect( site_url('course/list_bucket'));
+	}
+
+	public function remove_test( $id)
+	{
+		$id = intval( $id);
+		$this->db->delete('addon_checkout' , array('id'=>$id));
+		redirect( site_url('course/list_test'));
+	}
+
+	public function ajax_update()
+	{
+		if( $this->input->post('id') > 0)
+		{
+			echo $this->page->update_page();
 		}
 	}
 

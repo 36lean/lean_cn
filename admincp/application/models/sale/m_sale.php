@@ -34,6 +34,7 @@ class M_sale extends CI_Model
 		}
 
 		if( !isset( $where) )
+
 			$where = 'contacts.id > 0';
 
 		if( trim( $extrawhere )){
@@ -43,13 +44,20 @@ class M_sale extends CI_Model
 			$offset = 2000;
 		}
 
-		$rs = $this->db->select('contacts.id , contacts.name , contacts.company_id , contacts.email , contacts.display_color , contacts.user_id , contacts.job , company.name as companyname , contacts.office_phone , contacts.mobile , clienttags.id as tag_id , clienttags.tag , clienttags.name as tagname , appointment.datereminded , appointment.event , uploads.filename ')
+		if( $sale_id > 1)
+			$where_sale = 'contacts.assign_to = '.$sale_id;
+		else
+			$where_sale = 'contacts.assign_to >= 0';
+
+		$rs = $this->db->select('contacts.id , contacts.name , contacts.company_id , contacts.email , contacts.gender , contacts.display_color , contacts.user_id , contacts.job , company.name as companyname , contacts.office_phone , contacts.mobile , clienttags.id as tag_id , clienttags.tag , clienttags.name as tagname , appointment.datereminded , appointment.event , uploads.filename , uc.username ')
 						->from('admin_contacts contacts')
 						->join('admin_client_appointment appointment' , 'appointment.client_id = contacts.id' , 'left')
 						->join('admin_clienttags clienttags' , 'clienttags.id = contacts.tag' , 'left')
 						->join('admin_company company' , 'company.id = contacts.company_id' , 'left')
 						->join('admin_uploads uploads' , 'uploads.id = contacts.from_file_id' , 'left')
-						->where( array('contacts.assign_to' => $sale_id , 'contacts.close' => '0'))
+						->join('ucenter_members uc' , 'uc.uid = contacts.user_id' , 'left')
+						->where( array( 'contacts.close' => '0'))
+						->where( $where_sale)
 						->where( $where)
 						->group_by('contacts.id')
 						->order_by( $order , $sort)
@@ -74,9 +82,15 @@ class M_sale extends CI_Model
 
 	public function get_contact_sum( $sale_id)
 	{
+		if( $sale_id > 1)
+			$sale = 'assign_to = '.$sale_id ;
+		else if( $sale_id == 1)
+			$sale = 'assign_to > 0';
+
 		return $this->db->select('id')
 						->from('admin_contacts')
-						->where( array( 'assign_to' => $sale_id , 'close' => '0' ) )
+						->where( array( 'close' => '0' ) )
+						->where( $sale)
 						->get()
 						->num_rows();
 	}
@@ -127,13 +141,26 @@ class M_sale extends CI_Model
 		}
 	}
 
-	public function get_contact_details( $page , $offset , $salemanid)
+	public function get_contact_details( $page , $offset , $salemanid , $last = '' , $next = '')
 	{
-		return $this->db->select(' a.id , a.client_id , c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
+
+		if( $last && $next)
+		{
+	
+			$where = 'datereminded > '.$last .' and datereminded < '.$next;
+
+		}else
+		{
+			$where = 'datereminded > 0';
+		}
+
+		return $this->db->select(' a.id as event_id , a.client_id as id , uploads.filename , c.display_color ,  c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
 						->from('admin_client_appointment a')
 						->join('admin_contacts c' , 'c.id = a.client_id' , 'left')
 						->join('admin_company cp' , 'cp.id = c.company_id' , ' left')
+						->join('admin_uploads uploads' , 'uploads.id = c.from_file_id' , 'left')
 						->where( array('salesman_id'=>$salemanid))
+						->where( $where)
 						->order_by('a.datereminded' , 'desc')
 						->limit( $offset , ($page-1)*$offset )
 						->get()->result_array();		
@@ -378,7 +405,7 @@ class M_sale extends CI_Model
 				 		 ->row_array();
 
 
-		if( isset( $user['contact_id']) ){
+		if( isset( $user['contact_id']) && $user['contact_id'] > 0 ){
 
 			redirect( site_url('sale/contact/'.$user['contact_id']));
 
@@ -439,4 +466,35 @@ class M_sale extends CI_Model
 						->join('common_member m' , 'm.uid = v.uid')
 						->get()->num_rows();
 	}
+
+	public function get_cleaned_contacts()
+	{
+		return $this->db->select('*')
+						->from('admin_contacts')
+						->where( array('close' => 1))
+						->get()->result_array();
+	}
+
+	public function is_contact_from_website( $contact_id)
+	{
+		return $this->db->select('id')
+						->from('admin_contacts_tmp')
+						->where( array('contact_id'=> $contact_id))
+						->get()->num_rows();
+	}
+
+	public function get_contacts_by_contactlog( $page , $offset )
+	{
+		return $this->db->query('select  client_connect.response , client_connect.date , contacts.* , uploads.filename from ( select * from pre_admin_client_connect order by id desc ) as client_connect left join pre_admin_contacts contacts on client_connect.client_id = contacts.id left join pre_admin_uploads uploads on uploads.id = contacts.from_file_id group by client_id order by client_connect.id desc limit '.($page-1)*$offset.','.$offset)
+						->result_array();
+	}
+
+	public function get_sum_by_contactlog() 
+	{
+		return $this->db->select('id')
+						->from('admin_client_connect')
+						->group_by('client_id')
+						->get()->num_rows();
+	}
+
 }
