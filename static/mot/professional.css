@@ -1,3 +1,5 @@
+
+
 /***********************************************************************************/
 /*以上是课程列表那些部分的*/
 /*以下是这段时间额外加的*/
@@ -376,4 +378,29 @@ div.mot-block {
 }
 .table-noborder{
   border: 1 solid #fff;
+}
+div.course_line {
+  border: 1px solid #eee;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-right: 5%;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+}
+div.course_line_hover {
+  border: 1px solid;
+  border-color: #0088cc;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+     -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+          box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-right: 5%;
+}
+img.course_cover {
+  margin: 5%;
 }

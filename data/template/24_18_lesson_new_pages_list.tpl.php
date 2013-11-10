@@ -35,14 +35,13 @@ jQuery( function() {
   <div class="span6">
     <img class="img-polaroid lazy" src="uploads/course/<?php echo $lesson['logo'];?>" data-original="uploads/course/<?php echo $lesson['logo'];?>" style="width:80%;" />
   </div>
-
 </div>
 
 <hr>
 
 <div class="container-fluid">
 <div class="row-fluid">
-  <div class="span3">
+  <div class="span4">
     <div>
 
             <?php if(false) { ?>
@@ -69,7 +68,7 @@ jQuery( function() {
     <ul class="nav nav-list well">
       <li><h4><i class="icon-list"></i> 导航</h4></li>
       <li class="nav-header"><i class="icon-align-justify"></i> 课程大纲</li>
-      <?php if(is_array($pages)) foreach($pages as $p) { ?>      <li><a href="lesson.php?page_content=<?php echo $p['id'];?>"><small><strong><?php echo cutstr( $p['title'] , 15 , '' )?></strong></small></a></li>
+      <?php if(is_array($pages)) foreach($pages as $p) { ?>      <li><a href="lesson.php?page_content=<?php echo $p['id'];?>"><small><strong><?php echo $p['title'];?></strong></small></a></li>
       <?php } ?>
       
       <?php if(false) { ?>
@@ -87,7 +86,7 @@ jQuery( function() {
   </div>
 
 
-<div class="span7">
+<div class="span8">
   <?php if($lesson['is_hidden']) { ?>
 
     <div class="alert alert-info">
@@ -109,9 +108,8 @@ jQuery( function() {
                 </a>
               </div>
 
-              <div class="span1"></div>
               
-              <div class="span7">
+              <div class="span8">
                 <h4>
                   <a id="<?php echo $p['id'];?>" href="lesson.php?page_content=<?php echo $p['id'];?>" title="<?php echo $p['title'];?>">
                     <?php echo $p['title'];?>
@@ -139,35 +137,3 @@ jQuery( function() {
 </div>
 
 
-<?php if(false) { ?>
-<div class="container">
-<div class="page-header">
-  <h2>学习指南
-    <small>指导</small>
-  </h2>
-</div>
-
-<div class="page-header">
-  <h2>学后考试
-    <small>考试试题</small>
-  </h2>
-</div>
-<dt>
-  <dl><a href="examination.php?mod=do&amp;id=<?php echo $exam_bucket['id'];?>"><i class="icon-credit-card"></i> <?php echo $exam_bucket['title'];?></a></dl>
-  <dt><?php echo $exam_bucket['info'];?></dt>
-</dt>
-
-<div class="page-header">
-  <h2>成长路线图
-    <small>记录改变</small>
-  </h2>
-
-
-  <div class="progress progress-striped active">
-    <div class="bar" style="width: 90%;"></div>
-  </div>
-</div>
-
-
-</div>
-<?php } ?>

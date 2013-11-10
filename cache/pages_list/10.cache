@@ -1,0 +1,423 @@
+<!--<script>
+jQuery( function() {
+  jQuery.ajax({
+    url : 'lesson.php',
+    type : 'GET',
+    data : { click_collection:1 , id: "10", type:'c'},
+    dataType:'html',
+  });
+});
+</script>
+-->
+
+<div class="container">
+<p class="text-left"> 
+  <a href="lesson.php"><i class="icon-home"></i> 精益云学院</a> <span class="divider">/</span> 
+  <a href="lesson.php?pages_list=10"><i class="icon-book"></i> 快速切换</a> 
+</p>
+</div>
+
+<div class="page-header">
+  <h2 align="center">快速切换 </h2>
+</div>
+
+<div class="row-fluid">
+
+  <div class="span6">
+  <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
+  <p>通过观看一家技术公司的视频,这家公司使用SMED改善项目减少了66%的换模时间. 我们将学习如何用SMED从根本上减少机器的切换时间. </p>
+  <blockquote><i class="icon-info-sign"></i> 分类</blockquote>
+  <p>精益课程</p>
+  </div>
+
+
+  <div class="span6">
+    <img class="img-polaroid lazy" src="uploads/course/10.png" data-original="uploads/course/10.png" style="width:80%;" />
+  </div>
+</div>
+
+<hr>
+
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4">
+    <div>
+
+            
+
+        
+    
+  
+    <ul class="nav nav-list well">
+      <li><h4><i class="icon-list"></i> 导航</h4></li>
+      <li class="nav-header"><i class="icon-align-justify"></i> 课程大纲</li>
+            <li><a href="lesson.php?page_content=96"><small><strong>第1节 快速换模概述</strong></small></a></li>
+            <li><a href="lesson.php?page_content=97"><small><strong>第2节 快速切换的8个步骤</strong></small></a></li>
+            <li><a href="lesson.php?page_content=98"><small><strong>第3节 记录存档第一部分</strong></small></a></li>
+            <li><a href="lesson.php?page_content=99"><small><strong>第4节 换模第一部分</strong></small></a></li>
+            <li><a href="lesson.php?page_content=100"><small><strong>第5节 换模第二部分</strong></small></a></li>
+            <li><a href="lesson.php?page_content=101"><small><strong>第6节 记录存档第二部分</strong></small></a></li>
+            <li><a href="lesson.php?page_content=102"><small><strong>第7节 快速换模作业</strong></small></a></li>
+            <li><a href="lesson.php?page_content=103"><small><strong>第8节 分离并从内部转换为外部 </strong></small></a></li>
+            <li><a href="lesson.php?page_content=104"><small><strong>第9节 精简外部任务</strong></small></a></li>
+            <li><a href="lesson.php?page_content=105"><small><strong>第10节 精简内部任务</strong></small></a></li>
+            <li><a href="lesson.php?page_content=106"><small><strong>第11节 记录新标准</strong></small></a></li>
+            <li><a href="lesson.php?page_content=107"><small><strong>第12节 改善后Ram公司的换模情况</strong></small></a></li>
+            <li><a href="lesson.php?page_content=108"><small><strong>第13节 麦克·乌罗波里夫斯基访谈</strong></small></a></li>
+            
+          </ul>
+    
+    
+    </div>
+  </div>
+
+
+<div class="span8">
+                          <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="96" href="lesson.php?page_content=96" title="第1节 快速换模概述">
+                
+                                <img class="img-polaroid lazy" id="96" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-01.png" alt="第1节 快速换模概述" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-01.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="96" href="lesson.php?page_content=96" title="第1节 快速换模概述">
+                    第1节 快速换模概述                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习快速换模以及六十秒即时换模（SMED）以及了解为什么他们对于任何产品或者服务的生产商/提供商都是非常重要的精益理念。 ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="97" href="lesson.php?page_content=97" title="第2节 快速切换的8个步骤">
+                
+                                <img class="img-polaroid lazy" id="97" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-02.png" alt="第2节 快速切换的8个步骤" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-02.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="97" href="lesson.php?page_content=97" title="第2节 快速切换的8个步骤">
+                    第2节 快速切换的8个步骤                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习快速换模的8个步骤以及如何进行              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="98" href="lesson.php?page_content=98" title="第3节 记录存档第一部分">
+                
+                                <img class="img-polaroid lazy" id="98" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-03.png" alt="第3节 记录存档第一部分" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-03.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="98" href="lesson.php?page_content=98" title="第3节 记录存档第一部分">
+                    第3节 记录存档第一部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何用摄像机等工具来“捕捉”记录存档现实（工作情况）。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="99" href="lesson.php?page_content=99" title="第4节 换模第一部分">
+                
+                                <img class="img-polaroid lazy" id="99" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-04.png" alt="第4节 换模第一部分" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-04.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="99" href="lesson.php?page_content=99" title="第4节 换模第一部分">
+                    第4节 换模第一部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                观看Ram科技的道恩完成一套完整的压模换模工序。在其余的课程中，我们会把这段换模视频作为“改善前”视频。  ..               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="100" href="lesson.php?page_content=100" title="第5节 换模第二部分">
+                
+                                <img class="img-polaroid lazy" id="100" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-05.png" alt="第5节 换模第二部分" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-05.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="100" href="lesson.php?page_content=100" title="第5节 换模第二部分">
+                    第5节 换模第二部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                Ram公司换模的第二部分.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="101" href="lesson.php?page_content=101" title="第6节 记录存档第二部分">
+                
+                                <img class="img-polaroid lazy" id="101" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-06.png" alt="第6节 记录存档第二部分" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-06.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="101" href="lesson.php?page_content=101" title="第6节 记录存档第二部分">
+                    第6节 记录存档第二部分                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                记录Ram公司“改善前”换模视频观后感，学习如何使用SMED分析表。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="102" href="lesson.php?page_content=102" title="第7节 快速换模作业">
+                
+                                <img class="img-polaroid lazy" id="102" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-07.png" alt="第7节 快速换模作业" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-07.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="102" href="lesson.php?page_content=102" title="第7节 快速换模作业">
+                    第7节 快速换模作业                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                练习时间到了。现在大家需要用目前为止最擀霸学院学到的理论知识来试着改善换模过程。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="103" href="lesson.php?page_content=103" title="第8节 分离并从内部转换为外部 ">
+                
+                                <img class="img-polaroid lazy" id="103" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-08.png" alt="第8节 分离并从内部转换为外部 " data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-08.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="103" href="lesson.php?page_content=103" title="第8节 分离并从内部转换为外部 ">
+                    第8节 分离并从内部转换为外部                   </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何将所谓的内部步骤转化至外部步骤，从而极大减少机器停工期。               </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="104" href="lesson.php?page_content=104" title="第9节 精简外部任务">
+                
+                                <img class="img-polaroid lazy" id="104" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-09.png" alt="第9节 精简外部任务" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-09.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="104" href="lesson.php?page_content=104" title="第9节 精简外部任务">
+                    第9节 精简外部任务                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何精简外部任务的同时识别内部任务，并且以平行的方式进行，如F1或者NASCAR维修人员。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="105" href="lesson.php?page_content=105" title="第10节 精简内部任务">
+                
+                                <img class="img-polaroid lazy" id="105" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-10.png" alt="第10节 精简内部任务" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-10.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="105" href="lesson.php?page_content=105" title="第10节 精简内部任务">
+                    第10节 精简内部任务                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何通过消除如调整浪费及动作浪费来精简内部任务。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="106" href="lesson.php?page_content=106" title="第11节 记录新标准">
+                
+                                <img class="img-polaroid lazy" id="106" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-11.png" alt="第11节 记录新标准" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-11.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="106" href="lesson.php?page_content=106" title="第11节 记录新标准">
+                    第11节 记录新标准                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                学习如何练习及妥善记录改善后的新的换模程序。              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="107" href="lesson.php?page_content=107" title="第12节 改善后Ram公司的换模情况">
+                
+                                <img class="img-polaroid lazy" id="107" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-12.png" alt="第12节 改善后Ram公司的换模情况" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-12.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="107" href="lesson.php?page_content=107" title="第12节 改善后Ram公司的换模情况">
+                    第12节 改善后Ram公司的换模情况                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                观看改善后的全新的Ram科技换模（66%改善).              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="108" href="lesson.php?page_content=108" title="第13节 麦克·乌罗波里夫斯基访谈">
+                
+                                <img class="img-polaroid lazy" id="108" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-13.png" alt="第13节 麦克·乌罗波里夫斯基访谈" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/QCO/PNG/QCO-13.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="108" href="lesson.php?page_content=108" title="第13节 麦克·乌罗波里夫斯基访谈">
+                    第13节 麦克·乌罗波里夫斯基访谈                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 英语</span>
+                 <span class="label label-info">时长 : </span>
+                </p>
+
+                在这个补充单元内，我们来听听麦克·乌罗波里夫斯基的想法。麦克是从负责开发SMED系统的新乡重夫这里学到的SMED体系。在这个访谈中，麦克解释了新乡重 ..               </div>
+
+            </div>
+            </div>
+            
+      </div>
+
+
+
+
+</div>
+</div>
+
+

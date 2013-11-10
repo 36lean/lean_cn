@@ -248,7 +248,7 @@ if( isset( $_GET['mark'])){
 	exit;
 }
 
-define('BASE_NUMBER' , 21);
+define('BASE_NUMBER' , 30);
 
 $sum = C::t('b_course')->count_of_course();
 
@@ -277,16 +277,18 @@ foreach ($category as $value) {
 	$cat[$value['id']] = $value['category'];
 }
 
+/*
 if( !file_exists( 'cache/lesson_index/'.$page.'.cache')) {
 	ob_start();
-	require template('lesson/user_interface');
+	
 	$html = ob_get_contents();
 	ob_end_clean();
 	file_put_contents( 'cache/lesson_index/'.$page.'.cache', $html);
 }
+*/
 
 include_once template('common/header');
-include_once 'cache/lesson_index/'.$page.'.cache';
+require template('lesson/home');
 include_once template('common/footer');
 
 C::t('addon_login')->user_login( $_G['uid'] , $_G['sid'] , $_G['clientip']);

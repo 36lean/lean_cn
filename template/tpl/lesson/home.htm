@@ -1,0 +1,44 @@
+<p align="center"><a href="user.php?ac=sub_plan"><img class="img-polaroid lazy" src="{$_G['siteurl']}static/mot/course_banner.gif" data-original="{$_G['siteurl']}static/mot/course_banner.gif" /></a></p>
+<div class="container-fluid">
+  <div class="row-fluid">
+
+
+<div class="span3">
+  
+      <ul class="nav nav-tabs nav-stacked">
+          <li class="active"><a href="lesson.php?page_content=1"><h4><i class="icon-list">&nbsp;</i>课程分类</h4></a></li>
+            <li><a href="lesson.php"><small><strong>全部课程</strong></small><i class="icon-angle-right pull-right"></i></a></li>
+            <li><a href="lesson.php?category=0"><small><strong>免费课程</strong></small><i class="icon-angle-right pull-right"></i></a></li>
+            {loop $cat $id $category}
+            <li><a href="lesson.php?category={$id}"><small><strong>{$category}</strong></small><i class="icon-angle-right pull-right"></i></a></li>
+            {/loop}
+
+
+      </ul>
+</div>
+
+<div class="span9">
+  {loop $c $key=>$course}
+    <div class="course_line">
+    <div class="row-fluid">
+      
+        <div class="span4">
+          <a href="lesson.php?pages_list={$course['id']}">
+          <img class="course_cover" src="http://www.36lean.com/uploads/small/{$course['logo']}" alt="{$course['fullname']}" data-original="http://www.36lean.com/uploads/small/{$course['logo']}" />
+          </a>
+        </div>
+        
+        <div class="span1"></div>
+                    
+        <div class="span7">
+          <h3>{$course['fullname']}&nbsp;<small>{$cat[$course['category_id']]}</small></h3>
+          <p class="active">{eval echo cutstr( $course['summary'] , 80 , ' ... ');}</p>
+          <a href="lesson.php?pages_list={$course['id']}" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+        </div>
+      </div>
+    </div>
+  {/if}
+</div>
+
+</div>
+</div>

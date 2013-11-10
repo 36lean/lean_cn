@@ -52,14 +52,19 @@ class table_b_course extends discuz_table {
 		return DB::fetch_all('select id,fullname from '.DB::table( $this->_table).' where 1');
 	}
 	//*******display on lesson page*******
-	public function get_course_by_page( $page , $num , $category_id = 0) {
+	public function get_course_by_page( $page , $num , $category_id = -1) {
 
-		if( $category_id != 0) 
+		if( $category_id > 0 ) 
 			$category = 'and category_id = '.$category_id;
+		else if( $category_id === 0) 
+			$is_free = 1;
 		else
 			$category = '';
+
+		if( !isset( $is_free) )
+			$is_free = 0;
 		
-		return DB::fetch_all('select id,fullname,logo,summary,category_id from '.DB::table( $this->_table).' where is_hidden = %d and is_free = 0 '.$category.' order by sortid desc limit '.($page-1)*$num.','.$num , array(0));
+		return DB::fetch_all('select id,fullname,logo,summary,category_id from '.DB::table( $this->_table).' where is_hidden = %d and is_free = '.$is_free.' '.$category.' order by sortid desc limit '.($page-1)*$num.','.$num , array(0));
 	}
 
 	public function get_free_course_by_page($page = 1,$num = 10) {
