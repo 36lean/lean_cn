@@ -23,7 +23,7 @@ class table_b_video extends discuz_table {
 	}
 
 	public function get_video_by_pageid( $id) {
-		return DB::fetch_first('select v.v_file,v.v_path from '.DB::table( $this->_table).' as v left join '.DB::table( $this->_jointable).' as p on p.film_id = v.id where p.id='.$id);
+		return DB::fetch_first('select v.v_file,v.v_path,image_file from '.DB::table( $this->_table).' as v left join '.DB::table( $this->_jointable).' as p on p.film_id = v.id where p.id='.$id);
 	}
 
 	public function get_video_voice( $lessonid) {

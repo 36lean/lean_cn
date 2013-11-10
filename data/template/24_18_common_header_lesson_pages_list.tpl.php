@@ -1,12 +1,12 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1383234192, '18', './data/template/24_18_common_header_lesson_pages_list.tpl.php', './template/tpl', 'common/header_lesson_pages_list')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1383904385, '18', './data/template/24_18_common_header_lesson_pages_list.tpl.php', './template/tpl', 'common/header_lesson_pages_list')
 ;?>
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>" />
-<meta http-equiv="Cache-Control" content="max-age=0" />
+<meta http-equiv="Cache-Control" content="max-age=7200" />
 <?php if($_G['config']['output']['iecompatible']) { ?><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE<?php echo $_G['config']['output']['iecompatible'];?>" /><?php } ?>
 <title>
 <?php if(CURSCRIPT === 'lesson') { ?>
@@ -16,6 +16,7 @@
 <?php } ?>
 
 </title>
+<!-- ImRFlh_dHTCTsp4644ggrvTftV8 -->
 <?php echo $_G['setting']['seohead'];?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="精益培训,精益视频,精益博客,精益生产,改善项目,精益5s,生产管理,现场管理" />
@@ -122,15 +123,7 @@ jQuery("img").lazyload({effect : "fadeIn"});
     		</div>
     	</form>
       	<ul class="nav pull-right">
-<?php if(!$_G['uid']) { ?>
-          	<li class=""><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
-            <li class=""><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
-            <?php } else { ?>
-            <li class=""><a href="user.php"><i class="icon-user"></i> <?php echo $_G['username'];?>在线</a></li>
-            <li class=""><a href="member.php?mod=logging&amp;action=logout&amp;formhash=<?php echo FORMHASH;?>"> 注销</a></li>
-            	<?php if($_G['adminid'] == 1) { ?><li class="pull-right"><a href="admincp/index.php">管理</a></li><?php } ?>
-         	
-         	<?php } ?>
+
       	</ul>
 </div>
 
@@ -167,6 +160,15 @@ jQuery("img").lazyload({effect : "fadeIn"});
         </ul>
 
         <ul class="nav pull-right">
+<?php if(!$_G['uid']) { ?>
+          	<li class=""><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
+            <li class=""><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
+            <?php } else { ?>
+            <li class=""><a href="user.php"><i class="icon-user"></i> <?php echo $_G['username'];?>在线</a></li>
+            <li class=""><a href="member.php?mod=logging&amp;action=logout&amp;formhash=<?php echo FORMHASH;?>"> 注销</a></li>
+            	<?php if($_G['adminid'] == 1) { ?><li class="pull-right"><a href="admincp/index.php">管理</a></li><?php } ?>
+         	
+         	<?php } ?>        	
         	<li><a href="read.php?title=contactus"><i class="icon-phone"></i> 021-62128213</a></li>
         </ul>
     </div>

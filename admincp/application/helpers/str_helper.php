@@ -65,3 +65,12 @@ function form_post_refresh()
 
 	exit('referer error');
 }
+
+function muti_language()
+{
+	return array(
+		0 => '语言' ,
+		1 => '中文' , 
+		2 => '英文' ,  
+	);
+}

@@ -24,11 +24,6 @@
   </div>
 </div>
 
-
-
-
-
-
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="txt span4">
@@ -78,7 +73,7 @@
             <i class="icon-thumbs-up"></i> 账号注册
         </h3>
         <p>
-          <a href="http://36lean.com/member.php?mod=enroll" class="btn btn-danger" target="_blank"> 点击注册</a> 就可以加入到我们的学院，海量的课程和资料以及特有的工具，帮助你更好的学习和工作。</p>
+          <a href="member.php?mod=enroll" class="btn btn-danger" target="_blank"> 点击注册</a> 就可以加入到我们的学院，海量的课程和资料以及特有的工具，帮助你更好的学习和工作。</p>
       </div>
       
       <div class="span4 view-block">
@@ -139,16 +134,16 @@
   <div class="txt container-fluid">
     <h2 class="clienttip"><i class="icon-thumbs-up"></i> 数千家企业,数万名精益用户参与其中...</h2>
     <div class="row-fluid clientlist">
-      <div class="span3"><img src="http://36lean.com/static/mot/clientlogo/3m.png"></div>
-        <div class="span3"><img src="http://36lean.com/static/mot/clientlogo/nike.png"></div>
-        <div class="span3"><img src="http://36lean.com/static/mot/clientlogo/boe.png"></div>
-        <div class="span3"><img src="http://36lean.com/static/mot/clientlogo/toyota.png"></div>
+      <div class="span3"><img src="static/mot/clientlogo/3m.png"></div>
+        <div class="span3"><img src="static/mot/clientlogo/nike.png"></div>
+        <div class="span3"><img src="static/mot/clientlogo/boe.png"></div>
+        <div class="span3"><img src="static/mot/clientlogo/toyota.png"></div>
     </div>
     <div class="row-fluid clientlist">
-        <div class="span3"><img src="http://36lean.com/static/mot/clientlogo/xd.png"></div>
-        <div class="span3"><img src="http://36lean.com/static/mot/clientlogo/hndx.png"></div>
-        <div class="span3"><img src="http://36lean.com/static/mot/clientlogo/tjdx.png"></div>
-        <div class="span3"><img src="http://36lean.com/static/mot/clientlogo/midea.png"></div>
+        <div class="span3"><img src="static/mot/clientlogo/xd.png"></div>
+        <div class="span3"><img src="static/mot/clientlogo/hndx.png"></div>
+        <div class="span3"><img src="static/mot/clientlogo/tjdx.png"></div>
+        <div class="span3"><img src="static/mot/clientlogo/midea.png"></div>
     </div>
   </div>
 

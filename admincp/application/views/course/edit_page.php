@@ -1,6 +1,8 @@
 <div class="container-fluid">
 
 <?php 
+$language = muti_language();
+
 if( isset($status))
 if( 2 === $status) {
 ?>
@@ -15,18 +17,29 @@ if( 2 === $status) {
 	<input type="hidden" name="video_id" value="<?php echo $page['id']?>">
 	<input type="hidden" name="old_image" value="<?php echo $page['image_file']?>">
 <span class="label label-info">编辑课程信息</span>
-<table class="table table-condensed" width="100%">
+
+<table class="table table-condensed table-condensed" width="100%">
+
 	<tr class="success">
 		<td><strong>标题</strong></td>
-	</tr>
-	<tr><td>
-		<input name="title" class="span6" type="text" value="<?php echo $page['title']?>">
-	</td></tr>
-	<tr class="success">
-		<td><strong>阅读材料内容</strong></td>
+		<td>序号</td>
 	</tr>
 	<tr>
-		<td><textarea class="span8" rows=6 name="contents"><?php echo $page['contents']?></textarea></td>
+		<td>
+			<input name="title" class="span6" type="text" value="<?php echo $page['title']?>">
+		</td>
+		<td>
+			<input name="sort_id" type="text" value="<?php echo $page['sort_id']?>">
+		</td>
+	</tr>
+
+	<tr class="success">
+		<td><strong>阅读材料内容</strong></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><textarea class="kindeditor" name="contents"><?php echo $page['contents']?></textarea></td>
+		<td></td>
 	</tr>
 </table>
 
@@ -74,7 +87,13 @@ if( 2 === $status) {
 
 	<tr>
 		<td>
-			<select name="v_voice"><option value="1" selected="selected">英语</option><option value="0" >普通话</option><option value="2" >其它语言</option></select>
+			<select name="v_voice">
+			<?php foreach ($language as $key => $value) { ?>
+
+				<option <?php if( $page['v_voice'] == $key){?>selected="selected"<?php }?> value="<?php echo $key;?>"><?php echo $value;?></option>
+
+			<?php }?>
+			</select>
 		</td>
 		<td><input name="v_time" type="text" value="<?php echo $page['v_time']?>" /></td>
 	</tr>

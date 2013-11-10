@@ -141,4 +141,11 @@ class Ajax extends CI_Controller {
 		print_r( $detail);
 	}
 
+	public function users_get()
+	{
+		$data = $this->db->select('id,title,contents,timecreated')->from('b_lesson_pages')->order_by('id')->limit(5)->get()->result_array();
+
+		echo json_encode( $data);
+	}
+
 }

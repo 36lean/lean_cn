@@ -1,8 +1,8 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('login');
 0
-|| checktplrefresh('./template/tpl/member/login.htm', './template/default/common/seccheck.htm', 1381988006, '18', './data/template/24_18_member_login.tpl.php', './template/tpl', 'member/login')
+|| checktplrefresh('./template/tpl/member/login.htm', './template/default/common/seccheck.htm', 1383919520, '18', './data/template/24_18_member_login.tpl.php', './template/tpl', 'member/login')
 ;?><?php include template('common/header'); ?><?php $loginhash = 'L'.random(4);?><?php if(empty($_GET['infloat'])) { ?>
-<div id="ct" class="container-fluid">
+<div id="ct">
 <div class="nfl" id="main_succeed" style="display: none">
 <div class="f_c altw">
 <div class="alert_right">
@@ -12,18 +12,19 @@
 </div>
 </div>
 </div>
-<div class="row" align="center" id="main_message">
 
+<div class="page-header" align="center" id="main_message">	
 <h2>登录</h2>
-
-<span class="">
-<?php if(!empty($_G['setting']['pluginhooks']['logging_side_top'])) echo $_G['setting']['pluginhooks']['logging_side_top'];?>
-</span>
+<span class=""><?php if(!empty($_G['setting']['pluginhooks']['logging_side_top'])) echo $_G['setting']['pluginhooks']['logging_side_top'];?></span>
 </div>
+
 <?php } ?>
 
-<div id="main_messaqge_<?php echo $loginhash;?>"<?php if($auth) { ?> style="width: auto"<?php } ?>>
+
+<div class="row" id="main_messaqge_<?php echo $loginhash;?>">
 <div id="layer_login_<?php echo $loginhash;?>">
+<div class="span2"></div>
+<div class="span7">
 <h3 class="flb">
 <em id="returnmessage_<?php echo $loginhash;?>">
 <?php if(!empty($_GET['infloat'])) { if(!empty($_GET['guestmessage'])) { ?>您需要先登录才能继续本操作<?php } elseif($auth) { ?>请补充下面的登录信息<?php } else { ?>用户登录<?php } } ?>
@@ -32,14 +33,14 @@
 </h3>
 <?php if(!empty($_G['setting']['pluginhooks']['logging_top'])) echo $_G['setting']['pluginhooks']['logging_top'];?>
 <form class="inline" method="post" autocomplete="off" name="login" id="loginform_<?php echo $loginhash;?>" class="cl" onsubmit="<?php if($this->setting['pwdsafety']) { ?>pwmd5('password3_<?php echo $loginhash;?>');<?php } ?>pwdclear = 1;ajaxpost('loginform_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>', 'onerror');return false;" action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes<?php if(!empty($_GET['handlekey'])) { ?>&amp;handlekey=<?php echo $_GET['handlekey'];?><?php } if(isset($_GET['frommessage'])) { ?>&amp;frommessage<?php } ?>&amp;loginhash=<?php echo $loginhash;?>">
-<div class="row-fluid">
+
 <input type="hidden" name="formhash" value="<?php echo FORMHASH;?>" />
 <input type="hidden" name="referer" value="<?php echo dreferer(); ?>" />
 <?php if($auth) { ?>
 <input type="hidden" name="auth" value="<?php echo $auth;?>" />
 <?php } ?>
-<div class="span12">
-<table class="table">
+
+<table class="table table-noborder">
 <?php if($invite) { ?>
 
 <tr>
@@ -74,8 +75,7 @@
 <a href="javascript:;" onclick="display('layer_login_<?php echo $loginhash;?>');display('layer_lostpw_<?php echo $loginhash;?>');" title="找回密码">找回密码</a></td>
 </tr>
 
-<?php } if(empty($_GET['auth']) || $questionexist) { ?>
-
+<?php } if(empty($_GET['auth']) || $questionexist) { if(false) { ?>
 <tr>
 <th>安全提问:</th>
 <td><select id="loginquestionid_<?php echo $loginhash;?>" width="213" name="questionid"<?php if(!$questionexist) { ?> onchange="if($('loginquestionid_<?php echo $loginhash;?>').value > 0) {$('loginanswer_row_<?php echo $loginhash;?>').style.display='';} else {$('loginanswer_row_<?php echo $loginhash;?>').style.display='none';}"<?php } ?>>
@@ -94,8 +94,7 @@
 <th>答案:</th>
 <td><input type="text" name="answer" id="loginanswer_<?php echo $loginhash;?>" autocomplete="off" size="30" class="px p_fre" tabindex="1" /></td>
 </tr>
-
-<?php } if($secqaacheck || $seccodecheck) { ?><?php
+<?php } } if($secqaacheck || $seccodecheck) { ?><?php
 $sectpl = <<<EOF
 <tr><th><sec>: </th><td><sec><br /><sec></td></tr>
 EOF;
@@ -167,19 +166,20 @@ EOF;
 
 <?php if(!empty($_G['setting']['pluginhooks']['logging_input'])) echo $_G['setting']['pluginhooks']['logging_input'];?>
 
-
+<?php if(false) { ?>
 <tr>
 <th></th>
 <td><label class="checkbox" for="cookietime_<?php echo $loginhash;?>"><input type="checkbox" class="pc" name="cookietime" id="cookietime_<?php echo $loginhash;?>" tabindex="1" value="2592000" <?php echo $cookietimecheck;?> /> 自动登录</label></td>
 </tr>
-
+<?php } ?>
 
 <tr>
 <th>&nbsp;</th>
 <td>
 <button class="btn btn-success btn-small" type="submit" name="loginsubmit" value="true" tabindex="1"><strong>登录</strong></button>
 
-<?php if($this->setting['sitemessage']['login'] && empty($_GET['infloat'])) { ?><a href="javascript:;" id="custominfo_login_<?php echo $loginhash;?>" class="y">&nbsp;<img src="<?php echo IMGDIR;?>/info_small.gif" alt="帮助" class="vm" /></a><?php } if(!$this->setting['bbclosed'] && empty($_GET['infloat'])) { ?><a href="javascript:;" onclick="ajaxget('member.php?mod=clearcookies&formhash=<?php echo FORMHASH;?>', 'returnmessage_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>');return false;" title="清除痕迹" class="y">清除痕迹</a><?php } ?>
+<?php if($this->setting['sitemessage']['login'] && empty($_GET['infloat'])) { ?><a href="javascript:;" id="custominfo_login_<?php echo $loginhash;?>" class="y">&nbsp;<img src="<?php echo IMGDIR;?>/info_small.gif" alt="帮助" class="vm" /></a><?php } if(false) { if(!$this->setting['bbclosed'] && empty($_GET['infloat'])) { ?><a href="javascript:;" onclick="ajaxget('member.php?mod=clearcookies&formhash=<?php echo FORMHASH;?>', 'returnmessage_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>');return false;" title="清除痕迹" class="y">清除痕迹</a>
+<?php } } ?>
 
 <!--<a href="weibo.php" title="新浪微博登录"><img src="<?php echo $_G['siteurl'];?>static/mot/weibo_login_small.png" /></a>-->
 </td>
@@ -193,23 +193,39 @@ EOF;
 <th>快捷登录:</th>
 <td><?php if(!empty($_G['setting']['pluginhooks']['logging_method'])) echo $_G['setting']['pluginhooks']['logging_method'];?></td>
 </tr>
-
+</table>
 <?php } ?>
 </table>
-</div>
-</div>
+
 </form>
 </div>
+
+<div class="span3">
+    <div class="list-group">
+    	<a class="list-group-item" href="javascript:;" onclick="display('layer_login_<?php echo $loginhash;?>');display('layer_lostpw_<?php echo $loginhash;?>');" title="找回密码">
+    	<h4 class="list-group-item-heading">找回密码</h4>
+    	<p class="list-group-item-text">如果不记得帐户名 点击这里 输入你的邮箱试试</p>
+    	</a>
+
+    	<a href="member.php?mod=logging&amp;action=login" class="list-group-item active">登陆  <i class="icon-ok"></i> </a>
+  				<a href="member.php?mod=<?php echo $_G['setting']['regname'];?>" class="list-group-item">正在注册</a>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
 <?php if($_G['setting']['pwdsafety']) { ?>
 <script src="<?php echo $_G['setting']['jspath'];?>md5.js?<?php echo VERHASH;?>" type="text/javascript" reload="1"></script>
 <?php } ?>
+
+
+
+
 <div id="layer_lostpw_<?php echo $loginhash;?>" style="display: none;">
-<div class="page-header">
-<h3>
-找回密码
-<span><?php if(!empty($_GET['infloat']) && !isset($_GET['frommessage'])) { ?><a href="javascript:;" class="flbc" onclick="hideWindow('login')" title="关闭">关闭</a><?php } ?></span>
-</h3>
-</div>
+
 
 
 <div class="row-fluid">
@@ -217,6 +233,13 @@ EOF;
 <div class="span2"></div>
 
 <div class="span4">
+
+<h3>
+找回密码
+<span><?php if(!empty($_GET['infloat']) && !isset($_GET['frommessage'])) { ?><a href="javascript:;" class="flbc" onclick="hideWindow('login')" title="关闭">关闭</a><?php } ?></span>
+</h3>
+
+
 <p class="lead">输入我的邮箱</p>
 <form method="post" autocomplete="off" id="lostpwform_<?php echo $loginhash;?>" class="cl" onsubmit="ajaxpost('lostpwform_<?php echo $loginhash;?>', 'returnmessage3_<?php echo $loginhash;?>', 'returnmessage3_<?php echo $loginhash;?>', 'onerror');return false;" action="member.php?mod=lostpasswd&amp;lostpwsubmit=yes&amp;infloat=yes">
 
@@ -233,14 +256,14 @@ EOF;
 
 <div class="control-group">
 <div class="controls">
-<button class="btn btn-primary" type="submit" name="lostpwsubmit" value="true" tabindex="100"><span>提交</span></button>
+<button class="btn btn-primary" type="submit" name="lostpwsubmit" value="true" tabindex="100"><span>发送找回密码的邮件</span></button>
 </div>
 </div>
 
 </form>
 </div>
 
-<div class="span6">
+<div class="span3">
 
 <div class="">
 <blockquote>
@@ -256,7 +279,17 @@ EOF;
 
 </div>
 
+<div class="span3">
+    <div class="list-group">
+    	<a class="list-group-item active" href="javascript:;" onclick="display('layer_login_<?php echo $loginhash;?>');display('layer_lostpw_<?php echo $loginhash;?>');" title="找回密码">
+    	<h4 class="list-group-item-heading">找回密码 <i class="icon-ok"></i> </h4>
+    	<p class="list-group-item-text">如果不记得帐户名 点击这里 输入你的邮箱试试</p>
+    	</a>
 
+    	<a href="member.php?mod=logging&amp;action=login" class="list-group-item">登陆</a>
+  				<a href="member.php?mod=<?php echo $_G['setting']['regname'];?>" class="list-group-item">正在注册</a>
+</div>
+</div>
 </div>
 </div>
 

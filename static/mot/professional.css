@@ -374,3 +374,6 @@ div.mot-block {
   padding-top: 40px;
   padding-bottom: 40px;
 }
+.table-noborder{
+  border: 1 solid #fff;
+}

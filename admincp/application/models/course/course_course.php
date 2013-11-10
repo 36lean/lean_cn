@@ -18,7 +18,7 @@ class Course_course extends CI_Model {
 		$this->db->select( $this->_course.'.* , '.$this->_category.'.category');
 		$this->db->join('b_category', $this->_course.'.category_id = '.$this->_category.'.id' , 'left');
 		$this->db->from( $this->_course);
-		$this->db->order_by('id,category_id','desc');
+		$this->db->order_by('sortid','asc');
 		return $this->db->get()->result_array();
 	}
 
@@ -26,7 +26,7 @@ class Course_course extends CI_Model {
 		$course = $this->db->select( $this->_course.'.* , '.$this->_category.'.category')
 							->join('b_category', $this->_course.'.category_id = '.$this->_category.'.id' , 'left')
 							->from( $this->_course)
-							->order_by('sortid','desc')
+							->order_by('sortid','asc')
 							->get()->result_array();
 
 		
@@ -186,6 +186,112 @@ class Course_course extends CI_Model {
 	public function update_course_sortid() {
 		foreach ($_POST as $key => $value) {
 			$this->db->where( array('id' => intval( $key)))->update('b_course' , array('sortid' => intval( $value)));
+		}
+	}
+
+	public function update_category()
+	{
+		$id = intval( $this->input->post('id'));
+
+		$category = intval( $this->input->post('category'));
+
+		if( $this->db->select('id')->from('b_course')->where( array('id'=>$id))->get()->row_array() )
+		{
+			$this->db->where( array('id'=>$id))->update('b_course' , array('category_id'=>$category));
+
+			$c = $this->db->select('category')->from('b_category')->where( array('id'=>$category))->get()->row_array();
+
+			echo $c['category'];
+		}
+	}
+
+	public function update_status()
+	{
+		
+		$id = intval( $this->input->post('id'));
+
+		$is_free = intval( $this->input->post('is_free'));
+
+		if( $this->db->select('id')->from('b_course')->where( array('id'=>$id))->get()->num_rows() )
+		{
+			$this->db->where( array('id'=>$id))->update('b_course' , array('is_free'=>$is_free));
+
+			echo $is_free ? '免费' : '收费' ;
+		}
+	}
+
+	public function update_visible()
+	{
+		$id = intval( $this->input->post('id'));
+
+		$is_hidden = intval( $this->input->post('is_hidden'));
+		
+		if( $this->db->select('id')->from('b_course')->where( array('id'=>$id))->get()->num_rows() )
+		{
+			$this->db->where( array('id'=>$id))->update('b_course' , array('is_hidden'=>$is_hidden));
+
+			echo $is_hidden ? '隐藏' : '可见' ;
+		}
+	}
+
+	public function update_all()
+	{
+
+
+		if( $this->input->post('update_all')){
+
+		foreach ($_POST as $key => $value) {	
+
+			
+				
+			if( !preg_match('/\d{1,}_check/', $key))
+				continue;
+
+			
+
+			preg_match('/(\d{1,})/', $key , $match);
+
+			$id = $match[0];
+
+			if( $this->input->post($id.'_check') !== 'on')
+				continue;
+
+			unset( $_POST[$id.'_check'] );
+
+			$data = array(
+				'sort_id' => intval( $this->input->post($id.'_sortid')) , 
+				'v_name' => trim( $this->input->post($id.'_title')) ,
+				'v_file' => trim( $this->input->post($id.'_file')) , 
+				'v_path' => trim( $this->input->post($id.'_path')) , 
+				'label_cn' => trim( $this->input->post($id.'_cn')) , 
+				'label_tw' => trim( $this->input->post($id.'_tw')) , 
+				'label_en' => trim( $this->input->post($id.'_en')) , 
+				'v_voice' => intval( $this->input->post($id.'_voice')) ,
+				'v_time' => trim( $this->input->post($id.'_time')) , 
+				'updated_date' => time() , 
+			);
+
+			$this->db->where( array('id'=>$id))->update( 'b_video' , $data );
+			unset( $_POST[$id.'_title']);
+			unset( $_POST[$id.'_file']);
+			unset( $_POST[$id.'_path']);
+			unset( $_POST[$id.'_cn']);
+			unset( $_POST[$id.'_tw']);
+			unset( $_POST[$id.'_en']);
+		}
+		}
+	}
+
+	public function update_sortid()
+	{
+		if( $this->input->post('update_sortid'))
+		{
+			unset( $_POST['update_sortid']);
+
+			foreach ($_POST as $key => $value) {
+				$id = intval( $key);
+				$this->db->where( array('id'=>$id))->update('b_course' , array('sortid' => intval( $value)));
+			}
 		}
 	}
 }

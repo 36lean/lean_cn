@@ -1,12 +1,12 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1383460756, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1383916996, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
 ;?>
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>" />
-<meta http-equiv="Cache-Control" content="max-age=0" />
+<meta http-equiv="Cache-Control" content="max-age=7200" />
 <?php if($_G['config']['output']['iecompatible']) { ?><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE<?php echo $_G['config']['output']['iecompatible'];?>" /><?php } ?>
 <title>
 <?php if(CURSCRIPT === 'lesson') { ?>
@@ -16,6 +16,7 @@
 <?php } ?>
 
 </title>
+<!-- ImRFlh_dHTCTsp4644ggrvTftV8 -->
 <?php echo $_G['setting']['seohead'];?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="精益培训,精益视频,精益博客,精益生产,改善项目,精益5s,生产管理,现场管理" />

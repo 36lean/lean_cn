@@ -1,26 +1,31 @@
+<script>
+//window.onerror=function(){return true;}     
+</script>
+
 <div id="play_area" class="mot-block-blackboard" align="center">
 <div class="container">
 
 <script src="flowplayer/flowplayer-3.2.12.min.js"></script>
-    <p>
-    <a  
-       href=""
-       style="display:block;width:750px;height:403px"  
-       id="player"> 
-    </a> 
-    </p>
-    <!-- this will install flowplayer inside previous A- tag. -->
-    <script>
+<link href="flowplayer/playful.css" rel="stylesheet" />
 
-//jQuery(document).bind("contextmenu",function(){return false;}); 
-
+{if false}
+<p>
+    <a href="" style="display:block;width:750px;height:403px" id="player"></a> 
+</p>
+<script>
 flowplayer("player", "flowplayer/flowplayer-3.2.16.swf", {
     
     log: { level: 'debug', filter: 'org.flowplayer.captions.*' },
 
     clip: {
- 
+        
+        {if $video['label_cn']}
         captionUrl: 'http://www.36lean.com/filter.php?url=http://36lean-video-sub.oss-cn-hangzhou.aliyuncs.com/GA/{$video['v_path']}/CH/{$video['label_cn']}',
+        {else}
+
+        captionUrl: 'http://www.36lean.com/static/mot/empty.srt', 
+
+        {/if}
 
         autoPlay: false,
         
@@ -33,6 +38,7 @@ flowplayer("player", "flowplayer/flowplayer-3.2.16.swf", {
     playlist: [ // playlist is an array of Clips, hence [...]
           '{$file}', // simple playlist entry: video
     ],
+
 
     plugins:  {
  
@@ -76,16 +82,37 @@ flowplayer("player", "flowplayer/flowplayer-3.2.16.swf", {
         backgroundGradient: 'none'
     }
 });
-    </script>
-  
+</script>
+{/if}
+
+
+
+
+<div id="mediaplayer"></div>
+<script type="text/javascript"> 
+  jwplayer('mediaplayer').setup({ 
+    'flashplayer': 'player.swf', 
+    'id': 'playerID', 
+    'controlbar': 'bottom',
+    'dock': 'false',
+    'width': '700', 
+    'height': '450', 
+    'stretching': 'uniform',
+    'file': '{$file}', 
+    'image': 'uploads/page/{$c['image_file']}',
+    'plugins': { 
+       'captions-2': { 
+           'file': 'http://www.36lean.com/filter.php?url=http://36lean-video-sub.oss-cn-hangzhou.aliyuncs.com/GA/{$video['v_path']}/CH/{$video['label_cn']}' 
+       } 
+    } 
+  }); 
+</script>
+
+
 </div>
 </div>
 
-  <div class="container">
-    <div class="alert alert-info">
-      <div class="text-right"><i class="icon-info-sign"></i> 点击视频右下角的CC按钮，可打开关闭字幕</div>
-    </div>
-  </div>
+
 
 
 <div class="container">

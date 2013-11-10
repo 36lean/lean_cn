@@ -26,6 +26,8 @@ class Course extends Base_Controller {
 	}
 
 	public function index() {
+
+		$this->course->update_sortid();
 		
 		$list = $this->course->list_course();
 
@@ -70,6 +72,8 @@ class Course extends Base_Controller {
 	public function edit_course( $id = 1) {
 
 		$id = intval( $id);
+
+		$this->course->update_all();
 		
 		if( preg_match('/generate/', $this->uri->uri_string())) {
 			$data = file_get_contents( 'uploads/generate.tmp');
@@ -146,7 +150,9 @@ class Course extends Base_Controller {
 		if( isset( $_POST['save'])){
 			global $constant;
 
-			$info_ok = $this->course_page->save_page_info( array(
+
+
+			$info_ok = $this->page->save_page_info( array(
 				'id' => $_POST['page_id'],
 				'contents' => $_POST['contents'],
 				'title' => $_POST['title'],
@@ -157,8 +163,9 @@ class Course extends Base_Controller {
 				move_uploaded_file( $_FILES['image_file']['tmp_name'], $constant['uploads_path'].'/page/'.$_POST['page_id'].'.'.$type[1]);
 			}
 
-			$video_ok = $this->course_page->save_video_info( array(
+			$video_ok = $this->page->save_video_info( array(
 				'id' => $_POST['video_id'],
+				'sort_id' => $_POST['sort_id'], 
 				'v_file' => $_POST['v_file'],
 				'v_name' => $_POST['v_name'],
 				'v_path' => $_POST['v_path'],
@@ -177,7 +184,7 @@ class Course extends Base_Controller {
 		$status = ( isset( $status) ? $status : null);
 		$id = intval( $id);
 
-		$page_info = $this->course_page->get_page_by_id( $id);
+		$page_info = $this->page->get_page_by_id( $id);
 		$course_info = $this->course_course->get_course_info_by_id( $page_info[0]['lessonid']);
 		$config = include_once('../player.config.php');
 
@@ -327,6 +334,21 @@ class Course extends Base_Controller {
 		{
 			echo $this->page->update_page();
 		}
+	}
+
+	public function update_category()
+	{
+		$this->course->update_category();
+	}
+
+	public function update_status()
+	{
+		$this->course->update_status();
+	}
+
+	public function update_visible()
+	{
+		$this->course->update_visible();
 	}
 
 	public function __toString() {

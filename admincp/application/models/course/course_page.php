@@ -12,11 +12,12 @@ class Course_page extends CI_Model {
 	}
 
 	public function get_pages_by_lessonid( $id) {
-		$this->db->select( $this->lesson_pages.'.title,'.$this->lesson_pages.'.id pid,'.$this->lesson_video.'.*');
+		$this->db->select( $this->lesson_pages.'.id pid,'.$this->lesson_video.'.*');
 		$this->db->from( $this->lesson_pages);
 		$this->db->join( $this->lesson_video , $this->lesson_pages.'.film_id = '.$this->lesson_video.'.id');
 		$this->db->where( array( 'lessonid' => $id));
-		$this->db->order_by('id' , 'desc');
+		$this->db->order_by('sort_id' , 'asc');
+		$this->db->order_by('id' , 'asc');
 		return $this->db->get()->result_array();
 	}
 
@@ -35,17 +36,20 @@ class Course_page extends CI_Model {
 
 
 		$this->db->insert( $this->lesson_video , array(
+			'v_name' => trim( $this->input->post('title')) , 
 			'v_file' => trim( $this->input->post('v_file')),
 			'v_path' => trim( $this->input->post('v_path')),
 			'label_cn' => trim( $this->input->post('label_cn')),
 			'label_tw' => trim( $this->input->post('label_tw')),
 			'label_en' => trim( $this->input->post('label_en')),
+			'v_voice' => intval( $this->input->post('v_voice')) , 
+			'v_time' => trim( $this->input->post('v_time')) , 
 		));
 
 		$film_id = $this->db->insert_id();
 
 		$this->db->insert( $this->lesson_pages , array(
-			'title' => $this->input->post('title'),
+			'title' => trim( $this->input->post('title') ),
 			'film_id' => $film_id,
 			'timecreated' => time(),
 			'lessonid' => $course_id,

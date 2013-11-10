@@ -13,7 +13,7 @@ jQuery( function() {
 
 <div class="container">
 <p class="text-left"> 
-  <a href="lesson.php"><i class="icon-home"></i> 在线课程</a> <span class="divider">/</span> 
+  <a href="lesson.php"><i class="icon-home"></i> 精益云学院</a> <span class="divider">/</span> 
   <a href="lesson.php?pages_list=<?php echo $lesson['id'];?>"><i class="icon-book"></i> <?php echo $lesson['fullname'];?></a> 
 </p>
 </div>

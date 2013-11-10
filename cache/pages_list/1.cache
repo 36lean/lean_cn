@@ -12,7 +12,7 @@ jQuery( function() {
 
 <div class="container">
 <p class="text-left"> 
-  <a href="lesson.php"><i class="icon-home"></i> 在线课程</a> <span class="divider">/</span> 
+  <a href="lesson.php"><i class="icon-home"></i> 精益云学院</a> <span class="divider">/</span> 
   <a href="lesson.php?pages_list=1"><i class="icon-book"></i> 5S现场管理</a> 
 </p>
 </div>
@@ -60,7 +60,8 @@ jQuery( function() {
             <li><a href="lesson.php?page_content=6"><small><strong>第6节 标准化</strong></small></a></li>
             <li><a href="lesson.php?page_content=7"><small><strong>第7节 自律</strong></small></a></li>
             <li><a href="lesson.php?page_content=8"><small><strong>第8节 5S数字游</strong></small></a></li>
-            <li><a href="lesson.php?page_content=9"><small><strong>第9节 技能矩阵</strong></small></a></li>
+            <li><a href="lesson.php?page_content=256"><small><strong>11111</strong></small></a></li>
+            <li><a href="lesson.php?page_content=258"><small><strong>Google公司有多</strong></small></a></li>
             
           </ul>
     
@@ -289,9 +290,9 @@ jQuery( function() {
                         <div class="container-fluid lesson-item">
             <div class="row-fluid">
               <div class="span4 text-center">
-                <a id="9" href="lesson.php?page_content=9" title="第9节 技能矩阵">
+                <a id="256" href="lesson.php?page_content=256" title="11111">
                 
-                                <img class="img-polaroid lazy" id="9" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/5S/PNG/5S-09.png" alt="第9节 技能矩阵" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/5S/PNG/5S-09.png" />
+                                <img class="img-polaroid lazy" id="256" src="http://127.0.0.1/lean//uploads/page/" alt="11111" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA//PNG/" />
                 
                 </a>
               </div>
@@ -300,16 +301,43 @@ jQuery( function() {
               
               <div class="span7">
                 <h4>
-                  <a id="9" href="lesson.php?page_content=9" title="第9节 技能矩阵">
-                    第9节 技能矩阵                  </a>
+                  <a id="256" href="lesson.php?page_content=256" title="11111">
+                    11111                  </a>
                 </h4>
                 
                 <p>
-                 <span class="label label-info">语音 : 英语</span>
-                 <span class="label label-info">时长 : 13:46:00</span>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : </span>
                 </p>
 
-                了解为什么技能矩阵对于那些重视目视化管理及接班人计划的公司是个非常必要的工具。              </div>
+                              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="258" href="lesson.php?page_content=258" title="Google公司有多少员工">
+                
+                                <img class="img-polaroid lazy" id="258" src="http://127.0.0.1/lean//uploads/page/" alt="Google公司有多少员工" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA//PNG/" />
+                
+                </a>
+              </div>
+
+              <div class="span1"></div>
+              
+              <div class="span7">
+                <h4>
+                  <a id="258" href="lesson.php?page_content=258" title="Google公司有多少员工">
+                    Google公司有多少员工                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : 22:22</span>
+                </p>
+
+                              </div>
 
             </div>
             </div>

@@ -34,7 +34,7 @@ class Pills extends CI_Controller
 	{
 		$this->template->set('keywords' , '精益培训,精益视频,精益博客,精益生产,改善项目,精益5s,生产管理,现场管理,六西格玛,精益创业,精益生产,5S现场,7大浪费,看板系统,改善之路,实践问题解决,标准作业,及时制生产,价值流分析,快速切换,方针管理')
 					   ->set('description' , '全球首家中文一站式在线精益学习平台,改善在线学院主要业务是精益培训')
-					   ->title('精企网咨讯')
+					   ->title('精企网资讯')
 					   ->build('pills/index');
 	}
 

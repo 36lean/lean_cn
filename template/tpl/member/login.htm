@@ -2,7 +2,7 @@
 
 <!--{eval $loginhash = 'L'.random(4);}-->
 <!--{if empty($_GET['infloat'])}-->
-<div id="ct" class="container-fluid">
+<div id="ct">
 	<div class="nfl" id="main_succeed" style="display: none">
 		<div class="f_c altw">
 			<div class="alert_right">
@@ -12,18 +12,19 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" align="center" id="main_message">
-			
-			<h2>{lang login}</h2>
 
-				<span class="">
-					<!--{hook/logging_side_top}-->
-				</span>
+	<div class="page-header" align="center" id="main_message">	
+		<h2>{lang login}</h2>
+		<span class=""><!--{hook/logging_side_top}--></span>
 	</div>
+
 <!--{/if}-->
 
-<div id="main_messaqge_$loginhash"{if $auth} style="width: auto"{/if}>
+
+<div class="row" id="main_messaqge_$loginhash">
 	<div id="layer_login_$loginhash">
+	<div class="span2"></div>
+	<div class="span7">
 		<h3 class="flb">
 			<em id="returnmessage_$loginhash">
 				<!--{if !empty($_GET['infloat'])}--><!--{if !empty($_GET['guestmessage'])}-->{lang login_guestmessage}<!--{elseif $auth}-->{lang profile_renew}<!--{else}-->{lang login_member}<!--{/if}--><!--{/if}-->
@@ -32,14 +33,14 @@
 		</h3>
 		<!--{hook/logging_top}-->
 		<form class="inline" method="post" autocomplete="off" name="login" id="loginform_$loginhash" class="cl" onsubmit="{if $this->setting['pwdsafety']}pwmd5('password3_$loginhash');{/if}pwdclear = 1;ajaxpost('loginform_$loginhash', 'returnmessage_$loginhash', 'returnmessage_$loginhash', 'onerror');return false;" action="member.php?mod=logging&action=login&loginsubmit=yes{if !empty($_GET['handlekey'])}&handlekey=$_GET[handlekey]{/if}{if isset($_GET['frommessage'])}&frommessage{/if}&loginhash=$loginhash">
-			<div class="row-fluid">
+
 				<input type="hidden" name="formhash" value="{FORMHASH}" />
 				<input type="hidden" name="referer" value="{echo dreferer()}" />
 				<!--{if $auth}-->
 					<input type="hidden" name="auth" value="$auth" />
 				<!--{/if}-->
-				<div class="span12">
-				<table class="table">
+
+				<table class="table table-noborder">
 				<!--{if $invite}-->
 
 						<tr>
@@ -79,7 +80,7 @@
 				<!--{/if}-->
 
 				<!--{if empty($_GET['auth']) || $questionexist}-->
-
+				<!--{if false}-->
 						<tr>
 							<th>{lang security_q}:</th>
 							<td><select id="loginquestionid_$loginhash" width="213" name="questionid"{if !$questionexist} onchange="if($('loginquestionid_$loginhash').value > 0) {$('loginanswer_row_$loginhash').style.display='';} else {$('loginanswer_row_$loginhash').style.display='none';}"<!--{/if}-->>
@@ -98,7 +99,7 @@
 							<th>{lang security_a}:</th>
 							<td><input type="text" name="answer" id="loginanswer_$loginhash" autocomplete="off" size="30" class="px p_fre" tabindex="1" /></td>
 						</tr>
-
+				<!--{/if}-->
 				<!--{/if}-->
 
 				<!--{if $secqaacheck || $seccodecheck}-->
@@ -108,12 +109,12 @@
 
 				<!--{hook/logging_input}-->
 
-
+				<!--{if false}-->
 						<tr>
 							<th></th>
 							<td><label class="checkbox" for="cookietime_$loginhash"><input type="checkbox" class="pc" name="cookietime" id="cookietime_$loginhash" tabindex="1" value="2592000" $cookietimecheck /> {lang login_permanent}</label></td>
 						</tr>
-
+				<!--{/if}-->
 
 						<tr>
 							<th>&nbsp;</th>
@@ -121,7 +122,11 @@
 								<button class="btn btn-success btn-small" type="submit" name="loginsubmit" value="true" tabindex="1"><strong>{lang login}</strong></button>
 							
 								<!--{if $this->setting['sitemessage'][login] && empty($_GET['infloat'])}--><a href="javascript:;" id="custominfo_login_$loginhash" class="y">&nbsp;<img src="{IMGDIR}/info_small.gif" alt="{lang faq}" class="vm" /></a><!--{/if}-->
-								<!--{if !$this->setting['bbclosed'] && empty($_GET['infloat'])}--><a href="javascript:;" onclick="ajaxget('member.php?mod=clearcookies&formhash={FORMHASH}', 'returnmessage_$loginhash', 'returnmessage_$loginhash');return false;" title="{lang login_clearcookies}" class="y">{lang login_clearcookies}</a><!--{/if}-->
+
+								<!--{if false}-->
+								<!--{if !$this->setting['bbclosed'] && empty($_GET['infloat'])}--><a href="javascript:;" onclick="ajaxget('member.php?mod=clearcookies&formhash={FORMHASH}', 'returnmessage_$loginhash', 'returnmessage_$loginhash');return false;" title="{lang login_clearcookies}" class="y">{lang login_clearcookies}</a>
+								<!--{/if}-->
+								<!--{/if}-->
 
 								<!--<a href="weibo.php" title="新浪微博登录"><img src="{$_G['siteurl']}static/mot/weibo_login_small.png" /></a>-->
 							</td>
@@ -135,23 +140,39 @@
 								<th>{lang login_method}:</th>
 								<td><!--{hook/logging_method}--></td>
 							</tr>
-
+						</table>
 				<!--{/if}-->
 						</table>
-					</div>
-			</div>
+
 		</form>
 	</div>
-	<!--{if $_G['setting']['pwdsafety']}-->
-		<script type="text/javascript" src="{$_G['setting']['jspath']}md5.js?{VERHASH}" reload="1"></script>
-	<!--{/if}-->
+
+	<div class="span3">
+		    <div class="list-group">
+		    	<a class="list-group-item" href="javascript:;" onclick="display('layer_login_$loginhash');display('layer_lostpw_$loginhash');" title="{lang getpassword}">
+		    	<h4 class="list-group-item-heading">{lang getpassword}</h4>
+		    	<p class="list-group-item-text">如果不记得帐户名 点击这里 输入你的邮箱试试</p>
+		    	</a>
+
+		    	<a href="member.php?mod=logging&action=login" class="list-group-item active">登陆  <i class="icon-ok"></i> </a>
+  				<a href="member.php?mod={$_G[setting][regname]}" class="list-group-item">正在注册</a>
+
+			</div>
+	</div>
+	</div>
+</div>
+
+
+
+<!--{if $_G['setting']['pwdsafety']}-->
+	<script type="text/javascript" src="{$_G['setting']['jspath']}md5.js?{VERHASH}" reload="1"></script>
+<!--{/if}-->
+
+
+
+
 	<div id="layer_lostpw_$loginhash" style="display: none;">
-		<div class="page-header">
-		<h3>
-			{lang getpassword}
-			<span><!--{if !empty($_GET['infloat']) && !isset($_GET['frommessage'])}--><a href="javascript:;" class="flbc" onclick="hideWindow('login')" title="{lang close}">{lang close}</a><!--{/if}--></span>
-		</h3>
-		</div>
+
 
 
 		<div class="row-fluid">
@@ -159,6 +180,13 @@
 		<div class="span2"></div>
 
 		<div class="span4">
+
+		<h3>
+			{lang getpassword}
+			<span><!--{if !empty($_GET['infloat']) && !isset($_GET['frommessage'])}--><a href="javascript:;" class="flbc" onclick="hideWindow('login')" title="{lang close}">{lang close}</a><!--{/if}--></span>
+		</h3>
+
+
 		<p class="lead">输入我的邮箱</p>
 		<form method="post" autocomplete="off" id="lostpwform_$loginhash" class="cl" onsubmit="ajaxpost('lostpwform_$loginhash', 'returnmessage3_$loginhash', 'returnmessage3_$loginhash', 'onerror');return false;" action="member.php?mod=lostpasswd&lostpwsubmit=yes&infloat=yes">
 
@@ -175,14 +203,14 @@
 
 				<div class="control-group">
 				<div class="controls">
-				<button class="btn btn-primary" type="submit" name="lostpwsubmit" value="true" tabindex="100"><span>{lang submit}</span></button>
+				<button class="btn btn-primary" type="submit" name="lostpwsubmit" value="true" tabindex="100"><span>发送找回密码的邮件</span></button>
 				</div>
 				</div>
 
 		</form>
 		</div>
 
-		<div class="span6">
+		<div class="span3">
 
 		<div class="">
 		<blockquote>
@@ -198,7 +226,17 @@
 
 		</div>
 
+	<div class="span3">
+		    <div class="list-group">
+		    	<a class="list-group-item active" href="javascript:;" onclick="display('layer_login_$loginhash');display('layer_lostpw_$loginhash');" title="{lang getpassword}">
+		    	<h4 class="list-group-item-heading">{lang getpassword} <i class="icon-ok"></i> </h4>
+		    	<p class="list-group-item-text">如果不记得帐户名 点击这里 输入你的邮箱试试</p>
+		    	</a>
 
+		    	<a href="member.php?mod=logging&action=login" class="list-group-item">登陆</a>
+  				<a href="member.php?mod={$_G[setting][regname]}" class="list-group-item">正在注册</a>
+			</div>
+	</div>
 	</div>
 </div>
 

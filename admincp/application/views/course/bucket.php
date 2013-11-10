@@ -90,7 +90,7 @@ foreach (  $data ['checkout_list'] as $key => $item) { ?>
 <script>
 $(function(){
 
-	$('ul#pre > li').live('click' , function(){
+	$('ul#pre > li').on('click' , function(){
 			
 		var id = $(this).attr('rel');
 
@@ -102,7 +102,7 @@ $(function(){
 
 	});
 
-	$('ul#saved > li').live( 'click' , function(){
+	$('ul#saved > li').on( 'click' , function(){
 		var id = $(this).attr('rel');
 
 		$('ul#pre').append( '<li rel="'+id+'">'+$(this).html()+'</li>');

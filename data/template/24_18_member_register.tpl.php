@@ -1,39 +1,22 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('register');
 0
-|| checktplrefresh('./template/tpl/member/register.htm', './template/default/common/seccheck.htm', 1381981101, '18', './data/template/24_18_member_register.tpl.php', './template/tpl', 'member/register')
-;?><?php include template('common/header'); ?><div id="xxx"></div>
-<script>
+|| checktplrefresh('./template/tpl/member/register.htm', './template/default/common/seccheck.htm', 1383917000, '18', './data/template/24_18_member_register.tpl.php', './template/tpl', 'member/register')
+;?><?php include template('common/header'); ?><script>
 jQuery( function (){
-jQuery('#user_profile').hide();
-
-jQuery('#registerformsubmit').hide();
-
 jQuery('#<?php echo $this->setting['reginput']['email'];?>').focus();
-
-//jQuery('#next_step').attr({'disabled' : 'disabled'});
-
-jQuery('input').keyup( function(){
-
-});
-
-
 jQuery('#<?php echo $this->setting['reginput']['username'];?>').keyup( function() {
-
 var username =  jQuery(this).val();
-
 if( username.length < 3) {
 jQuery('#_username').html('<span class="label label-important"><i class="icon-remove"></i> 用户名长度过短,至少要包括3个字符</span>');
-
 }else {
 jQuery.post('<?php echo $_G['siteurl'];?>/request.php' , { _username : username} , function( response) {
 if( response === '1') {
-jQuery('#_username').html('<span class="label label-important"><i class="icon-remove"></i>  对不起 这个用户名已经存在 请更换</span>');	
+jQuery('#_username').html('<span class="label label-important"><i class="icon-remove"></i>  对不起 这个用户名已经存在 请更换</span>');
 jQuery(this).attr({'data-bool' : 0});
 }	
 else {
 jQuery(this).attr({'data-bool' : 1});
 jQuery('#_username').html('<span class="label label-success"><i class="icon-ok"></i></span>');
-
 }
 });			
 }
@@ -74,7 +57,7 @@ var preg = /^\S+[@]\S+[.]\S+$/;
 if( preg.test(email) === true) {
 jQuery.post('<?php echo $_G['siteurl'];?>/request.php' , { _email : email} , function( response) {
 if( '1' === response) {
-box.next().html('<span class="label label-important"><i class="icon-remove"></i> 此邮箱已经被注册了 请尝试别的邮箱 </span> <a href="http://reg.email.163.com/unireg/call.do?cmd=register.entrance&amp;from=163mail_right" target="blank"><span class="label label-info"><i class="icon-info-sign"></i> 申请一个163邮箱</span></a>');
+box.next().html('<span class="label label-important"><i class="icon-remove"></i> 此邮箱已经被注册了</span>');
 jQuery(this).attr({'data-bool' : false});
 }else {
 box.next().html('<span class="label label-success"><i class="icon-ok"></i></span>');
@@ -82,7 +65,7 @@ jQuery(this).attr({'data-bool' : true});
 }
 });
 }else {
-jQuery('#_email').html('<span class="label label-important"><i class="icon-remove"></i> 电子邮件格式不对 例如:example@163.com</span>');
+jQuery('#_email').html('<span class="label label-important"><i class="icon-remove"></i> 电子邮件格式不对');
 jQuery(this).attr({'data-bool' : true});
 }
 });
@@ -99,16 +82,13 @@ jQuery.post('<?php echo $_G['siteurl'];?>/request.php' , { _mobile : mobile} , f
 
 if( '1' === response) {
 jQuery('#mobile').next().html('<span class="label label-important"><i class="icon-remove"> 非法的手机号格式</i> 此手机号已经被使用');
-jQuery('button').attr({'disabled':'disabled'});
 }else {
-jQuery('#mobile').next().html('<span class="label label-success"><i class="icon-ok"></i></span>');
-jQuery('button').removeAttr('disabled');						
+jQuery('#mobile').next().html('<span class="label label-success"><i class="icon-ok"></i></span>');				
 }				
 });
 
 }else {
-jQuery(this).next().html('<span class="label label-important"><i class="icon-remove"></i> 手机号格式不对 例如:18702739465</span>');
-jQuery('button').attr({'disabled':'disabled'});				
+jQuery(this).next().html('<span class="label label-important"><i class="icon-remove"></i> 手机号格式不对 例如:18702739465</span>');			
 }
 });
 
@@ -118,14 +98,7 @@ jQuery(this).next().html('<span class="label label-success"><i class="icon-ok"><
 }
 });
 
-jQuery('#next_step').click( function() {
 
-jQuery('#user_account').delay('500').hide('slow');
-
-jQuery('#user_profile').delay('500').show('slow');
-
-jQuery('#registerformsubmit').delay('500').show('slow');
-});
 });
 
 var flag_check = function () {
@@ -142,7 +115,7 @@ alert( flag);
 </div>
 </div>
 
-<div class="" id="main_message">
+<div id="main_message">
 <div id="layer_reginfo_t" class="page-header text-center">
 <h2><i class="icon-pencil"></i> 
 <?php if($_GET['action'] != 'activation') { ?>
@@ -156,15 +129,16 @@ alert( flag);
 <?php if(!empty($_G['setting']['pluginhooks']['register_side_top'])) echo $_G['setting']['pluginhooks']['register_side_top'];?>
 <?php if($_GET['action'] == 'activation') { ?>
 放弃激活，现在<a href="member.php?mod=<?php echo $_G['setting']['regname'];?>"><?php echo $_G['setting']['reglinkname'];?></a>
-<?php } else { ?>
-<a href="member.php?mod=logging&amp;action=login&amp;referer=<?php echo rawurlencode($dreferer); ?>" onclick="showWindow('login', this.href);return false;" class="xi2">已有帐号？现在登录</a>
-<?php } ?>
+<?php } else { } ?>
 </small>
 
 </div>
 
 
+<div class="row">
 
+<div class="span2"></div>
+<div class="span7">
 <p id="returnmessage4"></p>
 
 <?php if($this->showregisterform) { ?>
@@ -214,6 +188,7 @@ showDialog(msg, 'notice');
 </script>
 </table>
 <?php } else { ?>
+
 <table class="table">
 <?php if($invite) { if($invite['uid']) { ?>
 
@@ -239,38 +214,34 @@ showDialog(msg, 'notice');
 
 
 <?php if($_GET['action'] != 'activation') { ?>
+
+
 <div id="user_account">
 
-<h2><small>账户信息</small></h2>
+<h4 class="lead text-center">账户信息 <small> * 为必填选项 </small> </h4>
 
 <dl class="dl-horizontal control-group">
-<dt><label class="control-label" for="<?php echo $this->setting['reginput']['email'];?>">Email</label></dt>
+<dt><label class="control-label" for="<?php echo $this->setting['reginput']['email'];?>">Email <font color="red">*</font></label></dt>
 <dd class="controls">
 
 <input class="" type="text" id="<?php echo $this->setting['reginput']['email'];?>" name="email" autocomplete="off" tabindex="1" value="<?php echo $_POST['email'];?>" placeholder="邮件" data-bool=0 />
-
-<span id="_email" class="help-inline"></span>
-<br />
-<em id="emailmore" style="float:left;margin-left:-20px;"></em>
-
+<span id="_email" class="help-inline"></span>								
 </dd>
 
 </dl>
 
 <dl class="dl-horizontal control-group">
 <dt>
-<label class="control-label" for="<?php echo $this->setting['reginput']['username'];?>">用户名</label>
+<label class="control-label" for="<?php echo $this->setting['reginput']['username'];?>">用户名 <font color="red">*</font></label>
 </dt>
 <dd class="controls">
 <input class="" type="text" id="<?php echo $this->setting['reginput']['username'];?>" name="username" tabindex="1" autocomplete="off" size="25" maxlength="15" placeholder="账号" data-bool=0 />
-
 <span id="_username" class="help-inline"></span>
-
 <dd/>
 </dl>
 
 <dl class="dl-horizontal control-group">
-<dt><label class="control-label" for="<?php echo $this->setting['reginput']['password'];?>">密码</label></dt>
+<dt><label class="control-label" for="<?php echo $this->setting['reginput']['password'];?>">密码 <font color="red">*</font></label></dt>
 <dd class="controls">
 <input class="" type="password" id="<?php echo $this->setting['reginput']['password'];?>" name="password" autocomplete="off"  size="25" maxlength="15" tabindex="1" required placeholder="密码" data-bool=0 />
 <span id="_password" class="help-inline"></span>
@@ -278,19 +249,15 @@ showDialog(msg, 'notice');
 </dl>
 
 <dl class="dl-horizontal control-group">
-<dt><label class="control-label" for="<?php echo $this->setting['reginput']['password2'];?>">确认密码</label></dt>
+<dt><label class="control-label" for="<?php echo $this->setting['reginput']['password2'];?>">确认密码 <font color="red">*</font></label></dt>
 <dd class="controls">
 <input class="" type="password" id="<?php echo $this->setting['reginput']['password2'];?>" name="password2" autocomplete="off" size="25" maxlength="15" tabindex="1" value="" required placeholder="再次输入密码" data-bool=0 />
 <span id="_password2" class="help-inline"></span>
 </dd>
 </dl>
 
-
-<dl class="dl-horizontal margin-top control-group">
-<dt></dt>
-<dd><button id="next_step" type="button" class="btn btn-success btn-large span2">下一步</button></dd>
-</dl>
 </div>
+
 <?php } if($_GET['action'] == 'activation') { ?>
 
 <tr>
@@ -314,10 +281,11 @@ showDialog(msg, 'notice');
 </tr><?php $invitecode = 1;?><?php } ?>
 
 <div id="user_profile">
-<h2><small>用户资料</small></h2><?php if(is_array($_G['cache']['fields_register'])) foreach($_G['cache']['fields_register'] as $field) { if($htmls[$field['fieldid']]) { if($field['required']) { } ?>
+
+<h4 class="lead text-center">用户资料 <small> * 为必填选项 </small> </h4><?php if(is_array($_G['cache']['fields_register'])) foreach($_G['cache']['fields_register'] as $field) { if($htmls[$field['fieldid']]) { if($field['required']) { } ?>
 
 <dl class="dl-horizontal control-group">
-<dt><label class="control-label" for="<?php echo $field['fieldid'];?>"><?php echo $field['title'];?></label></dt>
+<dt><label class="control-label" for="<?php echo $field['fieldid'];?>"><?php echo $field['title'];?> <font color="red">*</font> </label></dt>
 <dd class="controls"><?php echo str_replace('px' , 'input-large' , $htmls[$field['fieldid']])?><span class="help-inline"></span>
 </dd>
 </dl>
@@ -455,6 +423,18 @@ EOF;
 <?php } ?>
 <?php if(!empty($_G['setting']['pluginhooks']['register_bottom'])) echo $_G['setting']['pluginhooks']['register_bottom'];?>
 </div>
+
+
+<div class="span3">
+<div class="list-group">
+<a href="member.php?mod=logging&amp;action=login" class="list-group-item">登陆</a>
+  		<a href="member.php?mod=<?php echo $_G['setting']['regname'];?>" class="list-group-item active">正在注册 <i class="icon-ok"></i> </a>
+</div>
+</div>
+
+</div>
+
+
 <div id="layer_regmessage" style="display: none">
 <div class="c"><div class="alert_right">
 <div id="messageleft1"></div>
