@@ -64,7 +64,7 @@ class table_b_course extends discuz_table {
 		if( !isset( $is_free) )
 			$is_free = 0;
 		
-		return DB::fetch_all('select id,fullname,logo,summary,category_id from '.DB::table( $this->_table).' where is_hidden = %d and is_free = '.$is_free.' '.$category.' order by sortid desc limit '.($page-1)*$num.','.$num , array(0));
+		return DB::fetch_all('select id,fullname,logo,summary,category_id from '.DB::table( $this->_table).' where is_hidden = %d and is_free = '.$is_free.' '.$category.' order by sortid asc limit '.($page-1)*$num.','.$num , array(0));
 	}
 
 	public function get_free_course_by_page($page = 1,$num = 10) {

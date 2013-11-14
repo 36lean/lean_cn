@@ -57,8 +57,10 @@ class Course_page extends CI_Model {
 
 		$page_id = $this->db->insert_id();
 
-		if( isset( $_FILES['image_file']) && $_FILES['image_file']['error'] === 0) {
+		if( isset( $_FILES['image_file']) ) {
+
 			$image = save_photo( $_FILES['image_file']['tmp_name'] , $_FILES['image_file']['name'] , $page_id , 'page');
+			
 			$this->db->update( $this->lesson_video , array('image_file' => $image) , array('id' => $film_id));
 		}
 	}

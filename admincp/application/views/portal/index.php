@@ -218,10 +218,17 @@ $( function(){
 
 	<table class="table table-bordered table-condensed">
 
+		<tr>
+			<td class="span6">分类名</td>
+			<td class="span2">状态</td>
+			<td class="span2">修改信息</td>
+			<td class="span2">清理</td>
+		</tr>
 
 		<?php foreach ($categories as $category) { ?>
 		<tr>
 			<td><a href="#"><?php echo $category['category_title'];?></a></td>
+			<td><?php echo $category['visible']=='0' ? '<span class="label">隐藏</label>' : '<span class="label label-success">可见</label>' ;?></td>
 			<td><a href="<?php echo site_url('portal/index/category/'.$category['id'])?>">修改</a></td>
 			<td><a href="<?php echo site_url('portal/category_remove/'.$category['id'])?>">删除</a></td>
 		</tr>
@@ -251,6 +258,19 @@ $( function(){
 		</div>
 		<div class="span10">
 			<input class="span5" name="category_title" type="text" value="<?php if( isset( $old_category['category_title'])) { echo $old_category['category_title']; }?>" />
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="span2">
+			<label>可见性</label>
+		</div>
+
+		<div class="span10">
+			<select name="visible">
+				<option <?php if( isset( $old_category['visible'])){?> <?php if( $old_category['visible'] == '1') echo 'selected="selected"';?> <?php }?> value="1">可见</option>
+				<option <?php if( isset( $old_category['visible'])){?> <?php if( $old_category['visible'] == '0') echo 'selected="selected"';?> <?php }?> value="0">隐藏</option>
+			</select>
 		</div>
 	</div>
 

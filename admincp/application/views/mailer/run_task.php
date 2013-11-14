@@ -25,14 +25,18 @@
 						<?php if( $mail['send'] == 0){?>
 							<input name="<?php echo $mail['id'];?>" <?php if( $mail['send'] == 0){?>checked="checked"<?php }?> type="checkbox" />
 						<?php }else{?>
-							<span class="label">已发送过</span>
+							
 						<?php }?>
 					</td>
 					<td class="span4">
 						<a href="#"><?php echo $mail['email'];?></a>
 					</td>
 					<td class="span1" id="<?php echo $mail['id'];?>">
-							<span class="label">准备发送</span>
+						<?php if( $mail['send'] == 0){?>
+							<span class="label label-info">准备发送</span>
+						<?php }else{?>
+							<span class="label">已发送过</span>
+						<?php }?>
 					</td>
 
 					<td>

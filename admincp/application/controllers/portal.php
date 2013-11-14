@@ -93,6 +93,8 @@ class Portal extends Base_Controller
 		if( $action === 'category' )
 		{
 			$old_category = $this->article->get_category_by_id( $category_id);
+
+			
 		}else
 		{
 			$old_category = array();

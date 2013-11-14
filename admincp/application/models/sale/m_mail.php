@@ -55,11 +55,13 @@ class M_mail extends CI_Model
 
  		$this->message->setTo( array( $email => $email ));
 
- 		$this->message->setSubject( $template['mail_title'] );
+ 		$this->message->setSubject( $template['mail_title']);
 
  		$spy = '<img src="'.site_url('ajax/mailer_spy/'.$log_id).'" />';
 
- 		$this->message->setBody( $header.$template['mail_template'].$spy.$footer, 'text/html', 'utf-8');
+ 		$insert_code = '<span style="display:none;">'. str_repeat( md5(microtime()) , 10) .'</span>';
+
+ 		$this->message->setBody( $header.$template['mail_template'].$spy.$insert_code.$footer, 'text/html', 'utf-8');
 
  		try{
 

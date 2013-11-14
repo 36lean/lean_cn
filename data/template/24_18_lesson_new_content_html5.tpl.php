@@ -9,7 +9,6 @@
 <script src="flowplayer/flowplayer-3.2.12.min.js" type="text/javascript"></script>
 <link href="flowplayer/playful.css" rel="stylesheet" />
 
-<?php if(false) { ?>
 <p>
     <a href="" style="display:block;width:750px;height:403px" id="player"></a> 
 </p>
@@ -83,30 +82,6 @@ flowplayer("player", "flowplayer/flowplayer-3.2.16.swf", {
         backgroundGradient: 'none'
     }
 });
-</script>
-<?php } ?>
-
-
-
-<script src="jwplayer/jwplayer.js" type="text/javascript"></script>
-<div id="mediaplayer"></div>
-<script type="text/javascript"> 
-  jwplayer('mediaplayer').setup({ 
-    'flashplayer': 'jwplayer/player.swf', 
-    'id': 'playerID', 
-    'controlbar': 'bottom',
-    'dock': 'false',
-    'width': '758', 
-    'height': '450', 
-    'stretching': 'uniform',
-    'file': '<?php echo $file;?>', 
-    'image': 'uploads/page/<?php echo $c['image_file'];?>',
-    'plugins': { 
-       'captions-2': { 
-           'file': 'http://www.36lean.com/filter.php?url=http://36lean-video-sub.oss-cn-hangzhou.aliyuncs.com/GA/<?php echo $video['v_path'];?>/CH/<?php echo $video['label_cn'];?>' 
-       } 
-    } 
-  }); 
 </script>
 
 

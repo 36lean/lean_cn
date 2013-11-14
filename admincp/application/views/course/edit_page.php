@@ -111,16 +111,24 @@ if( 2 === $status) {
 
 <div class="container-fluid"><div class="row-fluid">
 <div class="span6">
-<!--
+
 <div class="input-prepend">
 	<span class="add-on">上传封面</span>
 	<input name="image_file" type="file" />
 </div>
--->
+
 </div>
 
 <div class="span6">
-	<img class="img-polaroid" src="<?php echo $config['videourl'] . $page['v_path']?>/PNG/<?php echo $page['image_file']?>" width="60%" />
+		<?php
+		global $constant;
+		 if( file_exists( $constant['uploads_path'] . '/page/'. $page['image_file'] )) {?>
+		<img class="img-polaroid" width="100px" src="<?php echo $constant['discuz_url'] .  'uploads/page/' .$page['image_file'];?>" />
+		<?php }else {?>
+		<img class="img-polaroid" width="100px" src="<?php echo $config['videourl'] . $page['v_path'] .  '/PNG/' .$page['image_file'];?>" />
+		<?php }?>
+
+		<?php echo $page['image_file'];?>
 </div>
 </div>
 </div>

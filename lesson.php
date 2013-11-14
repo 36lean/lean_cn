@@ -209,13 +209,33 @@ if( isset( $_GET['page_content'])){
 			str_replace('http://', '', $c['video_pc']);
 
 			ob_start();
-			require template('lesson/new_content');
-			$html = ob_get_contents();
+			
+			if( preg_match('/MSIE\s10/', $_SERVER["HTTP_USER_AGENT"] ))
+			{
+				require template('lesson/new_content_html5');
+
+				$html['html'] =  ob_get_contents();
+
+				$html['type'] = '_html5';
+			}	
+
+			else
+
+			{
+
+				require template('lesson/new_content');
+
+				$html['html'] = ob_get_contents();
+
+				$html['type'] = '';
+			}
+
+			
 			ob_get_clean();
 
-			file_put_contents( 'cache/page_content/'.$id.'.cache' , $html);
+			file_put_contents( 'cache/page_content/'.$id.$html['type'].'.tmp' , $html['html']);
 		}
-		require 'cache/page_content/'.$id.'.cache';
+		require 'cache/page_content/'.$id.$html['type'].'.tmp';
 
 	} else if( $_G['uid']) {
 
@@ -287,9 +307,14 @@ if( !file_exists( 'cache/lesson_index/'.$page.'.cache')) {
 }
 */
 
+
+
+
 include_once template('common/header');
 require template('lesson/home');
 include_once template('common/footer');
+
+var_dump( $_SERVER["HTTP_USER_AGENT"] ) ;
 
 C::t('addon_login')->user_login( $_G['uid'] , $_G['sid'] , $_G['clientip']);
 //function to detect subtitles' encoding

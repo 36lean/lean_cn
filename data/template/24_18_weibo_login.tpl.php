@@ -1,0 +1,1 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('login');?><?php include template('common/header'); ?><a href="<?php echo $code_url;?>"><img src="./weibo/weibo_login.png" /></a><?php include template('common/footer'); ?>

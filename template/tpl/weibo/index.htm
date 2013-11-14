@@ -1,7 +1,5 @@
 {template common/header}
 
-<h1><i class="icon-weibo "></i> 精益云围脖</h1>
-
 {if $unused}
 <div class="alert alert-info">
 	<i class="icon-info-sign"></i> 亲爱的用户 <strong>{$user['screen_name']}</strong> ,您的围脖账号还没关联到本站账户,请选择一种方式绑定到本站
@@ -36,10 +34,12 @@
 
 
 {if $unused === true}
+<div class="container-fluid">
 <div class="row-fluid">
 		
-	<div class="span6 hero-unit" style="height:280px;">
-		<h4>若您是本站会员 请登录</h4>
+	<div class="span6" align="center">
+	<div class="strong_border">
+		<p class="lead text-center alert alert-info">若您是本站会员 请登录</p>
 
 		{if $status == -2}
 		<div class="alert alert-info"><i class="icon-info-sign"></i> 用户名或者密码错误</div>
@@ -67,12 +67,13 @@
 				</div>
 			</div>
 		</form>
-
+	</div>
 	</div>
 			
 
-	<div class="span6 hero-unit" style="height:280px;">
-		<h4>若您还未注册 现在马上注册</h4>
+	<div class="span6" align="center">
+	<div class="strong_border">
+		<p class="lead text-center alert alert-success">若您还未注册 现在马上注册</p>
 		<form action="" method="post">
 		<input name="weibo_id" type="hidden" value="{$user['id']}" />
 		<input type="hidden" name="formhash" value="{FORMHASH}" />
@@ -103,7 +104,9 @@
 
 		</form>
 	</div>
+	</div>
 
+</div>
 </div>
 {/if}
 {template common/footer}

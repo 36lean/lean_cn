@@ -25,11 +25,11 @@ class Course extends Base_Controller {
 		);
 	}
 
-	public function index() {
+	public function index( $column = '' , $value = '') {
 
 		$this->course->update_sortid();
 		
-		$list = $this->course->list_course();
+		$list = $this->course->list_course( $column , $value);
 
 		$category = $this->category->get_categories();
 
@@ -159,8 +159,16 @@ class Course extends Base_Controller {
 			));
 
 			if( isset( $_FILES['image_file']) && $_FILES['image_file']['size'] > 0) {
+				
 				$type = explode('.', $_FILES['image_file']['name']);
-				move_uploaded_file( $_FILES['image_file']['tmp_name'], $constant['uploads_path'].'/page/'.$_POST['page_id'].'.'.$type[1]);
+				move_uploaded_file( $_FILES['image_file']['tmp_name'], '../uploads/page/'.$_POST['page_id'].'.'.$type[1]);
+				$image_file = $_POST['page_id'].'.'.$type[1];
+
+			}else
+			{
+				$film = $this->db->select('image_file')->where( array('id'=>$_POST['page_id']))->get()->row_array();
+
+				$image_file = $film['image_file'];
 			}
 
 			$video_ok = $this->page->save_video_info( array(
@@ -176,6 +184,7 @@ class Course extends Base_Controller {
 				'v_time' => $_POST['v_time'],
 				'cn_intro' => $_POST['cn_intro'],
 				'en_intro' => $_POST['en_intro'],
+				'image_file' =>  $image_file, 
 			));
 
 			$status = $info_ok + $video_ok;

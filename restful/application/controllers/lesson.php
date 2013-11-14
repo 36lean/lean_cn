@@ -13,4 +13,18 @@ class Lesson extends REST_Controller {
 
 	}
 
+	public function lesson_post()
+	{
+
+		if( !isset( $_POST['id']))	
+			$id = 1;
+		else
+			$id = intval( $_GET['id']);
+
+		$data = $this->db->select('*')->from('b_lesson_pages')->where( array('id'=>$id))->get()->row_array();
+
+		echo json_encode( $data);
+
+	}
+
 }

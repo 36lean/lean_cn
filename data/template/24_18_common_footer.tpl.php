@@ -9,6 +9,9 @@
   </div>
 </div>
 
+</div>
+</div>
+
 <script src="<?php echo $_G['siteurl'];?>static/mot/professional.js" type="text/javascript"></script>
 <script src="<?php echo $_G['siteurl'];?>static/bs/js/bootstrap.min.js" type="text/javascript"></script>
 <!--[if IE]>
@@ -26,5 +29,6 @@
   ga('send', 'pageview');
 */
 </script>
+
 </body>
 </html>

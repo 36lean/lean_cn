@@ -1,0 +1,261 @@
+<!--<script>
+jQuery( function() {
+  jQuery.ajax({
+    url : 'lesson.php',
+    type : 'GET',
+    data : { click_collection:1 , id: "22", type:'c'},
+    dataType:'html',
+  });
+});
+</script>
+-->
+
+<div class="container">
+<p class="text-left"> 
+  <a href="lesson.php"><i class="icon-home"></i> 精益云学院</a> <span class="divider">/</span> 
+  <a href="lesson.php?pages_list=22"><i class="icon-book"></i> 领导标准作业 中文版</a> 
+</p>
+</div>
+
+<div class="page-header">
+  <h2 align="center">领导标准作业 中文版 </h2>
+</div>
+
+<div class="row-fluid">
+
+  <div class="span6">
+  <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
+  <p></p>
+  <blockquote><i class="icon-info-sign"></i> 分类</blockquote>
+  <p>精益课程</p>
+  </div>
+
+
+  <div class="span6">
+    <img class="img-polaroid lazy" src="uploads/course/22.png" data-original="uploads/course/22.png" style="width:80%;" />
+  </div>
+</div>
+
+<hr>
+
+<div class="container-fluid">
+<div class="row-fluid">
+  <div class="span4">
+    <div>
+
+            
+
+        
+    
+  
+    <ul class="nav nav-list well">
+      <li><h4><i class="icon-list"></i> 导航</h4></li>
+      <li class="nav-header"><i class="icon-align-justify"></i> 课程大纲</li>
+            <li><a href="lesson.php?page_content=249"><small><strong>第1节 领导标准作业概述</strong></small></a></li>
+            <li><a href="lesson.php?page_content=250"><small><strong>第2节 过程聚焦</strong></small></a></li>
+            <li><a href="lesson.php?page_content=251"><small><strong>第3节 创建领导标准作业</strong></small></a></li>
+            <li><a href="lesson.php?page_content=252"><small><strong>第4节 现场指导</strong></small></a></li>
+            <li><a href="lesson.php?page_content=253"><small><strong>第5节 目视化控制</strong></small></a></li>
+            <li><a href="lesson.php?page_content=254"><small><strong>第6节 纸芝居系统</strong></small></a></li>
+            <li><a href="lesson.php?page_content=255"><small><strong>第7节 责任和纪律</strong></small></a></li>
+            
+          </ul>
+    
+    
+    </div>
+  </div>
+
+
+<div class="span8">
+                          <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="249" href="lesson.php?page_content=249" title="第1节 领导标准作业概述">
+                
+                                <img class="img-polaroid lazy" id="249" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-01.png" alt="第1节 领导标准作业概述" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-01.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="249" href="lesson.php?page_content=249" title="第1节 领导标准作业概述">
+                    第1节 领导标准作业概述                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : 9:59</span>
+                </p>
+
+                迈克介绍了领导标准作业的概念, 同时介绍美国教练成功管理的橄榄球队.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="250" href="lesson.php?page_content=250" title="第2节 过程聚焦">
+                
+                                <img class="img-polaroid lazy" id="250" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-02.png" alt="第2节 过程聚焦" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-02.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="250" href="lesson.php?page_content=250" title="第2节 过程聚焦">
+                    第2节 过程聚焦                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : 2:04</span>
+                </p>
+
+                迈克用一个简单的问题挑战观众, "你是工作在流程里面,还是工作在流程之上? "              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="251" href="lesson.php?page_content=251" title="第3节 创建领导标准作业">
+                
+                                <img class="img-polaroid lazy" id="251" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-03.png" alt="第3节 创建领导标准作业" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-03.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="251" href="lesson.php?page_content=251" title="第3节 创建领导标准作业">
+                    第3节 创建领导标准作业                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : 2:44</span>
+                </p>
+
+                学习从不同的标准作业, 从一线经理到公司的高级领导.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="252" href="lesson.php?page_content=252" title="第4节 现场指导">
+                
+                                <img class="img-polaroid lazy" id="252" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-04.png" alt="第4节 现场指导" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-04.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="252" href="lesson.php?page_content=252" title="第4节 现场指导">
+                    第4节 现场指导                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : 11:55</span>
+                </p>
+
+                观看迈克在现场,一个计划外的领导标准作业指导环节.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="253" href="lesson.php?page_content=253" title="第5节 目视化控制">
+                
+                                <img class="img-polaroid lazy" id="253" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-05.png" alt="第5节 目视化控制" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-05.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="253" href="lesson.php?page_content=253" title="第5节 目视化控制">
+                    第5节 目视化控制                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : 11:44</span>
+                </p>
+
+                学习目视化控制在领导标准作业中的重要性.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="254" href="lesson.php?page_content=254" title="第6节 纸芝居系统">
+                
+                                <img class="img-polaroid lazy" id="254" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-06.png" alt="第6节 纸芝居系统" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-06.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="254" href="lesson.php?page_content=254" title="第6节 纸芝居系统">
+                    第6节 纸芝居系统                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : 4:39</span>
+                </p>
+
+                迈克解释了一个简单但非常强大可用的审计系统.              </div>
+
+            </div>
+            </div>
+                        <div class="container-fluid lesson-item">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="255" href="lesson.php?page_content=255" title="第7节 责任和纪律">
+                
+                                <img class="img-polaroid lazy" id="255" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-07.png" alt="第7节 责任和纪律" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/LSW/PNG/LSW-07.png" />
+                
+                </a>
+              </div>
+
+              
+              <div class="span8">
+                <h4>
+                  <a id="255" href="lesson.php?page_content=255" title="第7节 责任和纪律">
+                    第7节 责任和纪律                  </a>
+                </h4>
+                
+                <p>
+                 <span class="label label-info">语音 : 普通话</span>
+                 <span class="label label-info">时长 : 10:29</span>
+                </p>
+
+                领导标准作业最难的部分是实施每日的责任和纪律, 迈克在本课程中解释如何做到这两点.               </div>
+
+            </div>
+            </div>
+            
+      </div>
+
+
+
+
+</div>
+</div>
+
+

@@ -16,14 +16,33 @@ jQuery(function(){
 		jQuery(this).removeClass('lesson-item-hover');
 	});	
 
-  jQuery('.course_line').on('mouseover' , function(){
-    jQuery(this).removeClass('course_line');
-    jQuery(this).addClass('course_line_hover');
-  });
+  	jQuery('.course_line').on('mouseover' , function(){
+    	jQuery(this).removeClass('course_line');
+    	jQuery(this).addClass('course_line_hover');
+  	});
 
-  jQuery('.course_line').on('mouseout' , function(){
-    jQuery(this).removeClass('course_line_hover');
-    jQuery(this).addClass('course_line');
-  });
-  
+  	jQuery('.course_line').on('mouseout' , function(){
+    	jQuery(this).removeClass('course_line_hover');
+    	jQuery(this).addClass('course_line');
+  	});
+ 
+  	jQuery('.course_line').on('mouseover' , function(){
+    	jQuery(this).removeClass('course_line');
+    	jQuery(this).addClass('course_line_hover');
+  	});
+
+  	jQuery('.course_line').on('mouseout' , function(){
+    	jQuery(this).removeClass('course_line_hover');
+    	jQuery(this).addClass('course_line');
+  	});
+ 
+   	jQuery('.strong_border').on('mouseover' , function(){
+    	jQuery(this).removeClass('strong_border');
+    	jQuery(this).addClass('strong_border_hover');
+  	});
+
+  	jQuery('.strong_border').on('mouseout' , function(){
+    	jQuery(this).removeClass('strong_border_hover');
+    	jQuery(this).addClass('strong_border');
+  	});  
 });

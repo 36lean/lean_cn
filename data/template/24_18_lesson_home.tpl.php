@@ -1,4 +1,10 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+<div class="container">
+<p class="text-left"> 
+  <a href="lesson.php"><i class="icon-home"></i> 精益云学院</a>
+</p>
+</div>
+
 <p align="center"><a href="user.php?ac=sub_plan"><img class="img-polaroid lazy" src="<?php echo $_G['siteurl'];?>static/mot/course_banner.gif" data-original="<?php echo $_G['siteurl'];?>static/mot/course_banner.gif" /></a></p>
 <div class="container-fluid">
   <div class="row-fluid">
@@ -41,12 +47,3 @@
 
 </div>
 </div>
-<script>
-
-jQuery(function(){
-
-
-
-});
-
-</script>

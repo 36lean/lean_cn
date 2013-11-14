@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Identify: 180114649ed0a21e6afeb6fbef834dc4
+//Identify: 8bff36b03b7d0f10b06e163defae4c42
 
 $domain = array (
   'defaultindex' => 'portal.php',
@@ -15,15 +15,15 @@ $domain = array (
     'group' => '',
     'home' => '',
     'mobile' => '',
-    'default' => '127.0.0.1/lean',
+    'default' => '127.0.0.1/lean/portal.php',
   ),
   'root' => 
   array (
-    'home' => '',
     'group' => '',
     'forum' => '',
     'topic' => '',
     'channel' => '',
+    'home' => '',
   ),
 );
 ?>

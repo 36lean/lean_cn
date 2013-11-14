@@ -47,6 +47,7 @@ class Home_article_models extends CI_Model
 	{
 		return $this->db->select(' id , category_title , category_link ')
 						->from('attach_category')
+						->where( array( 'visible' => 1 ))
 						->get()->result_array();
 	}
 

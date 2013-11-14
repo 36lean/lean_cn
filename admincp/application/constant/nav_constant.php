@@ -5,7 +5,7 @@ global $modules;
 //$ci->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
 
 $constant = array(
-	'discuz_url' => 'http://www.36lean.com/',
+	'discuz_url' => 'http://127.0.0.1/lean/',
 	'uploads_path' => '.././uploads',
 	'index' => '默认页',
 	'welcome' => '欢迎',

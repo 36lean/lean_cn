@@ -14,10 +14,15 @@ class Course_course extends CI_Model {
 		$this->_page = 'b_lesson_pages';
 	}
 
-	public function list_course() {
+	public function list_course( $column , $value ) {
 		$this->db->select( $this->_course.'.* , '.$this->_category.'.category');
 		$this->db->join('b_category', $this->_course.'.category_id = '.$this->_category.'.id' , 'left');
 		$this->db->from( $this->_course);
+		if( $column != '' && $value != '')
+		{
+			$this->db->where( array($column => $value));
+		}
+
 		$this->db->order_by('sortid','asc');
 		return $this->db->get()->result_array();
 	}

@@ -404,3 +404,22 @@ div.course_line_hover {
 img.course_cover {
   margin: 5%;
 }
+div.strong_border {
+  border: 1px solid #eee;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  padding: 5%;
+}
+
+div.strong_border_hover {
+  border: 1px solid;
+  border-color: #0088cc;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+     -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+          box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  padding: 5%;
+}

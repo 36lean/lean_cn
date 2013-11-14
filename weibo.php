@@ -11,6 +11,14 @@ include_once( './weibo/saetv2.ex.class.php' );
 $discuz = C::app();
 $discuz->init();
 
+if( $_G['uid'] > 0)
+{
+
+	require template('weibo/already_signin');
+
+	exit;
+}
+
 $c = new SaeTClientV2( WB_AKEY , WB_SKEY , $_SESSION['token']['access_token'] );
 $ms  = $c->home_timeline(1,99); // done
 $uid_get = $c->get_uid();
@@ -22,7 +30,9 @@ $mod = trim( $_GET['mod']) ? trim( $_GET['mod']) : 'index';
 if( !$weibo_id) {
 	$o = new SaeTOAuthV2( WB_AKEY , WB_SKEY );
 	$code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );
-	require template('weibo/login');
+		
+	header( 'Location: '.$code_url);
+	//require template('weibo/login');
 	exit;
 }
 else {
@@ -49,7 +59,7 @@ if( $website_uid) {
 	$auth = C::t('attach_weibo')->get_logininfo_by_uid( $website_uid['uid']);
 	setloginstatus( $auth , 2592000);
 
-	//header('Location: weibo.php');
+	header('Location: lesson.php');
 
 }else {
 	//若没有 后面进入绑定账号的页面
@@ -60,7 +70,21 @@ if( $website_uid) {
 //绑定已经存在的网站账号
 if( isset( $_POST['login_with_siteaccont'])) {
 
-	$result =  userlogin( trim( $_POST['username']) , trim( $_POST['password']));
+	$username = trim( $_POST['username'] );
+
+	$username = preg_replace('/[^0-9A-Za-z\_]+/', '', $username);
+
+
+	//DB::fetch_first('select * from '..' where username = ');
+
+	$result =  userlogin( $username , trim( $_POST['password']));
+
+	if( ! $result['member'])
+	{
+		require template('weibo/password_wrong');
+		exit;
+	}
+		
 
 	setloginstatus( $result['member'] , 2592000);
 
@@ -70,7 +94,9 @@ if( isset( $_POST['login_with_siteaccont'])) {
 
 	}
 
-	require template('weibo/online');
+	header('Location: lesson.php');
+
+	//require template('weibo/online');
 
 	exit;
 }else if( isset( $_POST['register_with_weiboid'])) {
@@ -81,6 +107,8 @@ if( isset( $_POST['login_with_siteaccont'])) {
 	$newemail = strtolower(trim($_POST['email']));
 	$_GET['newgroupid'] = 8;
 	$_GET['emailnotify'] = true;
+
+
 
 	if(C::t('common_member')->fetch_uid_by_username($newusername) || C::t('common_member_archive')->fetch_uid_by_username($newusername)) {
 		echo '<div class="alert alert-error"><i class="icon-info-sign"></i> 用户名已经存在</div><div><a class="btn btn-primary" href="weibo.php">返回</a></div>';
@@ -150,6 +178,8 @@ if( isset( $_POST['login_with_siteaccont'])) {
 		}
 
 		updatecache('setting');
+
+		//有问题这里
 		
 		C::t('attach_weibo')->bind( $_G['uid'] , $weibo_id);
 

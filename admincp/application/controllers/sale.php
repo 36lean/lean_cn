@@ -17,8 +17,9 @@ class Sale extends Base_Controller
 	public function navigation()
 	{
 		return array(
-			array('route' => 'index' 		, 'alias' => '客户列表' , 'status' => 'active') ,
-			array('route' => 'web' 			, 'alias' => '网站会员' , 'status' => 'active') ,
+			array('route' => 'index' 		, 'alias' => '联系人列表' , 'status' => 'active') ,
+			array( 'route' => 'company' 	, 'alias' => '公司列表' , 'status' => 'active') ,
+			array('route' => 'web' 			, 'alias' => '会员列表' , 'status' => 'active') ,
 			array('route' => 'expense' 		, 'alias' => '付费会员' , 'status' => 'active') ,
 			array( 'route' => 'recent' 		, 'alias' => '最近联系人' , 'status' => 'active') ,
 			array('route' => 'remind' 		, 'alias' => '今日提醒' , 'status' => 'active') ,
@@ -199,6 +200,14 @@ class Sale extends Base_Controller
 
 	}
 
+	public function company( $page = 1 , $offset = 30 )
+	{
+		$corporations = $this->sale->get_corporations( $page , $offset);
+
+		$sum = $this->sale->sum_of_company();
+
+		$this->template->build('sale/company' , array('corporations'=>$corporations,'offset'=>$offset,'sum'=>$sum));		
+	}
 
 	public function web( $page = 1 , $offset = 30 )
 	{
@@ -477,7 +486,7 @@ class Sale extends Base_Controller
 
 		$this->_program();
 
-		$this->template->build('marketing/create',array(
+		$this->template->build('sale/create',array(
 							   'contact_column'=> $this->config->config['map']['contacts'] , 
 							   'company_column'=> $this->config->config['map']['company'],
 		));

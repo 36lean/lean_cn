@@ -5,13 +5,37 @@
 
 <hr />
 
+<div class="container-fluid">
+<div class="row-fluid">
+
+
+<div class="span3">
+
+    <ul class="nav nav-tabs nav-stacked">
+        
+        <li class="active"><a href="lesson.php?page_content=1"><h4><i class="icon-list">&nbsp;</i>课程分类</h4></a></li>
+            
+        <li><a href="<?php echo site_url('course/index');?>">全部课程</a></li>
+        <li><a href="<?php echo site_url('course/index/is_free/0');?>"><i class="icon-star"></i> <span class="label label-info">收费课程</span> <i class="icon-angle-right pull-right"></i></a></li>
+        <li><a href="<?php echo site_url('course/index/is_free/1');?>"><i class="icon-star-empty"></i> <span class="label label-success">免费课程</span> <i class="icon-angle-right pull-right"></i></a></li>
+        <li><a href="<?php echo site_url('course/index/is_hidden/0');?>"><i class="icon-eye-open"></i> <span class="label label-info">公开课程</span> <i class="icon-angle-right pull-right"></i></a></li>
+        <li><a href="<?php echo site_url('course/index/is_hidden/1');?>"><i class="icon-eye-close"></i> <span class="label">隐藏课程</span> <i class="icon-angle-right pull-right"></i></a></li>
+        <?php foreach( $category as $key => $value){?>
+        <li><a href="<?php echo site_url('course/index/category_id/'.$key);?>"><i class="icon-check"></i> <?php echo $value;?> <i class="icon-angle-right pull-right"></i></a></li>
+        <?php }?>
+    </ul>
+
+</div>
+
+
+<div class="span9">
 <form action="" method="post">
 <table class="table table-striped table-bordered table-condensed" width="100%">
     <tr>
         <td class="span1">编号</td>
         <td class="span2">封面</td>
-        <td class="span3">标题</td>
-        <td class="span4">状态</td>
+        <td class="span2">标题</td>
+        <td class="span5">状态</td>
         <td class="span2">操作</td>
     </tr>
 
@@ -21,7 +45,7 @@ global $constant;
 foreach ($list as $course) {
 ?>
     <tr>  
-    <td><input name="<?php echo $course['id'];?>" value="<?php echo $course['sortid'];?>" class="span1" type="text"  /></td>
+    <td><input name="<?php echo $course['id'];?>" value="<?php echo $course['sortid'];?>" class="span12" type="text"  /></td>
     <td><img class="grayscale" src="<?php echo $constant['discuz_url']?>uploads/course/<?php echo $course['logo']?>" style="width:80px;height:40px;"/>
     </td>
     <td>
@@ -78,6 +102,9 @@ foreach ($list as $course) {
 </table>
 <button class="btn btn-primary" name="update_sortid" value="1">更新序号</button>
 </form>
+</div>
+
+</div></div>
 
 
 <script type="text/javascript">

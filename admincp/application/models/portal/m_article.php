@@ -9,6 +9,7 @@ class M_article extends CI_Model
 		{
 			$category = array(
 				'category_title'	=> trim( $this->input->post('category_title') ) ,
+				'visible'   		=> intval( $this->input->post('visible')) , 
 				'summary'			=> trim( $this->input->post('summary') )	    ,
 				'category_link'		=> trim( $this->input->post('category_link') )  ,
 				'keywords'			=> trim( $this->input->post('keywords') )		, 
@@ -34,7 +35,7 @@ class M_article extends CI_Model
 
 	public function get_categories()
 	{
-		return $this->db->select('id,category_title')
+		return $this->db->select('id,category_title,visible')
 						->from( 'attach_category')
 						->get()
 						->result_array();

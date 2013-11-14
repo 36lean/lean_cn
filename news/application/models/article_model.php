@@ -51,6 +51,7 @@ class Article_model extends CI_Model
 	{
 		return $this->db->where( array('id'=>$id))
 						->from('attach_category')
+						->where( array('visible' => 1))
 						->get()
 						->row_array();
 	}
@@ -61,6 +62,7 @@ class Article_model extends CI_Model
 
 		return $this->db->like( array('category_link' => $title))
 				 		->from('attach_category')
+				 		->where( array('visible' => 1))
 				 		->get()
 				 		->row_array();
 	}	

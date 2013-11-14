@@ -324,7 +324,12 @@ class M_sale extends CI_Model
 	{
 		if( $this->input->post('contact_search') )
 		{	
+
+
 			$str = trim( $this->input->post('key'));
+
+			if( $str === '')
+				return ;
 
 			if( preg_match('/^\w\d$/', $str)) {
 				
@@ -345,7 +350,7 @@ class M_sale extends CI_Model
 
 			}else {
 
-				$where = 'companyname =\''.$str.'\'';
+				$where = 'company.companyname =\''.$str.'\'';
 
 			}
 
@@ -497,4 +502,24 @@ class M_sale extends CI_Model
 						->get()->num_rows();
 	}
 
+	public function get_corporations( $page =  1 , $offset = 30)
+	{
+		return $this->db->select('c.* , count( t.id) as workers')
+						->from('admin_company c')
+						->join('admin_contacts t' , 't.company_id = c.id' , 'left' )
+						->limit( $offset , ($page-1)*$offset)
+						->group_by('c.id')
+						->order_by('id','desc')
+						->get()->result_array();
+	}
+
+	public function sum_of_company()
+	{
+		return $this->db->select('id')
+						->from('admin_company')
+						->get()
+						->num_rows();
+	}
+
+	
 }

@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('login');
 0
-|| checktplrefresh('./template/tpl/member/login.htm', './template/default/common/seccheck.htm', 1383919520, '18', './data/template/24_18_member_login.tpl.php', './template/tpl', 'member/login')
+|| checktplrefresh('./template/tpl/member/login.htm', './template/default/common/seccheck.htm', 1384248485, '18', './data/template/24_18_member_login.tpl.php', './template/tpl', 'member/login')
 ;?><?php include template('common/header'); ?><?php $loginhash = 'L'.random(4);?><?php if(empty($_GET['infloat'])) { ?>
 <div id="ct">
 <div class="nfl" id="main_succeed" style="display: none">
@@ -181,7 +181,10 @@ EOF;
 <?php if($this->setting['sitemessage']['login'] && empty($_GET['infloat'])) { ?><a href="javascript:;" id="custominfo_login_<?php echo $loginhash;?>" class="y">&nbsp;<img src="<?php echo IMGDIR;?>/info_small.gif" alt="帮助" class="vm" /></a><?php } if(false) { if(!$this->setting['bbclosed'] && empty($_GET['infloat'])) { ?><a href="javascript:;" onclick="ajaxget('member.php?mod=clearcookies&formhash=<?php echo FORMHASH;?>', 'returnmessage_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>');return false;" title="清除痕迹" class="y">清除痕迹</a>
 <?php } } ?>
 
-<!--<a href="weibo.php" title="新浪微博登录"><img src="<?php echo $_G['siteurl'];?>static/mot/weibo_login_small.png" /></a>-->
+<a href="weibo.php" title="新浪微博登录"><img src="<?php echo $_G['siteurl'];?>static/mot/weibo_login_small.png" /></a>
+
+
+
 </td>
 </tr>
 

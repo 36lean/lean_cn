@@ -112,7 +112,7 @@ $language = muti_language();
 <span class="label label-info">编辑本节的章节(页面)</span>
 
 
-<form action="" method="post">
+
 <table class="table table-bordered table-condensed">
 <tr>
 	<td>选择</td>
@@ -133,7 +133,7 @@ $language = muti_language();
 <tr>
 	<td></td>
 	<td><input class="span1"      name="" type="text" value="" /> </td>
-	<td><input class="span1" 		name="image_file" type="file" style="width:40px;" /></td>
+	<td><input name="image_file" type="file" /></td>
 	<td><input class="span1"      name="title" type="text" value="" /> </td>
 	<td><input class="span1"      name="v_file" type="text" value="" /></td>
 	<td><input class="span1"      name="v_path" type="text" value="" /></td>
@@ -153,6 +153,8 @@ $language = muti_language();
 	<td><input class="btn btn-small" name="add_page" type="submit" value="添加" /></td>
 </tr>
 </form>
+
+<form action="" method="post">
 <?php global $constant;?>
 <?php foreach ($pages as $page) {
 ?>
@@ -197,10 +199,16 @@ $language = muti_language();
 <?php
 }
 ?>
-</table>
-<button type="submit" name="update_all" class="btn btn-primary" value="1">更新全部</button>
 
-</form>
+<tr>
+<td></td>
+<td></td><td><button type="submit" name="update_all" class="btn btn-primary" value="1">更新全部</button></td>
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr>
+</form>	
+
+</table>
+
 
 <?php if(false){?>
 <span class="label label-info">编辑课程附加信息</span>
