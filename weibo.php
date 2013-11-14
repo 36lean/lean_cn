@@ -70,6 +70,12 @@ if( $website_uid) {
 //绑定已经存在的网站账号
 if( isset( $_POST['login_with_siteaccont'])) {
 
+	if( $_G['formhash'] !== $_POST['formhash'])
+	{
+		header('Location: '.$_POST['referer']);
+		exit;
+	}
+
 	$username = trim( $_POST['username'] );
 
 	$username = preg_replace('/[^0-9A-Za-z\_]+/', '', $username);
@@ -101,9 +107,20 @@ if( isset( $_POST['login_with_siteaccont'])) {
 	exit;
 }else if( isset( $_POST['register_with_weiboid'])) {
 //用微博注册网站账号
+	
+
+	if( $_G['formhash'] !== $_POST['formhash'])
+	{
+		header('Location: '.$_POST['referer']);
+		exit;
+	}
+
 	require template('common/header');
-	$newusername = trim($_POST['username']);
-	$newpassword = trim($_POST['password']);
+
+	//$_POST['username'] = preg_replace('/[^\x{4e00}-\x{9fa5}a-zA-Z0-9\_]/', '', $_POST['username'] );
+
+	$newusername = trim( $_POST['username'] );
+	$newpassword = trim( $_POST['password'] );
 	$newemail = strtolower(trim($_POST['email']));
 	$_GET['newgroupid'] = 8;
 	$_GET['emailnotify'] = true;
@@ -179,9 +196,12 @@ if( isset( $_POST['login_with_siteaccont'])) {
 
 		updatecache('setting');
 
-		//有问题这里
+		$id = C::t('attach_weibo')->get_uid_by_username( $newusername);
+
+		if( $id == 0)
+			exit('Bind failed!');
 		
-		C::t('attach_weibo')->bind( $_G['uid'] , $weibo_id);
+		C::t('attach_weibo')->bind( $id , $weibo_id);
 
 		echo '<div class="alert alert-info"><i class="icon-info-sign"></i> '.$newusername.'已经注册成功</div><div><a class="btn btn-primary" href="weibo.php">返回</a></div>';
 		require template('common/footer');

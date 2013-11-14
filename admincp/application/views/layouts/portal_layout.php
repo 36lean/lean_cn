@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:ng="http://angularjs.org" id="ng-app" lang="en" ng-app>
 <head>
     <meta charset="utf-8" />
     <?php global $constant;?>
@@ -21,6 +21,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="<?php echo base_url('public/mot/css/mot.css');?>" rel="stylesheet">
     <!-- jQuery -->
+    <script src="<?php echo base_url('public/angular-1.0.1.min.js');?>"></script>
     <script src="<?php echo base_url('public/charisma/js/jquery-1.7.2.min.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');?>"></script>
     <script src="<?php echo base_url('public/bootstrap/js/bootstrap.js');?>"></script>

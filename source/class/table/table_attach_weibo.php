@@ -64,4 +64,14 @@ class table_attach_weibo extends discuz_table {
 		
 	}
 
+	public function get_uid_by_username( $username)
+	{
+		$result = DB::fetch_first('select uid,username from '.DB::table('ucenter_members').' where username = \'' . $username.'\'' );
+
+		if( isset( $result['uid']))
+			return $result['uid'];
+		else
+			return 0;
+	}
+
 }

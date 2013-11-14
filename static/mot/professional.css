@@ -405,6 +405,7 @@ img.course_cover {
   margin: 5%;
 }
 div.strong_border {
+  height: 300px;
   border: 1px solid #eee;
   -webkit-border-radius: 8px;
      -moz-border-radius: 8px;
@@ -413,6 +414,7 @@ div.strong_border {
 }
 
 div.strong_border_hover {
+  height: 300px;
   border: 1px solid;
   border-color: #0088cc;
   -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);

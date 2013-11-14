@@ -9,7 +9,6 @@
 
 define('APPTYPEID', 0);
 define('CURSCRIPT', 'member');
-
 require './source/class/class_core.php';
 
 $discuz = C::app();
@@ -34,6 +33,7 @@ if($mod == 'register' && $discuz->var['mod'] != $_G['setting']['regname']) {
 require libfile('function/member');
 require libfile('class/member');
 runhooks();
+
 
 
 require DISCUZ_ROOT.'./source/module/member/member_'.$mod.'.php';
