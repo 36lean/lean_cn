@@ -520,6 +520,5 @@ class M_sale extends CI_Model
 						->get()
 						->num_rows();
 	}
-
 	
 }

@@ -386,20 +386,6 @@ class Sale extends Base_Controller
 			exit;
 		}
 
-		//新建档案
-		if( $this->input->post('create_profile'))
-		{
-			unset( $_POST['create_profile']);
-
-			if( 1 == $this->marketing->build_profile( $this->_G['uid']))
-			{
-				redirect('sale/status/ok');
-			}else
-			{
-				redirect('sale/status/fail');
-			}
-		}
-
 		//添加沟通记录
 		if( $this->input->post('add_connect'))
 		{
