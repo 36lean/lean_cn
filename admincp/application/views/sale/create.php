@@ -1,5 +1,4 @@
-<div ng-controller="Register_Contact">
-
+<div ng-controller="Register_Contact" ng-app>
 <div class="container-fluid">
 <div class="row-fluid">
 
@@ -92,7 +91,6 @@
 	<p>网址 WebURL</p>
 	<div class="input-append">
 	<input name="weburl" type="text" ng-model="_weburl" />
-	<a href="" class="btn btn-primar">访问</a>
 	</div>
 	</div>
 
@@ -217,6 +215,11 @@
 	</div>
 
 
+	<div class="well" ng-repeat="status in info">
+		<div class="alert alert-info">档案创建成功</div>
+		<a href="<?php echo site_url('sale/contact');?>/{{status.contact_id}}" target="blank">查看联系人资料</a>
+		<a href="<?php echo site_url('sale/view_corporation');?>/{{status.company_id}}" target="blank">查看公司资料</a>			
+	</div>
 
 
 	<div class="control-group">
@@ -229,7 +232,7 @@
 </div>
 
 <div class="span3">
-<p class="lead">反馈信息 : </p>
+<p>反馈信息 : </p>
 <ul class="nav">
 	<li ng-repeat="c in data">
 		<a href="javascript:void(0);" ng-click="setTarget(c.id)">{{c.name}}</a>
@@ -319,8 +322,17 @@ function Register_Contact( $scope , $http)
 		  	headers: {
    				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   			}
-		}).success( function(){
+		}).success( function( data ,status ){
 
+			if( status == '200')
+			{	
+					
+				$scope.info = data;
+
+			}else
+			{
+
+			}
 
 
 		});

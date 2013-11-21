@@ -40,7 +40,7 @@ if( $profile ){
 
 <div class="span6">
 
-<form action="" method="post">
+<form action="" method="post" ng-submit="formSubmit()">
 <input name="client_id" type="hidden" value="<?php echo $profile['id'];?>" />
 <div class="control-group">
 <div class="controls">
@@ -50,10 +50,27 @@ if( $profile ){
 
 <div class="control-group">
 <div class="controls">
-<button class="btn btn-success" name="add_connect" value="1">添加沟通记录</button>
+<script>
+	$( function() {
+		$('#datetimepicker').datetimepicker();
+	});
+</script>
+
+<label>提醒时间 ( 若不填写 则是沟通记录 )</label>
+<div class="input-append date" id="datetimepicker" data-date="" data-date-format="yyyy-mm-dd hh:ii">
+    <input size="16" name="time" type="text" value="">
+    <span class="add-on"><i class="icon-th"></i></span>
+ </div>
+</div></div>
+
+<div class="control-group">
+<div class="controls">
+<button class="btn btn-success" type="submit" name="add_connect" value="1">添加沟通记录</button>
 </div>
 </div>
 </form>
+
+
 
 	<hr />
 	<div class="page-header">
@@ -146,6 +163,7 @@ $( function() {
 	});
 });
 </script>
+
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -167,20 +185,9 @@ $( function() {
 		<button class="btn btn-primary" id="docall" name="call"> 拨打</button>
 		
 		</div>
-		</div>	
+		</div>
 
 		<div id="log"></div>
-
-		<!--
-		<div class="btn-group collection">
-			<h5>通话时间统计 : </h5>
-  
-    		<button id="set_start_time" class="btn btn-primary disabled" data-toggle="button">通话开始</button>
-    		<button id="set_give_up" class="btn disabled" data-toggle="button">放弃通话</button>
-    		<button id="set_give_up" class="btn btn-primary disabled" data-toggle="button">通话结束</button>
-    	</div>
-		-->
-
 	</div>
 
 	<div class="modal-footer">
@@ -190,46 +197,195 @@ $( function() {
 </div>
 </div>
 
+
+<div ng-app>
+<div ng-controller="Contact_profile">
+
 <div class="container-fluid">
 <div class="row-fluid">
-<div class="span6">
-<div class="alert alert-info"><i class="icon-edit"></i> 预览</div>
-<?php
-$extra = array('tag','compname','salesman','file_name');
-$finish = 0; 
-foreach ($profile as $key => $value) {
-	if( in_array($key, $extra))
-		continue;
-	if( trim( $value))
-		$finish++;
-}
 
-$percent = $finish * 100 / count($profile);
-?>
-<p class="text-info">当前资料完整度: <?php echo sprintf("%d" , $percent) , '%';?></p>
-<div class="progress progress-striped">
-    <div class="bar" style="width: <?php echo $percent;?>%;"></div>
+<div class="span6">
+<div class="alert alert-info"><i class="icon-edit"></i> 网站会员信息</div>
+<form class="form-horizontal" action="" method="post">
+<input type="hidden" name="uid" ng-model="_uid" />
+
+	<div class="{{bind_info['class']}}">{{bind_info['text']}}</div>
+	<div class="group-control">
+	<div class="input-append">
+	
+	<input type="text" name="username" ng-model="username" />
+	<button class="btn btn-primary" type="button" ng-click="connect()">关联会员</button>
+	</div>
+	</div>
+	<br/>
+	<table class="table table-striped" >
+
+	<tr ng-repeat="user in result_list">
+		<td>{{user.uid}}</td> <td>{{user['username']}}</td> <td>{{user['email']}}</td><td><a href="javascript:void(0);" ng-click="user_bind( user.uid , _id)">关联</td>
+	</tr>
+
+	</table>
+
+
+	<table class="table table-bordered table-condensed">
+
+		<tr>
+			<td>用户名</td>
+			<td>{{username}}</td>
+		</tr>
+
+		<tr>
+			<td>Email</td>
+			<td><input type="text" ng-model="email"></td>
+		</tr>
+
+		<tr>
+			<td>真实姓名</td>
+			<td><input type="text" ng-model="realname"></td>
+		</tr>
+
+		<tr>
+			<td>固定电话</td>
+			<td><input type="text" ng-model="telephone"></td>
+		</tr>
+
+		<tr>
+			<td>手机</td>
+			<td><input type="text" ng-model="mobile"></td>
+		</tr>
+
+		<tr>
+			<td>公司</td>
+			<td><input type="text" ng-model="company"></td>
+		</tr>
+
+		<tr>
+			<td>职位</td>
+			<td><input type="text" ng-model="occupation"></td>
+		</tr>
+
+		<tr>
+			<td>QQ</td>
+			<td><input type="text" ng-model="qq"></td>
+		</tr>
+
+		<tr>
+			<td>网址 / 微博 / 博客</td>
+			<td><input type="text" ng-model="site"></td>
+		</tr>
+
+		<tr>
+			<td>注册日期</td>
+			<td>{{regdate}}</td>
+		</tr>
+
+		<tr>
+			<td>最后登录</td>
+			<td>{{lastlogintime}}</td>
+		</tr>
+
+		<tr>
+			<td>VIP会员信息</td>
+			<td></td>
+		</tr>
+
+		<tr>
+			<td>开通时间</td>
+			<td><input class="time" name="jointime" type="text" ng-model="jointime" value="{{jointime}}" /> <span>例如: <?php echo date('Y-m-d');?></span></td>
+
+		</tr>
+
+		<tr>
+			<td>到期时间</td>
+			<td><input class="time" name="exptime" type="text" ng-model="exptime" value="{{exptime}}" /> <span>例如: <?php echo date('Y-m-d' , time() + 86400 * 30 );?></span></td>
+		</tr>
+
+		<tr>
+			<td>剩余时间 ( /天 )</td>
+			<td>{{alltime}}</td>
+		</tr>
+
+	</table>
+	<div class="{{member_update['class']}}">{{member_update['text']}}</div>
+	<button class="btn btn-primary" ng-click="update()">更新资料</button>
+
+
+</form>
 </div>
 
 
-<table class="table table-bordered" style="font-size:15px;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="span6">
+<div class="alert alert-info"><i class="icon-edit"></i> 客户资料</div>
+
+
+<form name="" action="" method="post">
+<input type="hidden" name="id" value="" ng-model="_id">
+
+<table class="table table-bordered">
 <tr>
-	<td class="span3">联系人名字</td><td class="span9"><strong><?php echo $profile['name'];?></strong></td>
+	<td class="span3">联系人名字</td>
+	<td class="span9">
+	
+	<input type="text" name="name" value="<?php echo $profile['name'];?>" ng-model="_name"/>
+
+	</td>
 </tr>
 <tr>
-	<td>年龄</td><td><?php echo $profile['age'] ? $profile['age'] : '';?></td>
+	<td>年龄</td>
+	<td>
+		<select ng-model="_age">
+			<option value="0">设置年龄</option>
+			<?php for( $i = 1 ; $i < 150 ; $i++){?>
+			<option value="<?php echo $i;?>"><?php echo $i;?></option>
+			<?php }?>
+		</select>
+	</td>
 </tr>
 <tr>
-	<td>性别</td><td><?php echo ( $profile['gender'] == 1 ? '男' : ( $profile['gender'] ==2 ? '女' : '保密')  );?></td>
+	<td>性别</td>
+	<td>
+		<div class="controls">
+			<select name="gender" ng-model="_gender">
+				<option value="0">设置性别</option>
+				<option <?php if( $profile['gender'] == 1) echo 'selected="selected"';?> value="1">男</option>
+				<option <?php if( $profile['gender'] == 2) echo 'selected="selected"';?> value="2">女</option>
+			</select>
+		</div>
+	</td>
 </tr>
 <tr>
 	<td>分类</td>
 	<td>
-		<?php if( $profile['tag_name']) {?>
-		<span class="label label-success"><?php echo $profile['tag_code'].' - '.$profile['tag_name'];?></span>
-		<?php }else {?>
-		<span class="label label-info">该客户未分类</span>
-		<?php }?>
+		<div class="controls">
+			<select name="tag" ng-model="_tag">
+				<option value="">待分类</option>
+			<?php foreach ($tag as $t) : ?>
+				<option <?php if( $t['value'] === $profile['tag']){?>selected="selected"<?php }?> value="<?php echo $t['value'];?>"><?php echo $t['name'];?></option>
+			<?php endforeach ;?>
+			</select>
+		</div>
 	</td>
 </tr>
 
@@ -246,32 +402,27 @@ $percent = $finish * 100 / count($profile);
 	</td>
 </tr>
 <tr>
-	<td>职务</td><td><?php echo $profile['job'];?></td>
+	<td>职务</td><td><input type="text" name="job" value="<?php echo $profile['job'];?>"  ng-model="_job" /></td>
 </tr>
 <tr>
-	<td>邮箱</td><td><?php echo $profile['email'];?></td>
+	<td>邮箱</td><td><input type="text" name="email" value="<?php echo $profile['email'];?>"  ng-model="_email" /></td>
 </tr>
 <tr>
-	<td>联系电话</td><td><?php echo $profile['office_phone'];?></td>
+	<td>办公电话</td><td><input type="text" name="office_phone" value="<?php echo $profile['office_phone'];?>"  ng-model="_office_phone" /></td>
 </tr>
 <tr>
-	<td>联系手机</td><td><?php echo $profile['mobile'];?></td>
+	<td>联系手机</td><td><input type="text" name="mobile" value="<?php echo $profile['mobile'];?>" ng-model="_mobile" /></td>
 </tr>
 <tr>
-	<td>传真</td><td><?php echo $profile['office_fax'];?></td>
+	<td>私人电话</td><td><input type="text" name="private_phone" value="<?php echo $profile['private_phone'];?>" ng-model="_private_phone" /></td>
 </tr>
 <tr>
-	<td>QQ</td><td><?php echo $profile['qq'] ? $profile['qq'] : '';?></td>
+	<td>办公传真</td><td><input type="text" name="office_fax" value="<?php echo $profile['office_fax'];?>" ng-model="_office_fax" /></td>
 </tr>
 <tr>
-	<td>地址</td><td><?php echo $profile['address'];?></td>
+	<td>QQ</td><td><input type="text" name="qq" value="<?php echo $profile['qq'] ? $profile['qq'] : '';?>" ng-model="_qq" /></td>
 </tr>
-<tr>
-	<td>邮编</td><td><?php echo $profile['postid'];?></td>
-</tr>
-<tr>
-	<td>网站</td><td><?php echo $profile['weburl'];?> <a href="<?php if( preg_match('/^(http:\/\/)/', $profile['weburl'])) echo $profile['weburl']; else echo 'http://'.$profile['weburl'];?>" target="blank">点击访问</a></td>
-</tr>
+
 <tr>
 	<td>创建日期</td><td><strong><?php echo date('Y年m月d日 h:i' , $profile['modified_date']);?></strong></td>
 </tr>
@@ -296,151 +447,23 @@ $percent = $finish * 100 / count($profile);
 <?php }?>
 </table>
 
+<div class="{{status['class']}}">
+	{{status['info']}}
 </div>
 
-
-<div class="span6">
-<div class="alert alert-info"><i class="icon-edit"></i> 编辑</div>
-<form class="form-horizontal well" action="" method="post">
-<input type="hidden" name="id" value="<?php echo $profile['id'];?>">
-
-	<div class="control-group">
-		<label class="control-label">客户类型</label>
-		<div class="controls">
-			<select name="tag">
-				<option value="">待分类</option>
-			<?php foreach ($tag as $t) : ?>
-				<option <?php if( $t['value'] === $profile['tag']){?>selected="selected"<?php }?> value="<?php echo $t['value'];?>"><?php echo $t['name'];?></option>
-			<?php endforeach ;?>
-			</select>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">客户名字</label>
-		<div class="controls">
-			<input  type="text" name="name" value="<?php echo $profile['name'];?>" />
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">年龄</label>
-		<div class="controls">
-			<input type="text" name="age" value="<?php echo $profile['age'];?>" />
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">性别</label>
-		<div class="controls">
-			<select name="gender">
-				<option value="0">空</option>
-				<option <?php if( $profile['gender'] == 1) echo 'selected="selected"';?> value="1">男</option>
-				<option <?php if( $profile['gender'] == 2) echo 'selected="selected"';?> value="2">女</option>
-			</select>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">职位</label>
-		<div class="controls">
-			<input type="text" name="job" value="<?php echo $profile['job'];?>" />
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">Email</label>
-		<div class="controls">
-			<input  type="text" name="email" value="<?php echo $profile['email'];?>" />
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">手机</label>
-		<div class="controls">
-			<input  type="text" name="mobile" value="<?php echo $profile['mobile'];?>" />
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">电话</label>
-		<div class="controls">
-			<input  type="text" name="office_phone" value="<?php echo $profile['office_phone'];?>" />
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">传真</label>
-		<div class="controls">
-			<input  type="text" name="office_fax" value="<?php echo $profile['office_fax'];?>" />
-		</div>
-	</div>
-
-	<div class="control-group">
-		<label class="control-label">QQ</label>
-		<div class="controls">
-			<input  type="text" name="qq" value="<?php echo $profile['qq'];?>" />
-		</div>
-	</div>
-
-
-	<div class="control-group">
-		<label class="control-label">备注信息</label>
-		<div class="controls">
-			<textarea name="description"><?php echo $profile['description'];?></textarea>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<div class="controls">
-			<button type="submit" class="btn btn-primary" name="save_profile" value="1"><i class="icon-save"></i> Save</button>
-		</div>
-	</div>
+<button type="submit" class="btn btn-primary" name="enter" value="1" ng-click="change()">保存修改</button>
 </form>
 </div>
+
 </div>
 </div>
 
 
-<div class="container">
-	<form action="" method="post">
-	<input name="contact_id" type="hidden" value="<?php echo $profile['id'];?>" />
-	<div class="alert alert-info"><i class="icon-time"></i> 添加回访提醒</div>
-	<div class="control-group">
-		<div class="controls">
-		<label><strong>选择提醒时间</strong></label>
-
-		    <div class="input-append date" id="datetimepicker" data-date="2013-12-12 12:12" data-date-format="yyyy-mm-dd hh:ii">
-    <input size="16" name="time" type="text" value="2013-12-12 12:12" readonly>
-    <span class="add-on"><i class="icon-th"></i></span>
-    </div>
 
 
-    	</div>
-   	</div>
-<script>
-	$( function() {
-		$('#datetimepicker').datetimepicker();
-	});
-</script>
-    <div class="control-group">
-    	<div class="controls">
-    	<label><strong>备注信息</strong></label>
-    	<div><input name="message" type="text" /></div>
-    	</div>
-    </div>
 
-    <div class="control-group">
-    	<div class="controls">
-    	<div><button name="submit" type="submit" class="btn btn-primary" value="1" ><i class="icon-time"></i> 添加</button></div>
-    	</div>
-    </div>
-	</div>
-	</form>
 </div>
-
-
-
+</div>
 <?php
 if( $this->_G['groupid'] !== 1 && ( $profile['assign_to'] != $this->_G['uid']))
 {
@@ -474,3 +497,181 @@ else{
 
 ?>
 
+
+<script>
+function Contact_profile($scope , $http)
+{
+	$scope._uid = "<?php echo $profile['user_id'];?>";
+	$scope._id = "<?php echo $profile['id'];?>";
+	$scope._name = "<?php echo $profile['name'];?>";
+	$scope._gender = "<?php echo $profile['gender'];?>";
+	$scope._tag = "<?php echo $profile['tag'];?>";
+	$scope._age = "<?php echo $profile['age'] ? $profile['age'] : 0;?>";
+	$scope._job = "<?php echo $profile['job'];?>";
+	$scope._office_phone = "<?php echo $profile['office_phone'];?>";
+	$scope._email = "<?php echo $profile['email'];?>";
+	$scope._mobile = "<?php echo $profile['mobile'];?>";
+	$scope._office_fax = "<?php echo $profile['office_fax'];?>";
+	$scope._private_phone = "<?php echo $profile['private_phone'];?>"
+	$scope._qq = "<?php echo $profile['qq'];?>";
+
+	$http({
+		url : "<?php echo site_url('api/query/get_member_profile');?>" , 
+		data :  $.param( { 'uid' : $scope._uid } ), 
+		method : "POST" , 
+		headers: {
+   				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+  		} ,
+
+	}).success(function( data , status ){
+			
+
+		$scope.email = data['email'];
+		$scope.realname = data['realname'];
+		$scope.telephone = data['telephone'];
+		$scope.mobile = data['mobile'];
+		$scope.company = data['company'];
+		$scope.occupation = data['occupation'];
+		$scope.qq = data['qq'];
+		$scope.site = data['site'];
+		$scope.username = data['username'];
+		$scope.regdate = getLocalTime( ( data['regdate'] ? data['regdate'] : 0) );
+		$scope.lastlogintime = getLocalTime( ( data['lastlogintime'] ? data['lastlogintime'] : 0) );
+		$scope.jointime = getLocalTime( ( data['jointime'] ? data['jointime'] : 0) );
+		$scope.exptime = getLocalTime( ( data['exptime'] ? data['exptime'] : 0) );
+
+		var le = parseInt( ( data['exptime'] - data['today'] ) / 86400 );
+
+		$scope.alltime =  le > 0 ? le : '已经到期/未开通';
+
+
+	});
+
+	$scope.change = function() 
+	{
+		contact = {
+			'_id'			: $scope._id , 
+			'_name' 		: $scope._name , 
+			'_gender' 		: $scope._gender , 
+			'_tag' 			: $scope._tag , 
+			'_age' 			: $scope._age , 
+			'_job' 			: $scope._job , 
+			'_office_phone' : $scope._office_phone , 
+			'_email' 		: $scope._email , 
+			'_mobile' 		: $scope._mobile , 
+			'_office_fax' 	: $scope._office_fax , 
+			'_qq' 			: $scope._qq , 
+			'_private_phone': $scope._private_phone , 
+		};
+
+		$http({
+			url : '<?php echo site_url('api/query/update_user.json');?>' ,
+			method:  'POST' , 
+			data : $.param( contact ) ,
+		  	headers: {
+   				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+  			}
+		}).success( function( data , status){
+			if( data['response'] === 'Successed' )
+			{
+				$scope.status = {'info' : '修改成功' , 'class' : 'alert alert-success' };
+			}else if( data['response'] === 'Failed')
+			{
+				$scope.status = {'info' : '修改失败' , 'class' : 'alert alert-important' };
+			}
+		});
+	}
+
+	$scope.connect = function()
+	{
+
+		
+		if( $scope.username == '' || $scope.username == undefined)
+		{
+			alert( '请输入用户名关键字');
+			return ;
+		}
+
+		$http({
+			url : "<?php echo site_url('api/query/query_ucenter_member');?>",
+			method : 'POST' , 
+			data : $.param( { 'username' : $scope.username} ) , 
+			headers : {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+		}).success(function( data , status){
+			$scope.result_list = data;
+		});
+
+	}
+
+	$scope.user_bind = function( user_id , contact_id) 
+	{
+			
+		$http({
+			url : "<?php echo site_url('api/query/user_bind');?>" ,
+			method : "POST" ,
+			data : $.param( { 'user_id' : user_id , 'contact_id' : contact_id } ) , 
+			headers : {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},
+		}).success(function( data , status){
+
+			if( data['response'] === 'Successed')
+			{
+				$scope.bind_info = { 'text' : '关联成功 - 请刷新生效' , 'class' : 'alert alert-success'};
+			}
+			
+		});
+
+	}
+
+	$scope.update = function() 
+	{
+		data = {
+			'uid' : $scope._uid , 
+			'email' : $scope.email ,
+			'realname' : $scope.realname ,
+			'telephone' : $scope.telephone ,
+		 	'mobile' : $scope.mobile ,
+			'company' : $scope.company ,
+			'occupation' : $scope.occupation ,
+			'qq' : $scope.qq ,
+			'site' : $scope.site ,
+			'jointime' : $scope.jointime , 
+			'exptime': $scope.exptime 
+		}
+
+		$http({
+			url : "<?php echo site_url('api/query/update_ucenter_member');?>" ,
+			data : $.param( data ) ,  
+			method : "POST" , 
+			headers : {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			},			
+		}).success( function( data , status){
+
+			if( data['response'] === 'Successed')
+				$scope.member_update = { 'text' : '更新成功' ,  'class' :'alert alert-success' };
+			else
+				$scope.member_update = { 'text' : '更新失败' ,  'class' :'alert alert-error' };
+		});
+	}	
+
+	//时间转换函数
+	function getLocalTime(nS) {
+
+		if( 0 == nS)
+
+			return ;
+
+   		return new Date(parseInt(nS) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, "").replace(/\s.+/g ,'');    
+	}
+
+	$scope.formSubmit = function()
+	{
+		return true;
+	}
+
+}
+</script>

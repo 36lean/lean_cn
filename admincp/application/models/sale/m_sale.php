@@ -154,11 +154,13 @@ class M_sale extends CI_Model
 			$where = 'datereminded > 0';
 		}
 
-		return $this->db->select(' a.id as event_id , a.client_id as id , uploads.filename , c.display_color ,  c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
+		return $this->db->select('clienttags.name as tagname , c.tag , u.username , a.id as event_id , c.gender , c.job , a.client_id as id , uploads.filename , c.display_color ,  c.name , c.email , c.office_phone , c.office_fax , c.mobile , c.company_id , a.event , a.datereminded , cp.name as companyname')
 						->from('admin_client_appointment a')
 						->join('admin_contacts c' , 'c.id = a.client_id' , 'left')
+						->join('admin_clienttags clienttags' , 'clienttags.id = c.tag' , 'left')
 						->join('admin_company cp' , 'cp.id = c.company_id' , ' left')
 						->join('admin_uploads uploads' , 'uploads.id = c.from_file_id' , 'left')
+						->join('ucenter_members u' , 'u.uid = c.user_id' , 'left')
 						->where( array('salesman_id'=>$salemanid))
 						->where( $where)
 						->order_by('a.datereminded' , 'desc')
@@ -229,16 +231,33 @@ class M_sale extends CI_Model
 						->row_array();
 	}
 
-	public function add_connect()
+	public function add_connect( $salesman_id )
 	{
-		$target = 
-		array(
-			'client_id' => intval( $this->input->post('client_id')) , 
-			'response'  => $this->input->post('connect_text') , //strip_tags( $this->input->post('connect_text') , '<img>') , 
-			'date'		=> time(), 
-		);
 
-		return $this->db->insert('admin_client_connect' , $target);
+
+		if( trim($_POST['time']) )
+		{
+
+			$this->db->insert( 'admin_client_appointment' , array(
+				'client_id' => intval( $this->input->post('client_id')) , 
+				'salesman_id' => intval( $salesman_id) , 
+				'event' => trim( $this->input->post('connect_text')  ) ,
+				'datereminded' => strtotime( trim( $this->input->post('time') )) , 
+			));
+
+		}else
+		{
+			$target = array(
+			'client_id' => intval( $this->input->post('client_id')) , 
+			'response'  => trim( $this->input->post('connect_text') ) , //strip_tags( $this->input->post('connect_text') , '<img>') , 
+			'date'		=> time(), 
+			);	
+
+			return $this->db->insert('admin_client_connect' , $target);		
+		}
+
+
+		
 	}
 
 	public function update_contact_connect()
@@ -490,7 +509,13 @@ class M_sale extends CI_Model
 
 	public function get_contacts_by_contactlog( $page , $offset )
 	{
-		return $this->db->query('select  client_connect.response , client_connect.date , contacts.* , uploads.filename from ( select * from pre_admin_client_connect order by id desc ) as client_connect left join pre_admin_contacts contacts on client_connect.client_id = contacts.id left join pre_admin_uploads uploads on uploads.id = contacts.from_file_id group by client_id order by client_connect.id desc limit '.($page-1)*$offset.','.$offset)
+		return $this->db->query('select  admin_company.name as companyname ,clienttags.name as tagname , client_connect.response , client_connect.date , contacts.* , uploads.filename 
+							    from ( select * from pre_admin_client_connect order by id desc ) as client_connect 
+							    left join pre_admin_contacts contacts on client_connect.client_id = contacts.id 
+							    left join pre_admin_uploads uploads on uploads.id = contacts.from_file_id 
+							    left join pre_admin_clienttags clienttags on clienttags.id = contacts.tag 
+							    left join pre_admin_company admin_company on admin_company.id = contacts.company_id
+							    group by client_id order by client_connect.id desc limit '.($page-1)*$offset.','.$offset)
 						->result_array();
 	}
 

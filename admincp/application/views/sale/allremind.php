@@ -211,7 +211,7 @@ $( function () {
 		</td>
 		
 		<td>
-			<input class="datetimepicker" rel="<?php echo $one['id'];?>" type="text" value="" />
+			<input class="datetimepicker" rel="<?php echo $one['id'];?>" type="text" value="<?php echo date( 'Y-m-d h:i:s' , $one['datereminded'] );?>" />
 		</td>
 		
 		<td>
@@ -233,10 +233,10 @@ $( function () {
 		$( function () {
 			
 			var aboutPC = {
-    			name: "<a href='<?php echo site_url('marketing/connect/'.$one['id']);?>'><?php echo $one['name'];?></a>" ,
+    			name: "<a href='<?php echo site_url('sale/contact/'.$one['id']);?>'><?php echo $one['name'];?></a>" ,
     			status :  "<?php echo $one['tag'] . ' - ' . $one['tagname'];?>" , 
     			gender : "<?php if( $one['gender'] == 1){echo '男';}else if( $one['gender'] == 2) {echo '女';}else{echo '保密';}?>" , 
-    			company: "<a href='<?php echo site_url('marketing/view_corporation/'.$one['company_id']);?>'><?php echo $one['companyname'];?></a>" ,
+    			company: "<a href='<?php echo site_url('sale/view_corporation/'.$one['company_id']);?>'><?php echo $one['companyname'];?></a>" ,
     			job: "<?php echo $one['job']?>",
     			phone: "<?php echo $one['office_phone'];?>" ,
     			mobile: "<?php echo $one['mobile']?>" ,

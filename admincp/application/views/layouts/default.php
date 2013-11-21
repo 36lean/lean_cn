@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org" id="ng-app" lang="en" ng-app>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <?php global $constant;?>
@@ -30,6 +30,8 @@
     <script charset="utf-8" src="<?php echo base_url('public/kindeditor/kindeditor-all-min.js');?>"></script>
     <script charset="utf-8" src="<?php echo base_url('public/kindeditor/zh_CN.js');?>"></script>
     <script src="<?php echo base_url('public/chartjs/Chart.min.js');?>"></script>
+    <script src="<?php echo base_url('public/jquery.hcaptions.js');?>"></script>
+
     <script>
         KindEditor.ready(function(K) {
                 window.editor = K.create('.kindeditor' , {
@@ -46,6 +48,7 @@
 
     $(function(){
         $('.datetimepicker').datetimepicker();
+         $('.hcaption').hcaptions();
     });
     </script>
 
@@ -87,11 +90,13 @@ if( ! $counter)
 <?php //$this->load->module('webkit/devkit/index');?>
 
 <?php $this->load->module('webkit/menu/top');?>
-<?php $this->load->module('webkit/leftside/get_left_side');?>
+<?php $this->load->module('webkit/menu/get_2th_side');?>
+<?php $this->load->module('webkit/menu/get_3th_side');?>
 
 <div class="container-fluid">
     <?php echo $template['body'];?>
 </div>
+
 
 <br/>
 <hr />

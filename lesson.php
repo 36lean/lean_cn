@@ -117,9 +117,6 @@ if( isset( $_GET['pages_list'])){
 		}
 
 		$pages = C::t('b_lesson_pages')->get_pages_info_by_id( $id);
-
-
-
 		ob_start();
 		require template('lesson/new_pages_list');
 		$cache = ob_get_contents();

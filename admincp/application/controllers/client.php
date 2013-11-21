@@ -214,7 +214,7 @@ class Client extends Base_Controller {
 
 		$sum = $this->marketing->sum_of_company();
 
-		$this->template->build('marketing/corporation' , array('corporations'=>$corporations,'offset'=>$offset,'sum'=>$sum));		
+		$this->template->build('sale/company' , array('corporations'=>$corporations,'offset'=>$offset,'sum'=>$sum));		
 	}
 
 	public function dispatch(  $page = 1 , $offset = 20) {

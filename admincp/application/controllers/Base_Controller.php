@@ -42,6 +42,13 @@ class Base_Controller extends CI_Controller {
 		 'index_module' => array('route' => 'index' , 'alias' => '未设置导航' , 'status' => 'active') , 
 		 );
 	}
+
+	public function navigation_3th()
+	{
+		return array(
+		 'index_module' => array('route' => 'index' , 'alias' => '未设置导航' , 'status' => 'active' , 'parent' => 'index_module') , 
+		 );		
+	}
 	//@layout -- left side menu list
 	public function get_controller() {
 		return array(

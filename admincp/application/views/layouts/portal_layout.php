@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org" id="ng-app" lang="en" ng-app>
+<html>
 <head>
     <meta charset="utf-8" />
     <?php global $constant;?>
@@ -72,7 +72,8 @@ else
 <?php //$this->load->module('webkit/devkit/index');?>
 
 <?php $this->load->module('webkit/menu/top');?>
-<?php $this->load->module('webkit/leftside/get_left_side');?>
+<?php $this->load->module('webkit/menu/get_2th_side');?>
+<?php $this->load->module('webkit/menu/get_3th_side');?>
 
 <div class="container-fluid">
     <?php echo $template['body'];?>

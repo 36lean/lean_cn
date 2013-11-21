@@ -1,1 +1,0 @@
-<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('finish');?><?php include template('common/header'); ?><div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button> <i class="icon-info-sign"></i> 恭喜!测试完成</div><?php include template('common/footer'); ?>

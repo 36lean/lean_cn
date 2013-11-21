@@ -17,15 +17,27 @@ class Sale extends Base_Controller
 	public function navigation()
 	{
 		return array(
-			array('route' => 'index' 		, 'alias' => '联系人列表' , 'status' => 'active') ,
-			array( 'route' => 'company' 	, 'alias' => '公司列表' , 'status' => 'active') ,
-			array('route' => 'web' 			, 'alias' => '会员列表' , 'status' => 'active') ,
-			array('route' => 'expense' 		, 'alias' => '付费会员' , 'status' => 'active') ,
-			array( 'route' => 'recent' 		, 'alias' => '最近联系人' , 'status' => 'active') ,
-			array('route' => 'remind' 		, 'alias' => '今日提醒' , 'status' => 'active') ,
-			array('route' => 'allremind' 	, 'alias' => '所有提醒' , 'status' => 'active') ,
-			array('route' => 'cleanlist' 	, 'alias' => '清理列表' , 'status' => 'active') ,
-			array( 'route' => 'create' 		, 'alias' => '新建档案' , 'status' => 'active') ,
+			array('route' => 'company' , 'alias' => '公司列表' , 'status' => 'active') , 
+			array('route' => 'index' , 'alias' => '联系人列表' , 'status' => 'active' ) , 
+			array('route' => 'web' , 'alias' => '会员列表' , 'status' => 'active' ) ,
+		);
+	}
+
+	public function navigation_3th()
+	{
+		return array(
+			'index' 	=> array('route' => 'index' 		, 'alias' => '联系人列表' , 'status' => 'active' , 'father' => 'index') ,
+			'company' 	=> array('route' => 'company' 		, 'alias' => '列表首页' , 'status' => 'active' , 'father' => 'company') ,
+			'web'	 	=> array('route' => 'web' 			, 'alias' => '会员列表' , 'status' => 'active' , 'father' => 'web') ,
+			'expense' 	=> array('route' => 'expense' 		, 'alias' => '付费会员' , 'status' => 'active' , 'father' => 'web') ,
+			'recent' 	=> array( 'route' => 'recent' 		, 'alias' => '最近联系人' , 'status' => 'active' , 'father'=> 'index') ,
+			'remind' 	=> array('route' => 'remind' 		, 'alias' => '今日提醒' , 'status' => 'active' , 'father' => 'index') ,
+			'allremind' => array('route' => 'allremind' 	, 'alias' => '所有提醒' , 'status' => 'active' , 'father' => 'index') ,
+			'cleanlist' => array('route' => 'cleanlist' 	, 'alias' => '清理列表' , 'status' => 'active' , 'father' => 'index') ,
+			'create' 	=> array( 'route' => 'create' 		, 'alias' => '新建档案' , 'status' => 'active' , 'father' => 'index') ,
+			'contact'   => array( 'route' => 'contact' 		, 'alias' => '编辑客户资料' , 'status' => 'disabled' , 'father' => 'index') ,
+			'view_corporation' => array('route' => 'view_corporation' , 'alias' => '查看公司资料' , 'status' => 'disabled' , 'father' => 'company') ,
+			'add_opportunity' => array('route' => 'add_opportunity' , 'alias' => '添加销售机会' , 'status' => 'disabled' , 'father' => 'company') , 
 		);
 	}
 
@@ -200,6 +212,23 @@ class Sale extends Base_Controller
 
 	}
 
+	public function view_corporation( $id)
+	{
+		$id = intval( $id);
+
+		$contacts = $this->marketing->get_contacts_by_companyid( $id);
+
+		$company = $this->define_data->get_data_by_id('admin_company' , $id , 'id');
+
+		$opportunities = $this->marketing->get_opportunities_by_companyid( $id);
+
+		$this->template->build('sale/view_corporation' , array('company'=>$company[0],
+																 'contacts'=>$contacts,
+																 'opportunities' => $opportunities ,
+																) 
+						   );
+	}
+	
 	public function company( $page = 1 , $offset = 30 )
 	{
 		$corporations = $this->sale->get_corporations( $page , $offset);
@@ -228,7 +257,10 @@ class Sale extends Base_Controller
 
 		$sum = $this->sale->get_sum_by_contactlog(); 
 
+		$tags = $this->define_data->get_selection_key_value( 'admin_clienttags' , 'id' , 'name');
+
 		$this->template->build('sale/recent' , array( 'contacts'=>$contacts , 
+													  'tags'    => $tags , 
 													  'sum' => $sum , 
 													  'offset' => $offset 
 													)
@@ -340,6 +372,42 @@ class Sale extends Base_Controller
 		$this->template->build('marketing/status' , array('message' => $message));
 	}
 
+	public function add_opportunity ( $id)
+	{
+
+		$this->_program();
+
+		$id = intval( $id);
+
+		$company = $this->marketing->get_company_name_by_id( $id);
+
+		$this->template->build('marketing/add_opportunity' , array('company'=>$company));
+	}
+
+	public function view_opportunity( $id)
+	{
+
+		$this->_program();
+
+		$id = intval( $id);
+
+		$opportunity = $this->marketing->get_opportunity_by_id( $id);
+
+		$this->template->build('sale/view_opportunity' , array('op'=>$opportunity));
+	}
+
+	public function edit_corporation( $id)
+	{
+
+		$this->_program();
+
+		$id = intval( $id);
+
+		$profile = $this->marketing->get_corporation_by_id( $id);
+
+		$this->template->build('sale/edit_corporation' , array('company'=>$profile));
+	}
+
 	private function _program()
 	{
 
@@ -391,7 +459,7 @@ class Sale extends Base_Controller
 		{
 			unset( $_POST['add_connect']);
 
-			if( $this->sale->add_connect())
+			if( $this->sale->add_connect( $this->_G['uid']))
 			{
 				redirect( site_url('sale/contact/'.$this->input->post('client_id')));
 				exit;

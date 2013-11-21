@@ -191,7 +191,7 @@ $( function () {
 <br/>
 <h2><small>显示最近有沟通记录的客户</small></h2>
 
-<table class="mot-table">
+<table class="mot-table" ng-controller="Time">
 	<tr>
 		<td class="span1">上次沟通记录</td>
 		<td class="span1">ID</td>
@@ -211,8 +211,7 @@ $( function () {
 
 		<td>
 			
-<a href="javascript:void(0);" class="popover-btn" data-toggle="popover" data-placement="top" data-content="<?php echo $one['response'];?>" title="<?php echo date('Y-m-d h:i:s a' , $one['date'] );?>" ><i class="icon-list"></i></a></td>
-			
+		<a href="javascript:void(0);" class="popover-btn" data-toggle="popover" data-placement="right" data-content="<?php echo $one['response'];?>" title="<?php echo date('Y-m-d h:i:s a' , $one['date'] );?>" ><i class="icon-list"></i></a></td>
 			
 		</td>
 
@@ -243,10 +242,10 @@ $( function () {
 		$( function () {
 			
 			var aboutPC = {
-    			name: "<a href='<?php echo site_url('marketing/connect/'.$one['id']);?>'><?php echo $one['name'];?></a>" ,
+    			name: "<a href='<?php echo site_url('sale/contact/'.$one['id']);?>'><?php echo $one['name'];?></a>" ,
     			status :  "<?php echo $one['tag'] . ' - ' . $one['tagname'];?>" , 
     			gender : "<?php if( $one['gender'] == 1){echo '男';}else if( $one['gender'] == 2) {echo '女';}else{echo '保密';}?>" , 
-    			company: "<a href='<?php echo site_url('marketing/view_corporation/'.$one['company_id']);?>'><?php echo $one['companyname'];?></a>" ,
+    			company: "<a href='<?php echo site_url('sale/view_corporation/'.$one['company_id']);?>'><?php echo $one['companyname'];?></a>" ,
     			job: "<?php echo $one['job']?>",
     			phone: "<?php echo $one['office_phone'];?>" ,
     			mobile: "<?php echo $one['mobile']?>" ,
@@ -413,3 +412,12 @@ $( function () {
 </script>
 
 <p class="mot-small"></p>
+
+<script type="text/javascript">
+
+function Time()
+{
+	
+}
+	
+</script>
