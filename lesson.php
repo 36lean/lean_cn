@@ -89,7 +89,7 @@ if( !$_G['uid']&&$_GET['sign']) {
 
 if( isset( $_GET['map']))
 {
-	$course = DB::fetch_all('select id, fullname , summary  from '.DB::table('b_course').' where is_hidden = 0 order by id');
+	$course = DB::fetch_all('select id, fullname , summary  from '.DB::table('b_course').' where is_hidden = 0 order by sortid');
 
 	$pages = DB::fetch_all('select p.id , p.title , p.lessonid  , v.v_time , v.v_voice , v.cn_intro from '.DB::table('b_lesson_pages').' p left join '.DB::table('b_video').' v  on v.id = film_id  where 1');
 

@@ -45,6 +45,11 @@ class Query extends REST_Controller
 	}
 	public function register_contact_post()
 	{
+
+
+		$uid = intval( $_POST['uid']);
+		unset( $_POST['uid']);
+
 		foreach ($_POST as $key => $value) {
 			
 			if( preg_match('/^\_/', $key)){
@@ -66,6 +71,7 @@ class Query extends REST_Controller
 		}else if( $company['name'] )
 		{
 			$company['timecreated'] = time();
+			$company['created_userid'] = $uid;
 			$this->db->insert('admin_company' , $company);
 			$this->db->last_query();
 			$contact['company_id'] = $this->db->insert_id();
@@ -83,7 +89,9 @@ class Query extends REST_Controller
 		$contact['modified_date'] = time();
 		if( $contact['name'] )
 		{
-			
+				
+			$contact['assign_to'] = $uid;
+
 			$this->db->insert('admin_contacts' , $contact);
 
 			$contact_id = $this->db->insert_id();

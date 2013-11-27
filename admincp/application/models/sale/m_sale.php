@@ -18,7 +18,7 @@ class M_sale extends CI_Model
 			
 			$order = 'contacts.id';
 			
-			$sort = 'desc';
+			$sort = 'asc';
 
 		}else if( 'modified_date' === $condition)
 		{
@@ -30,7 +30,7 @@ class M_sale extends CI_Model
 
 			$order = 'contacts.id';
 			
-			$sort = 'asc';	
+			$sort = 'desc';
 		}
 
 		if( !isset( $where) )

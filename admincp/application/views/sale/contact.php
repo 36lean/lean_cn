@@ -395,7 +395,7 @@ $( function() {
 	</td>
 	<td>
 		<?php if( $profile['company_id']){?>
-		<a href="<?php echo site_url('marketing/view_corporation/'.$profile['company_id']);?>"><?php echo $profile['companyname'],' - ',$profile['company_id'];?></a>
+		<a href="<?php echo site_url('sale/view_corporation/'.$profile['company_id']);?>"><?php echo $profile['companyname'],' - ',$profile['company_id'];?></a>
 		<?php }else {?>
 		<span class="label label-info">待分配</span>
 		<?php }?>

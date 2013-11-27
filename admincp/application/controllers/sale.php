@@ -541,8 +541,6 @@ class Sale extends Base_Controller
 		$this->_program();
 
 		$this->template->build('sale/create',array(
-							   'contact_column'=> $this->config->config['map']['contacts'] , 
-							   'company_column'=> $this->config->config['map']['company'],
 		));
 	}
 

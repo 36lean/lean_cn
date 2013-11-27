@@ -45,7 +45,7 @@
 
 						<td class="center"><?php echo $c['tag'];?></td>
 						
-						<td class="center"><a href="<?php echo site_url('client/edit_contact/'.$c['id']);?>" target="blank"><i class="icon-user"></i> <?php echo $c['name'];?></a></td>
+						<td class="center"><a href="<?php echo site_url('sale/contact/'.$c['id']);?>" target="blank"><i class="icon-user"></i> <?php echo $c['name'];?></a></td>
 
 						<td class="center"><?php echo $c['company_name'];?></td>
 

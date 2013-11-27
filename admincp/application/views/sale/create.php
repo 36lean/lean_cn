@@ -1,3 +1,9 @@
+<?php
+$ci = & get_instance();
+
+$uid = $ci->_G['uid'];
+?>
+
 <div ng-controller="Register_Contact" ng-app>
 <div class="container-fluid">
 <div class="row-fluid">
@@ -315,6 +321,8 @@ function Register_Contact( $scope , $http)
 				'mobile' : $scope.mobile , 
 				'private_phone' : $scope.private_phone , 
 				'description' : $scope.description , 
+
+				'uid' : "<?php echo $uid;?>"
 			}
 
 		$http( { method : 'POST' , url : '<?php echo site_url('api/query/register_contact.json');?>' , 
