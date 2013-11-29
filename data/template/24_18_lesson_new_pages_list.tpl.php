@@ -18,23 +18,25 @@ jQuery( function() {
 </p>
 </div>
 
-<div class="page-header">
-  <h2 align="center"><?php echo $lesson['fullname'];?> </h2>
+
+  
 </div>
 
 <div class="row-fluid">
 
-  <div class="span6">
-  <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
-  <p><?php echo $lesson['summary'];?></p>
-  <blockquote><i class="icon-info-sign"></i> 分类</blockquote>
-  <p>精益课程</p>
-  </div>
-
-
-  <div class="span6">
+  <div class="span4">
     <img class="img-polaroid lazy" src="uploads/course/<?php echo $lesson['logo'];?>" data-original="uploads/course/<?php echo $lesson['logo'];?>" style="width:80%;" />
   </div>
+
+  <div class="span8">
+    <div class="page-header">
+      <h2 align="left"><?php echo $lesson['fullname'];?> </h2>
+    </div>
+
+    <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
+    <p><?php echo $lesson['summary'];?></p>
+  </div>
+
 </div>
 
 <hr>
@@ -65,7 +67,7 @@ jQuery( function() {
     
     
   
-    <ul class="nav nav-list well">
+    <ul class="nav nav-tabs nav-stacked">
       <li><h4><i class="icon-list"></i> 导航</h4></li>
       <li class="nav-header"><i class="icon-align-justify"></i> 课程大纲</li>
       <?php if(is_array($pages)) foreach($pages as $p) { ?>      <li><a href="lesson.php?page_content=<?php echo $p['id'];?>"><small><strong><?php echo $p['title'];?></strong></small></a></li>
@@ -94,7 +96,7 @@ jQuery( function() {
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
   <?php } else { ?>
-            <?php if(is_array($pages)) foreach($pages as $p) { ?>            <div class="container-fluid lesson-item">
+            <?php if(is_array($pages)) foreach($pages as $p) { ?>            <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="<?php echo $p['id'];?>" href="lesson.php?page_content=<?php echo $p['id'];?>" title="<?php echo $p['title'];?>">
@@ -121,10 +123,18 @@ jQuery( function() {
                  <span class="label label-info">时长 : <?php echo $p['v_time'];?></span>
                 </p>
 
-                <?php echo cutstr( $p['contents'], 140 , ' .. ')?>              </div>
+                <?php echo cutstr( $p['contents'], 140 , ' .. ')?>                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=<?php echo $p['id'];?>" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
+
+             
+
             <?php } ?>
 
     <?php } ?>

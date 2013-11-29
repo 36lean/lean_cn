@@ -17,25 +17,27 @@ jQuery( function() {
 </p>
 </div>
 
-<div class="page-header">
-  <h2 align="center">标准作业 </h2>
+
+  
 </div>
 
 <div class="row-fluid">
 
-  <div class="span6">
-  <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
-  <p>在这个课程中我们将学习标准作业的细节. 4种标准作业应用在任何类型的工作和行业. 你将学习到一些标准作业的思想. 标准作业应用在任何行业和活动中,无论你是在生产环境还是在办公室做一些创造性的工作. 
-
-</p>
-  <blockquote><i class="icon-info-sign"></i> 分类</blockquote>
-  <p>精益课程</p>
-  </div>
-
-
-  <div class="span6">
+  <div class="span4">
     <img class="img-polaroid lazy" src="uploads/course/11.png" data-original="uploads/course/11.png" style="width:80%;" />
   </div>
+
+  <div class="span8">
+    <div class="page-header">
+      <h2 align="left">标准作业 </h2>
+    </div>
+
+    <blockquote><i class="icon-info-sign"></i> 课程介绍</blockquote>
+    <p>在这个课程中我们将学习标准作业的细节. 4种标准作业应用在任何类型的工作和行业. 你将学习到一些标准作业的思想. 标准作业应用在任何行业和活动中,无论你是在生产环境还是在办公室做一些创造性的工作. 
+
+</p>
+  </div>
+
 </div>
 
 <hr>
@@ -50,7 +52,7 @@ jQuery( function() {
         
     
   
-    <ul class="nav nav-list well">
+    <ul class="nav nav-tabs nav-stacked">
       <li><h4><i class="icon-list"></i> 导航</h4></li>
       <li class="nav-header"><i class="icon-align-justify"></i> 课程大纲</li>
             <li><a href="lesson.php?page_content=259"><small><strong>第1节 领导标准作业概述</strong></small></a></li>
@@ -88,7 +90,7 @@ jQuery( function() {
 
 
 <div class="span8">
-                          <div class="container-fluid lesson-item">
+                          <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="259" href="lesson.php?page_content=259" title="第1节 领导标准作业概述">
@@ -110,16 +112,24 @@ jQuery( function() {
                  <span class="label label-info">时长 : 9:59</span>
                 </p>
 
-                迈克介绍了领导标准作业的概念, 同时介绍美国教练成功管理的橄榄球队.              </div>
+                迈克介绍了领导标准作业的概念, 同时介绍美国教练成功管理的橄榄球队.                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=259" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="109" href="lesson.php?page_content=109" title="第1节 标准化">
                 
-                                <img class="img-polaroid lazy" id="109" src="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/SW/PNG/SW-01.png" alt="第1节 标准化" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/SW/PNG/SW-01.png" />
+                                <img class="img-polaroid lazy" id="109" src="http://127.0.0.1/lean//uploads/page/109.png" alt="第1节 标准化" data-original="http://36lean-video.oss-cn-hangzhou.aliyuncs.com/GA/SW/PNG/109.png" />
                 
                 </a>
               </div>
@@ -136,11 +146,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                了解标准及标准化的定义以及它们为何对实现长期持续改善至关重要。              </div>
+                了解标准及标准化的定义以及它们为何对实现长期持续改善至关重要。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=109" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="110" href="lesson.php?page_content=110" title="第2节 前提条件">
@@ -162,11 +180,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                在尝试标准作业前，必须先实现几个先决条件。              </div>
+                在尝试标准作业前，必须先实现几个先决条件。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=110" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="111" href="lesson.php?page_content=111" title="第3节 标准作业介绍">
@@ -188,11 +214,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                学习标准作业的四个类型，以及如何将他们应用到任何组织中， 无论是生产汽车的企业或者是所谓的坐办公室里的创意类的企业。 ..               </div>
+                学习标准作业的四个类型，以及如何将他们应用到任何组织中， 无论是生产汽车的企业或者是所谓的坐办公室里的创意类的企业。 ..                 
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=111" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="112" href="lesson.php?page_content=112" title="第4节 三个元素">
@@ -214,11 +248,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                了解标准作业的3个元素，以及如何正确应用它们。              </div>
+                了解标准作业的3个元素，以及如何正确应用它们。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=112" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="113" href="lesson.php?page_content=113" title="第5节 产能表">
@@ -240,11 +282,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                如何运用标准作业工具识别瓶颈及最大生产力。              </div>
+                如何运用标准作业工具识别瓶颈及最大生产力。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=113" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="114" href="lesson.php?page_content=114" title="第6节 标准作业合并表">
@@ -266,11 +316,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                本单元将介绍如何创建一个最易产生误解和错误使用的标准作业模板。              </div>
+                本单元将介绍如何创建一个最易产生误解和错误使用的标准作业模板。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=114" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="115" href="lesson.php?page_content=115" title="第7节 标准作业表">
@@ -292,11 +350,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                学习记录同一工作间或工作区域的同事的工作情况。              </div>
+                学习记录同一工作间或工作区域的同事的工作情况。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=115" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="116" href="lesson.php?page_content=116" title="第8节 标准作业指导表">
@@ -318,11 +384,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                学习如何将多个标准作业文件合并成一个浅显易懂的表格用于新人培训。              </div>
+                学习如何将多个标准作业文件合并成一个浅显易懂的表格用于新人培训。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=116" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="117" href="lesson.php?page_content=117" title="第9节 标准半制品数量">
@@ -344,11 +418,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                学习在面对自动周期机器及需要批次处理的外部供应商负责的工序时，该如何计算标准半制品数量.              </div>
+                学习在面对自动周期机器及需要批次处理的外部供应商负责的工序时，该如何计算标准半制品数量.                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=117" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="118" href="lesson.php?page_content=118" title="第10节 作业周期">
@@ -370,11 +452,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                针对全面实行标准作业的组织，进行准确的作业周期              </div>
+                针对全面实行标准作业的组织，进行准确的作业周期                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=118" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="119" href="lesson.php?page_content=119" title="第11节 时间观察表">
@@ -396,11 +486,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                颇具争议但又是现有的最强大的工业管理工具…若正确使用，时间观察表格将成为大家执行标准作业的基石。 ..               </div>
+                颇具争议但又是现有的最强大的工业管理工具…若正确使用，时间观察表格将成为大家执行标准作业的基石。 ..                 
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=119" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="120" href="lesson.php?page_content=120" title="第12节 如何画小猪">
@@ -422,11 +520,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                现在我们的课先停一停，来画个小猪，分别用标准作业和没有标准作业模式支持的方法来画。这个单元最好是一组人一起观看。 ..               </div>
+                现在我们的课先停一停，来画个小猪，分别用标准作业和没有标准作业模式支持的方法来画。这个单元最好是一组人一起观看。 ..                 
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=120" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="121" href="lesson.php?page_content=121" title="第13节 一步一步">
@@ -448,11 +554,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                在这个单元，我们将之前所有学过的标准作业工具逐步联系到一起，以确保我们在学习第二类标准作业前对第一类有一个扎实的了解。 ..               </div>
+                在这个单元，我们将之前所有学过的标准作业工具逐步联系到一起，以确保我们在学习第二类标准作业前对第一类有一个扎实的了解。 ..                 
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=121" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="122" href="lesson.php?page_content=122" title="第14节 混合模型标准作业介绍">
@@ -474,11 +588,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                我们将介绍如何将标准作业应用于非重复性的混合模型中，同时在接下来几个单元里介绍一些混合模型的案例分析。 ..               </div>
+                我们将介绍如何将标准作业应用于非重复性的混合模型中，同时在接下来几个单元里介绍一些混合模型的案例分析。 ..                 
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=122" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="123" href="lesson.php?page_content=123" title="第15节 混合模型—平衡操作员的工作">
@@ -500,11 +622,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                这集我们将介绍一个专业计时软件以及学习如何平衡几个操作员之间的工作。              </div>
+                这集我们将介绍一个专业计时软件以及学习如何平衡几个操作员之间的工作。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=123" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="124" href="lesson.php?page_content=124" title="第16节 混合模型—平衡周期时间，节拍时间">
@@ -526,11 +656,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                我们现在来学习如何在多个混合模型中平衡周期时间和节拍时间。              </div>
+                我们现在来学习如何在多个混合模型中平衡周期时间和节拍时间。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=124" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="125" href="lesson.php?page_content=125" title="第17节 混合模型—Yamazumi图形">
@@ -552,11 +690,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                现在我们学习如何将我们的平衡作业应用到一个极其强大的精益工具Yamazumi表中。              </div>
+                现在我们学习如何将我们的平衡作业应用到一个极其强大的精益工具Yamazumi表中。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=125" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="126" href="lesson.php?page_content=126" title="第18节 混合模型—创建合并表">
@@ -578,11 +724,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                学习如何在数秒钟之内创建出多个标准作业合并表。              </div>
+                学习如何在数秒钟之内创建出多个标准作业合并表。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=126" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="127" href="lesson.php?page_content=127" title="第19节 交易化标准作业">
@@ -604,11 +758,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : </span>
                 </p>
 
-                学习如何将标准作业原则应用到非制造业环境中，如办公室。              </div>
+                学习如何将标准作业原则应用到非制造业环境中，如办公室。                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=127" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="260" href="lesson.php?page_content=260" title="第2节 过程聚焦">
@@ -630,11 +792,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : 2:04</span>
                 </p>
 
-                迈克用一个简单的问题挑战观众, "你是工作在流程里面,还是工作在流程之上? "              </div>
+                迈克用一个简单的问题挑战观众, "你是工作在流程里面,还是工作在流程之上? "                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=260" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="261" href="lesson.php?page_content=261" title="第3节 创建领导标准作业">
@@ -656,11 +826,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : 2:44</span>
                 </p>
 
-                学习从不同的标准作业, 从一线经理到公司的高级领导.              </div>
+                学习从不同的标准作业, 从一线经理到公司的高级领导.                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=261" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="262" href="lesson.php?page_content=262" title="第4节 现场指导">
@@ -682,11 +860,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : 11:55</span>
                 </p>
 
-                观看迈克在现场,一个计划外的领导标准作业指导环节.              </div>
+                观看迈克在现场,一个计划外的领导标准作业指导环节.                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=262" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="263" href="lesson.php?page_content=263" title="第5节 目视化控制">
@@ -708,11 +894,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : 11:44</span>
                 </p>
 
-                学习目视化控制在领导标准作业中的重要性.              </div>
+                学习目视化控制在领导标准作业中的重要性.                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=263" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="264" href="lesson.php?page_content=264" title="第6节 纸芝居系统">
@@ -734,11 +928,19 @@ jQuery( function() {
                  <span class="label label-info">时长 : 4:39</span>
                 </p>
 
-                迈克解释了一个简单但非常强大可用的审计系统.              </div>
+                迈克解释了一个简单但非常强大可用的审计系统.                
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=264" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
-                        <div class="container-fluid lesson-item">
+
+             
+
+                        <div class="container-fluid course_line">
             <div class="row-fluid">
               <div class="span4 text-center">
                 <a id="265" href="lesson.php?page_content=265" title="第7节 责任和纪律">
@@ -760,10 +962,18 @@ jQuery( function() {
                  <span class="label label-info">时长 : 10:29</span>
                 </p>
 
-                领导标准作业最难的部分是实施每日的责任和纪律, 迈克在本课程中解释如何做到这两点.               </div>
+                领导标准作业最难的部分是实施每日的责任和纪律, 迈克在本课程中解释如何做到这两点.                 
+
+              </div>
 
             </div>
+            
+            <a href="lesson.php?page_content=265" class="btn btn-small btn-danger pull-right">点击开始学习»</a>
+
             </div>
+
+             
+
             
       </div>
 

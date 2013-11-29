@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1383917232, '18', './data/template/24_18_common_header.tpl.php', './template/tpl', 'common/header')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1385641787, '18', './data/template/24_18_common_header.tpl.php', './template/tpl', 'common/header')
 ;?>
 ﻿<!DOCTYPE html>
 <html lang="en">
@@ -123,7 +123,9 @@ jQuery("img").lazyload({effect : "fadeIn"});
     		</div>
     	</form>
       	<ul class="nav pull-right">
-
+      		<?php if(!$_G['uid'] ) { ?>
+      		<li><a href="weibo.php" title="新浪微博登录"><img src="<?php echo $_G['siteurl'];?>static/mot/weibo_login_small.png" /></a></li>
+      		<?php } ?>
       	</ul>
 </div>
 
